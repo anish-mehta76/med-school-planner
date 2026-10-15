@@ -6,7 +6,6 @@ import { AREA_CATEGORIES } from '../data/benchmarks';
 import { AreaBar, Empty, GapCard } from '../components/ui';
 import { OpportunityCard } from '../components/OpportunityCard';
 import ResearchOutreach from '../components/ResearchOutreach';
-import { HAS_RESEARCH_DATA } from '../data/privateData';
 import type { AppState, Area } from '../types';
 
 const SERIES: { area: Area; label: string; color: string }[] = [
@@ -81,7 +80,7 @@ export default function Dashboard({ go }: { go: (page: string) => void }) {
         </section>
       )}
 
-      {HAS_RESEARCH_DATA && <ResearchOutreach go={go} picks={mentorSuggestions} gap={empty ? undefined : gaps[0]} />}
+      <ResearchOutreach go={go} picks={mentorSuggestions} gap={empty ? undefined : gaps[0]} />
 
       {!empty && (
         <section className="stats" aria-label="Summary">

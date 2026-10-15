@@ -1,8 +1,7 @@
 import { useMemo, useRef, useState, type ReactNode } from 'react';
 import { Check, ChevronDown, Copy, Download, ExternalLink, FileUp, Info, Lock, Search } from 'lucide-react';
 import type { Link, Mentor, MentorPriority, OppStatus, Outreach, OutreachStatus, Program } from '../types';
-import { MENTORS } from '../data/mentors';
-import { NYC_PROGRAMS } from '../data/nycPrograms';
+import { mentorsOf, programsOf } from '../data/researchData';
 import { localDate, setState, useStore } from '../store/useStore';
 import { rankMentors, type MentorScore } from '../engine/mentorScore';
 import { effectiveOutreach, OUTREACH_STATUSES, outreachPatch, PIPELINE, sortPrograms, STAGE_TONE, stageOf, type PipelineStage } from '../engine/outreach';
@@ -484,7 +483,7 @@ function TrackerBar() {
   const onFile = async (file: File) => {
     try {
       const tracker = parseTrackerCsv(await file.text(), file.name);
-      const known = new Set(MENTORS.map((m) => m.id));
+      const known = new Set(mentorsOf(state).map((m) => m.id));
       const matched = tracker.rows.filter((r) => known.has(r.ID.trim())).length;
       setState((s) => ({ ...s, tracker }));
       setMessage({ tone: 'ok', text: `Imported ${tracker.rows.length} researchers (${matched} match this app's list). Your edits in the app were kept.` });
@@ -494,7 +493,7 @@ function TrackerBar() {
   };
 
   const onExport = async () => {
-    const csv = exportTrackerCsv(state, MENTORS);
+    const csv = exportTrackerCsv(state, mentorsOf(state));
     await saveFile(new Blob([csv], { type: 'text/csv;charset=utf-8' }), 'uterine-cervical-cancer-opportunities-tracker.csv');
   };
 
@@ -561,6 +560,18 @@ function WhyTemplatesEditor() {
   );
 }
 
+/** Shown on the public site until a backup with the lists is imported. */
+function NoListYet({ what }: { what: 'mentors' | 'programs' }) {
+  return (
+    <Empty>
+      <p>No {what} yet. Your list isn't published with the website; import your backup (.json) in Profile & academics to load it in this browser.</p>
+      <a className="btn" href="#settings">
+        Go to Profile & academics
+      </a>
+    </Empty>
+  );
+}
+
 export default function Research() {
   const state = useStore();
   const [tab, setTab] = useState<'mentors' | 'programs'>('mentors');
@@ -572,8 +583,9 @@ export default function Research() {
   const [open, setOpen] = useState<string | null>(null);
   const today = localDate();
 
-  const ranked = useMemo(() => rankMentors(MENTORS, state.scoreWeights), [state.scoreWeights]);
-  const institutions = [...new Set(MENTORS.map(institutionGroup))].sort();
+  const mentors = mentorsOf(state);
+  const ranked = useMemo(() => rankMentors(mentors, state.scoreWeights), [mentors, state.scoreWeights]);
+  const institutions = [...new Set(mentors.map(institutionGroup))].sort();
   const stageCounts = Object.fromEntries(PIPELINE.map((s) => [s, 0])) as Record<PipelineStage, number>;
   for (const { m } of ranked) stageCounts[stageOf(effectiveOutreach(m, state), today)]++;
 
@@ -585,7 +597,7 @@ export default function Research() {
       (stage === 'all' || stageOf(effectiveOutreach(m, state), today) === stage) &&
       (!q || `${m.name} ${m.institution.text} ${m.diseaseFit.text} ${m.strength.text}`.toLowerCase().includes(q.toLowerCase())),
   );
-  const programs = sortPrograms(NYC_PROGRAMS, today);
+  const programs = sortPrograms(programsOf(state), today);
   const clearFilters = () => {
     setDisease('all');
     setInst('all');
@@ -608,10 +620,10 @@ export default function Research() {
 
       <div className="tabs" role="tablist">
         <button role="tab" aria-selected={tab === 'mentors'} className={tab === 'mentors' ? 'active' : ''} onClick={() => setTab('mentors')}>
-          Mentors <span className="muted">{MENTORS.length}</span>
+          Mentors <span className="muted">{mentors.length}</span>
         </button>
         <button role="tab" aria-selected={tab === 'programs'} className={tab === 'programs' ? 'active' : ''} onClick={() => setTab('programs')}>
-          NYC programs <span className="muted">{NYC_PROGRAMS.length}</span>
+          NYC programs <span className="muted">{programs.length}</span>
         </button>
       </div>
 
@@ -619,7 +631,7 @@ export default function Research() {
         <>
           <div className="chips chips-scroll" role="group" aria-label="Filter by outreach status">
             <button className={`chip ${stage === 'all' ? 'active' : ''}`} aria-pressed={stage === 'all'} onClick={() => setStage('all')}>
-              All <span className="muted">{MENTORS.length}</span>
+              All <span className="muted">{mentors.length}</span>
             </button>
             {PIPELINE.filter((s) => stageCounts[s] > 0 || stage === s).map((s) => (
               <button key={s} className={`chip ${stage === s ? 'active' : ''}`} aria-pressed={stage === s} onClick={() => setStage(s)}>
@@ -657,7 +669,8 @@ export default function Research() {
             {shown.map(({ m, score }) => (
               <MentorCard key={m.id} m={m} score={score} open={open === m.id} onToggle={() => setOpen(open === m.id ? null : m.id)} />
             ))}
-            {shown.length === 0 && (
+            {mentors.length === 0 && <NoListYet what="mentors" />}
+            {mentors.length > 0 && shown.length === 0 && (
               <Empty>
                 <p>No mentors match those filters.</p>
                 <button className="btn" onClick={clearFilters}>
@@ -678,6 +691,7 @@ export default function Research() {
               <ProgramCard key={p.id} p={p} today={today} />
             ))}
           </div>
+          {programs.length === 0 && <NoListYet what="programs" />}
         </>
       )}
     </div>

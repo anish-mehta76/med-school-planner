@@ -1,6 +1,5 @@
 import { ArrowRight } from 'lucide-react';
-import { MENTORS } from '../data/mentors';
-import { NYC_PROGRAMS } from '../data/nycPrograms';
+import { mentorsOf, programsOf } from '../data/researchData';
 import { awaitingAction, followUpsDue, sortPrograms } from '../engine/outreach';
 import type { MentorScore } from '../engine/mentorScore';
 import type { Gap, Mentor } from '../types';
@@ -31,9 +30,10 @@ export function MentorSuggestions({ picks, go }: { picks: { m: Mentor; score: Me
 export default function ResearchOutreach({ go, picks, gap }: { go: (p: string) => void; picks: { m: Mentor; score: MentorScore }[]; gap?: Gap }) {
   const state = useStore();
   const today = localDate();
-  const due = followUpsDue(MENTORS, state, today);
-  const waiting = awaitingAction(MENTORS, state);
-  const deadlines = sortPrograms(NYC_PROGRAMS, today)
+  const mentors = mentorsOf(state);
+  const due = followUpsDue(mentors, state, today);
+  const waiting = awaitingAction(mentors, state);
+  const deadlines = sortPrograms(programsOf(state), today)
     .filter((p) => p.deadline && p.deadline >= today)
     .slice(0, 3);
 

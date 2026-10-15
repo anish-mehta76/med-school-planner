@@ -214,3 +214,22 @@ describe('outreach status set', () => {
     expect(s.outreach).toEqual({ A: { status: 'redirected' }, B: { notes: 'just a note' }, C: { status: 'declined' } });
   });
 });
+
+describe('mentor and program lists in backups', () => {
+  it('keeps valid lists from a backup and drops malformed ones', () => {
+    const m = mentor({ id: 'T09' });
+    const p = { id: 'NYC99', name: 'Sample program' } as Program;
+    const s = normalize({ version: 1, mentors: [m], programs: [p] });
+    expect(s.mentors).toEqual([m]);
+    expect(s.programs).toEqual([p]);
+    expect(normalize({ version: 1, mentors: [{ name: 'no id' }], programs: 'x' }).mentors).toBeUndefined();
+  });
+
+  it('writes the lists into the backup so another browser can restore them', async () => {
+    const { backupOf, defaultState } = await import('../store/useStore');
+    const { mentorsOf, programsOf } = await import('../data/researchData');
+    const restored = normalize(JSON.parse(JSON.stringify(backupOf({ ...defaultState(), mentors: [mentor({ id: 'T09' })] }))));
+    expect(restored.mentors?.length).toBe(mentorsOf(restored).length);
+    expect(restored.programs ?? []).toEqual(programsOf(restored));
+  });
+});

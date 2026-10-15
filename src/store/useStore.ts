@@ -4,6 +4,7 @@ import { DEFAULT_BENCHMARKS, PREREQS } from '../data/benchmarks';
 import { DEFAULT_WEIGHTS } from '../engine/mentorScore';
 import { toOutreachStatus } from '../engine/outreach';
 import { saveFile } from '../lib/saveFile';
+import { mentorsOf, programsOf } from '../data/researchData';
 
 const KEY = 'med-school-planner:v1';
 
@@ -42,7 +43,15 @@ export function normalize(raw: unknown): AppState {
     scoreWeights: { ...base.scoreWeights, ...s.scoreWeights },
     tracker: validTracker(s.tracker),
     whyTemplates: s.whyTemplates && typeof s.whyTemplates === 'object' ? s.whyTemplates : undefined,
+    mentors: validList(s.mentors, (m) => !!m.institution && !!m.diseaseFit && !!m.strength),
+    programs: validList(s.programs, () => true),
   };
+}
+
+/** Keeps a saved list only if every entry has an id and a name. */
+function validList<T extends { id: string; name: string }>(raw: T[] | undefined, ok: (x: T) => boolean): T[] | undefined {
+  if (!Array.isArray(raw) || !raw.length) return undefined;
+  return raw.every((x) => x && typeof x.id === 'string' && typeof x.name === 'string' && ok(x)) ? raw : undefined;
 }
 
 function validTracker(t: AppState['tracker']): AppState['tracker'] {
@@ -96,9 +105,15 @@ export function useStore(): AppState {
   return useSyncExternalStore(subscribe, getState);
 }
 
-/** Backup of everything in this browser, including your imported tracker. */
+/** Backup of everything in this browser, including your imported tracker and the mentor and program lists. */
+export function backupOf(s: AppState): AppState {
+  const mentors = mentorsOf(s);
+  const programs = programsOf(s);
+  return { ...s, mentors: mentors.length ? mentors : undefined, programs: programs.length ? programs : undefined };
+}
+
 export function exportJson() {
-  const blob = new Blob([JSON.stringify(state, null, 2)], { type: 'application/json' });
+  const blob = new Blob([JSON.stringify(backupOf(state), null, 2)], { type: 'application/json' });
   return saveFile(blob, `med-school-planner-${localDate()}.json`);
 }
 

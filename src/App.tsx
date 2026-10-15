@@ -9,9 +9,8 @@ import Opportunities from './pages/Opportunities';
 import Guides from './pages/Guides';
 import Settings from './pages/Settings';
 import { useAnalysis } from './engine/useAnalysis';
-import { HAS_RESEARCH_DATA } from './data/privateData';
 
-const ALL_PAGES: readonly { id: string; label: string; icon: LucideIcon }[] = [
+const PAGES: readonly { id: string; label: string; icon: LucideIcon }[] = [
   { id: 'dashboard', label: 'Dashboard', icon: LayoutDashboard },
   { id: 'experiences', label: 'Experiences', icon: BriefcaseMedical },
   { id: 'research', label: 'Research targeting', icon: Microscope },
@@ -22,13 +21,10 @@ const ALL_PAGES: readonly { id: string; label: string; icon: LucideIcon }[] = [
   { id: 'settings', label: 'Profile & academics', icon: UserRoundCog },
 ] as const;
 
-/** Research targeting needs the local-only tracker data, so the public site leaves it out. */
-const PAGES = ALL_PAGES.filter((p) => p.id !== 'research' || HAS_RESEARCH_DATA);
-
 /** Phone tab bar: three main pages plus "More" for the rest. */
 const TABS = [
   { id: 'dashboard', label: 'Dashboard' },
-  ...(HAS_RESEARCH_DATA ? [{ id: 'research', label: 'Research' }] : [{ id: 'outputs', label: 'Outputs' }]),
+  { id: 'research', label: 'Research' },
   { id: 'experiences', label: 'Experiences' },
 ];
 const MORE = PAGES.filter((p) => !TABS.some((t) => t.id === p.id));
@@ -121,7 +117,7 @@ export default function App() {
       <main ref={mainRef}>
         {page === 'dashboard' && <Dashboard go={go} />}
         {page === 'experiences' && <Experiences />}
-        {page === 'research' && HAS_RESEARCH_DATA && <Research />}
+        {page === 'research' && <Research />}
         {page === 'outputs' && <Outputs go={go} />}
         {page === 'gaps' && <Gaps go={go} />}
         {page === 'opportunities' && <Opportunities />}

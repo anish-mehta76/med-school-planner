@@ -108,6 +108,9 @@ export interface AppState {
   tracker?: TrackerImport;
   /** Your own "Why this lab" wording per disease bridge (private, this browser only). */
   whyTemplates?: Partial<Record<'endometrial' | 'cervical' | 'methods', string>>;
+  /** Mentor and program lists restored from a backup (they aren't published with the website). */
+  mentors?: Mentor[];
+  programs?: Program[];
 }
 
 export type Severity = 'critical' | 'gap' | 'on-track' | 'strong';
