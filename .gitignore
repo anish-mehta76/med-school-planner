@@ -1,0 +1,17 @@
+node_modules
+dist
+.DS_Store
+.Rhistory
+*.bak-*
+# Personal documents stay out of version control
+*.pdf
+reports/backups/
+.env*
+private/
+# Private: kept in the local folder only, never in this public repo
+CLAUDE.md
+DEPLOY_TO_GITHUB_PROMPT.md
+RESEARCH_TARGETING_PROMPT.md
+*.csv
+reports/
+.claude/
