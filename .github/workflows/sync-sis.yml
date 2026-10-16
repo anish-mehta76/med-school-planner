@@ -1,0 +1,61 @@
+name: Sync SIS course data
+
+# Refreshes src/planner/sisCourses.json from the JHU SIS Course Search API twice a week.
+# When SIS posts a new term's schedule, the next run refreshes every course.
+# The API key lives in the repository secret JHU_SIS_API_KEY (Settings → Secrets and
+# variables → Actions), so it is never in the code or the website. Without the secret,
+# this workflow does nothing.
+on:
+  schedule:
+    - cron: '17 9 * * 1,4' # Mondays and Thursdays, 09:17 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-sis
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    env:
+      HAS_KEY: ${{ secrets.JHU_SIS_API_KEY != '' }}
+    steps:
+      - name: Skip without a key
+        if: env.HAS_KEY != 'true'
+        run: echo "Add the JHU_SIS_API_KEY repository secret to enable SIS syncing."
+      - uses: actions/checkout@v4
+        if: env.HAS_KEY == 'true'
+      - uses: actions/setup-node@v4
+        if: env.HAS_KEY == 'true'
+        with:
+          node-version: 22
+          cache: npm
+      - if: env.HAS_KEY == 'true'
+        run: npm ci
+      - uses: actions/cache@v4
+        if: env.HAS_KEY == 'true'
+        with:
+          path: scripts/.sis-cache
+          key: sis-cache-${{ github.run_id }}
+          restore-keys: sis-cache-
+      - name: Sync from SIS
+        if: env.HAS_KEY == 'true'
+        run: npm run sync-sis
+        env:
+          JHU_SIS_API_KEY: ${{ secrets.JHU_SIS_API_KEY }}
+          SIS_CACHE_DAYS: 14
+      - if: env.HAS_KEY == 'true'
+        run: npm test
+      - name: Commit changes
+        if: env.HAS_KEY == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/planner/sisCourses.json
+          git diff --cached --quiet && echo "No changes." && exit 0
+          git commit -m "Update SIS course data"
+          git push

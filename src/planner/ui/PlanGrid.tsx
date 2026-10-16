@@ -1,8 +1,8 @@
 import { useId, useState } from 'react';
 import { AlertTriangle, Plus, X } from 'lucide-react';
-import { CATALOG, COURSE } from '../catalog';
+import { CATALOG, COURSE, isPublished } from '../catalog';
 import { newItemId, type Flag, type ScenarioAnalysis } from '../engine';
-import { MAJOR_BY_ID } from '../majors';
+import { MAJOR_BY_ID, majorColor } from '../majors';
 import { TERMS, YEAR_LABEL } from '../terms';
 import type { PlanItem, Resolved, Scenario, Term } from '../types';
 
@@ -19,13 +19,13 @@ export function faLabel(tags: string[]) {
 }
 
 /** Colored dots for the majors (and pre-med) a course counts toward. */
-export function Dots({ ids }: { ids: string[] }) {
+export function Dots({ ids, majorIds }: { ids: string[]; majorIds: string[] }) {
   if (!ids.length) return null;
   const names = ids.map((id) => MAJOR_BY_ID[id]?.short ?? id).join(', ');
   return (
     <span className="plan-dots" title={`Counts toward ${names}`}>
       {ids.map((id) => (
-        <span key={id} className="plan-dot" style={{ background: MAJOR_BY_ID[id]?.color }} aria-hidden />
+        <span key={id} className="plan-dot" style={{ background: majorColor(majorIds, id) }} aria-hidden />
       ))}
       <span className="visually-hidden">Counts toward {names}</span>
     </span>
@@ -37,8 +37,8 @@ export default function PlanGrid({ scenario, analysis, update }: Props) {
   const listId = useId();
   const byTerm = (id: string) => analysis.resolved.filter((r) => r.item.termId === id);
   const flagsFor = (itemId: string) => analysis.flags.filter((f) => f.itemId === itemId);
-  // Summers show when they hold courses, or for every year when the toggle is on.
-  const showTerm = (t: Term) => t.season !== 'U' || !!scenario.showSummers || byTerm(t.id).length > 0;
+  // Winter intersessions and summers show when they hold courses, or for every year when the toggle is on.
+  const showTerm = (t: Term) => (t.season !== 'U' && t.season !== 'W') || !!scenario.showSummers || byTerm(t.id).length > 0;
 
   const setItem = (id: string, patch: Partial<PlanItem>) => update((s) => ({ ...s, plan: s.plan.map((p) => (p.id === id ? { ...p, ...patch } : p)) }));
   const remove = (id: string) => update((s) => ({ ...s, plan: s.plan.filter((p) => p.id !== id) }));
@@ -56,14 +56,17 @@ export default function PlanGrid({ scenario, analysis, update }: Props) {
     const cr = analysis.termCredits[t.id] ?? 0;
     const termFlags = analysis.flags.filter((f) => f.termId === t.id && !f.itemId);
     return (
-      <section key={t.id} className={`plan-term ${t.season === 'U' ? 'summer' : ''}`} aria-label={t.label}>
+      <section key={t.id} className={`plan-term ${t.season === 'U' || t.season === 'W' ? 'summer' : ''}`} aria-label={t.label}>
         <header className="plan-term-head">
-          <h3>{t.label}</h3>
+          <h3>
+            {t.label}
+            {isPublished(t.sisName) && <span className="plan-posted small">SIS schedule posted</span>}
+          </h3>
           <span className={`num small ${cr >= 18 ? 'plan-heavy' : 'muted'}`}>
             {cr} cr{t.id === 'PRE' && cr > 20 ? ' (20 count)' : ''}
           </span>
         </header>
-        {t.id === 'F26' && <p className="muted small plan-note">Placeholder: replace with your actual Fall 2026 courses.</p>}
+        {t.id === 'F26' && scenario.sample && <p className="muted small plan-note">Placeholder: replace with your actual Fall 2026 courses.</p>}
         {termFlags.map((f, i) => (
           <FlagLine key={i} f={f} />
         ))}
@@ -73,6 +76,7 @@ export default function PlanGrid({ scenario, analysis, update }: Props) {
               key={r.item.id}
               r={r}
               counts={analysis.countsFor.get(r.item.id) ?? []}
+              majorIds={scenario.majorIds}
               flags={flagsFor(r.item.id)}
               open={open === r.item.id}
               toggle={() => setOpen(open === r.item.id ? undefined : r.item.id)}
@@ -99,11 +103,17 @@ export default function PlanGrid({ scenario, analysis, update }: Props) {
       {years.map((terms, y) => (
         <div key={y} className="plan-year">
           <h2 className="plan-year-label">{YEAR_LABEL[y]}</h2>
-          <div className={`plan-year-terms cols-${terms.length}`}>{terms.map(termCard)}</div>
+          <div
+            className="plan-year-terms"
+            // Fall and spring get full columns; winter and summer narrower ones.
+            style={{ ['--cols' as string]: terms.map((t) => (t.season === 'F' || t.season === 'S' ? 'minmax(0, 1fr)' : 'minmax(0, 0.75fr)')).join(' ') }}
+          >
+            {terms.map(termCard)}
+          </div>
         </div>
       ))}
       <label className="plan-summer-toggle small">
-        <input type="checkbox" checked={!!scenario.showSummers} onChange={(e) => update((s) => ({ ...s, showSummers: e.target.checked }))} /> Show summer terms
+        <input type="checkbox" checked={!!scenario.showSummers} onChange={(e) => update((s) => ({ ...s, showSummers: e.target.checked }))} /> Show winter intersessions and summers
       </label>
     </div>
   );
@@ -121,6 +131,7 @@ function FlagLine({ f }: { f: Flag }) {
 function PlanRow({
   r,
   counts,
+  majorIds,
   flags,
   open,
   toggle,
@@ -129,6 +140,7 @@ function PlanRow({
 }: {
   r: Resolved;
   counts: string[];
+  majorIds: string[];
   flags: Flag[];
   open: boolean;
   toggle: () => void;
@@ -143,7 +155,7 @@ function PlanRow({
         <span className="plan-code num">{r.code}</span>
         <span className="plan-title">{r.title}</span>
         <span className="plan-meta">
-          <Dots ids={counts} />
+          <Dots ids={counts} majorIds={majorIds} />
           {warn && <AlertTriangle size={14} aria-label="Has a warning" className="plan-warn" />}
           <span className="num muted">{r.credits}</span>
         </span>

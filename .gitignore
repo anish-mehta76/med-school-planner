@@ -9,6 +9,7 @@ reports/backups/
 .env*
 !.env.example
 scripts/.sis-cache/
+scripts/.catalogue-cache/
 private/
 # Private: kept in the local folder only, never in this public repo
 CLAUDE.md

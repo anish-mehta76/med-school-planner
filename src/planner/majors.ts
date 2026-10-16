@@ -1,4 +1,5 @@
 import type { Major, Matcher, Requirement, Resolved } from './types';
+import catalogue from './catalogueData.json';
 import { deptOf } from './catalog';
 
 /**
@@ -69,8 +70,8 @@ export const MAJORS: Major[] = [
     name: 'Chemistry, BS',
     short: 'Chem',
     degree: 'BS',
+    school: 'KSAS',
     totalLabel: '70 major credits',
-    color: 'var(--c1)',
     sourceUrl: `${CAT}/chemistry/chemistry-bachelor-science/`,
     notes: [
       'Grade C- or better, letter grade.',
@@ -118,8 +119,8 @@ export const MAJORS: Major[] = [
     name: 'Public Health Studies, BA',
     short: 'PHS',
     degree: 'BA',
+    school: 'KSAS',
     totalLabel: '63–67 credits',
-    color: 'var(--c2)',
     sourceUrl: `${CAT}/public-health-studies/public-health-studies-bachelor-arts/`,
     notes: [
       'Grade C- or better, letter grade.',
@@ -187,8 +188,8 @@ export const MAJORS: Major[] = [
     name: 'Molecular & Cellular Biology, BS',
     short: 'MCB',
     degree: 'BS',
+    school: 'KSAS',
     totalLabel: '72–73 credits',
-    color: 'var(--c3)',
     sourceUrl: `${CAT}/biology/molecular-cellular-biology-bachelor-science/`,
     notes: ['Cannot be combined with the Biology BA.', 'At least one elective must be an AS.020 course.'],
     requirements: [
@@ -214,8 +215,8 @@ export const MAJORS: Major[] = [
     name: 'Neuroscience, BS',
     short: 'Neuro',
     degree: 'BS',
+    school: 'KSAS',
     totalLabel: '66.5–81.5 credits',
-    color: 'var(--c4)',
     sourceUrl: `${CAT}/neuroscience/neuroscience-bachelor-science/`,
     notes: ['Pre-med note: Organic II + lab and biochemistry are not major requirements.'],
     requirements: [
@@ -252,8 +253,8 @@ export const MAJORS: Major[] = [
     name: 'History, BA',
     short: 'History',
     degree: 'BA',
+    school: 'KSAS',
     totalLabel: '36–54 credits',
-    color: 'var(--c5)',
     sourceUrl: `${CAT}/history/history-bachelor-arts/`,
     notes: ['At least 4 of the 8 electives must be AS.100 courses.', 'Senior thesis (honors) needs a 3.25 GPA overall and 3.5 in History.'],
     requirements: [
@@ -271,8 +272,8 @@ export const MAJORS: Major[] = [
     name: 'Spanish, BA',
     short: 'Spanish',
     degree: 'BA',
+    school: 'KSAS',
     totalLabel: '41 credits (fewer with placement)',
-    color: 'var(--c6)',
     sourceUrl: `${CAT}/modern-languages-literatures/spanish-bachelor-arts/`,
     notes: [
       '15+ credits at 300+; grade C or better.',
@@ -311,8 +312,8 @@ export const PREMED: Major = {
   name: 'Pre-med track',
   short: 'Pre-med',
   degree: 'Track',
+  school: 'JHU',
   totalLabel: 'JHU recommendations, not a fixed list',
-  color: 'var(--c7)',
   sourceUrl: 'https://studentaffairs.jhu.edu/preprofadvising/pre-medhealth/prerequisites/',
   notes: [
     'Verify against each school you apply to. JHU publishes recommendations, not a fixed list, and these course codes are this planner’s mapping onto the catalogue (verify with a pre-health advisor).',
@@ -364,7 +365,67 @@ export const MCAT_HELPFUL = ['AS.020.303', 'AS.020.304', 'AS.020.306', 'AS.020.3
 /** Pre-med science (for the summer check). */
 export const PREMED_SCIENCE = /^(AS\.(020|030|171|173|250)\.|AS\.110\.10[6-9]|AS\.110\.113)/;
 
-export const ALL_TRACKS: Major[] = [...MAJORS, PREMED];
+// ── Majors imported from the e-catalogue (npm run import-catalogue) ───────
+
+interface CatReq {
+  type: 'set' | 'pick' | 'note';
+  key: string;
+  label: string;
+  section?: string;
+  options?: string[][];
+  n?: number;
+  from?: string[];
+}
+interface CatMajor {
+  id: string;
+  name: string;
+  degree: 'BA' | 'BS';
+  school: 'KSAS' | 'WSE';
+  sourceUrl: string;
+  totalLabel: string;
+  requirements: CatReq[];
+}
+
+export const CATALOGUE_IMPORTED_AT: string = catalogue.importedAt;
+
+/** "Chemistry, Bachelor of Science" → "Chemistry, BS". */
+const shortName = (name: string) => name.replace(/,?\s*Bachelor of Arts$/i, ', BA').replace(/,?\s*Bachelor of Science$/i, ', BS');
+
+function fromCatalogue(m: CatMajor): Major {
+  const name = shortName(m.name);
+  return {
+    id: m.id,
+    name,
+    short: name.replace(/, B[AS]$/, ''),
+    degree: m.degree,
+    school: m.school,
+    auto: true,
+    totalLabel: m.totalLabel,
+    sourceUrl: m.sourceUrl,
+    notes: [`Imported automatically from the JHU e-catalogue on ${catalogue.importedAt}. Rules written as text are shown as notes and aren't checked; confirm everything with the department.`],
+    requirements: m.requirements.map((r): Requirement => {
+      const base = { key: r.key, label: r.label, section: r.section };
+      if (r.type === 'set') return { ...base, type: 'set', options: r.options ?? [] };
+      if (r.type === 'pick') return { ...base, type: 'pick', n: r.n ?? 1, from: r.from ?? [], fill: (r.from ?? []).slice(0, r.n ?? 1) };
+      return { ...base, type: 'note' };
+    }),
+  };
+}
+
+const HAND_CHECKED = new Set(MAJORS.map((m) => m.sourceUrl.replace(/\/$/, '')));
+/** Every KSAS and WSE bachelor's major: the hand-checked ones above, then the rest from the catalogue. */
+export const ALL_MAJORS: Major[] = [
+  ...MAJORS,
+  ...(catalogue.majors as CatMajor[]).filter((m) => !HAND_CHECKED.has(m.sourceUrl.replace(/\/$/, ''))).map(fromCatalogue),
+].sort((a, b) => a.school.localeCompare(b.school) || a.name.localeCompare(b.name));
+
+export const ALL_TRACKS: Major[] = [...ALL_MAJORS, PREMED];
+
+const PALETTE = ['var(--c1)', 'var(--c2)', 'var(--c3)', 'var(--c4)', 'var(--c5)', 'var(--c6)'];
+/** Color for a major by its position in the scenario (pre-med has its own). */
+export function majorColor(majorIds: string[], id: string) {
+  return id === PREMED.id ? 'var(--c7)' : PALETTE[Math.max(0, majorIds.indexOf(id)) % PALETTE.length];
+}
 export const MAJOR_BY_ID: Record<string, Major> = Object.fromEntries(ALL_TRACKS.map((m) => [m.id, m]));
 
 export { CALC1, CALC2, PHYS1, PHYS2, STATS };

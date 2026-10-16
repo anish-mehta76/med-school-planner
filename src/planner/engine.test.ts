@@ -1,8 +1,8 @@
 import { describe, expect, it } from 'vitest';
-import { analyze, autofill, evaluate, faTracker, overlapMatrix, resolve, type MajorResult } from './engine';
-import { MAJOR_BY_ID, MAJORS } from './majors';
+import { analyze, autofill, evaluate, faTracker, offeredIn, overlapMatrix, resolve, type MajorResult } from './engine';
+import { ALL_MAJORS, MAJOR_BY_ID, MAJORS } from './majors';
 import { chemPhs, chemPhsPremed, chemPhsSpanish } from './scenarios';
-import { CATALOG, COURSE } from './catalog';
+import { addPublishedTerms, applySis, CATALOG, COURSE } from './catalog';
 import { TERM_BY_ID } from './terms';
 import type { Scenario } from './types';
 
@@ -188,5 +188,58 @@ describe('what-if auto-fill', () => {
     expect(Number.isNaN(at('chem', 'chem'))).toBe(true);
     expect(at('chem', 'mcb')).toBeGreaterThan(20);
     expect(at('chem', 'span')).toBe(0);
+  });
+});
+
+describe('majors imported from the catalogue', () => {
+  it('covers KSAS and WSE, without duplicating the hand-checked majors', () => {
+    expect(ALL_MAJORS.length).toBeGreaterThanOrEqual(45);
+    expect(ALL_MAJORS.some((m) => m.school === 'WSE')).toBe(true);
+    expect(new Set(ALL_MAJORS.map((m) => m.id)).size).toBe(ALL_MAJORS.length);
+    expect(ALL_MAJORS.filter((m) => /public-health-studies/.test(m.sourceUrl))).toHaveLength(1);
+  });
+
+  it('every imported course code is in the catalog and every major auto-fills from scratch', () => {
+    for (const m of ALL_MAJORS.filter((x) => x.auto)) {
+      for (const r of m.requirements) if (r.type === 'set') for (const o of r.options) for (const c of o) expect(COURSE[c], `${m.id} → ${c}`).toBeTruthy();
+      const res = autofill([], m, undefined, NOW);
+      expect(evaluate(m, resolve(res.plan)).pct, m.id).toBeGreaterThan(0.6);
+    }
+  });
+
+  it('a plan of your own courses shows how far each major is', () => {
+    const plan = ['AS.030.101', 'AS.030.105', 'AS.110.108', 'AS.280.101'].map((code, i) => ({ id: `x${i}`, code, termId: 'F26' }));
+    const pct = (id: string) => evaluate(MAJOR_BY_ID[id], resolve(plan)).pct;
+    expect(pct('chem')).toBeGreaterThan(0);
+    expect(pct('phs')).toBeGreaterThan(pct('ksas-english-bachelor-arts'));
+  });
+});
+
+describe('SIS schedules and intersessions', () => {
+  it('has a winter intersession between fall and spring every year', () => {
+    for (const [w, f, sp] of [['W27', 'F26', 'S27'], ['W28', 'F27', 'S28'], ['W29', 'F28', 'S29'], ['W30', 'F29', 'S30']]) {
+      expect(TERM_BY_ID[w].season).toBe('W');
+      expect(TERM_BY_ID[f].ord).toBeLessThan(TERM_BY_ID[w].ord);
+      expect(TERM_BY_ID[w].ord).toBeLessThan(TERM_BY_ID[sp].ord);
+    }
+    expect(TERM_BY_ID.W28.sisName).toBe('Intersession 2028');
+  });
+
+  it('uses the posted SIS schedule over the fall/spring pattern, and the pattern before it is posted', () => {
+    applySis([{ code: 'AS.999.101', title: 'Test course', credits: 3, term: 'F', offered: ['Fall 2026', 'Spring 2027'] }]);
+    addPublishedTerms(['Fall 2026', 'Spring 2027']);
+    const c = COURSE['AS.999.101'];
+    expect(offeredIn(c, TERM_BY_ID.S27)).toBe(true); // posted, has a section: the pattern no longer matters
+    expect(offeredIn(c, TERM_BY_ID.S28)).toBe(false); // not posted yet: fall-only pattern
+    expect(offeredIn(c, TERM_BY_ID.F27)).toBe(true);
+    applySis([{ code: 'AS.999.101', offered: ['Fall 2026'] }]);
+    expect(offeredIn(COURSE['AS.999.101'], TERM_BY_ID.S27)).toBe(false); // posted, no section
+    const s: Scenario = { id: 'x', name: 'x', majorIds: [], premed: false, plan: [{ id: 'a', code: 'AS.999.101', termId: 'S27' }] };
+    expect(texts(s).some((t) => /isn't on the SIS schedule for Spring 2027/.test(t))).toBe(true);
+  });
+
+  it('intersession and summer offerings are unknown until SIS posts them', () => {
+    expect(offeredIn(COURSE['AS.280.345'], TERM_BY_ID.W28)).toBeUndefined();
+    expect(offeredIn(COURSE['AS.030.246'], TERM_BY_ID.W28)).toBe(false); // fall-only course
   });
 });

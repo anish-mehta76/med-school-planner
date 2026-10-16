@@ -50,10 +50,13 @@ The verifier, scout, outreach-coach and retro agents live in the local folder's 
 
 ## Four-year plan
 
-The **Four-year plan** page is a JHU KSAS course planner: a term grid (exam/transfer lane, eight semesters, optional summers), requirement checks for Chemistry BS, Public Health Studies BA, MCB BS, Neuroscience BS, History BA and Spanish BA, a pre-med track with an MCAT-timing check, a Foundational Abilities tracker, sequencing flags, saved scenarios, "what if I add or swap a major" auto-fill, and a major-overlap matrix. Requirement data comes from the 2026–27 catalogue (`JHU_FOUR_YEAR_PLANNER_SPEC.md`); items marked *verify* are unconfirmed. Plans are saved with the rest of your data (so they sync and back up too).
+The **Four-year plan** page tracks any JHU KSAS or WSE bachelor's major against your own courses. Everyone starts blank: pick one or more majors, then add courses term by term, including winter intersessions and summers (taken or hypothetical, plus AP/IB credit in the exam lane). It shows, for each major, which requirements are done and which course filled each one; which courses count toward two majors at once; what each major still needs and the combined credit total; Foundational Abilities; sequencing problems; an optional pre-med track; and "what if" auto-fill that previews a major's missing courses and adds them to your plan on request.
 
-- `src/planner/majors.ts`: major and pre-med requirements
-- `src/planner/catalog.ts`: seed course catalog, merged with `sisCourses.json`
+- **Majors:** six are hand-checked (Chemistry BS, Public Health Studies BA, MCB BS, Neuroscience BS, History BA, Spanish BA, in `src/planner/majors.ts`). The rest are imported from the e-catalogue with `npm run import-catalogue` (writes `src/planner/catalogueData.json`): course rows, "or" alternatives and "Select N" lists are checked; rules written as text are shown as notes to check by hand.
+- **SIS course data, without sharing your key:**
+  - *Public site:* add your key as a repository secret named `JHU_SIS_API_KEY` (GitHub → Settings → Secrets and variables → Actions). `.github/workflows/sync-sis.yml` then refreshes `src/planner/sisCourses.json` every Monday and Thursday (or on demand from the Actions tab) and the site redeploys. When SIS posts a new term's schedule (e.g. Spring 2028), the next run refreshes every course, and the planner switches that term from the usual fall/spring pattern to the real sections. The key never appears in the code or the website.
+  - *Your own copy:* run `npm run dev`, open Four-year plan → Course data, paste your key (saved only in that browser) and look up your plan's courses. SIS doesn't accept requests from web pages, so the local dev server relays them; this doesn't work on the public site.
+  - *Command line:* put the key in `.env` and run `npm run sync-sis`.
 - `src/planner/engine.ts`: requirement engine, double counting, FA rule, flags, auto-fill, overlap
 
 ## Where things live

@@ -1,12 +1,15 @@
 /** Four-year course planner (see JHU_FOUR_YEAR_PLANNER_SPEC.md). */
 
-export type Season = 'F' | 'S' | 'U' | 'PRE';
+/** Fall, winter intersession (January), spring, summer, or exam/transfer credit. */
+export type Season = 'F' | 'W' | 'S' | 'U' | 'PRE';
 
 export interface Term {
   id: string;
   label: string;
   ord: number;
   season: Season;
+  /** The term's name in SIS, e.g. "Intersession 2027". */
+  sisName?: string;
 }
 
 /** Where a course fact came from, shown next to it in the UI. */
@@ -36,6 +39,8 @@ export interface Course {
   source: Source;
   /** Last term SIS listed it, e.g. "Spring 2026". */
   lastOffered?: string;
+  /** Recent and upcoming SIS terms with a section of it, e.g. ["Fall 2026", "Spring 2027"]. */
+  offered?: string[];
 }
 
 export interface PlanItem {
@@ -73,6 +78,8 @@ interface ReqBase {
   noExam?: boolean;
   /** Shown under the requirement. */
   hint?: string;
+  /** Catalogue section it sits under, e.g. "Core Courses". */
+  section?: string;
   /** Can be waived (e.g. by placement); value is whether it's waived by default. */
   waivable?: boolean;
 }
@@ -89,8 +96,10 @@ export interface Major {
   name: string;
   short: string;
   degree: 'BA' | 'BS' | 'Track';
+  school: 'KSAS' | 'WSE' | 'JHU';
+  /** Imported automatically from the e-catalogue (text rules aren't checked). */
+  auto?: boolean;
   totalLabel: string;
-  color: string;
   requirements: Requirement[];
   sourceUrl: string;
   notes: string[];
@@ -106,7 +115,10 @@ export interface Scenario {
   mcatAfterTermId?: string;
   /** Requirement waivers keyed "majorId:reqKey"; missing means the requirement's default. */
   waivers?: Record<string, boolean>;
+  /** Show every winter intersession and summer, not just ones with courses. */
   showSummers?: boolean;
+  /** One of the built-in sample plans. */
+  sample?: boolean;
 }
 
 export interface PlannerState {

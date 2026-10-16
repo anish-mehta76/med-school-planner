@@ -2,6 +2,11 @@ import type { PlanItem, PlannerState, Scenario } from './types';
 import { autofill, newItemId } from './engine';
 import { MAJOR_BY_ID } from './majors';
 
+/*
+ * The spec's sample plans (sections 7 and 7b). They are test fixtures now: the app
+ * itself starts everyone from a blank plan.
+ */
+
 /** Builds plan items from "term: code code code" rows. PH.BSPH and other catalog credits apply. */
 function plan(rows: Record<string, string>): PlanItem[] {
   return Object.entries(rows).flatMap(([termId, codes]) => codes.split(/\s+/).filter(Boolean).map((code) => ({ id: newItemId(), code, termId })));
@@ -13,7 +18,8 @@ const Y1_FALL = 'AS.001.1XX AS.030.101 AS.030.105 AS.110.108 AS.280.101';
 export function chemPhs(): Scenario {
   return {
     id: 'chem-phs',
-    name: 'Chem BS + PHS BA',
+    name: 'Sample: Chem BS + PHS BA',
+    sample: true,
     majorIds: ['chem', 'phs'],
     premed: false,
     mcatAfterTermId: 'S29',
@@ -35,7 +41,8 @@ export function chemPhs(): Scenario {
 export function chemPhsPremed(): Scenario {
   return {
     id: 'chem-phs-premed',
-    name: 'Chem BS + PHS BA + Pre-med',
+    name: 'Sample: Chem BS + PHS BA + Pre-med',
+    sample: true,
     majorIds: ['chem', 'phs'],
     premed: true,
     mcatAfterTermId: 'S29',
@@ -56,9 +63,18 @@ export function chemPhsPremed(): Scenario {
 /** Spanish BA auto-filled onto the default plan (placement waiver on). */
 export function chemPhsSpanish(now = new Date()): Scenario {
   const base = chemPhs();
-  return { ...base, id: 'chem-phs-spanish', name: 'Chem + PHS + Spanish (draft)', majorIds: [...base.majorIds, 'span'], plan: autofill(base.plan, MAJOR_BY_ID.span, undefined, now).plan };
+  return { ...base, id: 'chem-phs-spanish', name: 'Sample: Chem + PHS + Spanish (draft)', majorIds: [...base.majorIds, 'span'], plan: autofill(base.plan, MAJOR_BY_ID.span, undefined, now).plan };
 }
 
 export function samplePlanner(now = new Date()): PlannerState {
   return { scenarios: [chemPhs(), chemPhsSpanish(now), chemPhsPremed()], activeId: 'chem-phs' };
+}
+
+/** What a new visitor starts with: one empty plan. */
+export function blankScenario(id = 'my-plan'): Scenario {
+  return { id, name: 'My plan', majorIds: [], plan: [], premed: false, mcatAfterTermId: 'S29' };
+}
+
+export function blankPlanner(): PlannerState {
+  return { scenarios: [blankScenario()], activeId: 'my-plan' };
 }

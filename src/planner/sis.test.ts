@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { parsePrereqExpression, summarize, type SisSection } from './sis.ts';
+import { parsePrereqExpression, summarize, type SisSection } from './sis';
 
 describe('SIS prerequisite expressions', () => {
   it('parses AND of ORs into groups', () => {

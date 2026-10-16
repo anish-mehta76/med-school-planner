@@ -56,11 +56,16 @@ function validList<T extends { id: string; name: string }>(raw: T[] | undefined,
   return raw.every((x) => x && typeof x.id === 'string' && typeof x.name === 'string' && ok(x)) ? raw : undefined;
 }
 
-/** Keeps saved course plans if they have the expected shape. */
+/** Built-in sample plans from earlier versions; dropped so everyone starts from their own blank plan. */
+const SAMPLE_PLAN_IDS = new Set(['chem-phs', 'chem-phs-spanish', 'chem-phs-premed']);
+
+/** Keeps your own course plan (one per browser) if it has the expected shape. */
 function validPlanner(p: AppState['planner']): AppState['planner'] {
-  if (!p || !Array.isArray(p.scenarios) || !p.scenarios.length) return undefined;
-  const ok = p.scenarios.every((x) => x && typeof x.id === 'string' && typeof x.name === 'string' && Array.isArray(x.plan) && Array.isArray(x.majorIds));
-  return ok ? { ...p, activeId: p.scenarios.some((x) => x.id === p.activeId) ? p.activeId : p.scenarios[0].id } : undefined;
+  if (!p || !Array.isArray(p.scenarios)) return undefined;
+  const ok = (x: (typeof p.scenarios)[number]) => x && typeof x.id === 'string' && Array.isArray(x.plan) && Array.isArray(x.majorIds) && !x.sample && !SAMPLE_PLAN_IDS.has(x.id);
+  const own = p.scenarios.filter(ok);
+  const keep = own.find((x) => x.id === p.activeId) ?? own[0];
+  return keep ? { scenarios: [keep], activeId: keep.id } : undefined;
 }
 
 function validTracker(t: AppState['tracker']): AppState['tracker'] {

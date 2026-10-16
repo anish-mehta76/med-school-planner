@@ -1,58 +1,31 @@
-import { useRef, useState } from 'react';
-import { AlertTriangle } from 'lucide-react';
-import { usePlanner, updatePlanner, resetPlanner } from '../planner/usePlanner';
-import { MAJORS, MAJOR_BY_ID } from '../planner/majors';
+import { useState } from 'react';
+import { AlertTriangle, X } from 'lucide-react';
+import { startOver, usePlanner } from '../planner/usePlanner';
+import { ALL_MAJORS, MAJOR_BY_ID } from '../planner/majors';
 import { SEMESTERS, TERM_BY_ID } from '../planner/terms';
-import { SIS_SYNCED_AT } from '../planner/catalog';
 import PlanGrid from '../planner/ui/PlanGrid';
-import { FaTracker, Requirements, WhatIf } from '../planner/ui/Views';
-import { saveFile, JSON_ACCEPT } from '../lib/saveFile';
-import { localDate, uid } from '../store/useStore';
-import type { PlannerState } from '../planner/types';
+import CourseData from '../planner/ui/CourseData';
+import { FaTracker, MajorDot, MajorSelect, Overlap, Requirements, WhatIf } from '../planner/ui/Views';
 
-type Tab = 'plan' | 'reqs' | 'fa' | 'whatif';
+type Tab = 'plan' | 'reqs' | 'overlap' | 'fa' | 'whatif' | 'data';
 const TABS: { id: Tab; label: string }[] = [
   { id: 'plan', label: 'Plan' },
   { id: 'reqs', label: 'Requirements' },
+  { id: 'overlap', label: 'Majors & overlap' },
   { id: 'fa', label: 'Foundational Abilities' },
   { id: 'whatif', label: 'What if' },
+  { id: 'data', label: 'Course data' },
 ];
 
 export default function Planner() {
-  const { planner, active, analysis, updateScenario, addScenario } = usePlanner();
+  const { active, analysis: a, updateScenario } = usePlanner();
   const [tab, setTab] = useState<Tab>('plan');
-  const fileRef = useRef<HTMLInputElement>(null);
-  const a = analysis;
   const problems = a.flags.filter((f) => f.level !== 'info');
   const notes = a.flags.filter((f) => f.level === 'info');
+  const empty = !active.plan.length;
 
-  const duplicate = () => {
-    const { id: _id, ...rest } = active;
-    addScenario({ ...rest, name: `${active.name} (copy)` });
-  };
-  const rename = () => {
-    const name = prompt('Scenario name', active.name)?.trim();
-    if (name) updateScenario((s) => ({ ...s, name }));
-  };
-  const remove = () => {
-    if (planner.scenarios.length < 2 || !confirm(`Delete “${active.name}”?`)) return;
-    updatePlanner((p) => {
-      const scenarios = p.scenarios.filter((s) => s.id !== active.id);
-      return { scenarios, activeId: scenarios[0].id };
-    });
-  };
-  const exportPlans = () => saveFile(new Blob([JSON.stringify(planner, null, 2)], { type: 'application/json' }), `four-year-plans-${localDate()}.json`);
-  const importPlans = async (f: File) => {
-    try {
-      const p = JSON.parse(await f.text()) as PlannerState;
-      if (!Array.isArray(p.scenarios) || !p.scenarios.every((s) => s.id && s.name && Array.isArray(s.plan))) throw new Error('bad');
-      // Imported scenarios are added, with fresh ids, next to the ones you have.
-      const added = p.scenarios.map((s) => ({ ...s, id: uid() }));
-      updatePlanner((cur) => ({ scenarios: [...cur.scenarios, ...added], activeId: added[0].id }));
-    } catch {
-      alert('That file could not be read as saved plans.');
-    }
-  };
+  const addMajor = (id: string) => id && updateScenario((s) => ({ ...s, majorIds: s.majorIds.includes(id) ? s.majorIds : [...s.majorIds, id] }));
+  const dropMajor = (id: string) => updateScenario((s) => ({ ...s, majorIds: s.majorIds.filter((x) => x !== id) }));
 
   return (
     <div className="page">
@@ -60,73 +33,29 @@ export default function Planner() {
         <div>
           <h1>Four-year plan</h1>
           <p className="muted">
-            JHU KSAS course plan, checked against major requirements from the 2026–27 catalogue. Requirement data is a planning aid; confirm with your advisors
-            and SIS. {SIS_SYNCED_AT ? `Course data synced from SIS ${SIS_SYNCED_AT}.` : 'Course data from the catalogue (2026-10-15); FA tags on science courses are estimates.'}
+            Pick your majors (any of {ALL_MAJORS.length} JHU bachelor's majors) and add courses term by term. The planner checks each major's requirements, shows
+            what counts toward two majors at once, and flags sequencing problems. It's a planning aid: confirm with your advisors and SIS.
           </p>
         </div>
       </header>
 
       <section className="card plan-controls">
-        <div className="plan-scenario">
-          <label className="small">
-            Scenario
-            <select value={active.id} onChange={(e) => updatePlanner((p) => ({ ...p, activeId: e.target.value }))}>
-              {planner.scenarios.map((s) => (
-                <option key={s.id} value={s.id}>
-                  {s.name}
-                </option>
-              ))}
-            </select>
-          </label>
-          <div className="row-actions tight">
-            <button className="btn btn-small" onClick={duplicate}>
-              Duplicate
+        <div className="plan-majors">
+          <h2 className="plan-majors-label">Your majors</h2>
+          <div className="chips" role="group" aria-label="Majors in this scenario">
+            {active.majorIds.map((id) => (
+              <span key={id} className="chip active major-chip">
+                <MajorDot scenario={active} id={id} /> {MAJOR_BY_ID[id]?.name ?? id}
+                <button type="button" className="chip-x" aria-label={`Remove ${MAJOR_BY_ID[id]?.name ?? id}`} onClick={() => dropMajor(id)}>
+                  <X size={14} aria-hidden />
+                </button>
+              </span>
+            ))}
+            <MajorSelect value="" onChange={addMajor} exclude={active.majorIds} placeholder={active.majorIds.length ? 'Add another major…' : 'Add a major…'} />
+            <button className={`chip ${active.premed ? 'active' : ''}`} aria-pressed={active.premed} onClick={() => updateScenario((s) => ({ ...s, premed: !s.premed }))}>
+              <MajorDot scenario={active} id="premed" /> Pre-med track
             </button>
-            <button className="btn btn-small" onClick={rename}>
-              Rename
-            </button>
-            <button className="btn btn-small" onClick={remove} disabled={planner.scenarios.length < 2}>
-              Delete
-            </button>
-            <button className="btn btn-small" onClick={() => confirm('Replace all scenarios with the three samples?') && resetPlanner()}>
-              Reset to samples
-            </button>
-            <button className="btn btn-small" onClick={() => void exportPlans()}>
-              Export plans
-            </button>
-            <button className="btn btn-small" onClick={() => fileRef.current?.click()}>
-              Import plans
-            </button>
-            <input
-              ref={fileRef}
-              type="file"
-              accept={JSON_ACCEPT}
-              hidden
-              onChange={async (e) => {
-                const f = e.target.files?.[0];
-                if (f) await importPlans(f);
-                e.target.value = '';
-              }}
-            />
           </div>
-        </div>
-        <div className="chips" role="group" aria-label="Majors in this scenario">
-          {MAJORS.map((m) => {
-            const on = active.majorIds.includes(m.id);
-            return (
-              <button
-                key={m.id}
-                className={`chip ${on ? 'active' : ''}`}
-                aria-pressed={on}
-                onClick={() => updateScenario((s) => ({ ...s, majorIds: on ? s.majorIds.filter((x) => x !== m.id) : [...s.majorIds, m.id] }))}
-              >
-                <span className="plan-dot" style={{ background: m.color }} aria-hidden /> {m.name}
-              </button>
-            );
-          })}
-          <button className={`chip ${active.premed ? 'active' : ''}`} aria-pressed={active.premed} onClick={() => updateScenario((s) => ({ ...s, premed: !s.premed }))}>
-            <span className="plan-dot" style={{ background: MAJOR_BY_ID.premed.color }} aria-hidden /> Pre-med track
-          </button>
         </div>
         {active.premed && (
           <label className="small plan-mcat">
@@ -169,9 +98,16 @@ export default function Planner() {
             <span className="stat-label">{problems.length === 1 ? 'warning' : 'warnings'}</span>
           </div>
         </div>
+        {(active.plan.length > 0 || active.majorIds.length > 0) && (
+          <div className="row-actions tight">
+            <button className="btn btn-small" onClick={() => confirm('Clear all your courses and majors?') && startOver()}>
+              Clear plan
+            </button>
+          </div>
+        )}
       </section>
 
-      <div className="tabs" role="tablist">
+      <div className="tabs tabs-scroll" role="tablist">
         {TABS.map((t) => (
           <button key={t.id} role="tab" aria-selected={tab === t.id} className={tab === t.id ? 'active' : ''} onClick={() => setTab(t.id)}>
             {t.label}
@@ -181,14 +117,23 @@ export default function Planner() {
 
       {tab === 'plan' && (
         <>
-          {(problems.length > 0 || notes.length > 0) && (
+          {empty && (
+            <div className="callout small">
+              <strong>Pick your majors above, then add courses.</strong>
+              <span>
+                Type a course code (e.g. AS.030.101) in any term: ones you've taken, or ones you're considering. Put AP/IB credit in the exam lane. Unknown codes
+                are added as custom courses you can edit. To try out a major, use What if.
+              </span>
+            </div>
+          )}
+          {!empty && (problems.length > 0 || notes.length > 0) && (
             <section className="card plan-flags">
               <h2>Checks</h2>
               <ul>
                 {[...problems, ...notes].map((f, i) => (
                   <li key={i} className={`plan-flag plan-flag-${f.level} small`}>
                     {f.level !== 'info' && <AlertTriangle size={14} aria-hidden className="icon" />}
-                    {f.premed && <span className="tag">pre-med</span>} {f.termId && !f.itemId ? '' : f.termId ? `${TERM_BY_ID[f.termId]?.label}: ` : ''}
+                    {f.premed && <span className="tag">pre-med</span>} {f.itemId && f.termId ? `${TERM_BY_ID[f.termId]?.label}: ` : ''}
                     {f.text}
                     {f.verify && <span className="tag tag-warn">verify</span>}
                   </li>
@@ -200,8 +145,10 @@ export default function Planner() {
         </>
       )}
       {tab === 'reqs' && <Requirements scenario={active} analysis={a} update={updateScenario} />}
+      {tab === 'overlap' && <Overlap scenario={active} analysis={a} />}
       {tab === 'fa' && <FaTracker analysis={a} />}
-      {tab === 'whatif' && <WhatIf scenario={active} analysis={a} addScenario={addScenario} />}
+      {tab === 'whatif' && <WhatIf scenario={active} analysis={a} update={updateScenario} />}
+      {tab === 'data' && <CourseData analysis={a} />}
     </div>
   );
 }

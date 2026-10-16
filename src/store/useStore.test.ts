@@ -3,7 +3,7 @@ import type { AppState, Program } from '../types';
 import { normalize, STORAGE_KEY } from './useStore';
 import { sampleState } from '../data/sample';
 import { mentor } from '../engine/testMentors';
-import { samplePlanner } from '../planner/scenarios';
+import { chemPhs } from '../planner/scenarios';
 
 /** Every AppState field filled in, so a deploy that would drop saved data fails CI instead. */
 function fullState(): AppState {
@@ -35,11 +35,18 @@ function fullState(): AppState {
     whyTemplates: { endometrial: 'My PCOS work…', cervical: 'Disparities…', methods: 'R pipelines…' },
     mentors: [mentor({ id: 'T09' })],
     programs: [program],
-    planner: samplePlanner(new Date(2026, 9, 15)),
+    planner: { scenarios: [{ ...chemPhs(), id: 'my-plan', name: 'My plan', sample: undefined }], activeId: 'my-plan' },
   };
 }
 
 describe('saved data survives a new deploy', () => {
+  it('drops built-in sample plans so everyone starts from their own plan', () => {
+    const sample = { ...chemPhs(), sample: undefined };
+    expect(normalize({ planner: { scenarios: [sample], activeId: 'chem-phs' } }).planner).toBeUndefined();
+    const mine = { ...sample, id: 'mine' };
+    expect(normalize({ planner: { scenarios: [sample, mine], activeId: 'chem-phs' } }).planner).toEqual({ scenarios: [mine], activeId: 'mine' });
+  });
+
   it('keeps the storage key, so existing browsers still find their data', () => {
     expect(STORAGE_KEY).toBe('med-school-planner:v1');
   });

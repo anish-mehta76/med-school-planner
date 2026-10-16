@@ -1,5 +1,5 @@
-import type { Course, Major, Matcher, PlanItem, Requirement, Resolved, Scenario } from './types';
-import { COURSE, deptOf } from './catalog';
+import type { Course, Major, Matcher, PlanItem, Requirement, Resolved, Scenario, Term } from './types';
+import { COURSE, deptOf, isPublished } from './catalog';
 import { currentTermId, FINAL_YEAR, SEMESTERS, TERM_BY_ID, TERMS, termOrd } from './terms';
 import { ENGLISH_WS_UWP, MAJOR_BY_ID, numOf, MCAT_HELPFUL, MCAT_RELEVANT, PHS_CORE, PREMED, PREMED_SCIENCE } from './majors';
 
@@ -33,6 +33,17 @@ export function matches(m: Matcher, r: Resolved): boolean {
   if (typeof m === 'string') return r.code === m;
   if (m instanceof RegExp) return m.test(r.code) || m.test(r.code.replace(/X/g, '0'));
   return m(r);
+}
+
+/**
+ * Whether a course runs in a term. Once SIS has posted that term's schedule, the real
+ * sections decide; before that, the fall/spring-only pattern does (undefined = unknown).
+ */
+export function offeredIn(c: Course | undefined, t: Term): boolean | undefined {
+  if (!c || t.season === 'PRE') return true;
+  if (c.offered && isPublished(t.sisName)) return c.offered.includes(t.sisName!);
+  if (c.term) return t.season === c.term;
+  return t.season === 'F' || t.season === 'S' ? true : undefined;
 }
 
 const sum = (xs: Resolved[]) => xs.reduce((n, r) => n + r.credits, 0);
@@ -291,8 +302,13 @@ function validate(s: Scenario, a: ScenarioAnalysis, now: Date): Flag[] {
 
   for (const r of all) {
     const c = r.course;
-    if (c?.term && r.season !== 'PRE' && r.season !== c.term)
-      flags.push({ level: 'warn', itemId: r.item.id, termId: r.item.termId, text: `${label(r)} is offered only in ${SEASON_NAME[c.term]}; it's planned for ${TERM_BY_ID[r.item.termId]?.label}.` });
+    const term = TERM_BY_ID[r.item.termId];
+    if (term && offeredIn(c, term) === false) {
+      const text = isPublished(term.sisName)
+        ? `${label(r)} isn't on the SIS schedule for ${term.label}.`
+        : `${label(r)} is offered only in ${SEASON_NAME[c!.term!]}; it's planned for ${term.label}.`;
+      flags.push({ level: 'warn', itemId: r.item.id, termId: r.item.termId, text });
+    }
 
     const last = c?.lastOffered?.match(/(\d{4})$/)?.[1];
     if (last && Number(last) < now.getFullYear() - 1)
@@ -473,7 +489,7 @@ export function placeTerm(code: string, plan: PlanItem[], now = new Date()): str
   const upper = numOf(code) >= 300 || UPPER_PLACEHOLDERS.includes(code);
   const earliest = Math.max(cur + 1, upper ? 2 : 0);
   const future = SEMESTERS.filter((t) => t.ord >= earliest && (!code.startsWith('PH.') || FINAL_YEAR.includes(t.id)));
-  const offered = future.filter((t) => !c?.term || t.season === c.term);
+  const offered = future.filter((t) => offeredIn(c, t) !== false);
   const valid = offered.filter((t) => prereqOk(t.ord) && coreOk(t.ord));
   const credits = c?.credits ?? 3;
   const roomy = valid.find((t) => load(t.id) + credits <= MAX_TERM_CREDITS);

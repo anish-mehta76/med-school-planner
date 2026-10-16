@@ -1,34 +1,33 @@
-import { useMemo } from 'react';
-import { setState, uid, useStore } from '../store/useStore';
+import { useMemo, useSyncExternalStore } from 'react';
+import { setState, useStore } from '../store/useStore';
 import { analyze } from './engine';
-import { samplePlanner } from './scenarios';
+import { blankPlanner } from './scenarios';
+import { liveVersion, subscribeLive } from './live';
 import type { PlannerState, Scenario } from './types';
 
-// Built once so item ids stay stable until the first edit saves it.
-let samples: PlannerState | undefined;
-const sampleOnce = () => (samples ??= samplePlanner());
+// Built once so ids stay stable until the first edit saves it.
+let blank: PlannerState | undefined;
+const blankOnce = () => (blank ??= blankPlanner());
 
 export function updatePlanner(f: (p: PlannerState) => PlannerState) {
-  setState((s) => ({ ...s, planner: f(s.planner ?? sampleOnce()) }));
+  setState((s) => ({ ...s, planner: f(s.planner ?? blankOnce()) }));
 }
 
 export function usePlanner() {
-  const planner = useStore().planner ?? sampleOnce();
+  const planner = useStore().planner ?? blankOnce();
   const active = planner.scenarios.find((x) => x.id === planner.activeId) ?? planner.scenarios[0];
-  const analysis = useMemo(() => analyze(active), [active]);
+  // Re-run the analysis when live SIS course data arrives.
+  const live = useSyncExternalStore(subscribeLive, liveVersion);
+  const analysis = useMemo(() => analyze(active), [active, live]);
 
   const updateScenario = (f: (s: Scenario) => Scenario) =>
     updatePlanner((p) => ({ ...p, scenarios: p.scenarios.map((x) => (x.id === active.id ? f(x) : x)) }));
 
-  const addScenario = (s: Omit<Scenario, 'id'>) => {
-    const id = uid();
-    updatePlanner((p) => ({ scenarios: [...p.scenarios, { ...s, id }], activeId: id }));
-  };
-
-  return { planner, active, analysis, updateScenario, addScenario };
+  return { active, analysis, live, updateScenario };
 }
 
-export function resetPlanner() {
-  samples = samplePlanner();
-  setState((s) => ({ ...s, planner: samples }));
+/** Clears your plan: no courses, no majors. */
+export function startOver() {
+  blank = blankPlanner();
+  setState((s) => ({ ...s, planner: blank }));
 }

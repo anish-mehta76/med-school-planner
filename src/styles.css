@@ -2101,11 +2101,13 @@ details.disclosure > :not(summary) {
 }
 .plan-year-terms {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: var(--cols, repeat(2, minmax(0, 1fr)));
   gap: var(--sp-3);
 }
-.plan-year-terms.cols-3 {
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 0.8fr);
+.plan-posted {
+  display: block;
+  font-weight: 400;
+  color: var(--muted);
 }
 .plan-term {
   background: var(--surface);
@@ -2359,8 +2361,7 @@ label.check {
 }
 
 @media (max-width: 760px) {
-  .plan-year-terms,
-  .plan-year-terms.cols-3 {
+  .plan-year-terms {
     grid-template-columns: minmax(0, 1fr);
   }
   .plan-scenario select {
@@ -2370,4 +2371,77 @@ label.check {
   .plan-scenario label {
     width: 100%;
   }
+}
+
+/* ── Four-year plan: majors, sections, course data ──── */
+@media (max-width: 1100px) and (min-width: 761px) {
+  .plan-year-terms {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+.plan-majors {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+.plan-majors-label {
+  margin: 0;
+}
+.major-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-1);
+  padding-right: var(--sp-1);
+  cursor: default;
+}
+.chip-x {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+.chip-x:hover {
+  background: color-mix(in srgb, currentColor 18%, transparent);
+}
+.major-select {
+  max-width: 100%;
+  min-height: 32px;
+  font-size: var(--fs-sm);
+}
+.tabs-scroll {
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.tabs-scroll button {
+  white-space: nowrap;
+}
+.req-section + .req-section {
+  margin-top: var(--sp-3);
+}
+.req-section-title {
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--muted);
+  margin: var(--sp-2) 0 var(--sp-1);
+}
+.overlap-pair + .overlap-pair {
+  margin-top: var(--sp-3);
+}
+.overlap-pair p {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+.whatif-search {
+  width: 100%;
+  max-width: 360px;
+  margin-bottom: var(--sp-3);
+}
+.sis-form {
+  grid-template-columns: minmax(0, 1fr);
 }

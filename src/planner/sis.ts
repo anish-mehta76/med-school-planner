@@ -1,4 +1,4 @@
-/** Turns SIS Course Search API sections into planner course records (used by sync-sis.ts). */
+/** Turns SIS Course Search API sections into planner course records (used by scripts/sync-sis.ts and the local SIS lookup). */
 
 export interface SisSection {
   OfferingName: string;
@@ -74,6 +74,10 @@ export function summarize(code: string, sections: SisSection[], now: Date) {
   const offerings = new Set(sorted.filter((s) => termRank(s.Term) >= since).map((s) => s.Term)).size;
   const term = offerings >= 2 && seasons.size === 1 ? (seasons.has('Fall') ? 'F' : 'S') : null;
 
+  // Terms with a section, from last year on: enough to check plans against posted schedules.
+  const recent = (now.getFullYear() - 1) * 10;
+  const offered = [...new Set(sorted.filter((s) => termRank(s.Term) >= recent).map((s) => s.Term))].sort((a, b) => termRank(a) - termRank(b));
+
   return {
     code,
     title: latest.Title,
@@ -85,5 +89,6 @@ export function summarize(code: string, sections: SisSection[], now: Date) {
     prereqs: parsed ?? undefined,
     prereqText: parsed ? undefined : prereqText,
     lastOffered: latest.Term,
+    offered,
   };
 }

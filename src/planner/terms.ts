@@ -1,18 +1,16 @@
 import type { Term } from './types';
 
+const t = (id: string, label: string, ord: number, season: Term['season'], sisName?: string): Term => ({ id, label, ord, season, sisName });
+
+/** Exam lane, then Fall → Winter intersession → Spring → Summer for each year (spec section 9 plus intersessions). */
 export const TERMS: Term[] = [
-  { id: 'PRE', label: 'Exam & transfer credit', ord: -1, season: 'PRE' },
-  { id: 'F26', label: 'Fall 2026', ord: 0, season: 'F' },
-  { id: 'S27', label: 'Spring 2027', ord: 1, season: 'S' },
-  { id: 'U27', label: 'Summer 2027', ord: 1.5, season: 'U' },
-  { id: 'F27', label: 'Fall 2027', ord: 2, season: 'F' },
-  { id: 'S28', label: 'Spring 2028', ord: 3, season: 'S' },
-  { id: 'U28', label: 'Summer 2028', ord: 3.5, season: 'U' },
-  { id: 'F28', label: 'Fall 2028', ord: 4, season: 'F' },
-  { id: 'S29', label: 'Spring 2029', ord: 5, season: 'S' },
-  { id: 'U29', label: 'Summer 2029', ord: 5.5, season: 'U' },
-  { id: 'F29', label: 'Fall 2029', ord: 6, season: 'F' },
-  { id: 'S30', label: 'Spring 2030', ord: 7, season: 'S' },
+  t('PRE', 'Exam & transfer credit', -1, 'PRE'),
+  ...[26, 27, 28, 29].flatMap((y, i) => [
+    t(`F${y}`, `Fall 20${y}`, i * 2, 'F', `Fall 20${y}`),
+    t(`W${y + 1}`, `Intersession 20${y + 1}`, i * 2 + 0.5, 'W', `Intersession 20${y + 1}`),
+    t(`S${y + 1}`, `Spring 20${y + 1}`, i * 2 + 1, 'S', `Spring 20${y + 1}`),
+    ...(y < 29 ? [t(`U${y + 1}`, `Summer 20${y + 1}`, i * 2 + 1.5, 'U', `Summer 20${y + 1}`)] : []),
+  ]),
 ];
 
 export const TERM_BY_ID: Record<string, Term> = Object.fromEntries(TERMS.map((t) => [t.id, t]));
@@ -28,7 +26,7 @@ export const YEAR_LABEL = ['First year', 'Second year', 'Third year', 'Fourth ye
 export function currentTermId(now = new Date()): string {
   const y = now.getFullYear();
   const m = now.getMonth() + 1;
-  const id = m >= 8 ? `F${y % 100}` : m <= 5 ? `S${y % 100}` : `U${y % 100}`;
+  const id = m >= 8 ? `F${y % 100}` : m === 1 ? `W${y % 100}` : m <= 5 ? `S${y % 100}` : `U${y % 100}`;
   if (TERM_BY_ID[id]) return id;
   return now < new Date(2026, 7, 1) ? 'PRE' : 'S30';
 }

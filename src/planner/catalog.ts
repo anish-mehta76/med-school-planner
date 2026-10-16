@@ -1,5 +1,6 @@
 import type { Course } from './types';
 import sis from './sisCourses.json';
+import catalogue from './catalogueData.json';
 
 /**
  * Seed catalog from the JHU 2026–27 Academic Catalogue (spec section 6, pulled 2026-10-15).
@@ -176,26 +177,52 @@ const SEED: Course[] = [
   c('ELECTIVE', 'Open elective', 3, { placeholder: true }),
 ];
 
-/** SIS data (from `npm run sync-sis`) wins over the seed; seed-only fields such as placeholders and planning-sequence prereqs are kept. */
-function merge(seed: Course[], live: Partial<Course>[]): Course[] {
-  const byCode = new Map(seed.map((x) => [x.code, x]));
+/** Titles and credits of every course the imported majors list (seed entries win). */
+const seedCodes = new Set(SEED.map((x) => x.code));
+const FROM_CATALOGUE: Course[] = Object.entries(catalogue.courses as unknown as Record<string, [string, number | null]>)
+  .filter(([code]) => !seedCodes.has(code))
+  .map(([code, [title, credits]]) => ({ code, title, credits: credits ?? 3, source: 'catalogue' as const, ...(credits === null ? { note: 'Credits not listed in the catalogue; 3 assumed.' } : {}) }));
+
+export const CATALOG: Course[] = [...SEED, ...FROM_CATALOGUE];
+export const COURSE: Record<string, Course> = Object.fromEntries(CATALOG.map((x) => [x.code, x]));
+
+/**
+ * Merges SIS data over the catalog in place: SIS wins, but seed-only fields such as
+ * placeholders and planning-sequence prereqs are kept.
+ */
+export function applySis(live: Partial<Course>[]) {
   for (const l of live) {
     if (!l.code) continue;
-    const s = byCode.get(l.code);
+    const s = COURSE[l.code];
     const parsed = !!l.prereqs?.length;
-    byCode.set(l.code, {
+    const next = {
       ...(s ?? { code: l.code, title: l.code, credits: 3 }),
       ...Object.fromEntries(Object.entries(l).filter(([, v]) => v !== undefined && v !== '')),
       prereqs: parsed ? l.prereqs : s?.prereqs,
       seqOnly: parsed ? false : s?.seqOnly,
       source: 'SIS',
-    } as Course);
+    } as Course;
+    if (s) CATALOG[CATALOG.indexOf(s)] = next;
+    else CATALOG.push(next);
+    COURSE[l.code] = next;
   }
-  return [...byCode.values()];
 }
 
-export const CATALOG: Course[] = merge(SEED, (sis as { courses: Partial<Course>[] }).courses);
-export const COURSE: Record<string, Course> = Object.fromEntries(CATALOG.map((x) => [x.code, x]));
+/**
+ * SIS terms whose schedule has been posted: any term in which a synced course has a section.
+ * For those terms the planner checks real offerings instead of the fall/spring-only pattern.
+ */
+const PUBLISHED = new Set<string>();
+export function addPublishedTerms(terms: string[]) {
+  for (const t of terms) PUBLISHED.add(t);
+}
+export const isPublished = (sisName?: string) => !!sisName && PUBLISHED.has(sisName);
+export const publishedTerms = () => [...PUBLISHED];
+
+const synced = (sis as { courses: Partial<Course>[]; terms?: string[] });
+applySis(synced.courses);
+addPublishedTerms([...(synced.terms ?? []), ...synced.courses.flatMap((c) => c.offered ?? [])]);
+
 export const SIS_SYNCED_AT: string | undefined = (sis as { syncedAt?: string | null }).syncedAt ?? undefined;
 
 /** "AS.140" from "AS.140.105". */
