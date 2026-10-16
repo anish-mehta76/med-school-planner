@@ -8,7 +8,9 @@ import Gaps from './pages/Gaps';
 import Opportunities from './pages/Opportunities';
 import Guides from './pages/Guides';
 import Settings from './pages/Settings';
+import Banners from './components/Banners';
 import { useAnalysis } from './engine/useAnalysis';
+import { getConfig, useSyncStatus } from './lib/sync';
 
 const PAGES: readonly { id: string; label: string; icon: LucideIcon }[] = [
   { id: 'dashboard', label: 'Dashboard', icon: LayoutDashboard },
@@ -44,6 +46,8 @@ export default function App() {
   const mainRef = useRef<HTMLElement>(null);
   const { gaps } = useAnalysis();
   const behind = gaps.filter((g) => g.severity === 'critical').length;
+  useSyncStatus(); // re-render when sync connects or disconnects
+  const synced = !!getConfig();
 
   useEffect(() => {
     const onHash = () => {
@@ -111,10 +115,13 @@ export default function App() {
             </li>
           ))}
         </ul>
-        <p className="sidebar-foot muted small">Your data stays in this browser. Back it up from Profile & academics.</p>
+        <p className="sidebar-foot muted small">
+          {synced ? 'Synced with your private GitHub repo. Manage it in Profile & academics.' : 'Your data stays in this browser. Back it up or sync it from Profile & academics.'}
+        </p>
       </nav>
 
       <main ref={mainRef}>
+        <Banners />
         {page === 'dashboard' && <Dashboard go={go} />}
         {page === 'experiences' && <Experiences />}
         {page === 'research' && <Research />}

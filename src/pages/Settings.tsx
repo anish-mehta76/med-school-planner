@@ -5,6 +5,7 @@ import { DEFAULT_BENCHMARKS } from '../data/benchmarks';
 import { sampleState } from '../data/sample';
 import { DEFAULT_WEIGHTS, WEIGHT_LABELS } from '../engine/mentorScore';
 import { JSON_ACCEPT } from '../lib/saveFile';
+import SyncCard from '../components/SyncCard';
 import type { ScoreWeights } from '../types';
 
 /** Unit shown after benchmark inputs. */
@@ -177,15 +178,17 @@ export default function Settings() {
         </div>
       </section>
 
+      <SyncCard />
+
       <section className="card">
         <h2>Your data</h2>
         <div className="device-note">
           <p className="small">
-            <strong>Your data stays on this device.</strong> Everything you enter, including your imported tracker and outreach notes, is saved only in this
-            browser. Nothing is sent to a server, and your phone and laptop don't share data.
+            <strong>Your data is saved in this browser.</strong> Everything you enter, including your imported tracker and outreach notes, stays here unless
+            you turn on sync above, which copies it to your own private GitHub repo. Updates to the website don't touch it.
           </p>
           <p className="small muted">
-            To move data between devices, export a backup on one and import it on the other. On iPhone, Export opens the share sheet: choose Save to Files
+            Without sync, move data between devices by exporting a backup on one and importing it on the other. On iPhone, Export opens the share sheet: choose Save to Files
             (iCloud Drive) or AirDrop it to your Mac. Import lets you pick the file from Files or iCloud Drive. Export a backup regularly, especially before
             clearing Safari data.
           </p>
@@ -224,7 +227,7 @@ export default function Settings() {
             <br />
             <span className="muted">Deletes all your data in this browser. Export a backup first.</span>
           </p>
-          <button className="btn" onClick={() => confirm('Delete all your data? Export a backup first.') && setState(defaultState())}>
+          <button className="btn" onClick={() => confirm('Delete all your data? Export a backup first. If sync is on, this also clears your other device.') && setState(defaultState())}>
             Reset everything
           </button>
         </div>

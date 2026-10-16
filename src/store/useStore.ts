@@ -6,7 +6,8 @@ import { toOutreachStatus } from '../engine/outreach';
 import { saveFile } from '../lib/saveFile';
 import { mentorsOf, programsOf } from '../data/researchData';
 
-const KEY = 'med-school-planner:v1';
+/** Never change this: a new key would hide every saved browser's data after the next deploy. */
+export const STORAGE_KEY = 'med-school-planner:v1';
 
 export function defaultState(): AppState {
   const year = new Date().getFullYear();
@@ -72,7 +73,7 @@ function normalizeOutreach(raw: AppState['outreach'] | undefined): AppState['out
 
 function load(): AppState {
   try {
-    const raw = localStorage.getItem(KEY);
+    const raw = localStorage.getItem(STORAGE_KEY);
     return raw ? normalize(JSON.parse(raw)) : defaultState();
   } catch {
     return defaultState();
@@ -86,10 +87,28 @@ export function getState() {
   return state;
 }
 
+const editListeners = new Set<() => void>();
+
+/** Runs after every change you make (not after data arrives from sync). */
+export function onLocalEdit(l: () => void) {
+  editListeners.add(l);
+  return () => editListeners.delete(l);
+}
+
 export function setState(update: AppState | ((s: AppState) => AppState)) {
-  state = typeof update === 'function' ? update(state) : update;
+  write(typeof update === 'function' ? update(state) : update);
+  editListeners.forEach((l) => l());
+}
+
+/** Replaces the data with what another device synced, without counting it as a local edit. */
+export function replaceFromSync(next: AppState) {
+  write(next);
+}
+
+function write(next: AppState) {
+  state = next;
   try {
-    localStorage.setItem(KEY, JSON.stringify(state));
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
   } catch {
     // Storage full or blocked: state still lives in memory for this session.
   }

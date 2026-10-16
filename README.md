@@ -6,15 +6,21 @@ Track your MD application experiences, see where you stand against competitive-a
 
 ## Your data stays on your device
 
-Everything you enter (profile, GPA/MCAT, experiences, hours, outputs, outreach notes) is saved only in your browser's localStorage. Nothing is sent to a server, and different devices don't share data.
+Everything you enter (profile, GPA/MCAT, experiences, hours, outputs, outreach notes) is saved in your browser's localStorage. Deploying a new version doesn't touch it: the storage key stays `med-school-planner:v1`, and `src/store/useStore.test.ts` fails the deploy if a change would drop saved fields. When a newer version is live, the app shows a **Reload** banner.
 
-- **Move data between devices:** Profile & academics → **Export backup** on one device, **Import backup** on the other. On iPhone, Export opens the share sheet (Save to Files / iCloud Drive or AirDrop), and Import picks the file from Files.
+- **Sync Mac ↔ phone (optional):** Profile & academics → **Sync between devices**. Data is copied to `planner.json` in a **private** GitHub repo of yours (the app refuses public repos). Setup, once:
+  1. Create a private repo, e.g. `med-school-planner-data`.
+  2. GitHub → Settings → Developer settings → Fine-grained tokens → new token with access to **only** that repo and **Contents: Read and write**.
+  3. Paste username, repo and token on the Mac → Connect, then do the same on the phone.
+
+  Edits upload a few seconds after you make them; the other device pulls when it opens or comes back to the foreground. If both changed, the app asks which copy to keep, and every older version stays in the repo's history. The token is stored only in that browser's localStorage (never in backups or the synced file); revoke it on GitHub to cut access.
+- **Move data between devices by hand:** Profile & academics → **Export backup** on one device, **Import backup** on the other. On iPhone, Export opens the share sheet (Save to Files / iCloud Drive or AirDrop), and Import picks the file from Files.
 - **Private research tracker:** draft emails, project pitches and outreach columns are not part of this website or repo. On the Research targeting page, use **Import tracker CSV** to load them into your browser, and **Export tracker CSV** to write the full tracker back out (all original columns plus your in-app edits, same column order, UTF-8 BOM).
 - **"Why this lab" wording:** the site ships neutral templates. Put your own wording in Research targeting → "Your 'Why this lab' wording"; it's saved only in your browser and included in backups.
 
 ## Add it to your iPhone home screen
 
-Open the live site in Safari → **Share** → **Add to Home Screen**. It opens full screen like an app. Data in the home-screen app is separate from Safari's, so export a backup from one and import it in the other if you switch.
+Open the live site in Safari → **Share** → **Add to Home Screen**. It opens full screen like an app. Data in the home-screen app is separate from Safari's, so connect sync in the home-screen app (or export a backup from one and import it in the other).
 
 ## Deploy
 

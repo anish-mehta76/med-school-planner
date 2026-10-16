@@ -1974,3 +1974,48 @@ details.disclosure > :not(summary) {
 .device-note p {
   margin: 0;
 }
+
+/* ── App banners (new version, sync conflict) ───────── */
+.app-banner {
+  /* Lines up with .page content (max 1120px wide, --sp-6 side padding). */
+  margin-top: var(--sp-4);
+  margin-inline: max(var(--sp-6), calc((100% - 1120px) / 2 + var(--sp-6)));
+  padding: var(--sp-3) var(--sp-4);
+  border-radius: var(--r-sm);
+  background: var(--accent-soft);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-3);
+}
+.app-banner.warn {
+  background: var(--below-soft);
+}
+.app-banner p {
+  margin: 0;
+  flex: 1 1 280px;
+}
+@media (max-width: 760px) {
+  .app-banner {
+    margin-inline: max(var(--sp-4), env(safe-area-inset-left));
+  }
+}
+
+/* ── Sync card ──────────────────────────────────────── */
+.sync-status {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--sp-2) var(--sp-3);
+  margin-bottom: var(--sp-3);
+}
+.sync-error {
+  color: var(--behind);
+  grid-column: 1 / -1;
+  margin: 0;
+}
+.sync-steps {
+  margin: var(--sp-2) 0 var(--sp-4);
+  padding-left: 1.25em;
+}
