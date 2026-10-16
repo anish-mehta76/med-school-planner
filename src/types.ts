@@ -1,3 +1,5 @@
+import type { PlannerState } from './planner/types';
+
 export type Category =
   | 'clinical-paid'
   | 'clinical-volunteer'
@@ -111,6 +113,8 @@ export interface AppState {
   /** Mentor and program lists restored from a backup (they aren't published with the website). */
   mentors?: Mentor[];
   programs?: Program[];
+  /** Four-year course plans; the sample scenarios are used until you change something. */
+  planner?: PlannerState;
 }
 
 export type Severity = 'critical' | 'gap' | 'on-track' | 'strong';

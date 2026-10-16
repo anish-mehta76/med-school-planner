@@ -9,7 +9,8 @@
     "preview": "vite preview",
     "test": "vitest run",
     "import-trackers": "node scripts/import-trackers.ts",
-    "verify-pubmed": "node scripts/verify-pubmed.ts"
+    "verify-pubmed": "node scripts/verify-pubmed.ts",
+    "sync-sis": "node scripts/sync-sis.ts"
   },
   "dependencies": {
     "lucide-react": "0.468.0",

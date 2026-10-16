@@ -3,6 +3,7 @@ import type { AppState, Program } from '../types';
 import { normalize, STORAGE_KEY } from './useStore';
 import { sampleState } from '../data/sample';
 import { mentor } from '../engine/testMentors';
+import { samplePlanner } from '../planner/scenarios';
 
 /** Every AppState field filled in, so a deploy that would drop saved data fails CI instead. */
 function fullState(): AppState {
@@ -34,6 +35,7 @@ function fullState(): AppState {
     whyTemplates: { endometrial: 'My PCOS work…', cervical: 'Disparities…', methods: 'R pipelines…' },
     mentors: [mentor({ id: 'T09' })],
     programs: [program],
+    planner: samplePlanner(new Date(2026, 9, 15)),
   };
 }
 

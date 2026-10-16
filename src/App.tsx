@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { BookOpen, BriefcaseMedical, Compass, Ellipsis, FileText, Gauge, LayoutDashboard, Microscope, Stethoscope, UserRoundCog, type LucideIcon } from 'lucide-react';
+import { BookOpen, BriefcaseMedical, CalendarRange, Compass, Ellipsis, FileText, Gauge, LayoutDashboard, Microscope, Stethoscope, UserRoundCog, type LucideIcon } from 'lucide-react';
 import Dashboard from './pages/Dashboard';
 import Experiences from './pages/Experiences';
 import Outputs from './pages/Outputs';
@@ -8,6 +8,7 @@ import Gaps from './pages/Gaps';
 import Opportunities from './pages/Opportunities';
 import Guides from './pages/Guides';
 import Settings from './pages/Settings';
+import Planner from './pages/Planner';
 import Banners from './components/Banners';
 import { useAnalysis } from './engine/useAnalysis';
 import { getConfig, useSyncStatus } from './lib/sync';
@@ -15,6 +16,7 @@ import { getConfig, useSyncStatus } from './lib/sync';
 const PAGES: readonly { id: string; label: string; icon: LucideIcon }[] = [
   { id: 'dashboard', label: 'Dashboard', icon: LayoutDashboard },
   { id: 'experiences', label: 'Experiences', icon: BriefcaseMedical },
+  { id: 'planner', label: 'Four-year plan', icon: CalendarRange },
   { id: 'research', label: 'Research targeting', icon: Microscope },
   { id: 'outputs', label: 'Research output', icon: FileText },
   { id: 'gaps', label: 'Gap analysis', icon: Gauge },
@@ -31,7 +33,7 @@ const TABS = [
 ];
 const MORE = PAGES.filter((p) => !TABS.some((t) => t.id === p.id));
 
-type PageId = 'dashboard' | 'experiences' | 'research' | 'outputs' | 'gaps' | 'opportunities' | 'guides' | 'settings';
+type PageId = 'dashboard' | 'experiences' | 'planner' | 'research' | 'outputs' | 'gaps' | 'opportunities' | 'guides' | 'settings';
 
 function currentPage(): PageId {
   const h = window.location.hash.slice(1);
@@ -124,6 +126,7 @@ export default function App() {
         <Banners />
         {page === 'dashboard' && <Dashboard go={go} />}
         {page === 'experiences' && <Experiences />}
+        {page === 'planner' && <Planner />}
         {page === 'research' && <Research />}
         {page === 'outputs' && <Outputs go={go} />}
         {page === 'gaps' && <Gaps go={go} />}

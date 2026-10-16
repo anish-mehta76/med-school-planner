@@ -46,6 +46,7 @@ export function normalize(raw: unknown): AppState {
     whyTemplates: s.whyTemplates && typeof s.whyTemplates === 'object' ? s.whyTemplates : undefined,
     mentors: validList(s.mentors, (m) => !!m.institution && !!m.diseaseFit && !!m.strength),
     programs: validList(s.programs, () => true),
+    planner: validPlanner(s.planner),
   };
 }
 
@@ -53,6 +54,13 @@ export function normalize(raw: unknown): AppState {
 function validList<T extends { id: string; name: string }>(raw: T[] | undefined, ok: (x: T) => boolean): T[] | undefined {
   if (!Array.isArray(raw) || !raw.length) return undefined;
   return raw.every((x) => x && typeof x.id === 'string' && typeof x.name === 'string' && ok(x)) ? raw : undefined;
+}
+
+/** Keeps saved course plans if they have the expected shape. */
+function validPlanner(p: AppState['planner']): AppState['planner'] {
+  if (!p || !Array.isArray(p.scenarios) || !p.scenarios.length) return undefined;
+  const ok = p.scenarios.every((x) => x && typeof x.id === 'string' && typeof x.name === 'string' && Array.isArray(x.plan) && Array.isArray(x.majorIds));
+  return ok ? { ...p, activeId: p.scenarios.some((x) => x.id === p.activeId) ? p.activeId : p.scenarios[0].id } : undefined;
 }
 
 function validTracker(t: AppState['tracker']): AppState['tracker'] {

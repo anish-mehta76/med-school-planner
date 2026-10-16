@@ -38,6 +38,7 @@ Then open http://localhost:5173.
 - `npm test`: unit tests (gap engine, recommender, mentor scoring, outreach, CSV import/export)
 - `npm run build`: production build in `dist/` (served from `/med-school-planner/`)
 - `npm run import-trackers`: regenerate the **public** mentor and program data (`src/data/mentors.ts`, `src/data/nycPrograms.ts`) from the tracker CSVs. Only public columns are written; private columns are never bundled.
+- `npm run sync-sis`: pull live course data (titles, credits, FA tags, writing-intensive flag, POS tags, prerequisites, fall/spring-only) from the JHU SIS Course Search API into `src/planner/sisCourses.json`. Needs `JHU_SIS_API_KEY` in `.env` (copy `.env.example`); the key is only ever used by this script, never in the browser. Add extra codes after `--`, e.g. `npm run sync-sis -- AS.389.201`.
 - `npm run verify-pubmed`: read-only PubMed check of the Start-priority mentors.
 - `python3 scripts/make-icons.py`: redraw the app icons in `public/`.
 
@@ -46,6 +47,14 @@ The tracker CSVs, `CLAUDE.md`, `reports/` and the research agents (`.claude/`) a
 ## Research agents (run by hand)
 
 The verifier, scout, outreach-coach and retro agents live in the local folder's `.claude/agents/` and are not scheduled, since this repo is public. To run one, open the local folder in Claude Code and ask, for example: "use the verifier on R01-R13". To give the retro agent real outcomes, use **Export tracker CSV** on the Research page and save it over the CSV in the local folder first.
+
+## Four-year plan
+
+The **Four-year plan** page is a JHU KSAS course planner: a term grid (exam/transfer lane, eight semesters, optional summers), requirement checks for Chemistry BS, Public Health Studies BA, MCB BS, Neuroscience BS, History BA and Spanish BA, a pre-med track with an MCAT-timing check, a Foundational Abilities tracker, sequencing flags, saved scenarios, "what if I add or swap a major" auto-fill, and a major-overlap matrix. Requirement data comes from the 2026–27 catalogue (`JHU_FOUR_YEAR_PLANNER_SPEC.md`); items marked *verify* are unconfirmed. Plans are saved with the rest of your data (so they sync and back up too).
+
+- `src/planner/majors.ts`: major and pre-med requirements
+- `src/planner/catalog.ts`: seed course catalog, merged with `sisCourses.json`
+- `src/planner/engine.ts`: requirement engine, double counting, FA rule, flags, auto-fill, overlap
 
 ## Where things live
 

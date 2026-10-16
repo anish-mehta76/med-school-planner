@@ -54,6 +54,9 @@
   --c2: #4f5bd5;
   --c3: #5b7f2a;
   --c4: #b7791f;
+  --c5: #8a4fb0;
+  --c6: #c25a3a;
+  --c7: #b0407a;
 
   --shadow: 0 1px 2px rgba(20, 20, 15, 0.05), 0 1px 6px rgba(20, 20, 15, 0.04);
   color-scheme: light;
@@ -87,6 +90,9 @@
     --c2: #9aa3f5;
     --c3: #a3c96b;
     --c4: #e6b450;
+    --c5: #c49be0;
+    --c6: #f0937a;
+    --c7: #ee8fbd;
 
     --shadow: none;
     color-scheme: dark;
@@ -2018,4 +2024,350 @@ details.disclosure > :not(summary) {
 .sync-steps {
   margin: var(--sp-2) 0 var(--sp-4);
   padding-left: 1.25em;
+}
+
+/* ── Four-year plan ─────────────────────────────────── */
+.plan-controls {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+}
+.plan-scenario {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: var(--sp-3);
+}
+.plan-scenario label,
+.plan-mcat {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-1);
+  font-weight: 600;
+}
+.plan-scenario select {
+  min-width: 240px;
+  max-width: 100%;
+}
+.plan-mcat select {
+  max-width: 100%;
+}
+.plan-stats {
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+}
+.plan-stats .stat {
+  padding: var(--sp-3);
+}
+.plan-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.plan-dot.lg {
+  width: 10px;
+  height: 10px;
+  vertical-align: 0.1em;
+}
+.chip .plan-dot {
+  margin-right: 2px;
+}
+.plan-dots {
+  display: inline-flex;
+  gap: 3px;
+  align-items: center;
+}
+.plan-heavy {
+  color: var(--below);
+  font-weight: 600;
+}
+
+.plan-grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+}
+.plan-year {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+.plan-year-label {
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--muted);
+  margin: 0;
+}
+.plan-year-terms {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--sp-3);
+}
+.plan-year-terms.cols-3 {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 0.8fr);
+}
+.plan-term {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  padding: var(--sp-3);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  min-width: 0;
+}
+.plan-term.summer {
+  background: var(--surface-2);
+}
+.plan-term-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--sp-2);
+}
+.plan-term-head h3 {
+  margin: 0;
+  font-size: var(--fs-md);
+}
+.plan-note {
+  margin: 0;
+}
+.plan-items {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.plan-item {
+  border-radius: var(--r-sm);
+}
+.plan-item.flagged {
+  background: var(--below-soft);
+}
+.plan-item.autofilled .plan-code::after {
+  content: ' +';
+  color: var(--accent);
+}
+.plan-item-main {
+  font: inherit;
+  width: 100%;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: 6px var(--sp-2);
+  background: none;
+  border: 0;
+  border-radius: var(--r-sm);
+  color: var(--ink);
+  text-align: left;
+  cursor: pointer;
+  min-height: 36px;
+}
+.plan-item-main:hover {
+  background: var(--surface-2);
+}
+.plan-code {
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  white-space: nowrap;
+}
+.plan-title {
+  font-size: var(--fs-sm);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.plan-meta {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  font-size: var(--fs-sm);
+}
+.plan-warn {
+  color: var(--below);
+}
+.plan-editor {
+  padding: var(--sp-2) var(--sp-2) var(--sp-3);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+  border-top: 1px solid var(--line);
+}
+.plan-facts {
+  margin: 0;
+  display: grid;
+  gap: var(--sp-1);
+}
+.plan-facts div {
+  display: grid;
+  grid-template-columns: 9.5em minmax(0, 1fr);
+  gap: var(--sp-2);
+}
+.plan-facts dt {
+  color: var(--muted);
+}
+.plan-facts dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+.plan-edit-fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-2) var(--sp-3);
+}
+.plan-edit-fields label {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-1);
+  font-size: var(--fs-sm);
+  min-width: 0;
+}
+.plan-edit-fields .wide {
+  grid-column: 1 / -1;
+}
+.plan-edit-fields .check,
+label.check {
+  flex-direction: row;
+  align-items: center;
+  gap: var(--sp-2);
+}
+.plan-add {
+  display: flex;
+  gap: var(--sp-2);
+  margin-top: auto;
+}
+.plan-add input {
+  flex: 1;
+  min-width: 0;
+}
+.plan-flag {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+.plan-flag-error {
+  color: var(--behind);
+}
+.plan-flag-warn {
+  color: var(--below);
+}
+.plan-flag-info {
+  color: var(--muted);
+}
+.plan-flags ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+.plan-flag .tag {
+  margin: 0 var(--sp-1);
+}
+.plan-summer-toggle {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+}
+
+.req-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+.req {
+  display: grid;
+  grid-template-columns: 24px minmax(0, 1fr);
+  gap: var(--sp-2);
+  padding: var(--sp-2) 0;
+  border-top: 1px solid var(--line);
+}
+.req:first-child {
+  border-top: 0;
+}
+.req-icon {
+  padding-top: 2px;
+}
+.req-done .req-icon {
+  color: var(--strong);
+}
+.req-partial .req-icon {
+  color: var(--below);
+}
+.req-missing .req-icon {
+  color: var(--behind);
+}
+.req-note .req-icon,
+.req-waived .req-icon {
+  color: var(--muted);
+}
+.req-body {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+.req-label {
+  font-size: var(--fs-sm);
+  font-weight: 600;
+}
+.req-items {
+  overflow-wrap: anywhere;
+}
+.req-notes {
+  margin: var(--sp-3) 0 var(--sp-2);
+  padding-left: 1.25em;
+}
+.fa-row + .fa-row {
+  margin-top: var(--sp-4);
+}
+.fa-courses {
+  margin: var(--sp-1) 0 0;
+  overflow-wrap: anywhere;
+}
+.plan-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--fs-sm);
+}
+.plan-table th,
+.plan-table td {
+  padding: var(--sp-2);
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: middle;
+}
+.plan-table .num {
+  text-align: right;
+}
+.plan-table select {
+  font-size: var(--fs-sm);
+}
+.overlap td {
+  background: color-mix(in srgb, var(--accent) calc(var(--heat, 0) * 35%), transparent);
+}
+.preview-list {
+  margin: 0;
+  padding-left: 1.25em;
+  columns: 2 280px;
+}
+
+@media (max-width: 760px) {
+  .plan-year-terms,
+  .plan-year-terms.cols-3 {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .plan-scenario select {
+    min-width: 0;
+    width: 100%;
+  }
+  .plan-scenario label {
+    width: 100%;
+  }
 }
