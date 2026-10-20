@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import type { AppState, Program } from '../types';
-import { normalize, STORAGE_KEY } from './useStore';
+import { applyStorageChange, getState, normalize, STORAGE_KEY } from './useStore';
 import { sampleState } from '../data/sample';
 import { mentor } from '../engine/testMentors';
 import { chemPhs } from '../planner/scenarios';
@@ -54,5 +54,19 @@ describe('saved data survives a new deploy', () => {
   it('loads a fully filled save back unchanged', () => {
     const s = fullState();
     expect(normalize(JSON.parse(JSON.stringify(s)))).toEqual(s);
+  });
+});
+
+describe('another tab saves', () => {
+  it('shows the other tab\'s save here, so this tab never writes back an older copy', () => {
+    const saved = fullState();
+    applyStorageChange(JSON.stringify(saved));
+    expect(getState()).toEqual(normalize(saved));
+  });
+
+  it('ignores a corrupt value and keeps what this tab has', () => {
+    const before = getState();
+    applyStorageChange('{not json');
+    expect(getState()).toBe(before);
   });
 });

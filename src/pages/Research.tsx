@@ -14,6 +14,70 @@ import { emailSegments, plainEmailText } from '../lib/emailText';
 import { confirmedText, evidenceView, isUnverified, journalName, plainReason } from '../lib/mentorDisplay';
 import { exportTrackerCsv, parseTrackerCsv, TrackerImportError, trackerPrivate } from '../lib/tracker';
 import { CSV_ACCEPT, saveFile } from '../lib/saveFile';
+import { reducedMotion, StackBar, Timeline, useMounted } from '../components/viz';
+
+/** Colour per outreach stage in the pipeline bar. */
+const STAGE_COLOR: Record<PipelineStage, string> = {
+  drafted: 'var(--border-control)',
+  sent: 'var(--c2)',
+  'follow-up': 'var(--behind)',
+  'followed-up': 'var(--c1)',
+  'no-response': 'var(--muted)',
+  declined: 'var(--c7)',
+  redirected: 'var(--c4)',
+  interested: 'var(--below)',
+  meeting: 'var(--c5)',
+  joined: 'var(--strong)',
+};
+
+const BRIDGE_COLOR: Record<Bridge, string> = { endometrial: 'var(--c1)', cervical: 'var(--c2)', methods: 'var(--c4)' };
+
+/** Every shown mentor as a dot on a 0–100 score line. Clicking a dot opens that mentor's card. */
+function ScoreStrip({ items, open, onPick }: { items: { m: Mentor; score: MentorScore }[]; open: string | null; onPick: (id: string) => void }) {
+  const on = useMounted();
+  // Stack dots whose scores are within ~2 points so none hide behind another.
+  const lanes: number[] = [];
+  const laneOf: Record<string, number> = {};
+  for (const { m, score } of [...items].sort((x, y) => x.score.total - y.score.total)) {
+    let lane = lanes.findIndex((last) => score.total - last >= 2.5);
+    if (lane === -1) lane = lanes.length < 5 ? lanes.length : lanes.indexOf(Math.min(...lanes));
+    lanes[lane] = score.total;
+    laneOf[m.id] = lane;
+  }
+  return (
+    <div className="score-strip">
+      <div className="score-strip-track" role="group" aria-label="Fit scores of the mentors shown. Pick one to open it">
+        {[0, 25, 50, 75, 100].map((t) => (
+          <span key={t} className="score-strip-tick" style={{ left: `${t}%` }}>
+            <span>{t}</span>
+          </span>
+        ))}
+        {items.map(({ m, score }, i) => {
+          const lane = laneOf[m.id];
+          return (
+            <button
+              key={m.id}
+              type="button"
+              className={`score-dot${open === m.id ? ' picked' : ''}`}
+              style={{ left: `${on ? score.total : 0}%`, bottom: 6 + lane * 14, background: BRIDGE_COLOR[bridgeFor(m)], transitionDelay: `${Math.min(i, 30) * 15}ms` }}
+              title={`${m.name} · ${score.total}/100`}
+              aria-label={`${m.name}, score ${score.total}`}
+              onClick={() => onPick(m.id)}
+            />
+          );
+        })}
+      </div>
+      <ul className="stackbar-legend">
+        {(Object.keys(BRIDGE_LABELS) as Bridge[]).map((b) => (
+          <li key={b}>
+            <span className="legend-dot" style={{ background: BRIDGE_COLOR[b] }} />
+            {BRIDGE_LABELS[b]}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
 
 const BRIDGE_LABELS: Record<Bridge, string> = { endometrial: 'Endometrial', cervical: 'Cervical / HPV', methods: 'Methods / adjacent' };
 
@@ -235,7 +299,7 @@ function MentorCard({ m, score, open, onToggle }: { m: Mentor; score: MentorScor
   const bodyId = `mentor-${m.id}`;
 
   return (
-    <article className={`mentor ${open ? 'open' : ''}`}>
+    <article id={`card-${m.id}`} className={`mentor ${open ? 'open' : ''}`}>
       <button className="mentor-head" onClick={onToggle} aria-expanded={open} aria-controls={bodyId}>
         <span className="mentor-score" aria-label={`Score ${score.total} out of 100`}>
           <strong>
@@ -397,7 +461,7 @@ function daysUntil(iso: string, today: string) {
   return Math.round((new Date(`${iso}T00:00:00`).getTime() - new Date(`${today}T00:00:00`).getTime()) / 86_400_000);
 }
 
-function ProgramCard({ p, today }: { p: Program; today: string }) {
+function ProgramCard({ p, today, flash }: { p: Program; today: string; flash?: boolean }) {
   const { programStatus } = useStore();
   const upcoming = p.deadline && p.deadline >= today ? p.deadline : undefined;
   const days = upcoming ? daysUntil(upcoming, today) : undefined;
@@ -410,7 +474,7 @@ function ProgramCard({ p, today }: { p: Program; today: string }) {
     });
 
   return (
-    <article className="opp-card">
+    <article id={`program-${p.id}`} className={`opp-card program-card${flash ? ' flash' : ''}`}>
       <div className="opp-top">
         <span className="kind">{p.location}</span>
         {upcoming ? (
@@ -581,6 +645,7 @@ export default function Research() {
   const [stage, setStage] = useState<PipelineStage | 'all'>('all');
   const [q, setQ] = useState('');
   const [open, setOpen] = useState<string | null>(null);
+  const [flashProgram, setFlashProgram] = useState<string | null>(null);
   const today = localDate();
 
   const mentors = mentorsOf(state);
@@ -629,6 +694,31 @@ export default function Research() {
 
       {tab === 'mentors' ? (
         <>
+          {mentors.length > 0 && (
+            <section className="card research-viz" aria-labelledby="pipeline-title">
+              <div className="card-head">
+                <h2 id="pipeline-title">Outreach pipeline</h2>
+                <span className="muted small">Click a stage to filter</span>
+              </div>
+              <StackBar
+                label="Mentors by outreach stage. Pick one to filter"
+                picked={stage === 'all' ? undefined : stage}
+                onPick={(k) => setStage(stage === k ? 'all' : (k as PipelineStage))}
+                segments={PIPELINE.map((s) => ({ key: s, label: stageLabel(s), value: stageCounts[s], color: STAGE_COLOR[s] }))}
+              />
+              <h3 className="viz-sub">
+                Fit scores <span className="muted small">· {shown.length} shown</span>
+              </h3>
+              <ScoreStrip
+                items={shown}
+                open={open}
+                onPick={(id) => {
+                  setOpen(id);
+                  requestAnimationFrame(() => document.getElementById(`card-${id}`)?.scrollIntoView({ behavior: reducedMotion() ? 'auto' : 'smooth', block: 'start' }));
+                }}
+              />
+            </section>
+          )}
           <div className="chips chips-scroll" role="group" aria-label="Filter by outreach status">
             <button className={`chip ${stage === 'all' ? 'active' : ''}`} aria-pressed={stage === 'all'} onClick={() => setStage('all')}>
               All <span className="muted">{mentors.length}</span>
@@ -686,9 +776,26 @@ export default function Research() {
             Sorted by next deadline. Dates come from your tracker; “Date not confirmed” means the tracker lists it as TBD, historical or unclear. Check
             the official page before relying on any date.
           </p>
+          {programs.length > 0 && (
+            <section className="card" aria-labelledby="deadline-title">
+              <div className="card-head">
+                <h2 id="deadline-title">Deadlines ahead</h2>
+                <span className="muted small">Hollow = date not confirmed · click a dot</span>
+              </div>
+              <Timeline
+                today={today}
+                items={programs.filter((p) => p.deadline).map((p) => ({ id: p.id, label: p.name, date: p.deadline!, confirmed: p.deadlineVerified }))}
+                onPick={(id) => {
+                  document.getElementById(`program-${id}`)?.scrollIntoView({ behavior: reducedMotion() ? 'auto' : 'smooth', block: 'center' });
+                  setFlashProgram(id);
+                  window.setTimeout(() => setFlashProgram((f) => (f === id ? null : f)), 1600);
+                }}
+              />
+            </section>
+          )}
           <div className="opp-grid">
             {programs.map((p) => (
-              <ProgramCard key={p.id} p={p} today={today} />
+              <ProgramCard key={p.id} p={p} today={today} flash={flashProgram === p.id} />
             ))}
           </div>
           {programs.length === 0 && <NoListYet what="programs" />}

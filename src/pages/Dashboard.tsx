@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import { ArrowRight, Plus } from 'lucide-react';
 import { Area as ChartArea, AreaChart, CartesianGrid, Legend, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 import { useAnalysis } from '../engine/useAnalysis';
@@ -7,6 +7,9 @@ import { AreaBar, Empty, GapCard } from '../components/ui';
 import { OpportunityCard } from '../components/OpportunityCard';
 import ResearchOutreach from '../components/ResearchOutreach';
 import type { AppState, Area } from '../types';
+import { CountUp, ReadinessRadar, Ring, SEVERITY_COLOR, StackBar, Toggle } from '../components/viz';
+import { SEVERITY_LABEL } from '../components/ui';
+import blueJay from '../assets/blue-jay.svg';
 
 const SERIES: { area: Area; label: string; color: string }[] = [
   { area: 'clinical', label: 'Clinical', color: 'var(--c1)' },
@@ -41,11 +44,31 @@ function cumulative(state: AppState) {
   });
 }
 
+/** Month-by-month hours from the cumulative series. */
+function perMonth(data: ReturnType<typeof cumulative>) {
+  return data.map((row, i) => {
+    const prev = data[i - 1] as Record<string, number | string> | undefined;
+    const r = row as Record<string, number | string>;
+    return { month: row.month, ...Object.fromEntries(SERIES.map((s) => [s.area, (r[s.area] as number) - ((prev?.[s.area] as number) ?? 0)])) };
+  });
+}
+
 const hrsTick = (n: number) => n.toLocaleString('en-US');
 
 export default function Dashboard({ go }: { go: (page: string) => void }) {
   const { state, areas, gaps, ranked, months, mentorSuggestions } = useAnalysis();
   const data = useMemo(() => cumulative(state), [state]);
+  const [view, setView] = useState<'bars' | 'radar'>('bars');
+  const [mode, setMode] = useState<'total' | 'month'>('total');
+  const [hidden, setHidden] = useState<Set<string>>(new Set());
+  const chartData = mode === 'total' ? data : perMonth(data);
+  const toggleSeries = (key: string) =>
+    setHidden((h) => {
+      const n = new Set(h);
+      if (n.has(key)) n.delete(key);
+      else n.add(key);
+      return n;
+    });
   const totalHours = areas.filter((a) => AREA_CATEGORIES[a.area]).reduce((s, a) => s + (a.current ?? 0), 0);
   const behind = gaps.filter((g) => g.severity === 'critical').length;
   const { profile } = state;
@@ -55,7 +78,7 @@ export default function Dashboard({ go }: { go: (page: string) => void }) {
 
   return (
     <div className="page">
-      <header className="page-head">
+      <header className="page-head hero">
         <div>
           <h1>{profile.name ? `Hi, ${profile.name.split(' ')[0]}` : 'Your application at a glance'}</h1>
           <p className="muted">
@@ -63,6 +86,14 @@ export default function Dashboard({ go }: { go: (page: string) => void }) {
             {profile.school && ` · ${profile.school}`}
           </p>
         </div>
+        <div className="hero-count">
+          <Ring value={Math.min(months, 48) / 48} size={88} stroke={7} color="var(--accent-2)" label={`${monthsLeft} months until AMCAS submission`}>
+            <strong className="num">{months < 1 ? 'Now' : <CountUp value={monthsLeft} />}</strong>
+            {months >= 1 && <small>months</small>}
+          </Ring>
+          <span className="hero-count-label">until AMCAS submission, June {profile.applicationYear}</span>
+        </div>
+        <img className="hero-jay" src={blueJay} alt="" aria-hidden />
       </header>
 
       {empty && (
@@ -91,19 +122,34 @@ export default function Dashboard({ go }: { go: (page: string) => void }) {
           </div>
           <div className="stat">
             <span className="stat-label">Logged hours</span>
-            <span className="stat-value">{totalHours.toLocaleString('en-US')}</span>
+            <span className="stat-value">
+              <CountUp value={totalHours} />
+            </span>
             <span className="muted small">Clinical, shadowing, service and research</span>
+            <StackBar
+              label="Logged hours by area"
+              segments={SERIES.map((s) => ({ key: s.area, label: s.label, value: Math.round(areas.find((a) => a.area === s.area)?.current ?? 0), color: s.color }))}
+            />
           </div>
           <div className="stat">
             <span className="stat-label">Areas behind</span>
-            <span className="stat-value">{behind}</span>
+            <span className="stat-value">
+              <CountUp value={behind} />
+            </span>
             <span className="muted small">
               {gaps.length} {gaps.length === 1 ? 'item' : 'items'} to work on in total
+            </span>
+            <span className="sev-dots" aria-hidden>
+              {areas.map((a, i) => (
+                <span key={a.area} className="sev-dot" style={{ background: SEVERITY_COLOR[a.severity], animationDelay: `${i * 70}ms` }} title={`${a.benchmark.label}: ${SEVERITY_LABEL[a.severity]}`} />
+              ))}
             </span>
           </div>
           <div className="stat">
             <span className="stat-label">Posters and papers</span>
-            <span className="stat-value">{state.outputs.length}</span>
+            <span className="stat-value">
+              <CountUp value={state.outputs.length} />
+            </span>
             <span className="muted small">{completed} presented or published</span>
           </div>
         </section>
@@ -113,11 +159,42 @@ export default function Dashboard({ go }: { go: (page: string) => void }) {
         <section className="card">
           <div className="card-head">
             <h2>Readiness</h2>
-            <button className="link" onClick={() => go('gaps')}>
-              Gap analysis <ArrowRight size={16} aria-hidden />
-            </button>
+            <span className="card-tools">
+              {!empty && (
+                <Toggle
+                  label="Readiness view"
+                  value={view}
+                  onChange={setView}
+                  options={[
+                    { key: 'bars', label: 'Bars' },
+                    { key: 'radar', label: 'Radar' },
+                  ]}
+                />
+              )}
+              <button className="link" onClick={() => go('gaps')}>
+                Gap analysis <ArrowRight size={16} aria-hidden />
+              </button>
+            </span>
           </div>
           {empty && <p className="muted small readiness-note">Typical targets for MD applicants. Your progress appears here once you add experiences.</p>}
+          {view === 'radar' && !empty ? (
+            <>
+              <ReadinessRadar areas={areas} />
+              <p className="muted small legend-note">
+                <span>
+                  <span className="swatch swatch-current" /> Logged
+                </span>
+                <span>
+                  <span className="swatch swatch-projected" /> Projected from weekly hours
+                </span>
+                <span>
+                  <span className="swatch-mark" /> Minimum
+                </span>
+                <span>Edge of the chart = competitive target. GPA and MCAT stay in the bar view.</span>
+              </p>
+            </>
+          ) : (
+          <>
           <div className="areas">
             {areas.map((a) => (
               <AreaBar key={a.area} s={a} quiet={empty} />
@@ -137,6 +214,8 @@ export default function Dashboard({ go }: { go: (page: string) => void }) {
               <span className="swatch-mark strong" /> Competitive
             </span>
           </p>
+          </>
+          )}
         </section>
 
         {!empty && (
@@ -164,10 +243,21 @@ export default function Dashboard({ go }: { go: (page: string) => void }) {
 
       {data.length > 1 && (
         <section className="card">
-          <h2>Hours over time</h2>
+          <div className="card-head">
+            <h2>Hours over time</h2>
+            <Toggle
+              label="Hours view"
+              value={mode}
+              onChange={setMode}
+              options={[
+                { key: 'total', label: 'Running total' },
+                { key: 'month', label: 'Per month' },
+              ]}
+            />
+          </div>
           <div className="chart">
             <ResponsiveContainer width="100%" height={260}>
-              <AreaChart data={data} margin={{ top: 8, right: 8, left: 0, bottom: 0 }}>
+              <AreaChart data={chartData} margin={{ top: 8, right: 8, left: 0, bottom: 0 }}>
                 <CartesianGrid stroke="var(--line)" vertical={false} />
                 <XAxis dataKey="month" tick={{ fill: 'var(--muted)', fontSize: 12 }} tickLine={false} axisLine={false} />
                 <YAxis tick={{ fill: 'var(--muted)', fontSize: 12 }} tickLine={false} axisLine={false} tickFormatter={hrsTick} width={48} />
@@ -176,7 +266,12 @@ export default function Dashboard({ go }: { go: (page: string) => void }) {
                   contentStyle={{ background: 'var(--surface)', border: '1px solid var(--line)', borderRadius: 8, color: 'var(--ink)' }}
                   labelStyle={{ color: 'var(--ink)', fontWeight: 600 }}
                 />
-                <Legend iconType="circle" wrapperStyle={{ color: 'var(--muted)', fontSize: 14 }} />
+                <Legend
+                  iconType="circle"
+                  wrapperStyle={{ color: 'var(--muted)', fontSize: 14, cursor: 'pointer' }}
+                  onClick={(e) => toggleSeries(String(e.dataKey))}
+                  formatter={(value, entry) => <span style={{ opacity: hidden.has(String(entry.dataKey)) ? 0.4 : 1 }}>{value}</span>}
+                />
                 {SERIES.map((s) => (
                   <ChartArea
                     key={s.area}
@@ -185,14 +280,16 @@ export default function Dashboard({ go }: { go: (page: string) => void }) {
                     name={s.label}
                     stroke={s.color}
                     fill={s.color}
-                    fillOpacity={0.1}
+                    fillOpacity={0.14}
                     strokeWidth={2}
+                    hide={hidden.has(s.area)}
                     isAnimationActive={!window.matchMedia?.('(prefers-reduced-motion: reduce)').matches}
                   />
                 ))}
               </AreaChart>
             </ResponsiveContainer>
           </div>
+          <p className="muted small">Click a name in the legend to hide or show it.</p>
         </section>
       )}
 

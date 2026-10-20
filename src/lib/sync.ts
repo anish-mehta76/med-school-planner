@@ -321,6 +321,12 @@ export function startSync() {
     void syncNow();
   });
   window.addEventListener('online', () => void syncNow());
+  // Another tab connected or disconnected sync: show the same state here.
+  window.addEventListener('storage', (e) => {
+    if (e.key !== SYNC_KEY) return;
+    if (!e.newValue && status.kind !== 'off') setStatus({ kind: 'off' });
+    if (e.newValue && status.kind === 'off') setStatus({ kind: 'idle' });
+  });
   void syncNow();
 }
 

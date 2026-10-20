@@ -5,6 +5,7 @@ import { ALL_MAJORS, MAJOR_BY_ID, majorColor } from '../majors';
 import { TERM_BY_ID } from '../terms';
 import { SIS_SYNCED_AT } from '../catalog';
 import type { Major, Resolved, Scenario } from '../types';
+import { Ring } from '../../components/viz';
 
 const STATUS = {
   done: { icon: Check, label: 'Done' },
@@ -54,8 +55,13 @@ function MajorCard({ res, scenario, update }: { res: MajorResult; scenario: Scen
         <h2>
           <MajorDot scenario={scenario} id={m.id} lg /> {m.name}
         </h2>
-        <span className="muted small num">
-          {done} of {counted.length} done · {pct(res.pct)} · {res.credits} credits count
+        <span className="major-progress">
+          <Ring value={res.pct} size={44} stroke={5} color={res.pct >= 1 ? 'var(--strong)' : 'var(--accent)'}>
+            <small className="num">{Math.round(res.pct * 100)}</small>
+          </Ring>
+          <span className="muted small num">
+            {done} of {counted.length} done · {pct(res.pct)} · {res.credits} credits count
+          </span>
         </span>
       </div>
       {m.id === 'premed' && <p className="callout small">Verify against each school you apply to. These mappings onto JHU courses are unconfirmed; check them with a pre-health advisor.</p>}

@@ -67,6 +67,11 @@ export default function PlanGrid({ scenario, analysis, update }: Props) {
             {cr} cr{t.id === 'PRE' && cr > 20 ? ' (20 count)' : ''}
           </span>
         </header>
+        {t.id !== 'PRE' && cr > 0 && (
+          <span className={`term-load${cr >= 18 ? ' heavy' : ''}`} aria-hidden title={`${cr} of about 18 credits`}>
+            <span style={{ width: `${Math.min(100, (cr / 18) * 100)}%` }} />
+          </span>
+        )}
         {t.id === 'F26' && scenario.sample && <p className="muted small plan-note">Placeholder: replace with your actual Fall 2026 courses.</p>}
         {termFlags.map((f, i) => (
           <FlagLine key={i} f={f} />

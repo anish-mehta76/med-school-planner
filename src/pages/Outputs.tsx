@@ -3,6 +3,7 @@ import { ArrowRight, ChevronRight, Plus } from 'lucide-react';
 import type { OutputStatus, OutputType, ResearchOutput } from '../types';
 import { setState, uid, useStore } from '../store/useStore';
 import { Empty, Modal } from '../components/ui';
+import { reducedMotion } from '../components/viz';
 
 const TYPE_LABELS: Record<OutputType, string> = {
   publication: 'Publication',
@@ -139,7 +140,21 @@ export default function Outputs({ go }: { go: (page: string) => void }) {
               const n = outputs.filter((o) => o.status === s.key).length;
               return (
                 <li key={s.key} className={n ? 'on' : ''}>
-                  {s.label} <span className="num">{n}</span>
+                  {n ? (
+                    <button
+                      type="button"
+                      className="pipe-step"
+                      onClick={() => document.getElementById(`stage-${s.key}`)?.scrollIntoView({ behavior: reducedMotion() ? 'auto' : 'smooth', block: 'start' })}
+                    >
+                      <span className="pipe-node num">{n}</span>
+                      {s.label}
+                    </button>
+                  ) : (
+                    <span className="pipe-step">
+                      <span className="pipe-node num">{n}</span>
+                      {s.label}
+                    </span>
+                  )}
                 </li>
               );
             })}

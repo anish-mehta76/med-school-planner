@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
-import { BookOpen, BriefcaseMedical, CalendarRange, Compass, Ellipsis, FileText, Gauge, LayoutDashboard, Microscope, Stethoscope, UserRoundCog, type LucideIcon } from 'lucide-react';
+import type { CSSProperties } from 'react';
+import { BookOpen, BriefcaseMedical, CalendarRange, Compass, Ellipsis, FileText, Gauge, LayoutDashboard, Microscope, UserRoundCog, type LucideIcon } from 'lucide-react';
+import shield from './assets/jhu-shield.jpg';
 import Dashboard from './pages/Dashboard';
 import Experiences from './pages/Experiences';
 import Outputs from './pages/Outputs';
@@ -38,6 +40,12 @@ type PageId = 'dashboard' | 'experiences' | 'planner' | 'research' | 'outputs' |
 function currentPage(): PageId {
   const h = window.location.hash.slice(1);
   return (PAGES.find((p) => p.id === h)?.id ?? 'dashboard') as PageId;
+}
+
+/** Small numbered label shown above each page title, e.g. "01 / Dashboard". */
+function eyebrow(page: PageId) {
+  const i = PAGES.findIndex((p) => p.id === page);
+  return { '--eyebrow': `"${String(i + 1).padStart(2, '0')} / ${PAGES[i].label}"` } as CSSProperties;
 }
 
 const ICON = { size: 18, strokeWidth: 1.75, 'aria-hidden': true } as const;
@@ -99,10 +107,11 @@ export default function App() {
     <div className="app">
       <nav className="sidebar" aria-label="Main">
         <div className="brand">
-          <span className="brand-mark" aria-hidden>
-            <Stethoscope size={16} strokeWidth={2} />
+          <img className="brand-mark" src={shield} alt="" aria-hidden />
+          <span className="brand-name">
+            <span>Med School Planner</span>
+            <span className="brand-sub">Johns Hopkins</span>
           </span>
-          <span>Med School Planner</span>
         </div>
         <ul>
           {PAGES.map((p) => (
@@ -122,8 +131,9 @@ export default function App() {
         </p>
       </nav>
 
-      <main ref={mainRef}>
+      <main ref={mainRef} style={eyebrow(page)}>
         <Banners />
+        <div className="page-swap" key={page}>
         {page === 'dashboard' && <Dashboard go={go} />}
         {page === 'experiences' && <Experiences />}
         {page === 'planner' && <Planner />}
@@ -133,6 +143,7 @@ export default function App() {
         {page === 'opportunities' && <Opportunities />}
         {page === 'guides' && <Guides />}
         {page === 'settings' && <Settings />}
+        </div>
       </main>
 
       {moreOpen && <div className="sheet-backdrop" onClick={() => setMoreOpen(false)} aria-hidden />}

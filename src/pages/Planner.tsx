@@ -7,6 +7,19 @@ import PlanGrid from '../planner/ui/PlanGrid';
 import CourseData from '../planner/ui/CourseData';
 import MedSchools from '../planner/ui/MedSchools';
 import { FaTracker, MajorDot, MajorSelect, Overlap, Requirements, WhatIf } from '../planner/ui/Views';
+import { CountUp } from '../components/viz';
+
+const pctText = (n: number) => `${Math.round(n)}%`;
+const creditText = (target: number) => (n: number) => (Number.isInteger(target) ? String(Math.round(n)) : n.toFixed(1));
+
+/** Thin bar that fills to `pct` (0–100) when it first appears. */
+function Meter({ pct }: { pct: number }) {
+  return (
+    <span className="meter" aria-hidden>
+      <span style={{ width: `${Math.max(0, Math.min(100, pct))}%` }} />
+    </span>
+  );
+}
 
 type Tab = 'plan' | 'reqs' | 'schools' | 'overlap' | 'fa' | 'whatif' | 'data';
 const TABS: { id: Tab; label: string }[] = [
@@ -74,19 +87,28 @@ export default function Planner() {
         )}
         <div className="stats plan-stats">
           <div className="stat">
-            <span className="stat-value num">{a.total}</span>
+            <span className="stat-value num">
+              <CountUp value={a.total} format={creditText(a.total)} />
+            </span>
             <span className="stat-label">credits counted{a.total < 120 ? ' (120 needed)' : ''}</span>
+            <Meter pct={(a.total / 120) * 100} />
           </div>
           {a.results.map((r) => (
             <div key={r.major.id} className="stat">
-              <span className="stat-value num">{Math.round(r.pct * 100)}%</span>
+              <span className="stat-value num">
+                <CountUp value={Math.round(r.pct * 100)} format={pctText} />
+              </span>
               <span className="stat-label">{r.major.short} met</span>
+              <Meter pct={r.pct * 100} />
             </div>
           ))}
           {a.premed && (
             <div className="stat">
-              <span className="stat-value num">{Math.round(a.premed.pct * 100)}%</span>
+              <span className="stat-value num">
+                <CountUp value={Math.round(a.premed.pct * 100)} format={pctText} />
+              </span>
               <span className="stat-label">pre-med met</span>
+              <Meter pct={a.premed.pct * 100} />
             </div>
           )}
           {a.results.length > 1 && (
