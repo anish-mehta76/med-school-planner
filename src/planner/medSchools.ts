@@ -57,6 +57,8 @@ export interface SchoolReq {
   apMaxSem?: number;
   /** Lowest AP score accepted here. */
   apMinScore?: number;
+  /** Only upper-level college courses count (JHU numbers 200 and up); exam credit never does. */
+  upper?: boolean;
 }
 
 export interface MedSchool {
@@ -595,6 +597,129 @@ export const MED_SCHOOLS: MedSchool[] = [
     ],
     notes: ['Upper-level lab sciences are strongly recommended. Online bachelor’s degrees aren’t accepted.'],
   },
+  {
+    id: 'usuhs',
+    name: 'Uniformed Services University Hébert School of Medicine',
+    short: 'USU',
+    url: 'https://medschool.usuhs.edu/admissions/application-requirements',
+    checked: CHECKED,
+    model: 'prerequisites',
+    ap: {
+      rule: 'advanced',
+      note: 'AP/IB credit your college granted is acceptable for biology, calculus, statistics, general chemistry, physics and English; with AP/IB science credit you must take upper-level science coursework. CLEP isn’t accepted.',
+    },
+    reqs: [
+      req('bio', 'Biology with lab, one year (8 credits)', ['bio'], 2, { lab: true }),
+      req('genchem', 'General / inorganic chemistry with lab, one year (8 credits)', ['genchem'], 2, { lab: true }),
+      req('orgo', 'Organic chemistry with lab, one year (biochemistry may replace the second semester)', ['orgo', 'biochem'], 2, { lab: true, min: { orgo: 1 }, ap: 'no' }),
+      req('physics', 'General physics with lab, one year (8 credits)', ['physics'], 2, { lab: true }),
+      req('writing', 'English, foreign language, writing-intensive humanities, social science or psychology, one year', ['writing', 'behavioral'], 2, { ap: 'counts' }),
+      req('math', 'Calculus or statistics, one semester (statistics no longer accepted from the 2028 cycle)', ['calc', 'stats'], 1, { ap: 'counts' }),
+    ],
+    notes: ['U.S. citizens only; commissioning age and medical standards apply. Grade of C or higher (C- not accepted). Online and community college courses, including labs, are accepted.'],
+  },
+  {
+    id: 'baylor',
+    name: 'Baylor College of Medicine',
+    short: 'Baylor',
+    url: 'https://www.bcm.edu/education/school-of-medicine/m-d-program/admissions-process/requirements',
+    checked: CHECKED,
+    model: 'prerequisites',
+    ap: { rule: 'no', note: 'AP courses aren’t accepted for the required coursework.' },
+    reqs: [
+      req('math', 'Math (3–4 hours; biostatistics preferred, any quantitative math such as statistics, physics or calculus)', ['stats', 'calc', 'physics'], 1),
+      req('writing', 'Expository writing (3–4 hours; writing-intensive courses in many fields count)', ['writing'], 1),
+      req('orgo', 'Organic chemistry, two semesters (lab not required)', ['orgo'], 2),
+      req('biochem', 'Biochemistry (lab not required)', ['biochem'], 1),
+      req('bio', 'Advanced biology (lab not required; genetics or cell/molecular highly recommended)', ['bio'], 1, { upper: true }),
+    ],
+    notes: ['Also 12 semester hours of humanities and social/behavioral sciences (not checked). 90 semester hours at a U.S. college required. Spanish recommended.'],
+  },
+  {
+    id: 'unc',
+    name: 'UNC School of Medicine',
+    short: 'UNC',
+    url: 'https://www.med.unc.edu/md/admissions/how-to-apply/admissions-requirements/',
+    checked: CHECKED,
+    model: 'prerequisites',
+    ap: { rule: 'no', note: 'AP and CLEP credits don’t count toward required coursework or the 30 BCPM hours.' },
+    reqs: [
+      req('biochem', 'Biochemistry, one course', ['biochem'], 1),
+      req('bio', 'Upper-level biology, two courses (e.g. anatomy/physiology, cell biology, genetics, microbiology, immunology)', ['bio'], 2, { upper: true }),
+      rec('stats', 'Statistics', ['stats'], 1),
+    ],
+    notes: ['At least 30 credit hours of letter-graded biology, chemistry, physics and math (not checked). Humanities coursework recommended. A substantial majority of coursework should be in person.'],
+  },
+  {
+    id: 'mayo',
+    name: 'Mayo Clinic Alix School of Medicine',
+    short: 'Mayo',
+    url: 'https://college.mayo.edu/academics/mayo-clinic-alix-school-of-medicine/md-program/how-to-apply/prerequisites-and-requirements/',
+    checked: CHECKED,
+    model: 'competencies',
+    ap: { rule: 'unstated', note: 'No specific prerequisites, and no AP policy for the MD program on the page.' },
+    reqs: [
+      rec('bio', 'Biology and microbiology', ['bio'], 1),
+      rec('biochem', 'Biochemistry', ['biochem'], 1),
+      rec('chem', 'Chemistry', ['genchem', 'orgo'], 1),
+      rec('physics', 'Physics', ['physics'], 1),
+    ],
+    notes: ['Successful applicants show a broad foundation in life, physical and social sciences and humanities. Bachelor’s from a U.S. or Canadian college required.'],
+  },
+  {
+    id: 'ucsd',
+    name: 'UC San Diego School of Medicine',
+    short: 'UCSD',
+    url: 'https://medschool.ucsd.edu/education/md-combined/admissions/application-process.html',
+    checked: CHECKED,
+    model: 'competencies',
+    ap: { rule: 'unstated', note: 'No required coursework, and no AP policy on the page.' },
+    reqs: [
+      rec('bio', 'Biology, one year', ['bio'], 2, { lab: true }),
+      rec('genchem', 'General chemistry, one year', ['genchem'], 2, { lab: true }),
+      rec('biochem', 'Biochemistry, one term', ['biochem'], 1),
+      rec('orgo', 'Organic chemistry, one year', ['orgo'], 2, { lab: true }),
+      rec('physics', 'Physics, one year', ['physics'], 2, { lab: true }),
+      rec('math', 'Calculus or statistics, one year', ['calc', 'stats'], 2),
+    ],
+    notes: ['Labs recommended for every course that offers one. Online grades accepted. U.S. citizens, permanent residents and DACA recipients only.'],
+  },
+  {
+    id: 'emory',
+    name: 'Emory University School of Medicine',
+    short: 'Emory',
+    url: 'https://med.emory.edu/education/programs/md/admissions/faq.html',
+    checked: CHECKED,
+    model: 'prerequisites',
+    ap: { rule: 'counts', note: 'Emory accepts some AP and IB credit if it appears on your undergraduate transcript. Extra science courses are helpful but not required.' },
+    reqs: [
+      req('bio', 'Biology with lab, one year', ['bio'], 2, { lab: true }),
+      req('genchem', 'General chemistry with lab, one year', ['genchem'], 2, { lab: true }),
+      req('orgo', 'Organic chemistry with lab, one year', ['orgo'], 2, { lab: true }),
+      req('physics', 'Physics with lab, one year', ['physics'], 2, { lab: true }),
+      req('writing', 'English: grammar and composition, one year (6 semester hours)', ['writing'], 2),
+    ],
+    notes: ['Also 18 hours (six courses) of humanities and social sciences (not checked). The FAQ says “some” AP is accepted without listing which.'],
+  },
+  {
+    id: 'osu',
+    name: 'Ohio State University College of Medicine',
+    short: 'Ohio State',
+    url: 'https://medicine.osu.edu/education/md/admissions/before-you-apply/requirements',
+    checked: CHECKED,
+    model: 'prerequisites',
+    ap: { rule: 'unstated', note: 'The requirements page doesn’t mention AP.' },
+    reqs: [
+      req('bio', 'Biology, two semesters', ['bio'], 2),
+      req('genchem', 'General chemistry series with lab, two semesters', ['genchem'], 2, { lab: true }),
+      req('biochem', 'Biochemistry, one semester', ['biochem'], 1),
+      req('orgo', 'Organic chemistry series with a year of lab, two semesters', ['orgo'], 2, { lab: true }),
+      req('physics', 'Physics with lab, two semesters', ['physics'], 2, { lab: true }),
+      rec('writing', 'Writing / speech', ['writing'], 1),
+      rec('behavioral', 'Social sciences (psychology, sociology, anthropology, economics)', ['behavioral'], 1),
+    ],
+    notes: ['Within ten years of enrolling, grade C- or higher. Online lectures accepted; labs must be in person. Anatomy and ethics recommended.'],
+  },
 ];
 
 export const MED_SCHOOL_BY_ID: Record<string, MedSchool> = Object.fromEntries(MED_SCHOOLS.map((s) => [s.id, s]));
@@ -705,6 +830,7 @@ export function apVerdict(school: MedSchool, exam: Resolved, all: Resolved[], fo
   if (!hit) return 'not-required';
   const req = school.reqs.find((q) => q.areas.includes(hit.area) && !q.labsOnly);
   if (!req) return 'not-required';
+  if (req.upper) return 'no';
   const minScore = req.apMinScore ?? school.ap.minScore;
   if (minScore && exam.item.score && exam.item.score < minScore) return 'score';
   const rule = ruleFor(school, req);
@@ -721,8 +847,8 @@ export function evaluateSchool(school: MedSchool, all: Resolved[]): SchoolResult
   let apCredits = 0;
   const reqs = school.reqs.map((q): SchoolReqResult => {
     const inArea = (r: Resolved) => areasOf(r).filter((h) => q.areas.includes(h.area) && (q.labsOnly ? h.lab : h.lecture));
-    const college = usable.filter((r) => r.season !== 'PRE' && inArea(r).length);
-    const exams = usable.filter((r) => r.season === 'PRE' && inArea(r).length);
+    const college = usable.filter((r) => r.season !== 'PRE' && inArea(r).length && (!q.upper || numOf(r.code) >= 200));
+    const exams = q.upper ? [] : usable.filter((r) => r.season === 'PRE' && inArea(r).length);
     const counted: Resolved[] = [];
     const pending: Resolved[] = [];
     const unknown: Resolved[] = [];

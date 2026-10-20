@@ -91,3 +91,10 @@ describe('medical-school comparison', () => {
     expect(row('sinai', ap('AP Physics C: Mechanics', 5), 'physics').status).toBe('met');
   });
 });
+
+describe('upper-level requirements', () => {
+  it('UNC counts only upper-level biology, never AP', () => {
+    expect(row('unc', [...ap('AP Biology', 5), ...at('F26', 'AS.020.151', 'AS.020.152')], 'bio').status).toBe('missing');
+    expect(row('unc', at('F27', 'AS.020.303', 'AS.020.306'), 'bio').status).toBe('met');
+  });
+});
