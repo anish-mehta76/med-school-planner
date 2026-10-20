@@ -5,12 +5,14 @@ import { ALL_MAJORS, MAJOR_BY_ID } from '../planner/majors';
 import { SEMESTERS, TERM_BY_ID } from '../planner/terms';
 import PlanGrid from '../planner/ui/PlanGrid';
 import CourseData from '../planner/ui/CourseData';
+import MedSchools from '../planner/ui/MedSchools';
 import { FaTracker, MajorDot, MajorSelect, Overlap, Requirements, WhatIf } from '../planner/ui/Views';
 
-type Tab = 'plan' | 'reqs' | 'overlap' | 'fa' | 'whatif' | 'data';
+type Tab = 'plan' | 'reqs' | 'schools' | 'overlap' | 'fa' | 'whatif' | 'data';
 const TABS: { id: Tab; label: string }[] = [
   { id: 'plan', label: 'Plan' },
   { id: 'reqs', label: 'Requirements' },
+  { id: 'schools', label: 'Med schools' },
   { id: 'overlap', label: 'Majors & overlap' },
   { id: 'fa', label: 'Foundational Abilities' },
   { id: 'whatif', label: 'What if' },
@@ -121,7 +123,7 @@ export default function Planner() {
             <div className="callout small">
               <strong>Pick your majors above, then add courses.</strong>
               <span>
-                Type a course code (e.g. AS.030.101) in any term: ones you've taken, or ones you're considering. Put AP/IB credit in the exam lane. Unknown codes
+                Type a course code (e.g. AS.030.101) in any term: ones you've taken, or ones you're considering. Add AP scores in the exam lane: they become the JHU courses JHU's AP table awards, and Med schools shows which schools accept them. Unknown codes
                 are added as custom courses you can edit. To try out a major, use What if.
               </span>
             </div>
@@ -145,6 +147,7 @@ export default function Planner() {
         </>
       )}
       {tab === 'reqs' && <Requirements scenario={active} analysis={a} update={updateScenario} />}
+      {tab === 'schools' && <MedSchools scenario={active} analysis={a} update={updateScenario} />}
       {tab === 'overlap' && <Overlap scenario={active} analysis={a} />}
       {tab === 'fa' && <FaTracker analysis={a} />}
       {tab === 'whatif' && <WhatIf scenario={active} analysis={a} update={updateScenario} />}

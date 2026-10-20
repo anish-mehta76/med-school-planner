@@ -2445,3 +2445,69 @@ label.check {
 .sis-form {
   grid-template-columns: minmax(0, 1fr);
 }
+
+/* AP credit and medical-school comparison */
+.plan-exam {
+  display: block;
+  color: var(--muted);
+}
+.plan-item.forfeited .plan-code,
+.plan-item.forfeited .plan-title {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+.plan-ap {
+  display: grid;
+  gap: var(--sp-1);
+  margin-top: var(--sp-2);
+}
+.plan-ap-fields {
+  display: flex;
+  gap: var(--sp-2);
+}
+.plan-ap-fields select {
+  width: auto;
+  flex: 0 0 auto;
+}
+.plan-ap-fields select:first-child {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+.plan-ap p {
+  margin: 0;
+}
+.ap-codes {
+  display: block;
+}
+.ap-line {
+  display: block;
+}
+.ap-table .ap-counts {
+  color: var(--strong);
+  font-weight: 600;
+}
+.ap-table .ap-no,
+.ap-table .ap-score,
+.ap-table .ap-forfeited {
+  color: var(--behind);
+}
+.ap-table .ap-advanced,
+.ap-table .ap-unstated {
+  color: var(--below);
+}
+.ap-wrap {
+  overflow-x: auto;
+  max-width: 100%;
+}
+.ap-table th:first-child,
+.ap-table td:first-child {
+  position: sticky;
+  left: 0;
+  background: var(--surface);
+  min-width: 9rem;
+}
+.ap-table td,
+.ap-table th {
+  min-width: 6.5rem;
+  vertical-align: top;
+}

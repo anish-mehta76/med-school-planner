@@ -5,6 +5,7 @@ import { newItemId, type Flag, type ScenarioAnalysis } from '../engine';
 import { MAJOR_BY_ID, majorColor } from '../majors';
 import { TERMS, YEAR_LABEL } from '../terms';
 import type { PlanItem, Resolved, Scenario, Term } from '../types';
+import { AP_EXAMS, AP_SOURCE, apAward, apItems } from '../apCredit';
 
 interface Props {
   scenario: Scenario;
@@ -78,6 +79,7 @@ export default function PlanGrid({ scenario, analysis, update }: Props) {
               counts={analysis.countsFor.get(r.item.id) ?? []}
               majorIds={scenario.majorIds}
               flags={flagsFor(r.item.id)}
+              forfeited={analysis.forfeited.has(r.item.id)}
               open={open === r.item.id}
               toggle={() => setOpen(open === r.item.id ? undefined : r.item.id)}
               setItem={(p) => setItem(r.item.id, p)}
@@ -85,6 +87,7 @@ export default function PlanGrid({ scenario, analysis, update }: Props) {
             />
           ))}
         </ul>
+        {t.id === 'PRE' && <AddAp onAdd={(items) => update((s) => ({ ...s, plan: [...s.plan, ...items] }))} />}
         <AddCourse listId={listId} onAdd={(text) => add(t.id, text)} label={t.label} />
       </section>
     );
@@ -133,6 +136,7 @@ function PlanRow({
   counts,
   majorIds,
   flags,
+  forfeited,
   open,
   toggle,
   setItem,
@@ -142,6 +146,7 @@ function PlanRow({
   counts: string[];
   majorIds: string[];
   flags: Flag[];
+  forfeited: boolean;
   open: boolean;
   toggle: () => void;
   setItem: (p: Partial<PlanItem>) => void;
@@ -150,10 +155,19 @@ function PlanRow({
   const c = r.course;
   const warn = flags.some((f) => f.level !== 'info');
   return (
-    <li className={`plan-item ${warn ? 'flagged' : ''} ${r.item.addedByAutofill ? 'autofilled' : ''}`}>
+    <li className={`plan-item ${warn ? 'flagged' : ''} ${r.item.addedByAutofill ? 'autofilled' : ''} ${forfeited ? 'forfeited' : ''}`}>
       <button type="button" className="plan-item-main" aria-expanded={open} onClick={toggle}>
         <span className="plan-code num">{r.code}</span>
-        <span className="plan-title">{r.title}</span>
+        <span className="plan-title">
+          {r.title}
+          {r.item.exam && (
+            <span className="plan-exam small">
+              {r.item.exam}
+              {r.item.score ? ` · ${r.item.score}` : ''}
+              {forfeited ? ' · forfeited' : ''}
+            </span>
+          )}
+        </span>
         <span className="plan-meta">
           <Dots ids={counts} majorIds={majorIds} />
           {warn && <AlertTriangle size={14} aria-label="Has a warning" className="plan-warn" />}
@@ -261,6 +275,55 @@ function AddCourse({ listId, onAdd, label }: { listId: string; onAdd: (text: str
       <button type="submit" className="btn btn-small btn-icon" aria-label={`Add to ${label}`} disabled={!text.trim()}>
         <Plus size={16} aria-hidden />
       </button>
+    </form>
+  );
+}
+
+/** Adds an AP score as the JHU courses JHU's AP table awards for it. */
+function AddAp({ onAdd }: { onAdd: (items: PlanItem[]) => void }) {
+  const [exam, setExam] = useState('');
+  const [score, setScore] = useState(5);
+  const award = exam ? apAward(exam, score) : undefined;
+  return (
+    <form
+      className="plan-ap"
+      onSubmit={(e) => {
+        e.preventDefault();
+        if (!award) return;
+        onAdd(apItems(exam, score, newItemId));
+        setExam('');
+      }}
+    >
+      <div className="plan-ap-fields">
+        <select value={exam} onChange={(e) => setExam(e.target.value)} aria-label="AP exam">
+          <option value="">Add an AP score…</option>
+          {AP_EXAMS.map((x) => (
+            <option key={x} value={x}>
+              {x}
+            </option>
+          ))}
+        </select>
+        <select value={score} onChange={(e) => setScore(Number(e.target.value))} aria-label="AP score">
+          {[5, 4, 3, 2, 1].map((n) => (
+            <option key={n} value={n}>
+              {n}
+            </option>
+          ))}
+        </select>
+        <button type="submit" className="btn btn-small" disabled={!award}>
+          Add
+        </button>
+      </div>
+      {exam && (
+        <p className="muted small">
+          {award ? `JHU gives ${award.courses.map((c) => c.code).join(' + ')} (${award.courses.reduce((n, c) => n + c.credits, 0)} cr).` : 'JHU gives no credit for this score.'}
+          {award?.note ? ` ${award.note}` : ''}{' '}
+          <a className="link" href={AP_SOURCE} target="_blank" rel="noreferrer">
+            JHU AP table
+          </a>
+        </p>
+      )}
+      {!exam && <p className="muted small">AP exams not listed (e.g. English, Psychology) earn no JHU credit.</p>}
     </form>
   );
 }

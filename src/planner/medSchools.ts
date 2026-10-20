@@ -1,0 +1,629 @@
+import type { Resolved } from './types';
+import { forfeits } from './apCredit';
+import { numOf } from './majors';
+import { deptOf } from './catalog';
+
+/**
+ * Medical-school prerequisites in one standard shape, so the same plan can be checked against
+ * any school. There is no free API for this (AAMC's MSAR, the only database, is a paid
+ * subscription with no public API), so each entry is summarized from the school's own
+ * admissions page, linked in `url`, on the `checked` date. Requirements change every cycle:
+ * confirm on the school's page before relying on any of it.
+ *
+ * Every school's AP rule is applied to the same JHU courses: AP credit always enters the plan
+ * through JHU's AP table (apCredit.ts), and a school then decides whether that credit counts.
+ */
+
+export type Area = 'bio' | 'genchem' | 'orgo' | 'biochem' | 'physics' | 'calc' | 'stats' | 'writing' | 'behavioral';
+
+export const AREA_LABEL: Record<Area, string> = {
+  bio: 'Biology',
+  genchem: 'General chemistry',
+  orgo: 'Organic chemistry',
+  biochem: 'Biochemistry',
+  physics: 'Physics',
+  calc: 'Calculus',
+  stats: 'Statistics',
+  writing: 'Writing / English',
+  behavioral: 'Psychology / sociology',
+};
+
+/**
+ * How a school treats AP credit in an area:
+ * counts: AP credit on the JHU transcript satisfies it.
+ * advanced: AP counts only once you've also taken a more advanced college course in that subject.
+ * no: AP never counts; take the college course (or an advanced one) instead.
+ * unstated: the school's page doesn't say.
+ */
+export type ApRule = 'counts' | 'advanced' | 'no' | 'unstated';
+
+export interface SchoolReq {
+  key: string;
+  label: string;
+  /** Courses in any of these areas count toward it. */
+  areas: Area[];
+  /** Semester courses needed. */
+  sem: number;
+  /** At least one college lab in these areas. */
+  lab?: boolean;
+  /** Count lab courses instead of lectures (e.g. "one year of lab"). */
+  labsOnly?: boolean;
+  /** Minimum courses from particular areas, e.g. at least one organic. */
+  min?: Partial<Record<Area, number>>;
+  level: 'required' | 'recommended';
+  /** Overrides the school's AP rule for this requirement. */
+  ap?: ApRule;
+  /** Most semesters AP may cover here. */
+  apMaxSem?: number;
+  /** Lowest AP score accepted here. */
+  apMinScore?: number;
+}
+
+export interface MedSchool {
+  id: string;
+  name: string;
+  short: string;
+  url: string;
+  /** Date the entry was checked against `url`. */
+  checked: string;
+  /** "competencies": no fixed course list; reqs are the courses the school says usually cover each area. */
+  model: 'prerequisites' | 'competencies' | 'advising';
+  ap: { rule: ApRule; minScore?: number; /** Most AP credits counted in total. */ maxCredits?: number; note: string };
+  reqs: SchoolReq[];
+  notes: string[];
+}
+
+const req = (key: string, label: string, areas: Area[], sem: number, o: Partial<SchoolReq> = {}): SchoolReq => ({ key, label, areas, sem, level: 'required', ...o });
+const rec = (key: string, label: string, areas: Area[], sem: number, o: Partial<SchoolReq> = {}): SchoolReq => req(key, label, areas, sem, { level: 'recommended', ...o });
+
+const CHECKED = '2026-10-20';
+
+export const MED_SCHOOLS: MedSchool[] = [
+  {
+    id: 'jhu-advising',
+    name: 'JHU pre-med advising (undergraduate)',
+    short: 'JHU advising',
+    url: 'https://studentaffairs.jhu.edu/preprofadvising/pre-medhealth/prerequisites/',
+    checked: CHECKED,
+    model: 'advising',
+    ap: { rule: 'advanced', note: 'With AP credit in a science, JHU advising expects at least one more JHU course in that area. AP Biology does not replace the two biology courses with labs.' },
+    reqs: [
+      req('genchem', 'General chemistry with labs', ['genchem'], 2, { lab: true }),
+      req('orgo', 'Organic chemistry with lab', ['orgo'], 2, { lab: true }),
+      req('bio', 'Biology with labs', ['bio'], 2, { lab: true, ap: 'no' }),
+      req('biochem', 'Biochemistry', ['biochem'], 1),
+      req('physics', 'Physics with labs', ['physics'], 2, { lab: true }),
+      req('calc', 'Calculus', ['calc'], 1),
+      req('stats', 'Statistics', ['stats'], 1),
+      req('writing', 'Writing-intensive courses', ['writing'], 2, { ap: 'unstated' }),
+      req('behavioral', 'Psychology / sociology', ['behavioral'], 2, { ap: 'unstated' }),
+    ],
+    notes: ['JHU publishes recommendations, not a fixed list. This mirrors the planner’s pre-med track.'],
+  },
+  {
+    id: 'jhu-som',
+    name: 'Johns Hopkins School of Medicine',
+    short: 'Hopkins SOM',
+    url: 'https://www.hopkinsmedicine.org/som/education-programs/md-program/application-process/prerequisites-requirements-and-policies',
+    checked: CHECKED,
+    model: 'prerequisites',
+    ap: {
+      rule: 'counts',
+      maxCredits: 12,
+      note: 'AP/IB counts if your college gave credit on the transcript, up to 12 credits. Using it for biology or chemistry means also taking an advanced semester in that subject (e.g. cell biology or genetics; a second semester of organic or biochemistry).',
+    },
+    reqs: [
+      req('bio', 'Biology with lab (8 semester hours)', ['bio'], 2, { lab: true, ap: 'advanced' }),
+      req('genchem', 'General chemistry with lab (8 semester hours)', ['genchem'], 2, { lab: true, ap: 'advanced' }),
+      req('orgo', 'Organic chemistry with lab (4 semester hours)', ['orgo'], 1, { lab: true, ap: 'advanced' }),
+      req('biochem', 'Biochemistry (3 semester hours; lab not required)', ['biochem'], 1),
+      req('physics', 'Physics with lab (8 semester hours)', ['physics'], 2, { lab: true }),
+      req('math', 'Calculus and/or statistics (6 semester hours)', ['calc', 'stats'], 2),
+      rec('stats', 'Statistics or epidemiology (strongly recommended)', ['stats'], 1),
+      req('writing', 'Two writing-intensive courses (within 24 hours of humanities/social/behavioral)', ['writing'], 2, { ap: 'unstated' }),
+    ],
+    notes: [
+      '24 semester hours of humanities, social and behavioral sciences in all; AP may cover up to half. The planner checks only the two writing-intensive courses.',
+      'Genetics is recommended. CLEP is not accepted.',
+    ],
+  },
+  {
+    id: 'harvard',
+    name: 'Harvard Medical School (Pathways)',
+    short: 'Harvard',
+    url: 'https://hms.harvard.edu/education-admissions/md-program/admissions/preparing-apply/prerequisite-courses',
+    checked: CHECKED,
+    model: 'prerequisites',
+    ap: {
+      rule: 'advanced',
+      minScore: 4,
+      note: 'Scores of 4 or 5 only. AP can cover one semester of chemistry or physics if it let you into an upper-level course. Never biology or writing.',
+    },
+    reqs: [
+      req('bio', 'Biology, one year with lab', ['bio'], 2, { lab: true, ap: 'no' }),
+      req('chem', 'Chemistry, two years: inorganic, organic and biochemistry, with lab', ['genchem', 'orgo', 'biochem'], 4, { lab: true, apMaxSem: 1, min: { orgo: 1, biochem: 1 } }),
+      req('physics', 'Physics, one year (lab desirable)', ['physics'], 2, { apMaxSem: 1 }),
+      req('writing', 'Expository writing, one year', ['writing'], 2, { ap: 'no' }),
+      rec('math', 'Calculus and statistics, one semester each (encouraged)', ['calc', 'stats'], 2, { min: { calc: 1, stats: 1 }, ap: 'counts' }),
+      rec('behavioral', 'Behavioral sciences (encouraged)', ['behavioral'], 1, { ap: 'unstated' }),
+    ],
+    notes: ['HST track differs: physics must be taken in college and upper-level math is expected.', 'Lab sciences should not be taken online.'],
+  },
+  {
+    id: 'stanford',
+    name: 'Stanford School of Medicine',
+    short: 'Stanford',
+    url: 'https://med.stanford.edu/md-admissions/academic-requirements.html',
+    checked: CHECKED,
+    model: 'competencies',
+    ap: { rule: 'unstated', note: 'No specific course requirements, and no AP policy for the MD program on the page.' },
+    reqs: [
+      rec('bio', 'Biology', ['bio'], 2),
+      rec('chem', 'Chemistry', ['genchem', 'orgo', 'biochem'], 2),
+      rec('physics', 'Physics', ['physics'], 1),
+      rec('math', 'Mathematics / statistics', ['calc', 'stats'], 1),
+      rec('behavioral', 'Behavioral and social sciences', ['behavioral'], 1),
+      rec('writing', 'Communication (writing)', ['writing'], 1),
+    ],
+    notes: ['Recommends depth in each area plus laboratory or field experience; Spanish or an Asian language is recommended.'],
+  },
+  {
+    id: 'penn',
+    name: 'Perelman School of Medicine (Penn)',
+    short: 'Penn',
+    url: 'https://www.med.upenn.edu/admissions/faq',
+    checked: CHECKED,
+    model: 'competencies',
+    ap: { rule: 'counts', note: 'AP/IB accepted if it’s on your transcript; Penn encourages taking the next course in the sequence.' },
+    reqs: [
+      rec('bio', 'Biology', ['bio'], 2),
+      rec('chem', 'Chemistry, including organic', ['genchem', 'orgo'], 2, { min: { orgo: 1 } }),
+      rec('biochem', 'Biochemistry', ['biochem'], 1),
+      rec('physics', 'Physics', ['physics'], 2),
+      rec('math', 'Mathematics and statistics', ['calc', 'stats'], 1),
+    ],
+    notes: ['No specific courses required; competency must be shown. Refresher work is recommended if your last science course was over five years ago.'],
+  },
+  {
+    id: 'columbia',
+    name: 'Columbia Vagelos College of Physicians and Surgeons',
+    short: 'Columbia',
+    url: 'https://www.vagelos.columbia.edu/education/academic-programs/md-program/admissions/apply/application-requirements',
+    checked: CHECKED,
+    model: 'prerequisites',
+    ap: { rule: 'counts', note: 'AP physics or general chemistry counts. AP biology doesn’t: it has to be replaced by a year of advanced biology.' },
+    reqs: [
+      req('bio', 'Biology, one year with labs', ['bio'], 2, { lab: true, ap: 'no' }),
+      req('genchem', 'General chemistry with lab', ['genchem'], 2, { lab: true }),
+      req('orgo', 'Organic chemistry with lab', ['orgo'], 2, { lab: true, ap: 'no' }),
+      req('biochem', 'Biochemistry (lab recommended)', ['biochem'], 1, { ap: 'no' }),
+      req('physics', 'Physics, one year with a semester of lab', ['physics'], 2, { lab: true }),
+      req('writing', 'English or writing-intensive, one year', ['writing'], 2, { ap: 'unstated' }),
+    ],
+    notes: [
+      'The FAQ and application pages differ slightly on course counts; confirm with admissions.',
+      'Online prerequisites aren’t accepted. Grades below C- don’t count. Courses must be within 10 years.',
+    ],
+  },
+  {
+    id: 'ucsf',
+    name: 'UCSF School of Medicine',
+    short: 'UCSF',
+    url: 'https://meded.ucsf.edu/prospective-students/md-program-admissions/md-program-application-process',
+    checked: CHECKED,
+    model: 'prerequisites',
+    ap: { rule: 'no', note: 'AP accepted only for chemistry and physics, and only if it’s on your transcript.' },
+    reqs: [
+      req('bio', 'Biology, one year with lab (may include biochemistry)', ['bio', 'biochem'], 2, { lab: true }),
+      req('chem', 'Chemistry, one year including a semester of organic with lab', ['genchem', 'orgo'], 2, { lab: true, min: { orgo: 1 }, ap: 'counts' }),
+      req('biochem', 'Biochemistry, one semester', ['biochem'], 1),
+      req('physics', 'Physics, one semester', ['physics'], 1, { ap: 'counts' }),
+    ],
+    notes: ['Online and pass/no-pass courses accepted. U.S. citizens, permanent residents and DACA recipients only.'],
+  },
+  {
+    id: 'duke',
+    name: 'Duke University School of Medicine',
+    short: 'Duke',
+    url: 'https://medschool.duke.edu/education/health-professions-education-programs/doctor-medicine-md-program/admissions/admissions-1',
+    checked: CHECKED,
+    model: 'competencies',
+    ap: { rule: 'counts', note: 'No prerequisites. AP credit your college accepts is accepted.' },
+    reqs: [
+      rec('bio', 'Biology, incl. cell/molecular', ['bio'], 2),
+      rec('chem', 'Chemistry', ['genchem', 'orgo'], 2),
+      rec('biochem', 'Biochemistry', ['biochem'], 1),
+      rec('physics', 'Physics or biophysics (lab optional)', ['physics'], 1),
+      rec('behavioral', 'Sociology and psychology', ['behavioral'], 2),
+    ],
+    notes: ['The FAQ lists a minimum GPA of 3.0 and MCAT of 500.'],
+  },
+  {
+    id: 'washu',
+    name: 'Washington University School of Medicine',
+    short: 'WashU',
+    url: 'https://mdadmissions.wustl.edu/how-to-apply/requirements/',
+    checked: CHECKED,
+    model: 'prerequisites',
+    ap: { rule: 'counts', note: 'AP, IB or CLEP counts if it’s on a college transcript or documented (e.g. a College Board score report).' },
+    reqs: [
+      req('bio', 'Biological science, one year', ['bio'], 2),
+      req('genchem', 'General / inorganic chemistry, one year', ['genchem'], 2),
+      req('orgo', 'Organic chemistry, one year', ['orgo'], 2),
+      req('physics', 'Physics, one year', ['physics'], 2),
+      req('calc', 'Differential and integral calculus, one year', ['calc'], 2),
+    ],
+    notes: ['Footnotes on organic chemistry and calculus weren’t captured; check the page. 90 semester hours required. AAMC PREview required.'],
+  },
+  {
+    id: 'yale',
+    name: 'Yale School of Medicine',
+    short: 'Yale',
+    url: 'https://medicine.yale.edu/md-program/admissions/requirements/',
+    checked: CHECKED,
+    model: 'prerequisites',
+    ap: { rule: 'counts', note: 'AP/IB counts if your college gave credit on its transcript.' },
+    reqs: [
+      req('bio', 'General biology with lab, one year', ['bio'], 2, { lab: true }),
+      req('genchem', 'General chemistry with lab, one year', ['genchem'], 2, { lab: true }),
+      req('orgo', 'Organic chemistry with lab', ['orgo'], 1, { lab: true }),
+      req('biochem', 'Biochemistry (lab recommended)', ['biochem'], 1),
+      req('physics', 'General physics with lab, one year', ['physics'], 2, { lab: true }),
+      req('stats', 'Statistics or biostatistics (required from the 2027–28 cycle)', ['stats'], 1),
+    ],
+    notes: ['Labs must be in person; online courses aren’t accepted. Courses should be letter-graded.'],
+  },
+  {
+    id: 'nyu',
+    name: 'NYU Grossman School of Medicine',
+    short: 'NYU',
+    url: 'https://med.nyu.edu/education/md-degree/md-admissions/admissions-requirements',
+    checked: CHECKED,
+    model: 'competencies',
+    ap: { rule: 'unstated', note: 'No prerequisites, and no AP policy on the page.' },
+    reqs: [
+      rec('chem', 'Inorganic and organic chemistry with lab', ['genchem', 'orgo'], 2, { min: { orgo: 1 } }),
+      rec('biochem', 'Biochemistry with lab', ['biochem'], 1),
+      rec('bio', 'General biology with lab (genetics also recommended)', ['bio'], 2),
+      rec('physics', 'General physics with lab', ['physics'], 2),
+      rec('stats', 'Statistics', ['stats'], 1),
+      rec('writing', 'English', ['writing'], 1),
+    ],
+    notes: [],
+  },
+  {
+    id: 'sinai',
+    name: 'Icahn School of Medicine at Mount Sinai',
+    short: 'Mount Sinai',
+    url: 'https://icahn.mssm.edu/education/admissions/md-program',
+    checked: CHECKED,
+    model: 'prerequisites',
+    ap: { rule: 'advanced', note: 'AP physics with a 5 counts. AP chemistry or biology needs advanced coursework in that area. FlexMed accepts no AP or IB.' },
+    reqs: [
+      req('genchem', 'General chemistry, one year', ['genchem'], 2),
+      req('orgo', 'Organic chemistry, one semester', ['orgo'], 1),
+      req('biochem', 'Biochemistry, one semester', ['biochem'], 1),
+      req('bio', 'Biology, one year', ['bio'], 2),
+      req('physics', 'Physics, one semester', ['physics'], 1, { ap: 'counts', apMinScore: 5 }),
+      req('lab', 'One year of lab in biology and/or chemistry', ['bio', 'genchem', 'orgo', 'biochem'], 2, { labsOnly: true }),
+      req('stats', 'Statistics (biostatistics preferred)', ['stats'], 1, { ap: 'unstated' }),
+      req('writing', 'English writing-intensive, one year', ['writing'], 2, { ap: 'unstated' }),
+    ],
+    notes: ['The page found was several years old; confirm. Lab sciences should not be online. Biology within five years of applying is recommended.'],
+  },
+  {
+    id: 'michigan',
+    name: 'University of Michigan Medical School',
+    short: 'Michigan',
+    url: 'https://medschool.umich.edu/programs-admissions/md-program/md-admissions/md-admissions-requirements',
+    checked: CHECKED,
+    model: 'competencies',
+    ap: { rule: 'unstated', note: 'No AP policy on the page. Competencies can also be shown through research or other routes.' },
+    reqs: [
+      rec('bio', 'Cell/molecular biology and genetics (typically 2 semesters)', ['bio'], 2),
+      rec('biochem', 'Biochemistry (with its chemistry prerequisites)', ['biochem'], 1),
+      rec('physics', 'Physics (typically 2 semesters)', ['physics'], 2),
+      rec('stats', 'Statistics, one semester', ['stats'], 1),
+    ],
+    notes: ['U.S. citizens, permanent residents and DACA recipients only. 90 credit hours required.'],
+  },
+  {
+    id: 'northwestern',
+    name: 'Northwestern Feinberg School of Medicine',
+    short: 'Northwestern',
+    url: 'https://www.feinberg.northwestern.edu/admissions/how-to-apply/requirements.html',
+    checked: CHECKED,
+    model: 'prerequisites',
+    ap: { rule: 'advanced', note: 'Science AP counts only with an advanced college course in that subject. Placing out of general chemistry meets that requirement outright.' },
+    reqs: [
+      req('bio', 'Biology with lab, one year', ['bio'], 2, { lab: true }),
+      req('genchem', 'General chemistry with lab, one year', ['genchem'], 2, { lab: true, ap: 'counts' }),
+      req('orgo', 'Organic chemistry with lab, one year (or a semester each of organic and biochemistry)', ['orgo', 'biochem'], 2, { lab: true, min: { orgo: 1 } }),
+      req('physics', 'Physics with lab, one year', ['physics'], 2, { lab: true }),
+      rec('stats', 'Statistics', ['stats'], 1),
+      rec('writing', 'Writing', ['writing'], 1),
+      rec('behavioral', 'Social sciences', ['behavioral'], 1),
+    ],
+    notes: [],
+  },
+  {
+    id: 'umaryland',
+    name: 'University of Maryland School of Medicine',
+    short: 'Maryland',
+    url: 'https://www.medschool.umaryland.edu/admissions/your-path-to-medical-school/',
+    checked: CHECKED,
+    model: 'prerequisites',
+    ap: { rule: 'counts', note: 'AP/IB accepted. Students with strong AP science are encouraged to take advanced courses instead of the standard ones.' },
+    reqs: [
+      req('bio', 'Biological sciences with lab, one year', ['bio'], 2, { lab: true }),
+      req('genchem', 'General chemistry with lab, one year', ['genchem'], 2, { lab: true }),
+      req('orgo', 'Organic chemistry with lab, one year (or a semester each of organic and biochemistry)', ['orgo', 'biochem'], 2, { lab: true, min: { orgo: 1 } }),
+      req('physics', 'Physical sciences with lab, one year', ['physics'], 2, { lab: true }),
+      req('writing', 'English or writing-intensive, one year', ['writing'], 2, { ap: 'unstated' }),
+    ],
+    notes: ['Prerequisites within five years of applying are recommended. Immunology, physiology, microbiology, genetics and epidemiology are strongly recommended.'],
+  },
+  {
+    id: 'ucla',
+    name: 'UCLA David Geffen School of Medicine',
+    short: 'UCLA',
+    url: 'https://medschool.ucla.edu/education/md-education/admissions/preparing-to-apply',
+    checked: CHECKED,
+    model: 'competencies',
+    ap: { rule: 'counts', note: 'No specific prerequisites; the page says AP credit is acceptable.' },
+    reqs: [
+      rec('bio', 'Biological sciences (cell/molecular biology, genetics)', ['bio'], 2),
+      rec('chem', 'Inorganic and organic chemistry with labs', ['genchem', 'orgo'], 2),
+      rec('biochem', 'Biochemistry', ['biochem'], 1),
+      rec('math', 'Mathematics and statistics', ['calc', 'stats'], 1),
+      rec('behavioral', 'Humanities and social sciences', ['behavioral'], 1),
+    ],
+    notes: ['Applications from international students aren’t considered.'],
+  },
+  {
+    id: 'cornell',
+    name: 'Weill Cornell Medicine',
+    short: 'Weill Cornell',
+    url: 'https://teach.weill.cornell.edu/medical-education/admissions/selection-criteria-and-requirements',
+    checked: CHECKED,
+    model: 'prerequisites',
+    ap: { rule: 'no', note: 'AP counts for physics only. With AP biology or chemistry, take advanced coursework in that subject instead.' },
+    reqs: [
+      req('bio', 'Biology with lab, two semesters', ['bio'], 2, { lab: true }),
+      req('genchem', 'General chemistry with lab, two semesters', ['genchem'], 2, { lab: true }),
+      req('orgo', 'Organic chemistry with lab, two semesters (the second may be advanced biology/chemistry)', ['orgo', 'biochem'], 2, { lab: true, min: { orgo: 1 } }),
+      req('physics', 'Physics with lab, two semesters', ['physics'], 2, { lab: true, ap: 'counts' }),
+      req('writing', 'Writing-intensive humanities/social science, two semesters', ['writing'], 2),
+      rec('math', 'Math, statistics or computation (encouraged)', ['calc', 'stats'], 1),
+    ],
+    notes: ['CLEP generally not accepted. Minimum grade C. Courses within 10 years.'],
+  },
+  {
+    id: 'vanderbilt',
+    name: 'Vanderbilt University School of Medicine',
+    short: 'Vanderbilt',
+    url: 'https://medschool.vanderbilt.edu/md/admissions/process/',
+    checked: CHECKED,
+    model: 'competencies',
+    ap: { rule: 'counts', note: 'AP is acceptable, but college courses are strongly encouraged.' },
+    reqs: [
+      rec('bio', 'Molecular/cellular biology and genetics', ['bio'], 2),
+      rec('chem', 'Chemistry', ['genchem', 'orgo'], 2),
+      rec('biochem', 'Biochemistry', ['biochem'], 1),
+      rec('physics', 'Physics', ['physics'], 1),
+      rec('stats', 'Statistics or biostatistics', ['stats'], 1),
+      rec('behavioral', 'Psychology / sociology', ['behavioral'], 1),
+    ],
+    notes: [],
+  },
+  {
+    id: 'pitt',
+    name: 'University of Pittsburgh School of Medicine',
+    short: 'Pitt',
+    url: 'https://www.medadmissions.pitt.edu/admissions/you-apply/academic-requirements',
+    checked: CHECKED,
+    model: 'prerequisites',
+    ap: { rule: 'counts', note: 'AP counts if your college awarded it and it’s on your transcript. CLEP isn’t accepted.' },
+    reqs: [
+      req('bio', 'Biology with lab, one year', ['bio'], 2, { lab: true }),
+      req('genchem', 'General / inorganic chemistry with lab, one year', ['genchem'], 2, { lab: true }),
+      req('orgo', 'Organic chemistry with lab, one semester', ['orgo'], 1, { lab: true }),
+      req('biochem', 'Biochemistry, one semester', ['biochem'], 1),
+      req('physics', 'Physics with lab, one year', ['physics'], 2, { lab: true }),
+    ],
+    notes: ['Biology excludes microbiology, botany, ecology and anatomy. Pass/fail accepted (except for Pitt’s Guaranteed Admission Program).'],
+  },
+  {
+    id: 'uchicago',
+    name: 'University of Chicago Pritzker School of Medicine',
+    short: 'UChicago',
+    url: 'https://pritzker.uchicago.edu/admissions/entrance-requirements',
+    checked: CHECKED,
+    model: 'competencies',
+    ap: { rule: 'unstated', note: 'The entrance requirements page doesn’t mention AP.' },
+    reqs: [
+      rec('chem', 'Organic chemistry, one semester, with a semester of lab', ['orgo'], 1, { lab: true }),
+      rec('biochem', 'Biochemistry, one semester', ['biochem'], 1),
+      rec('stats', 'Statistics or biomathematics', ['stats'], 1),
+      rec('writing', 'Writing and analysis, one year', ['writing'], 2),
+    ],
+    notes: ['Also 6 semester hours of arts, humanities, social sciences or language (not checked).'],
+  },
+];
+
+export const MED_SCHOOL_BY_ID: Record<string, MedSchool> = Object.fromEntries(MED_SCHOOLS.map((s) => [s.id, s]));
+export const DEFAULT_MED_SCHOOLS = ['jhu-advising', 'jhu-som', 'harvard'];
+
+// ── Mapping JHU courses onto areas ─────────────────────────────────────────
+
+const BIOCHEM = ['AS.020.305', 'AS.250.315', 'AS.250.316'];
+const BIOCHEM_LABS = ['AS.020.315', 'AS.250.253'];
+const BIO_LABS = ['AS.020.153', 'AS.020.154', 'AS.020.316', 'AS.020.340', 'AS.020.377'];
+const GENCHEM = ['AS.030.101', 'AS.030.102', 'AS.030.103'];
+const GENCHEM_LABS = ['AS.030.105', 'AS.030.106'];
+const ORGO = ['AS.030.205', 'AS.030.206', 'AS.030.212'];
+const ORGO_LABS = ['AS.030.225', 'AS.030.227', 'AS.030.228'];
+const STATS = ['AS.280.345', 'EN.553.111', 'EN.553.211', 'EN.553.310', 'EN.553.311'];
+
+export interface AreaHit {
+  area: Area;
+  lecture: boolean;
+  lab: boolean;
+}
+
+/** Which areas a course counts toward, as a lecture and/or a lab (this planner's mapping; verify). */
+export function areasOf(r: Resolved): AreaHit[] {
+  const c = r.code;
+  const hits: AreaHit[] = [];
+  const add = (area: Area, lecture: boolean, lab: boolean) => hits.push({ area, lecture, lab });
+  if (BIOCHEM.includes(c)) add('biochem', true, false);
+  else if (BIOCHEM_LABS.includes(c)) add('biochem', false, true);
+  else if (BIO_LABS.includes(c)) add('bio', false, true);
+  else if (GENCHEM.includes(c)) add('genchem', true, c === 'AS.030.103');
+  else if (GENCHEM_LABS.includes(c)) add('genchem', false, true);
+  else if (ORGO.includes(c)) add('orgo', true, false);
+  else if (ORGO_LABS.includes(c)) add('orgo', false, true);
+  else if (deptOf(c) === 'AS.020' || deptOf(c) === 'AS.250') {
+    const lab = /\blab(oratory)?\b/i.test(r.title) && r.credits <= 2;
+    add('bio', !lab, lab);
+  } else if (deptOf(c) === 'AS.171') add('physics', true, false);
+  else if (deptOf(c) === 'AS.173') add('physics', false, true);
+  else if (deptOf(c) === 'AS.110' && numOf(c) >= 106) add('calc', true, false);
+  else if (STATS.includes(c)) add('stats', true, false);
+  if (deptOf(c) === 'AS.200' || deptOf(c) === 'AS.230') add('behavioral', true, false);
+  if (r.course?.writingIntensive || /^AS\.(060|220)\./.test(c)) add('writing', true, false);
+  return hits;
+}
+
+/** A college course beyond the intro level in an area, for "AP counts with an advanced course" rules. */
+function isAdvanced(area: Area, r: Resolved, examCodes: Set<string>): boolean {
+  if (r.season === 'PRE') return false;
+  const n = numOf(r.code);
+  const hit = areasOf(r).find((h) => h.lecture);
+  switch (area) {
+    case 'bio':
+      return hit?.area === 'bio' && n >= 200;
+    case 'genchem':
+      return hit?.area === 'orgo' || hit?.area === 'biochem' || (deptOf(r.code) === 'AS.030' && n >= 200);
+    case 'orgo':
+      return hit?.area === 'biochem' || (deptOf(r.code) === 'AS.030' && n >= 300);
+    case 'physics':
+      return deptOf(r.code) === 'AS.171' && n >= 200;
+    default: {
+      // Calculus, statistics: a college course numbered above every exam course in the area.
+      const top = Math.max(...[...examCodes].filter((c) => areasOf({ code: c, title: '', credits: 0 } as Resolved).some((h) => h.area === area)).map(numOf));
+      return hit?.area === area && n > top;
+    }
+  }
+}
+
+// ── Evaluation ─────────────────────────────────────────────────────────────
+
+export type SchoolStatus = 'met' | 'partial' | 'missing' | 'check';
+
+export interface SchoolReqResult {
+  req: SchoolReq;
+  status: SchoolStatus;
+  /** Courses counted, college and exam. */
+  items: Resolved[];
+  detail?: string;
+}
+
+export interface SchoolResult {
+  school: MedSchool;
+  reqs: SchoolReqResult[];
+  required: number;
+  requiredMet: number;
+  checks: number;
+}
+
+export type ApVerdict = 'counts' | 'advanced' | 'no' | 'unstated' | 'score' | 'forfeited' | 'not-required';
+
+const AP_WHY: Record<Exclude<ApVerdict, 'counts'>, string> = {
+  advanced: 'counts only after an advanced college course in the subject',
+  no: 'doesn’t accept AP here',
+  unstated: 'doesn’t say whether AP counts',
+  score: 'needs a higher AP score',
+  forfeited: 'credit is forfeited at JHU',
+  'not-required': 'no requirement in this area',
+};
+
+function ruleFor(school: MedSchool, req: SchoolReq): ApRule {
+  return req.ap ?? school.ap.rule;
+}
+
+/** How a school treats one exam-lane course. */
+export function apVerdict(school: MedSchool, exam: Resolved, all: Resolved[], forfeited: Set<string>): ApVerdict {
+  if (forfeited.has(exam.item.id)) return 'forfeited';
+  const hit = areasOf(exam).find((h) => h.lecture);
+  if (!hit) return 'not-required';
+  const req = school.reqs.find((q) => q.areas.includes(hit.area) && !q.labsOnly);
+  if (!req) return 'not-required';
+  const minScore = req.apMinScore ?? school.ap.minScore;
+  if (minScore && exam.item.score && exam.item.score < minScore) return 'score';
+  const rule = ruleFor(school, req);
+  if (rule === 'advanced') {
+    const examCodes = new Set(all.filter((r) => r.season === 'PRE').map((r) => r.code));
+    return all.some((r) => isAdvanced(hit.area, r, examCodes)) ? 'counts' : 'advanced';
+  }
+  return rule;
+}
+
+export function evaluateSchool(school: MedSchool, all: Resolved[]): SchoolResult {
+  const forfeited = new Set(forfeits(all.map((r) => r.item)).map((f) => f.item.id));
+  const usable = all.filter((r) => !forfeited.has(r.item.id));
+  let apCredits = 0;
+  const reqs = school.reqs.map((q): SchoolReqResult => {
+    const inArea = (r: Resolved) => areasOf(r).filter((h) => q.areas.includes(h.area) && (q.labsOnly ? h.lab : h.lecture));
+    const college = usable.filter((r) => r.season !== 'PRE' && inArea(r).length);
+    const exams = usable.filter((r) => r.season === 'PRE' && inArea(r).length);
+    const counted: Resolved[] = [];
+    const pending: Resolved[] = [];
+    const unknown: Resolved[] = [];
+    const max = q.apMaxSem ?? Infinity;
+    let limit = '';
+    for (const e of exams) {
+      const v = apVerdict(school, e, usable, forfeited);
+      const capped = school.ap.maxCredits !== undefined && apCredits + e.credits > school.ap.maxCredits;
+      if (v === 'counts' && counted.length < max && !capped) {
+        counted.push(e);
+        apCredits += e.credits;
+      } else if (v === 'counts')
+        limit = capped ? `over the school’s ${school.ap.maxCredits}-credit AP limit` : `the school counts at most ${max} AP ${max === 1 ? 'semester' : 'semesters'} here`;
+      else if (v === 'advanced') pending.push(e);
+      else if (v === 'unstated') unknown.push(e);
+    }
+    const items = [...college, ...counted];
+    const n = items.length;
+    const per = (area: Area) => items.filter((r) => inArea(r).some((h) => h.area === area)).length;
+    const short = Object.entries(q.min ?? {}).filter(([a, k]) => per(a as Area) < (k ?? 0)).map(([a]) => AREA_LABEL[a as Area].toLowerCase());
+    const hasLab = usable.some((r) => r.season !== 'PRE' && areasOf(r).some((h) => q.areas.includes(h.area) && h.lab));
+    const label = q.areas.map((a) => AREA_LABEL[a].toLowerCase()).join(' / ');
+
+    if (n >= q.sem && !short.length) {
+      if (q.lab && !hasLab)
+        return { req: q, status: 'check', items, detail: counted.length ? 'Needs lab work at college: JHU waives labs for AP credit but gives no credit for them.' : `Needs a college lab in ${label}.` };
+      return { req: q, status: 'met', items };
+    }
+    const need = q.sem - n;
+    const also = short.length ? ` Needs at least one ${short.join(' and one ')} course.` : '';
+    if (pending.length && n + pending.length >= q.sem)
+      return { req: q, status: 'partial', items, detail: `Your AP credit counts here once you take an advanced college course in ${label}.${also}` };
+    if (unknown.length && n + unknown.length >= q.sem)
+      return { req: q, status: 'check', items, detail: `The school doesn’t say whether your AP credit counts; ask, or plan ${need} more college ${need === 1 ? 'course' : 'courses'}.${also}` };
+    const skipped = exams.filter((e) => !counted.includes(e) && !pending.includes(e) && !unknown.includes(e));
+    const why = (e: Resolved) => {
+      const v = apVerdict(school, e, usable, forfeited);
+      return v === 'counts' ? limit : AP_WHY[v];
+    };
+    const apNote = skipped.length ? ` More AP credit doesn’t count here (${why(skipped[0])}).` : '';
+    const detail = need > 0 ? `${n} of ${q.sem} semesters.${apNote}${also}` : also.trim();
+    return { req: q, status: n ? 'partial' : 'missing', items, detail };
+  });
+  const required = reqs.filter((r) => r.req.level === 'required');
+  return { school, reqs, required: required.length, requiredMet: required.filter((r) => r.status === 'met').length, checks: required.filter((r) => r.status === 'check').length };
+}
+
+export function verdictLabel(v: ApVerdict) {
+  return v === 'counts' ? 'counts' : AP_WHY[v];
+}

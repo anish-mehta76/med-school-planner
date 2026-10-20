@@ -1,6 +1,7 @@
 import type { Course, Major, Matcher, PlanItem, Requirement, Resolved, Scenario, Term } from './types';
 import { COURSE, deptOf, isPublished } from './catalog';
 import { currentTermId, FINAL_YEAR, SEMESTERS, TERM_BY_ID, TERMS, termOrd } from './terms';
+import { forfeits } from './apCredit';
 import { ENGLISH_WS_UWP, MAJOR_BY_ID, numOf, MCAT_HELPFUL, MCAT_RELEVANT, PHS_CORE, PREMED, PREMED_SCIENCE } from './majors';
 
 // ── Resolving plan items ───────────────────────────────────────────────────
@@ -198,6 +199,8 @@ export interface ScenarioAnalysis {
   total: number;
   jhuCredits: number;
   externalCredits: number;
+  /** Exam-lane item ids whose credit JHU cancels (the course is also taken at JHU). */
+  forfeited: Set<string>;
   termCredits: Record<string, number>;
   flags: Flag[];
   fa: FaRow[];
@@ -213,10 +216,12 @@ export function analyze(s: Scenario, now = new Date()): ScenarioAnalysis {
   const doubleCredits = sum(resolved.filter((r) => (countsFor.get(r.item.id) ?? []).filter((m) => m !== PREMED.id).length > 1));
   const termCredits: Record<string, number> = {};
   for (const r of resolved) termCredits[r.item.termId] = (termCredits[r.item.termId] ?? 0) + r.credits;
-  const externalCredits = termCredits.PRE ?? 0;
-  const jhuCredits = sum(resolved) - externalCredits;
+  // Exam credit JHU cancels because the same course is also taken here.
+  const lost = new Set(forfeits(s.plan).map((f) => f.item.id));
+  const externalCredits = sum(resolved.filter((r) => r.season === 'PRE' && !lost.has(r.item.id)));
+  const jhuCredits = sum(resolved.filter((r) => r.season !== 'PRE'));
   const total = jhuCredits + Math.min(20, externalCredits);
-  const a: ScenarioAnalysis = { resolved, results, premed, countsFor, doubleCredits, total, jhuCredits, externalCredits, termCredits, flags: [], fa: faTracker(resolved) };
+  const a: ScenarioAnalysis = { resolved, results, premed, countsFor, doubleCredits, total, jhuCredits, externalCredits, forfeited: lost, termCredits, flags: [], fa: faTracker(resolved) };
   a.flags = validate(s, a, now);
   return a;
 }
@@ -336,8 +341,31 @@ function validate(s: Scenario, a: ScenarioAnalysis, now: Date): Flag[] {
       flags.push({ level: 'warn', itemId: r.item.id, termId: r.item.termId, text: `${r.code} is marked S/U, but major courses must be letter-graded.` });
   }
 
+  const lost = forfeits(s.plan);
+  for (const f of lost) {
+    const exam = all.find((r) => r.item.id === f.item.id)!;
+    const from = f.item.exam ? `${f.item.exam}${f.item.score ? ` (${f.item.score})` : ''}` : 'exam';
+    flags.push({
+      level: 'warn',
+      itemId: f.cause.id,
+      termId: f.cause.termId,
+      text: `Taking ${f.cause.code} at JHU cancels your ${from} credit for ${exam.code} (${exam.credits} cr). That can be worth it for MCAT prep, but the credits no longer count.`,
+    });
+  }
+  // AP Chemistry 4: 030.102/106 need 030.101 at JHU first (forfeiting the AP credit); 030.103 keeps it.
+  const chem4 = all.some((r) => r.season === 'PRE' && r.code === 'AS.030.101') && !all.some((r) => r.season === 'PRE' && r.code === 'AS.030.102');
+  const chem2 = all.find((r) => r.season !== 'PRE' && (r.code === 'AS.030.102' || r.code === 'AS.030.106'));
+  if (chem4 && chem2 && !all.some((r) => r.season !== 'PRE' && r.code === 'AS.030.101'))
+    flags.push({
+      level: 'warn',
+      itemId: chem2.item.id,
+      termId: chem2.item.termId,
+      text: `With AP Chemistry credit for 030.101 only (a 4), JHU won't let you take ${chem2.code} without first taking 030.101 here. Take AS.030.103 instead to keep the AP credit.`,
+    });
+
   const seen = new Map<string, number>();
-  for (const r of all) if (!isRepeatable(r.code)) seen.set(r.code, (seen.get(r.code) ?? 0) + 1);
+  const lostIds = new Set(lost.map((f) => f.item.id));
+  for (const r of all) if (!isRepeatable(r.code) && !lostIds.has(r.item.id)) seen.set(r.code, (seen.get(r.code) ?? 0) + 1);
   for (const [code, n] of seen) if (n > 1) flags.push({ level: 'warn', text: `${code} is in the plan ${n} times.` });
 
   for (const t of TERMS) {

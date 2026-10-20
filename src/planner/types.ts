@@ -54,6 +54,9 @@ export interface PlanItem {
   /** Taken Satisfactory/Unsatisfactory instead of a letter grade. */
   su?: boolean;
   addedByAutofill?: boolean;
+  /** Exam-lane credit from an AP exam, e.g. "AP Chemistry" (see apCredit.ts). */
+  exam?: string;
+  score?: number;
 }
 
 /** A plan course with catalog data merged in. */
@@ -117,6 +120,8 @@ export interface Scenario {
   waivers?: Record<string, boolean>;
   /** Show every winter intersession and summer, not just ones with courses. */
   showSummers?: boolean;
+  /** Medical schools to compare the plan against (medSchools.ts ids). */
+  medSchoolIds?: string[];
   /** One of the built-in sample plans. */
   sample?: boolean;
 }
