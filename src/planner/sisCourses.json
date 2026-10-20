@@ -15,10 +15,13 @@
       "code": "AS.004.101",
       "title": "Reintroduction to Writing: Writing for Social Justice",
       "credits": 3,
-      "fa": [
+      "fa": [],
+      "faVaries": [
+        "FA3",
         "FA4",
         "FA4.1",
-        "FA5"
+        "FA5",
+        "FA6"
       ],
       "writingIntensive": true,
       "posTags": [],
@@ -37,9 +40,9 @@
       "title": "Introduction to Art History, Pre-1400",
       "credits": 4,
       "fa": [
-        "FA4",
+        "FA1",
         "FA3",
-        "FA1"
+        "FA4"
       ],
       "writingIntensive": true,
       "posTags": [],
@@ -55,8 +58,8 @@
       "title": "Introduction to Art History, 1400 to the Present",
       "credits": 4,
       "fa": [
-        "FA4",
-        "FA3"
+        "FA3",
+        "FA4"
       ],
       "writingIntensive": false,
       "posTags": [],
@@ -173,8 +176,8 @@
       "title": "Genetics",
       "credits": 3,
       "fa": [
-        "FA5",
-        "FA2"
+        "FA2",
+        "FA5"
       ],
       "writingIntensive": false,
       "posTags": [],
@@ -192,8 +195,8 @@
       "title": "Molecular Biology",
       "credits": 3,
       "fa": [
-        "FA5",
-        "FA2"
+        "FA2",
+        "FA5"
       ],
       "writingIntensive": false,
       "posTags": [],
@@ -247,9 +250,9 @@
       "title": "Biochemistry Project lab",
       "credits": 2,
       "fa": [
-        "FA6",
+        "FA1",
         "FA2",
-        "FA1"
+        "FA6"
       ],
       "writingIntensive": false,
       "posTags": [],
@@ -287,8 +290,8 @@
       "title": "Developmental Genetics Lab",
       "credits": 2,
       "fa": [
-        "FA2",
-        "FA1"
+        "FA1",
+        "FA2"
       ],
       "writingIntensive": false,
       "posTags": [],
@@ -331,8 +334,8 @@
       "title": "Comparative Physiology Lab",
       "credits": 1,
       "fa": [
-        "FA6",
-        "FA2"
+        "FA2",
+        "FA6"
       ],
       "writingIntensive": false,
       "posTags": [],
@@ -534,8 +537,8 @@
       "title": "Intermediate Organic Chemistry Laboratory",
       "credits": 3,
       "fa": [
-        "FA6",
-        "FA2"
+        "FA2",
+        "FA6"
       ],
       "writingIntensive": false,
       "posTags": [],
@@ -552,9 +555,9 @@
       "title": "Quantitative Analytical Chemistry and Spectroscopy lab",
       "credits": 3,
       "fa": [
-        "FA6",
+        "FA1",
         "FA2",
-        "FA1"
+        "FA6"
       ],
       "writingIntensive": true,
       "posTags": [],
@@ -570,8 +573,8 @@
       "title": "Physical Chemistry I",
       "credits": 3,
       "fa": [
-        "FA5",
-        "FA2"
+        "FA2",
+        "FA5"
       ],
       "writingIntensive": false,
       "posTags": [
@@ -639,8 +642,8 @@
       "title": "Physical Chemistry and Instrumentation Lab",
       "credits": 3,
       "fa": [
-        "FA2",
-        "FA1"
+        "FA1",
+        "FA2"
       ],
       "writingIntensive": false,
       "posTags": [],
@@ -656,9 +659,9 @@
       "title": "Advanced Inorganic Lab",
       "credits": 3,
       "fa": [
-        "FA6",
+        "FA1",
         "FA2",
-        "FA1"
+        "FA6"
       ],
       "writingIntensive": false,
       "posTags": [],
@@ -707,9 +710,9 @@
       "title": "Introduction to Cognitive Neuropsychology",
       "credits": 3,
       "fa": [
-        "FA6",
+        "FA1",
         "FA2",
-        "FA1"
+        "FA6"
       ],
       "writingIntensive": true,
       "posTags": [
@@ -728,8 +731,8 @@
       "title": "Neuroscience: Cognitive",
       "credits": 3,
       "fa": [
-        "FA5",
-        "FA2"
+        "FA2",
+        "FA5"
       ],
       "writingIntensive": false,
       "posTags": [
@@ -748,8 +751,8 @@
       "title": "Bayesian Inference",
       "credits": 3,
       "fa": [
-        "FA6",
-        "FA2"
+        "FA2",
+        "FA6"
       ],
       "writingIntensive": false,
       "posTags": [
@@ -785,9 +788,9 @@
       "title": "Introduction to Literary Study",
       "credits": 3,
       "fa": [
+        "FA1",
         "FA3",
-        "FA5",
-        "FA1"
+        "FA5"
       ],
       "writingIntensive": true,
       "posTags": [],
@@ -805,9 +808,9 @@
       "title": "Introduction to Cinema, 1892-1960",
       "credits": 3,
       "fa": [
-        "FA4",
+        "FA1",
         "FA3",
-        "FA1"
+        "FA4"
       ],
       "writingIntensive": true,
       "posTags": [],
@@ -823,9 +826,9 @@
       "title": "Introduction to Cinema, 1960-present",
       "credits": 3,
       "fa": [
-        "FA4",
+        "FA1",
         "FA3",
-        "FA1"
+        "FA4"
       ],
       "writingIntensive": true,
       "posTags": [],
@@ -900,9 +903,9 @@
       "title": "Introduction to Screenwriting",
       "credits": 3,
       "fa": [
-        "FA4",
+        "FA1",
         "FA3",
-        "FA1"
+        "FA4"
       ],
       "writingIntensive": true,
       "posTags": [
@@ -922,9 +925,9 @@
       "title": "Special Topics:  Writing About Film",
       "credits": 3,
       "fa": [
-        "FA4",
+        "FA1",
         "FA3",
-        "FA1"
+        "FA4"
       ],
       "writingIntensive": true,
       "posTags": [
@@ -961,9 +964,9 @@
       "title": "Senior Capstone Project: Critical Studies",
       "credits": 3,
       "fa": [
+        "FA1",
         "FA3",
-        "FA6",
-        "FA1"
+        "FA6"
       ],
       "writingIntensive": true,
       "posTags": [],
@@ -981,9 +984,9 @@
       "title": "Senior Capstone Project: Screenwriting",
       "credits": 3,
       "fa": [
+        "FA1",
         "FA3",
-        "FA6",
-        "FA1"
+        "FA6"
       ],
       "writingIntensive": true,
       "posTags": [],
@@ -1002,9 +1005,9 @@
       "title": "Invitation to Anthropology",
       "credits": 3,
       "fa": [
+        "FA1",
         "FA4",
-        "FA6",
-        "FA1"
+        "FA6"
       ],
       "writingIntensive": true,
       "posTags": [
@@ -1022,9 +1025,9 @@
       "title": "Ethnographies",
       "credits": 3,
       "fa": [
+        "FA1",
         "FA3",
-        "FA6",
-        "FA1"
+        "FA6"
       ],
       "writingIntensive": true,
       "posTags": [
@@ -1042,8 +1045,8 @@
       "title": "Methods",
       "credits": 3,
       "fa": [
-        "FA6",
-        "FA1"
+        "FA1",
+        "FA6"
       ],
       "writingIntensive": true,
       "posTags": [
@@ -1062,9 +1065,9 @@
       "title": "Logic of Anthropological Inquiry",
       "credits": 3,
       "fa": [
-        "FA4",
+        "FA1",
         "FA3",
-        "FA1"
+        "FA4"
       ],
       "writingIntensive": true,
       "posTags": [
@@ -1083,8 +1086,8 @@
       "title": "Neuroscience Laboratory",
       "credits": 3,
       "fa": [
-        "FA6",
-        "FA2"
+        "FA2",
+        "FA6"
       ],
       "writingIntensive": false,
       "posTags": [
@@ -1105,8 +1108,8 @@
       "title": "Neuroscience: Cellular and Systems I",
       "credits": 3,
       "fa": [
-        "FA5",
-        "FA2"
+        "FA2",
+        "FA5"
       ],
       "writingIntensive": false,
       "posTags": [
@@ -1127,8 +1130,8 @@
       "title": "Neuroscience: Cellular and Systems II",
       "credits": 3,
       "fa": [
-        "FA5",
-        "FA2"
+        "FA2",
+        "FA5"
       ],
       "writingIntensive": false,
       "posTags": [
@@ -1148,8 +1151,8 @@
       "title": "Scientific Communication and Mentoring",
       "credits": 1.5,
       "fa": [
-        "FA2",
-        "FA1"
+        "FA1",
+        "FA2"
       ],
       "writingIntensive": true,
       "posTags": [],
@@ -1167,8 +1170,8 @@
       "title": "Research Neuroscience – Neuroscience Majors",
       "credits": 1,
       "fa": [
-        "FA6",
-        "FA2"
+        "FA2",
+        "FA6"
       ],
       "writingIntensive": false,
       "posTags": [],
@@ -1221,8 +1224,8 @@
       "title": "China: Neolithic to Song",
       "credits": 3,
       "fa": [
-        "FA4",
-        "FA3"
+        "FA3",
+        "FA4"
       ],
       "writingIntensive": false,
       "posTags": [
@@ -1240,9 +1243,9 @@
       "title": "Historical Methods, Archives and Interpretations",
       "credits": 3,
       "fa": [
+        "FA1",
         "FA4",
-        "FA6",
-        "FA1"
+        "FA6"
       ],
       "writingIntensive": true,
       "posTags": [],
@@ -1258,8 +1261,8 @@
       "title": "Early Modern China",
       "credits": 3,
       "fa": [
-        "FA4",
-        "FA1"
+        "FA1",
+        "FA4"
       ],
       "writingIntensive": true,
       "posTags": [
@@ -1278,8 +1281,8 @@
       "title": "20th-Century China",
       "credits": 3,
       "fa": [
-        "FA4",
-        "FA1"
+        "FA1",
+        "FA4"
       ],
       "writingIntensive": true,
       "posTags": [
@@ -1298,9 +1301,9 @@
       "title": "Practicing Historical Research",
       "credits": 3,
       "fa": [
+        "FA1",
         "FA5",
-        "FA6",
-        "FA1"
+        "FA6"
       ],
       "writingIntensive": true,
       "posTags": [],
@@ -1317,9 +1320,9 @@
       "title": "Senior Honors Thesis",
       "credits": 3,
       "fa": [
+        "FA1",
         "FA4",
-        "FA6",
-        "FA1"
+        "FA6"
       ],
       "writingIntensive": true,
       "posTags": [],
@@ -1336,9 +1339,9 @@
       "title": "Senior Honors Thesis",
       "credits": 3,
       "fa": [
+        "FA1",
         "FA4",
-        "FA6",
-        "FA1"
+        "FA6"
       ],
       "writingIntensive": true,
       "posTags": [],
@@ -1375,8 +1378,8 @@
       "title": "Calculus II (For Biological and Social Science)",
       "credits": 4,
       "fa": [
-        "FA2",
-        "FA1"
+        "FA1",
+        "FA2"
       ],
       "writingIntensive": false,
       "posTags": [
@@ -1458,8 +1461,8 @@
       "title": "Linear Algebra",
       "credits": 4,
       "fa": [
-        "FA5",
-        "FA2"
+        "FA2",
+        "FA5"
       ],
       "writingIntensive": false,
       "posTags": [
@@ -1524,8 +1527,8 @@
       "title": "Honors Linear Algebra",
       "credits": 4,
       "fa": [
-        "FA5",
-        "FA2"
+        "FA2",
+        "FA5"
       ],
       "writingIntensive": false,
       "posTags": [
@@ -1546,9 +1549,9 @@
       "title": "Introduction to Proofs",
       "credits": 4,
       "fa": [
-        "FA5",
+        "FA1",
         "FA2",
-        "FA1"
+        "FA5"
       ],
       "writingIntensive": false,
       "posTags": [],
@@ -1610,8 +1613,8 @@
       "title": "Methods of Complex Analysis",
       "credits": 4,
       "fa": [
-        "FA5",
-        "FA2"
+        "FA2",
+        "FA5"
       ],
       "writingIntensive": false,
       "posTags": [],
@@ -1632,8 +1635,8 @@
       "title": "Introduction to Abstract Algebra",
       "credits": 4,
       "fa": [
-        "FA5",
-        "FA2"
+        "FA2",
+        "FA5"
       ],
       "writingIntensive": false,
       "posTags": [],
@@ -1654,9 +1657,9 @@
       "title": "Real Analysis I",
       "credits": 4,
       "fa": [
-        "FA5",
+        "FA1",
         "FA2",
-        "FA1"
+        "FA5"
       ],
       "writingIntensive": true,
       "posTags": [
@@ -1679,8 +1682,8 @@
       "title": "Real Analysis II",
       "credits": 4,
       "fa": [
-        "FA5",
-        "FA2"
+        "FA2",
+        "FA5"
       ],
       "writingIntensive": false,
       "posTags": [],
@@ -1700,8 +1703,8 @@
       "title": "Honors Complex Analysis",
       "credits": 4,
       "fa": [
-        "FA5",
-        "FA2"
+        "FA2",
+        "FA5"
       ],
       "writingIntensive": false,
       "posTags": [],
@@ -1718,8 +1721,8 @@
       "title": "Honors Algebra I",
       "credits": 4,
       "fa": [
-        "FA5",
-        "FA2"
+        "FA2",
+        "FA5"
       ],
       "writingIntensive": false,
       "posTags": [],
@@ -1736,9 +1739,9 @@
       "title": "Honors Algebra II",
       "credits": 4,
       "fa": [
-        "FA5",
+        "FA1",
         "FA2",
-        "FA1"
+        "FA5"
       ],
       "writingIntensive": false,
       "posTags": [],
@@ -1759,9 +1762,9 @@
       "title": "Introduction To Topology",
       "credits": 4,
       "fa": [
-        "FA5",
+        "FA1",
         "FA2",
-        "FA1"
+        "FA5"
       ],
       "writingIntensive": false,
       "posTags": [],
@@ -1799,9 +1802,9 @@
       "title": "Honors Analysis II",
       "credits": 4,
       "fa": [
-        "FA5",
+        "FA1",
         "FA2",
-        "FA1"
+        "FA5"
       ],
       "writingIntensive": false,
       "posTags": [],
@@ -1916,8 +1919,8 @@
       "title": "Ancient Middle Eastern Civilizations",
       "credits": 3,
       "fa": [
-        "FA4",
         "FA3",
+        "FA4",
         "FA4.1"
       ],
       "writingIntensive": false,
@@ -1935,8 +1938,8 @@
       "title": "Medicine in Ancient Egypt",
       "credits": 3,
       "fa": [
-        "FA4",
-        "FA3"
+        "FA3",
+        "FA4"
       ],
       "writingIntensive": false,
       "posTags": [],
@@ -1951,8 +1954,8 @@
       "title": "Gods and Monsters in Ancient Egypt",
       "credits": 3,
       "fa": [
-        "FA4",
-        "FA3"
+        "FA3",
+        "FA4"
       ],
       "writingIntensive": false,
       "posTags": [
@@ -1983,8 +1986,8 @@
       "title": "Giving Birth and Coming to Life in Ancient Egypt: The Tree and the Fruit",
       "credits": 3,
       "fa": [
-        "FA4",
-        "FA3"
+        "FA3",
+        "FA4"
       ],
       "writingIntensive": false,
       "posTags": [
@@ -2019,9 +2022,9 @@
       "title": "World Prehistory: An Anthropological Perspective",
       "credits": 3,
       "fa": [
-        "FA4",
+        "FA1",
         "FA3",
-        "FA1"
+        "FA4"
       ],
       "writingIntensive": true,
       "posTags": [
@@ -2041,8 +2044,8 @@
       "title": "History of Ancient Mesopotamia",
       "credits": 3,
       "fa": [
-        "FA4",
-        "FA3"
+        "FA3",
+        "FA4"
       ],
       "writingIntensive": false,
       "posTags": [],
@@ -2057,8 +2060,8 @@
       "title": "History of Ancient Syria-Palestine",
       "credits": 3,
       "fa": [
-        "FA4",
         "FA3",
+        "FA4",
         "FA6"
       ],
       "writingIntensive": false,
@@ -2075,9 +2078,9 @@
       "title": "History: Ancient Syria-Palestine II",
       "credits": 3,
       "fa": [
+        "FA1",
         "FA3",
-        "FA6",
-        "FA1"
+        "FA6"
       ],
       "writingIntensive": true,
       "posTags": [
@@ -2094,8 +2097,8 @@
       "title": "Archaeological Method and Theory",
       "credits": 3,
       "fa": [
-        "FA4",
-        "FA3"
+        "FA3",
+        "FA4"
       ],
       "writingIntensive": false,
       "posTags": [
@@ -2114,8 +2117,8 @@
       "title": "History of Mesopotamia II",
       "credits": 3,
       "fa": [
-        "FA4",
-        "FA3"
+        "FA3",
+        "FA4"
       ],
       "writingIntensive": false,
       "posTags": [],
@@ -2130,9 +2133,9 @@
       "title": "Research Methods: Arts of the Mesopotamian World: Crafters & Consumers",
       "credits": 3,
       "fa": [
+        "FA1",
         "FA3",
-        "FA6",
-        "FA1"
+        "FA6"
       ],
       "writingIntensive": true,
       "posTags": [
@@ -2184,8 +2187,8 @@
       "title": "History of Medicine",
       "credits": 3,
       "fa": [
-        "FA4",
-        "FA3"
+        "FA3",
+        "FA4"
       ],
       "writingIntensive": false,
       "posTags": [
@@ -2255,8 +2258,8 @@
       "title": "Scientific Revolution",
       "credits": 3,
       "fa": [
-        "FA4",
-        "FA3"
+        "FA3",
+        "FA4"
       ],
       "writingIntensive": false,
       "posTags": [],
@@ -2272,9 +2275,9 @@
       "title": "Science Studies and Medical Humanities: Theory and Methods",
       "credits": 3,
       "fa": [
+        "FA1",
         "FA4",
-        "FA5",
-        "FA1"
+        "FA5"
       ],
       "writingIntensive": true,
       "posTags": [
@@ -2296,8 +2299,8 @@
       "title": "Introduction to Formal Logic",
       "credits": 3,
       "fa": [
-        "FA5",
-        "FA2"
+        "FA2",
+        "FA5"
       ],
       "writingIntensive": false,
       "posTags": [
@@ -2334,8 +2337,8 @@
       "title": "Introduction to the History of Modern Philosophy",
       "credits": 3,
       "fa": [
-        "FA5",
-        "FA1"
+        "FA1",
+        "FA5"
       ],
       "writingIntensive": true,
       "posTags": [
@@ -2356,8 +2359,8 @@
       "title": "Introduction to Bioethics",
       "credits": 3,
       "fa": [
-        "FA5",
-        "FA1"
+        "FA1",
+        "FA5"
       ],
       "writingIntensive": true,
       "posTags": [
@@ -2437,8 +2440,8 @@
       "title": "Majors Seminar: Greek Ethics",
       "credits": 3,
       "fa": [
-        "FA5",
-        "FA1"
+        "FA1",
+        "FA5"
       ],
       "writingIntensive": true,
       "posTags": [
@@ -2457,9 +2460,9 @@
       "title": "Greek Philosophy: Plato and His Predecessors",
       "credits": 3,
       "fa": [
+        "FA1",
         "FA3",
-        "FA5",
-        "FA1"
+        "FA5"
       ],
       "writingIntensive": true,
       "posTags": [
@@ -2489,8 +2492,8 @@
       "title": "Hellenistic Philosophy",
       "credits": 3,
       "fa": [
-        "FA5",
-        "FA1"
+        "FA1",
+        "FA5"
       ],
       "writingIntensive": true,
       "posTags": [
@@ -2523,8 +2526,8 @@
       "title": "Mathematical Logic I",
       "credits": 3,
       "fa": [
-        "FA5",
-        "FA2"
+        "FA2",
+        "FA5"
       ],
       "writingIntensive": false,
       "posTags": [
@@ -2556,8 +2559,8 @@
       "title": "Axiomatic Set Theory",
       "credits": 3,
       "fa": [
-        "FA5",
-        "FA2"
+        "FA2",
+        "FA5"
       ],
       "writingIntensive": false,
       "posTags": [
@@ -2572,8 +2575,8 @@
       "title": "Philosophy of Space & Time",
       "credits": 3,
       "fa": [
-        "FA5",
-        "FA2"
+        "FA2",
+        "FA5"
       ],
       "writingIntensive": false,
       "posTags": [
@@ -2590,8 +2593,8 @@
       "title": "Formal Methods of Philosophy",
       "credits": 3,
       "fa": [
-        "FA5",
-        "FA2"
+        "FA2",
+        "FA5"
       ],
       "writingIntensive": false,
       "posTags": [
@@ -2609,8 +2612,8 @@
       "title": "Freedom of Will & Moral Responsibility",
       "credits": 3,
       "fa": [
-        "FA5",
-        "FA1"
+        "FA1",
+        "FA5"
       ],
       "writingIntensive": true,
       "posTags": [
@@ -2648,9 +2651,9 @@
       "title": "Honors Project",
       "credits": 3,
       "fa": [
+        "FA1",
         "FA5",
-        "FA6",
-        "FA1"
+        "FA6"
       ],
       "writingIntensive": true,
       "posTags": [],
@@ -2667,9 +2670,9 @@
       "title": "Honors Project",
       "credits": 1,
       "fa": [
+        "FA1",
         "FA5",
-        "FA6",
-        "FA1"
+        "FA6"
       ],
       "writingIntensive": true,
       "posTags": [],
@@ -2863,8 +2866,8 @@
       "title": "Electromagnetic Theory II",
       "credits": 4,
       "fa": [
-        "FA5",
-        "FA2"
+        "FA2",
+        "FA5"
       ],
       "writingIntensive": false,
       "posTags": [],
@@ -2881,8 +2884,8 @@
       "title": "Quantum Mechanics I",
       "credits": 4,
       "fa": [
-        "FA5",
-        "FA2"
+        "FA2",
+        "FA5"
       ],
       "writingIntensive": false,
       "posTags": [],
@@ -2933,8 +2936,8 @@
       "title": "Statistical Physics/Thermodynamics",
       "credits": 4,
       "fa": [
-        "FA5",
-        "FA2"
+        "FA2",
+        "FA5"
       ],
       "writingIntensive": false,
       "posTags": [],
@@ -2951,9 +2954,9 @@
       "title": "Introduction to Space, Science, and Technology",
       "credits": 3,
       "fa": [
-        "FA6",
+        "FA1",
         "FA2",
-        "FA1"
+        "FA6"
       ],
       "writingIntensive": true,
       "posTags": [],
@@ -2999,8 +3002,8 @@
       "title": "Contemporary Phys Sem",
       "credits": 1,
       "fa": [
-        "FA2",
-        "FA1"
+        "FA1",
+        "FA2"
       ],
       "writingIntensive": true,
       "posTags": [],
@@ -3060,8 +3063,8 @@
       "title": "Classical Mechanics  Laboratory",
       "credits": 1,
       "fa": [
-        "FA2",
-        "FA1"
+        "FA1",
+        "FA2"
       ],
       "writingIntensive": true,
       "posTags": [],
@@ -3078,8 +3081,8 @@
       "title": "Electricity and Magnetism Laboratory",
       "credits": 1,
       "fa": [
-        "FA2",
-        "FA1"
+        "FA1",
+        "FA2"
       ],
       "writingIntensive": true,
       "posTags": [],
@@ -3096,9 +3099,9 @@
       "title": "Advanced Physics Laboratory",
       "credits": 3,
       "fa": [
-        "FA6",
+        "FA1",
         "FA2",
-        "FA1"
+        "FA6"
       ],
       "writingIntensive": true,
       "posTags": [],
@@ -3115,8 +3118,8 @@
       "title": "Elements of Macroeconomics",
       "credits": 3,
       "fa": [
-        "FA4",
-        "FA2"
+        "FA2",
+        "FA4"
       ],
       "writingIntensive": false,
       "posTags": [],
@@ -3136,8 +3139,8 @@
       "title": "Elements of Microeconomics",
       "credits": 3,
       "fa": [
-        "FA5",
-        "FA2"
+        "FA2",
+        "FA5"
       ],
       "writingIntensive": false,
       "posTags": [],
@@ -3157,8 +3160,8 @@
       "title": "Economics of Health",
       "credits": 3,
       "fa": [
-        "FA4",
-        "FA2"
+        "FA2",
+        "FA4"
       ],
       "writingIntensive": false,
       "posTags": [
@@ -3180,8 +3183,8 @@
       "title": "Microeconomic Theory",
       "credits": 4,
       "fa": [
-        "FA4",
-        "FA2"
+        "FA2",
+        "FA4"
       ],
       "writingIntensive": false,
       "posTags": [
@@ -3202,8 +3205,8 @@
       "title": "Macroeconomic Theory",
       "credits": 4,
       "fa": [
-        "FA4",
-        "FA2"
+        "FA2",
+        "FA4"
       ],
       "writingIntensive": false,
       "posTags": [
@@ -3224,8 +3227,8 @@
       "title": "Econometrics",
       "credits": 3,
       "fa": [
-        "FA6",
-        "FA2"
+        "FA2",
+        "FA6"
       ],
       "writingIntensive": false,
       "posTags": [],
@@ -3267,9 +3270,9 @@
       "title": "Introduction To Comparative Politics",
       "credits": 3,
       "fa": [
+        "FA2",
         "FA4",
-        "FA4.1",
-        "FA2"
+        "FA4.1"
       ],
       "writingIntensive": false,
       "posTags": [
@@ -3346,8 +3349,8 @@
       "title": "Research and Inquiry in the Social Sciences",
       "credits": 3,
       "fa": [
-        "FA6",
-        "FA2"
+        "FA2",
+        "FA6"
       ],
       "writingIntensive": false,
       "posTags": [
@@ -3364,9 +3367,9 @@
       "title": "Food Politics",
       "credits": 3,
       "fa": [
+        "FA1",
         "FA4",
-        "FA6",
-        "FA1"
+        "FA6"
       ],
       "writingIntensive": true,
       "posTags": [
@@ -3390,10 +3393,10 @@
       "title": "States, Regimes & Contentious Politics",
       "credits": 3,
       "fa": [
+        "FA1",
         "FA4",
         "FA4.1",
-        "FA5",
-        "FA1"
+        "FA5"
       ],
       "writingIntensive": true,
       "posTags": [
@@ -3415,10 +3418,10 @@
       "title": "Science and Democracy",
       "credits": 3,
       "fa": [
+        "FA2",
         "FA4",
         "FA4.1",
-        "FA6",
-        "FA2"
+        "FA6"
       ],
       "writingIntensive": false,
       "posTags": [
@@ -3441,8 +3444,8 @@
       "title": "Introduction to Psychology",
       "credits": 3,
       "fa": [
-        "FA5",
-        "FA2"
+        "FA2",
+        "FA5"
       ],
       "writingIntensive": false,
       "posTags": [
@@ -3462,8 +3465,8 @@
       "title": "Introduction to Cognitive Psychology",
       "credits": 3,
       "fa": [
-        "FA4",
-        "FA2"
+        "FA2",
+        "FA4"
       ],
       "writingIntensive": false,
       "posTags": [
@@ -3480,8 +3483,8 @@
       "title": "Introduction to Developmental Psychology",
       "credits": 3,
       "fa": [
-        "FA4",
-        "FA2"
+        "FA2",
+        "FA4"
       ],
       "writingIntensive": false,
       "posTags": [
@@ -3498,8 +3501,8 @@
       "title": "Introduction to Social Psychology",
       "credits": 3,
       "fa": [
-        "FA5",
-        "FA2"
+        "FA2",
+        "FA5"
       ],
       "writingIntensive": false,
       "posTags": [
@@ -3519,8 +3522,8 @@
       "title": "Foundations of Brain, Behavior and Cognition",
       "credits": 3,
       "fa": [
-        "FA5",
-        "FA2"
+        "FA2",
+        "FA5"
       ],
       "writingIntensive": false,
       "posTags": [
@@ -3542,9 +3545,9 @@
       "title": "Research Methods in Psychology",
       "credits": 4,
       "fa": [
+        "FA1",
         "FA5",
-        "FA6",
-        "FA1"
+        "FA6"
       ],
       "writingIntensive": true,
       "posTags": [],
@@ -3560,8 +3563,8 @@
       "title": "Animal Behavior",
       "credits": 3,
       "fa": [
-        "FA5",
-        "FA2"
+        "FA2",
+        "FA5"
       ],
       "writingIntensive": false,
       "posTags": [
@@ -3582,8 +3585,8 @@
       "title": "Personality",
       "credits": 3,
       "fa": [
-        "FA4",
-        "FA2"
+        "FA2",
+        "FA4"
       ],
       "writingIntensive": false,
       "posTags": [],
@@ -3599,8 +3602,8 @@
       "title": "Psychopathology",
       "credits": 3,
       "fa": [
-        "FA5",
-        "FA2"
+        "FA2",
+        "FA5"
       ],
       "writingIntensive": false,
       "posTags": [],
@@ -3616,8 +3619,8 @@
       "title": "Positive Psychology",
       "credits": 3,
       "fa": [
-        "FA5",
-        "FA2"
+        "FA2",
+        "FA5"
       ],
       "writingIntensive": false,
       "posTags": [
@@ -3637,9 +3640,9 @@
       "title": "Design & Statistical Analysis for Psychology",
       "credits": 4,
       "fa": [
-        "FA6",
+        "FA1",
         "FA2",
-        "FA1"
+        "FA6"
       ],
       "writingIntensive": true,
       "posTags": [],
@@ -3656,8 +3659,8 @@
       "title": "French Elements I",
       "credits": 4,
       "fa": [
-        "FA4",
-        "FA3"
+        "FA3",
+        "FA4"
       ],
       "writingIntensive": false,
       "posTags": [],
@@ -3673,8 +3676,8 @@
       "title": "French Elements II",
       "credits": 4,
       "fa": [
-        "FA4",
-        "FA3"
+        "FA3",
+        "FA4"
       ],
       "writingIntensive": false,
       "posTags": [],
@@ -3692,8 +3695,8 @@
       "title": "Spanish Elements I",
       "credits": 4,
       "fa": [
-        "FA4",
-        "FA3"
+        "FA3",
+        "FA4"
       ],
       "writingIntensive": false,
       "posTags": [],
@@ -3713,8 +3716,8 @@
       "title": "Spanish Elements II",
       "credits": 4,
       "fa": [
-        "FA4",
-        "FA3"
+        "FA3",
+        "FA4"
       ],
       "writingIntensive": false,
       "posTags": [],
@@ -3735,8 +3738,8 @@
       "title": "Italian Elements I",
       "credits": 4,
       "fa": [
-        "FA4",
-        "FA3"
+        "FA3",
+        "FA4"
       ],
       "writingIntensive": false,
       "posTags": [],
@@ -3754,8 +3757,8 @@
       "title": "Italian Elements II",
       "credits": 4,
       "fa": [
-        "FA4",
-        "FA3"
+        "FA3",
+        "FA4"
       ],
       "writingIntensive": false,
       "posTags": [],
@@ -3774,8 +3777,8 @@
       "title": "German Elements I",
       "credits": 3,
       "fa": [
-        "FA4",
-        "FA3"
+        "FA3",
+        "FA4"
       ],
       "writingIntensive": false,
       "posTags": [],
@@ -3793,8 +3796,8 @@
       "title": "German Elements II",
       "credits": 3,
       "fa": [
-        "FA4",
-        "FA3"
+        "FA3",
+        "FA4"
       ],
       "writingIntensive": false,
       "posTags": [],
@@ -3813,8 +3816,8 @@
       "title": "Accelerated Italian for Advanced Speakers of other Romance Languages",
       "credits": 4,
       "fa": [
-        "FA4",
-        "FA3"
+        "FA3",
+        "FA4"
       ],
       "writingIntensive": false,
       "posTags": [],
@@ -3830,8 +3833,8 @@
       "title": "Accelerated Italian for Advanced Speakers of other Romance Languages II",
       "credits": 4,
       "fa": [
-        "FA4",
-        "FA3"
+        "FA3",
+        "FA4"
       ],
       "writingIntensive": false,
       "posTags": [],
@@ -3848,8 +3851,8 @@
       "title": "Intermediate French I",
       "credits": 3,
       "fa": [
-        "FA4",
-        "FA3"
+        "FA3",
+        "FA4"
       ],
       "writingIntensive": false,
       "posTags": [],
@@ -3867,8 +3870,8 @@
       "title": "Intermediate French II",
       "credits": 3,
       "fa": [
-        "FA4",
-        "FA3"
+        "FA3",
+        "FA4"
       ],
       "writingIntensive": false,
       "posTags": [],
@@ -3886,8 +3889,8 @@
       "title": "Intermediate Spanish I",
       "credits": 3,
       "fa": [
-        "FA4",
-        "FA3"
+        "FA3",
+        "FA4"
       ],
       "writingIntensive": false,
       "posTags": [],
@@ -3908,8 +3911,8 @@
       "title": "Intermediate Spanish II",
       "credits": 3,
       "fa": [
-        "FA4",
-        "FA3"
+        "FA3",
+        "FA4"
       ],
       "writingIntensive": false,
       "posTags": [],
@@ -3930,8 +3933,8 @@
       "title": "Intermediate Italian I",
       "credits": 3,
       "fa": [
-        "FA4",
-        "FA3"
+        "FA3",
+        "FA4"
       ],
       "writingIntensive": false,
       "posTags": [],
@@ -3948,8 +3951,8 @@
       "title": "Intermediate Italian II",
       "credits": 3,
       "fa": [
-        "FA4",
-        "FA3"
+        "FA3",
+        "FA4"
       ],
       "writingIntensive": false,
       "posTags": [],
@@ -3966,8 +3969,8 @@
       "title": "Intermediate German I",
       "credits": 3,
       "fa": [
-        "FA4",
-        "FA3"
+        "FA3",
+        "FA4"
       ],
       "writingIntensive": false,
       "posTags": [],
@@ -3986,8 +3989,8 @@
       "title": "Intermediate German II",
       "credits": 3,
       "fa": [
-        "FA4",
-        "FA3"
+        "FA3",
+        "FA4"
       ],
       "writingIntensive": false,
       "posTags": [],
@@ -4005,8 +4008,8 @@
       "title": "Intermediate Portuguese I",
       "credits": 3,
       "fa": [
-        "FA4",
-        "FA3"
+        "FA3",
+        "FA4"
       ],
       "writingIntensive": false,
       "posTags": [],
@@ -4025,8 +4028,8 @@
       "title": "Intermediate Portuguese II",
       "credits": 3,
       "fa": [
-        "FA4",
-        "FA3"
+        "FA3",
+        "FA4"
       ],
       "writingIntensive": false,
       "posTags": [],
@@ -4045,8 +4048,8 @@
       "title": "Advanced French for Writing",
       "credits": 3,
       "fa": [
-        "FA3",
-        "FA1"
+        "FA1",
+        "FA3"
       ],
       "writingIntensive": true,
       "posTags": [],
@@ -4064,8 +4067,8 @@
       "title": "Advanced French for Speaking",
       "credits": 3,
       "fa": [
-        "FA3",
-        "FA1"
+        "FA1",
+        "FA3"
       ],
       "writingIntensive": false,
       "posTags": [],
@@ -4083,8 +4086,8 @@
       "title": "Advanced Spanish I",
       "credits": 3,
       "fa": [
-        "FA4",
-        "FA3"
+        "FA3",
+        "FA4"
       ],
       "writingIntensive": false,
       "posTags": [],
@@ -4105,9 +4108,9 @@
       "title": "Advanced Spanish II",
       "credits": 3,
       "fa": [
-        "FA4",
+        "FA1",
         "FA3",
-        "FA1"
+        "FA4"
       ],
       "writingIntensive": false,
       "posTags": [],
@@ -4128,9 +4131,9 @@
       "title": "Medical Spanish",
       "credits": 3,
       "fa": [
+        "FA1",
         "FA4",
-        "FA6",
-        "FA1"
+        "FA6"
       ],
       "writingIntensive": true,
       "posTags": [
@@ -4151,8 +4154,8 @@
       "title": "Advanced Spanish Conversation",
       "credits": 3,
       "fa": [
-        "FA4",
-        "FA3"
+        "FA3",
+        "FA4"
       ],
       "writingIntensive": false,
       "posTags": [],
@@ -4169,9 +4172,9 @@
       "title": "Adv Spanish Composition",
       "credits": 3,
       "fa": [
-        "FA4",
+        "FA1",
         "FA3",
-        "FA1"
+        "FA4"
       ],
       "writingIntensive": true,
       "posTags": [],
@@ -4188,9 +4191,9 @@
       "title": "Spanish for Public Health",
       "credits": 3,
       "fa": [
+        "FA1",
         "FA4",
-        "FA6",
-        "FA1"
+        "FA6"
       ],
       "writingIntensive": true,
       "posTags": [
@@ -4209,10 +4212,10 @@
       "title": "Advanced Italian I",
       "credits": 3,
       "fa": [
-        "FA4",
+        "FA1",
         "FA3",
-        "FA4.1",
-        "FA1"
+        "FA4",
+        "FA4.1"
       ],
       "writingIntensive": true,
       "posTags": [],
@@ -4229,10 +4232,10 @@
       "title": "Advanced Italian II",
       "credits": 3,
       "fa": [
-        "FA4",
+        "FA1",
         "FA3",
-        "FA4.1",
-        "FA1"
+        "FA4",
+        "FA4.1"
       ],
       "writingIntensive": true,
       "posTags": [],
@@ -4249,9 +4252,9 @@
       "title": "Advanced German I: Cultural Topics of the Modern German-speaking World",
       "credits": 3,
       "fa": [
-        "FA4",
+        "FA1",
         "FA3",
-        "FA1"
+        "FA4"
       ],
       "writingIntensive": true,
       "posTags": [],
@@ -4268,9 +4271,9 @@
       "title": "Advanced German II: Contemporary Issues in the German Speaking World",
       "credits": 3,
       "fa": [
-        "FA4",
+        "FA1",
         "FA3",
-        "FA1"
+        "FA4"
       ],
       "writingIntensive": true,
       "posTags": [],
@@ -4287,9 +4290,9 @@
       "title": "Advanced Portuguese I",
       "credits": 3,
       "fa": [
-        "FA4",
+        "FA1",
         "FA3",
-        "FA1"
+        "FA4"
       ],
       "writingIntensive": true,
       "posTags": [],
@@ -4308,9 +4311,9 @@
       "title": "Contacts and Contrasts in Spanish for the Professions",
       "credits": 3,
       "fa": [
+        "FA1",
         "FA4",
-        "FA6",
-        "FA1"
+        "FA6"
       ],
       "writingIntensive": true,
       "posTags": [],
@@ -4329,9 +4332,9 @@
       "title": "Community Based Learning - Spanish Language Practicum",
       "credits": 3,
       "fa": [
+        "FA1",
         "FA4",
-        "FA6",
-        "FA1"
+        "FA6"
       ],
       "writingIntensive": true,
       "posTags": [],
@@ -4350,8 +4353,8 @@
       "title": "Eloquent French",
       "credits": 3,
       "fa": [
-        "FA3",
-        "FA1"
+        "FA1",
+        "FA3"
       ],
       "writingIntensive": true,
       "posTags": [],
@@ -4368,8 +4371,8 @@
       "title": "Introduction à la littérature française I",
       "credits": 3,
       "fa": [
-        "FA3",
-        "FA1"
+        "FA1",
+        "FA3"
       ],
       "writingIntensive": true,
       "posTags": [],
@@ -4386,8 +4389,8 @@
       "title": "Introduction à la littérature française II",
       "credits": 3,
       "fa": [
-        "FA3",
-        "FA1"
+        "FA1",
+        "FA3"
       ],
       "writingIntensive": true,
       "posTags": [],
@@ -4424,8 +4427,8 @@
       "title": "Le monde francophone",
       "credits": 3,
       "fa": [
-        "FA4",
-        "FA3"
+        "FA3",
+        "FA4"
       ],
       "writingIntensive": false,
       "posTags": [],
@@ -4455,8 +4458,8 @@
       "title": "Italy Beyond Italy: Languages, Affects, and Geographies in Modern Literature",
       "credits": 3,
       "fa": [
-        "FA4",
-        "FA3"
+        "FA3",
+        "FA4"
       ],
       "writingIntensive": false,
       "posTags": [],
@@ -4471,9 +4474,9 @@
       "title": "Introduction to Fiction & Poetry I",
       "credits": 3,
       "fa": [
-        "FA4",
+        "FA1",
         "FA3",
-        "FA1"
+        "FA4"
       ],
       "writingIntensive": true,
       "posTags": [],
@@ -4493,9 +4496,9 @@
       "title": "Introduction to Fiction & Poetry II",
       "credits": 3,
       "fa": [
-        "FA4",
+        "FA1",
         "FA3",
-        "FA1"
+        "FA4"
       ],
       "writingIntensive": true,
       "posTags": [],
@@ -4516,9 +4519,9 @@
       "title": "Introduction to Fiction & Nonfiction",
       "credits": 3,
       "fa": [
-        "FA4",
+        "FA1",
         "FA3",
-        "FA1"
+        "FA4"
       ],
       "writingIntensive": true,
       "posTags": [],
@@ -4534,9 +4537,9 @@
       "title": "The Craft of Fiction",
       "credits": 3,
       "fa": [
-        "FA4",
+        "FA1",
         "FA3",
-        "FA1"
+        "FA4"
       ],
       "writingIntensive": true,
       "posTags": [
@@ -4557,9 +4560,9 @@
       "title": "The Craft of Poetry",
       "credits": 3,
       "fa": [
-        "FA4",
+        "FA1",
         "FA3",
-        "FA1"
+        "FA4"
       ],
       "writingIntensive": true,
       "posTags": [
@@ -4580,9 +4583,9 @@
       "title": "Advanced Poetry Workshop: Poetic Voice and Vision",
       "credits": 3,
       "fa": [
+        "FA1",
         "FA3",
-        "FA6",
-        "FA1"
+        "FA6"
       ],
       "writingIntensive": true,
       "posTags": [
@@ -4603,9 +4606,9 @@
       "title": "Advanced Fiction Workshop: Making Choices",
       "credits": 3,
       "fa": [
+        "FA1",
         "FA3",
-        "FA6",
-        "FA1"
+        "FA6"
       ],
       "writingIntensive": true,
       "posTags": [
@@ -4669,9 +4672,9 @@
       "title": "Research Methods for the Social Sciences",
       "credits": 3,
       "fa": [
-        "FA4",
+        "FA1",
         "FA2",
-        "FA1"
+        "FA4"
       ],
       "writingIntensive": true,
       "posTags": [],
@@ -4688,8 +4691,8 @@
       "title": "Introduction to Social Statistics",
       "credits": 4,
       "fa": [
-        "FA4",
-        "FA2"
+        "FA2",
+        "FA4"
       ],
       "writingIntensive": false,
       "posTags": [],
@@ -4705,9 +4708,9 @@
       "title": "Social Theory",
       "credits": 3,
       "fa": [
+        "FA1",
         "FA4",
-        "FA4.1",
-        "FA1"
+        "FA4.1"
       ],
       "writingIntensive": true,
       "posTags": [
@@ -4728,9 +4731,9 @@
       "title": "Qualitative Research Practicum",
       "credits": 3,
       "fa": [
+        "FA1",
         "FA4",
-        "FA6",
-        "FA1"
+        "FA6"
       ],
       "writingIntensive": true,
       "posTags": [],
@@ -4746,10 +4749,10 @@
       "title": "Sociology Research Lab: Exploring the Archives",
       "credits": 3,
       "fa": [
-        "FA4",
-        "FA6",
+        "FA1",
         "FA2",
-        "FA1"
+        "FA4",
+        "FA6"
       ],
       "writingIntensive": true,
       "posTags": [],
@@ -4809,9 +4812,9 @@
       "title": "Housing and Homelessness in the United States",
       "credits": 3,
       "fa": [
+        "FA1",
         "FA4",
-        "FA5",
-        "FA1"
+        "FA5"
       ],
       "writingIntensive": true,
       "posTags": [
@@ -4832,9 +4835,9 @@
       "title": "Introduction to Computing",
       "credits": 3,
       "fa": [
+        "FA2",
         "FA5",
-        "FA6",
-        "FA2"
+        "FA6"
       ],
       "writingIntensive": false,
       "posTags": [
@@ -4856,8 +4859,8 @@
       "title": "Mathematical Methods for Biophysics",
       "credits": 3,
       "fa": [
-        "FA6",
-        "FA2"
+        "FA2",
+        "FA6"
       ],
       "writingIntensive": false,
       "posTags": [],
@@ -4873,9 +4876,9 @@
       "title": "Protein Engineering and Biochemistry Lab",
       "credits": 3,
       "fa": [
+        "FA1",
         "FA5",
-        "FA6",
-        "FA1"
+        "FA6"
       ],
       "writingIntensive": true,
       "posTags": [
@@ -4896,8 +4899,8 @@
       "title": "Modeling the Living Cell",
       "credits": 4,
       "fa": [
-        "FA6",
-        "FA2"
+        "FA2",
+        "FA6"
       ],
       "writingIntensive": false,
       "posTags": [
@@ -4933,9 +4936,9 @@
       "title": "Biochemistry II",
       "credits": 3,
       "fa": [
-        "FA5",
+        "FA1",
         "FA2",
-        "FA1"
+        "FA5"
       ],
       "writingIntensive": false,
       "posTags": [],
@@ -4952,8 +4955,8 @@
       "title": "Biophysical Chemistry",
       "credits": 4,
       "fa": [
-        "FA5",
-        "FA2"
+        "FA2",
+        "FA5"
       ],
       "writingIntensive": false,
       "posTags": [
@@ -4971,8 +4974,8 @@
       "title": "Spectroscopy and Its Application in Biophysical Reactions",
       "credits": 3,
       "fa": [
-        "FA5",
-        "FA2"
+        "FA2",
+        "FA5"
       ],
       "writingIntensive": false,
       "posTags": [],
@@ -4989,9 +4992,9 @@
       "title": "Molecular Biophysics Laboratory",
       "credits": 3,
       "fa": [
-        "FA6",
+        "FA1",
         "FA2",
-        "FA1"
+        "FA6"
       ],
       "writingIntensive": true,
       "posTags": [],
@@ -5027,8 +5030,8 @@
       "title": "Quantitative Analysis of Cell Signaling",
       "credits": 3,
       "fa": [
-        "FA2",
-        "FA1"
+        "FA1",
+        "FA2"
       ],
       "writingIntensive": true,
       "posTags": [
@@ -5046,8 +5049,8 @@
       "title": "Advanced Seminar in Structural Biology of Chromatin",
       "credits": 3,
       "fa": [
-        "FA2",
-        "FA1"
+        "FA1",
+        "FA2"
       ],
       "writingIntensive": true,
       "posTags": [],
@@ -5062,8 +5065,8 @@
       "title": "Biophysical Techniques and Their Applications",
       "credits": 3,
       "fa": [
-        "FA2",
-        "FA1"
+        "FA1",
+        "FA2"
       ],
       "writingIntensive": true,
       "posTags": [
@@ -5081,8 +5084,8 @@
       "title": "Advanced Seminar in Macromolecular Binding",
       "credits": 3,
       "fa": [
-        "FA2",
-        "FA1"
+        "FA1",
+        "FA2"
       ],
       "writingIntensive": true,
       "posTags": [],
@@ -5097,8 +5100,8 @@
       "title": "Advanced Seminar in Membrane Protein Structure, Function & Pharmacology",
       "credits": 3,
       "fa": [
-        "FA2",
-        "FA1"
+        "FA1",
+        "FA2"
       ],
       "writingIntensive": true,
       "posTags": [],
@@ -5111,8 +5114,8 @@
       "title": "Introduction to Biophysics Research",
       "credits": 1,
       "fa": [
-        "FA6",
-        "FA2"
+        "FA2",
+        "FA6"
       ],
       "writingIntensive": false,
       "posTags": [],
@@ -5135,8 +5138,8 @@
       "title": "Introduction to Global Environmental Change",
       "credits": 3,
       "fa": [
-        "FA5",
-        "FA2"
+        "FA2",
+        "FA5"
       ],
       "writingIntensive": false,
       "posTags": [
@@ -5291,8 +5294,8 @@
       "title": "Remote Sensing of the Environment",
       "credits": 3,
       "fa": [
-        "FA6",
-        "FA2"
+        "FA2",
+        "FA6"
       ],
       "writingIntensive": false,
       "posTags": [
@@ -5309,8 +5312,8 @@
       "title": "Ocean Biogeochemical Cycles",
       "credits": 3,
       "fa": [
-        "FA2",
-        "FA1"
+        "FA1",
+        "FA2"
       ],
       "writingIntensive": true,
       "posTags": [],
@@ -5325,8 +5328,8 @@
       "title": "Introductory Oceanography",
       "credits": 3,
       "fa": [
-        "FA2",
-        "FA1"
+        "FA1",
+        "FA2"
       ],
       "writingIntensive": true,
       "posTags": [
@@ -5345,9 +5348,9 @@
       "title": "Soil Ecology",
       "credits": 3,
       "fa": [
-        "FA6",
+        "FA1",
         "FA2",
-        "FA1"
+        "FA6"
       ],
       "writingIntensive": false,
       "posTags": [
@@ -5368,9 +5371,9 @@
       "title": "Field Methods in Ecology",
       "credits": 3,
       "fa": [
-        "FA6",
+        "FA1",
         "FA2",
-        "FA1"
+        "FA6"
       ],
       "writingIntensive": false,
       "posTags": [
@@ -5391,8 +5394,8 @@
       "title": "Forested Landscapes and Ecology Lab",
       "credits": 1,
       "fa": [
-        "FA6",
-        "FA2"
+        "FA2",
+        "FA6"
       ],
       "writingIntensive": false,
       "posTags": [
@@ -5410,8 +5413,8 @@
       "title": "Spacecraft Instrumentation Project",
       "credits": 3,
       "fa": [
-        "FA6",
-        "FA2"
+        "FA2",
+        "FA6"
       ],
       "writingIntensive": false,
       "posTags": [],
@@ -5470,9 +5473,9 @@
       "title": "Introduction to Sustainability",
       "credits": 3,
       "fa": [
-        "FA4",
+        "FA1",
         "FA2",
-        "FA1"
+        "FA4"
       ],
       "writingIntensive": true,
       "posTags": [
@@ -5491,9 +5494,9 @@
       "title": "Climate Change: Science & Policy",
       "credits": 3,
       "fa": [
+        "FA2",
         "FA4",
-        "FA4.1",
-        "FA2"
+        "FA4.1"
       ],
       "writingIntensive": false,
       "posTags": [
@@ -5514,8 +5517,8 @@
       "title": "Water, Energy, and Food Nexus",
       "credits": 3,
       "fa": [
-        "FA4",
-        "FA2"
+        "FA2",
+        "FA4"
       ],
       "writingIntensive": false,
       "posTags": [],
@@ -5530,8 +5533,8 @@
       "title": "Senior Capstone",
       "credits": 2,
       "fa": [
-        "FA6",
-        "FA2"
+        "FA2",
+        "FA6"
       ],
       "writingIntensive": false,
       "posTags": [
@@ -5550,8 +5553,8 @@
       "title": "Senior Capstone Project",
       "credits": 1,
       "fa": [
-        "FA6",
-        "FA2"
+        "FA2",
+        "FA6"
       ],
       "writingIntensive": false,
       "posTags": [],
@@ -5586,8 +5589,8 @@
       "title": "Applied Experience",
       "credits": 1,
       "fa": [
-        "FA6",
-        "FA2"
+        "FA2",
+        "FA6"
       ],
       "writingIntensive": false,
       "posTags": [],
@@ -5608,9 +5611,9 @@
       "title": "Introduction to Public Health",
       "credits": 4,
       "fa": [
+        "FA1",
         "FA4",
-        "FA5",
-        "FA1"
+        "FA5"
       ],
       "writingIntensive": true,
       "posTags": [
@@ -5630,9 +5633,9 @@
       "title": "Biodiversity and Public Health",
       "credits": 3,
       "fa": [
-        "FA6",
+        "FA1",
         "FA2",
-        "FA1"
+        "FA6"
       ],
       "writingIntensive": false,
       "posTags": [],
@@ -5669,9 +5672,9 @@
       "title": "Research Methods in Public Health",
       "credits": 4,
       "fa": [
-        "FA6",
+        "FA1",
         "FA2",
-        "FA1"
+        "FA6"
       ],
       "writingIntensive": true,
       "posTags": [],
@@ -5750,8 +5753,8 @@
       "title": "The Environment and Your Health",
       "credits": 3,
       "fa": [
-        "FA6",
-        "FA2"
+        "FA2",
+        "FA6"
       ],
       "writingIntensive": false,
       "posTags": [
@@ -5831,8 +5834,8 @@
       "title": "Health Data Analysis Practicum",
       "credits": 3,
       "fa": [
-        "FA6",
-        "FA2"
+        "FA2",
+        "FA6"
       ],
       "writingIntensive": false,
       "posTags": [],
@@ -6063,9 +6066,9 @@
       "title": "Honors in Public Health - Seminar",
       "credits": 3,
       "fa": [
-        "FA6",
+        "FA1",
         "FA2",
-        "FA1"
+        "FA6"
       ],
       "writingIntensive": true,
       "posTags": [],
@@ -6081,9 +6084,9 @@
       "title": "Honors in Public Health",
       "credits": 3,
       "fa": [
-        "FA6",
+        "FA1",
         "FA2",
-        "FA1"
+        "FA6"
       ],
       "writingIntensive": true,
       "posTags": [],
@@ -6122,8 +6125,8 @@
       "title": "Human Origins",
       "credits": 4,
       "fa": [
-        "FA4",
-        "FA2"
+        "FA2",
+        "FA4"
       ],
       "writingIntensive": false,
       "posTags": [
@@ -6144,9 +6147,9 @@
       "title": "Animal Behavior and Communication Lab",
       "credits": 3,
       "fa": [
-        "FA6",
+        "FA1",
         "FA2",
-        "FA1"
+        "FA6"
       ],
       "writingIntensive": true,
       "posTags": [
@@ -6168,9 +6171,9 @@
       "title": "Behavioral Evolution Lab",
       "credits": 3,
       "fa": [
-        "FA6",
+        "FA1",
         "FA2",
-        "FA1"
+        "FA6"
       ],
       "writingIntensive": true,
       "posTags": [
@@ -6188,8 +6191,8 @@
       "title": "Senior Seminar: Behavioral Biology",
       "credits": 1,
       "fa": [
-        "FA5",
-        "FA2"
+        "FA2",
+        "FA5"
       ],
       "writingIntensive": false,
       "posTags": [
@@ -6230,8 +6233,8 @@
       "title": "Introduction to Korean Culture",
       "credits": 3,
       "fa": [
-        "FA4",
-        "FA3"
+        "FA3",
+        "FA4"
       ],
       "writingIntensive": true,
       "posTags": [
@@ -6248,8 +6251,8 @@
       "title": "Introduction to Latin American, Caribbean, and Latinx Studies",
       "credits": 3,
       "fa": [
-        "FA4",
         "FA3",
+        "FA4",
         "FA5"
       ],
       "writingIntensive": false,
@@ -6272,8 +6275,8 @@
       "title": "Introduction to Africana Studies",
       "credits": 3,
       "fa": [
-        "FA4",
         "FA3",
+        "FA4",
         "FA4.1"
       ],
       "writingIntensive": false,
@@ -7367,8 +7370,8 @@
       "title": "Capstone Design Project l",
       "credits": 3,
       "fa": [
-        "FA6",
-        "FA2"
+        "FA2",
+        "FA6"
       ],
       "writingIntensive": false,
       "posTags": [],
@@ -10361,8 +10364,8 @@
       "title": "Biomedical Engineering: Health and Human Physiology",
       "credits": 2,
       "fa": [
-        "FA5",
-        "FA2"
+        "FA2",
+        "FA5"
       ],
       "writingIntensive": false,
       "posTags": [],
@@ -11444,8 +11447,8 @@
       "title": "Computer Science Innovation & Entrepreneurship II",
       "credits": 3,
       "fa": [
-        "FA6",
-        "FA2"
+        "FA2",
+        "FA6"
       ],
       "writingIntensive": false,
       "posTags": [
@@ -12051,8 +12054,8 @@
       "title": "Culture of the Engineering Profession",
       "credits": 3,
       "fa": [
-        "FA5",
-        "FA2"
+        "FA2",
+        "FA5"
       ],
       "writingIntensive": true,
       "posTags": [
