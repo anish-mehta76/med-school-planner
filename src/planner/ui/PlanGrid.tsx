@@ -186,7 +186,15 @@ function PlanRow({
             </div>
             <div>
               <dt>Foundational Abilities</dt>
-              <dd>{faLabel(r.fa)}</dd>
+              <dd>
+                {faLabel(r.fa)}
+                {c?.faVaries && (
+                  <span className="muted">
+                    {' '}
+                    (varies by section{c.faVaries.length ? `: some sections also carry ${c.faVaries.join(', ')}` : ''}; set your section’s tags below)
+                  </span>
+                )}
+              </dd>
             </div>
             {c?.term && (
               <div>

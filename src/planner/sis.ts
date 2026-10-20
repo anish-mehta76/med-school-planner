@@ -62,7 +62,12 @@ export function summarize(code: string, sections: SisSection[], now: Date) {
   const sorted = [...sections].sort((a, b) => termRank(b.Term) - termRank(a.Term));
   const latest = sorted[0];
   const latestTerm = sorted.filter((s) => s.Term === latest.Term);
-  const fa = [...new Set([...(latest.Areas ?? '').matchAll(/\((FA\d(?:\.\d)?)\)/g)].map((m) => m[1]))];
+  // FA tags every section of the latest term carries are the course's; ones only some carry vary by section.
+  const faOf = (s: SisSection) => new Set([...(s.Areas ?? '').matchAll(/\((FA\d(?:\.\d)?)\)/g)].map((m) => m[1]));
+  const sets = latestTerm.map(faOf);
+  const union = [...new Set(sets.flatMap((x) => [...x]))].sort();
+  const fa = union.filter((t) => sets.every((x) => x.has(t)));
+  const faVaries = union.filter((t) => !fa.includes(t));
   const posTags = [...new Set(latestTerm.flatMap((s) => s.SectionDetails?.flatMap((d) => d.PosTags?.map((p) => p.Tag.replace(/-/g, '')) ?? []) ?? []))];
   const prereq = latest.SectionDetails?.[0]?.Prerequisites?.filter((p) => !(p.IsNegative === true || p.IsNegative === 'Yes'));
   const prereqText = prereq?.map((p) => p.Description).filter(Boolean).join(' ') || undefined;
@@ -83,6 +88,7 @@ export function summarize(code: string, sections: SisSection[], now: Date) {
     title: latest.Title,
     credits: Number.parseFloat(latest.Credits) || undefined,
     fa,
+    faVaries: faVaries.length ? faVaries : undefined,
     writingIntensive: latest.IsWritingIntensive === 'Yes',
     posTags,
     term,

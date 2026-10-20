@@ -21,7 +21,7 @@ const T1 = 'Social science (PHS Table 1); title not in catalogue notes';
 const SEED: Course[] = [
   // General
   c('AS.001.1XX', 'First-Year Seminar', 3, { term: 'F', placeholder: true, note: 'S/U, fall of first year. No FA.' }),
-  c('AS.004.101', 'Reintroduction to Writing', 3, { note: 'First-year requirement, letter grade, C- or better. FAs vary by section.' }),
+  c('AS.004.101', 'Reintroduction to Writing', 3, { faVaries: [], note: 'First-year requirement, letter grade, C- or better. FAs vary by section: add your section’s tags in its details.' }),
 
   // Chemistry
   sci('AS.030.101', 'Introductory Chemistry I', 3),
@@ -139,8 +139,8 @@ const SEED: Course[] = [
   c('AS.080.250', 'Neuroscience Lab', 3, { prereqs: [['AS.200.141', 'AS.080.306']] }),
   c('AS.080.305', 'Neuroscience: Cellular & Systems I', 3, { term: 'F', prereqs: [['AS.200.141', 'AS.050.105']] }),
   c('AS.080.306', 'Neuroscience: Cellular & Systems II', 3, { term: 'S', prereqs: [['AS.080.305']] }),
-  c('AS.080.541', 'Research in Neuroscience', 3),
-  c('AS.080.544', 'Research in Neuroscience', 3),
+  c('AS.080.541', 'Research in Neuroscience', 3, { repeatable: true, note: 'Variable credit; may be taken more than once.' }),
+  c('AS.080.544', 'Research in Neuroscience', 3, { repeatable: true, note: 'Variable credit; may be taken more than once.' }),
   c('AS.080.499', 'Scientific Communication & Mentoring', 1.5, { repeatable: true }),
 
   // History
@@ -195,11 +195,14 @@ export function applySis(live: Partial<Course>[]) {
     if (!l.code) continue;
     const s = COURSE[l.code];
     const parsed = !!l.prereqs?.length;
+    // A seed course known to vary by section keeps its (blank) tags until SIS reports the variation itself.
+    const keepFa = s?.faVaries && !l.faVaries;
     const next = {
       ...(s ?? { code: l.code, title: l.code, credits: 3 }),
       ...Object.fromEntries(Object.entries(l).filter(([, v]) => v !== undefined && v !== '')),
       prereqs: parsed ? l.prereqs : s?.prereqs,
       seqOnly: parsed ? false : s?.seqOnly,
+      ...(keepFa ? { fa: s!.fa, faVaries: s!.faVaries } : {}),
       source: 'SIS',
     } as Course;
     if (s) CATALOG[CATALOG.indexOf(s)] = next;

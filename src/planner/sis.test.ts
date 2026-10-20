@@ -37,3 +37,12 @@ describe('summarize', () => {
     expect(summarize('X', [sec('Fall 2025'), sec('Spring 2026')], new Date(2026, 9, 15)).term).toBeNull();
   });
 });
+
+describe('FA tags across sections', () => {
+  it('keeps tags every section shares and lists the rest as varying', () => {
+    const sec = (Areas: string) => ({ OfferingName: 'AS.004.101', Title: 'Reintroduction to Writing', Credits: '3.00', Term: 'Fall 2026', Areas });
+    const c = summarize('AS.004.101', [sec('Writing (FA1), Ethics (FA5)'), sec('Writing (FA1), Democracy (FA4.1)')], new Date(2026, 9, 20));
+    expect(c.fa).toEqual(['FA1']);
+    expect(c.faVaries).toEqual(['FA4.1', 'FA5']);
+  });
+});

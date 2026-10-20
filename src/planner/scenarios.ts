@@ -14,7 +14,7 @@ function plan(rows: Record<string, string>): PlanItem[] {
 
 const Y1_FALL = 'AS.001.1XX AS.030.101 AS.030.105 AS.110.108 AS.280.101';
 
-/** Spec section 7: Chemistry BS + Public Health BA, 130 credits. Fall 2026 is a placeholder. */
+/** Spec section 7: Chemistry BS + Public Health BA (129 credits with SIS data). Terms adjusted to SIS offering patterns. Fall 2026 is a placeholder. */
 export function chemPhs(): Scenario {
   return {
     id: 'chem-phs',
@@ -25,19 +25,19 @@ export function chemPhs(): Scenario {
     mcatAfterTermId: 'S29',
     plan: plan({
       F26: Y1_FALL,
-      S27: 'AS.030.102 AS.030.106 AS.110.109 AS.004.101 AS.140.105 AS.280.380',
+      S27: 'AS.030.102 AS.030.106 AS.110.109 AS.004.101 AS.280.335 AS.280.380',
       F27: 'AS.030.205 AS.030.227 AS.171.101 AS.173.111 AS.280.345',
       S28: 'AS.030.206 AS.030.228 AS.171.102 AS.173.112 AS.180.102',
-      F28: 'AS.030.301 AS.030.246 AS.280.240 AS.280.335 AS.020.303',
-      S29: 'AS.030.302 AS.030.307 AS.280.340 AS.280.350 AS.280.355',
+      F28: 'AS.030.301 AS.030.246 AS.280.240 AS.140.105 AS.280.355',
+      S29: 'AS.030.302 AS.030.307 AS.280.340 AS.280.350 AS.020.303',
       U29: 'AS.280.500',
-      F29: 'AS.030.449 AS.020.305 AS.020.315 AS.020.304 PH.BSPH',
-      S30: 'AS.030.356 AS.020.306 AS.280.347 AS.180.289 PH.BSPH',
+      F29: 'AS.030.449 AS.020.305 AS.180.289 AS.020.304 PH.BSPH',
+      S30: 'AS.030.356 AS.020.306 AS.280.347 AS.020.315 PH.BSPH',
     }),
   };
 }
 
-/** Spec section 7b: Chem BS + PHS BA + pre-med, 133 credits, MCAT after Spring 2029. */
+/** Spec section 7b: Chem BS + PHS BA + pre-med (132 credits with SIS data), MCAT after Spring 2029. */
 export function chemPhsPremed(): Scenario {
   return {
     id: 'chem-phs-premed',

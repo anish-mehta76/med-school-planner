@@ -32,8 +32,9 @@ describe('default plan: Chem BS + PHS BA (spec section 7)', () => {
   const a = analyze(s);
   const [chem, phs] = a.results;
 
-  it('totals 130 credits and meets both majors', () => {
-    expect(a.total).toBe(130);
+  // 129, not the spec's 130: SIS lists Applied Experience (AS.280.500) at 1 credit, not 2.
+  it('totals 129 credits and meets both majors', () => {
+    expect(a.total).toBe(129);
     expect(chem.reqs.filter((r) => r.status === 'partial' || r.status === 'missing').map((r) => r.req.key)).toEqual([]);
     expect(phs.reqs.filter((r) => r.status === 'partial' || r.status === 'missing').map((r) => r.req.key)).toEqual([]);
     expect(chem.pct).toBe(1);
@@ -44,7 +45,7 @@ describe('default plan: Chem BS + PHS BA (spec section 7)', () => {
     expect(codes(chem, 'elec')).toEqual(['AS.020.303', 'AS.020.304', 'AS.020.306']);
     expect(codes(phs, 'bio')).toEqual(['AS.020.303', 'AS.020.305']);
     expect(codes(phs, 'biolab')).toEqual(['AS.020.315']);
-    expect(codes(phs, 'soc')).toEqual(['AS.140.105', 'AS.180.102']);
+    expect(codes(phs, 'soc').sort()).toEqual(['AS.140.105', 'AS.180.102']);
     expect(codes(phs, 'calc1')).toEqual(['AS.110.108']);
     expect(codes(chem, 'calc1')).toEqual(['AS.110.108']);
     expect(a.doubleCredits).toBeGreaterThan(0);
@@ -54,12 +55,15 @@ describe('default plan: Chem BS + PHS BA (spec section 7)', () => {
     expect(a.flags.filter((f) => f.level !== 'info')).toEqual([]);
   });
 
-  it('surfaces the FA gaps from spec section 8', () => {
+  it('surfaces the FA gaps with SIS-confirmed tags', () => {
     const fa = Object.fromEntries(a.fa.map((f) => [f.id, f]));
-    expect(fa.FA3.verified + fa.FA3.estimated).toBe(0);
+    // SIS: History of Medicine carries FA3, so the Culture & Aesthetics gap is 12, not the spec's 15.
+    expect(fa.FA3.courses.map((c) => c.r.code)).toEqual(['AS.140.105']);
     expect(fa['FA4.1'].verified).toBe(0);
-    expect(fa.FA1.verified).toBe(11); // 280.101 + 280.240 + 030.356
-    expect(fa.FA2.verified + fa.FA2.estimated).toBeGreaterThanOrEqual(15);
+    // SIS tags several chemistry labs and 020.315 as FA1, on top of 280.101 and 280.240.
+    expect(fa.FA1.verified).toBe(19);
+    expect(fa.FA2.verified).toBeGreaterThanOrEqual(15);
+    expect(a.fa.every((f) => f.estimated === 0)).toBe(true);
   });
 });
 
@@ -67,8 +71,8 @@ describe('pre-med plan (spec section 7b)', () => {
   const a = analyze(chemPhsPremed());
   const pm = a.premed!;
 
-  it('totals 133 and still meets both majors', () => {
-    expect(a.total).toBe(133);
+  it('totals 132 and still meets both majors', () => {
+    expect(a.total).toBe(132);
     for (const res of a.results) expect(res.reqs.filter((r) => r.status === 'partial' || r.status === 'missing')).toEqual([]);
   });
 

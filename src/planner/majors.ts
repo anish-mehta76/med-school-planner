@@ -303,8 +303,8 @@ export const MAJORS: Major[] = [
 
 // ── Pre-med track (not a major) ────────────────────────────────────────────
 
-/** Writing check: writing-intensive courses plus English, Writing Seminars and (unconfirmed) UWP. */
-const writingCourse: Matcher = (r) => !!r.course?.writingIntensive || /^AS\.(060|220)\./.test(r.code);
+/** Writing check: writing-intensive courses plus English and Writing Seminars. AS.004.101 isn't counted (unconfirmed). */
+const writingCourse: Matcher = (r) => r.code !== 'AS.004.101' && (!!r.course?.writingIntensive || /^AS\.(060|220)\./.test(r.code));
 export const ENGLISH_WS_UWP = /^AS\.(060|220|004)\./;
 
 export const PREMED: Major = {

@@ -29,6 +29,8 @@ export interface Course {
   prereqText?: string;
   /** Foundational Ability tags. A trailing "?" marks an estimated tag. */
   fa?: string[];
+  /** FA tags only some sections carry (each section of the course is a different topic). */
+  faVaries?: string[];
   posTags?: string[];
   writingIntensive?: boolean;
   /** Placeholder that auto-fill may add more than once. */

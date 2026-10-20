@@ -3,6 +3,7 @@ import { Check, CircleDashed, CircleDot, ExternalLink, Minus } from 'lucide-reac
 import { autofill, evaluate, isWaived, overlapMatrix, resolve, waiverKey, type AutofillResult, type MajorResult, type ReqResult, type ScenarioAnalysis } from '../engine';
 import { ALL_MAJORS, MAJOR_BY_ID, majorColor } from '../majors';
 import { TERM_BY_ID } from '../terms';
+import { SIS_SYNCED_AT } from '../catalog';
 import type { Major, Resolved, Scenario } from '../types';
 
 const STATUS = {
@@ -281,12 +282,20 @@ export function MajorSelect({ value, onChange, exclude = [], placeholder }: { va
 // ── Foundational Abilities ─────────────────────────────────────────────────
 
 export function FaTracker({ analysis }: { analysis: ScenarioAnalysis }) {
-  const untagged = analysis.resolved.filter((r) => r.season !== 'PRE' && !r.code.startsWith('AS.001.') && !r.fa.length);
+  const varies = analysis.resolved.filter((r) => r.season !== 'PRE' && r.course?.faVaries && !r.item.fa);
+  const untagged = analysis.resolved.filter((r) => r.season !== 'PRE' && !r.code.startsWith('AS.001.') && !r.fa.length && !varies.includes(r));
+  const confirmed = analysis.resolved.filter((r) => r.season !== 'PRE' && r.course?.source === 'SIS' && !r.item.fa && !varies.includes(r)).length;
+  const counted = analysis.resolved.filter((r) => r.season !== 'PRE').length;
   return (
     <div className="stack">
       <p className="muted small">
         KSAS rule: FA1 and FA6 always count; among FA2–FA5 a course counts toward one, here the one with the largest remaining need. Exam credit and First-Year
         Seminars carry no FA. FA1 needs a letter grade. Lighter bar segments are estimated tags.
+      </p>
+      <p className="muted small">
+        {SIS_SYNCED_AT
+          ? `${confirmed} of ${counted} courses in your plan have FA tags confirmed by SIS (synced ${SIS_SYNCED_AT})${confirmed < counted ? '; the others vary by section, are placeholders, or use tags you entered' : ''}.`
+          : 'FA tags are estimates until SIS data is synced.'}
       </p>
       <section className="card">
         {analysis.fa.map((f) => {
@@ -313,9 +322,14 @@ export function FaTracker({ analysis }: { analysis: ScenarioAnalysis }) {
           );
         })}
       </section>
+      {varies.length > 0 && (
+        <p className="muted small">
+          FA tags vary by section for: {varies.map((r) => r.code).join(', ')}. Open the course on the Plan tab and enter the tags for the section you take.
+        </p>
+      )}
       {untagged.length > 0 && (
         <p className="muted small">
-          No FA tag known for: {untagged.map((r) => r.code).join(', ')}. Look them up with your SIS key (Course data tab), or add tags in a course's details.
+          No FA tag in SIS for: {untagged.map((r) => r.code).join(', ')}. That usually means the course carries none; placeholders get tags once you pick the real course.
         </p>
       )}
     </div>
