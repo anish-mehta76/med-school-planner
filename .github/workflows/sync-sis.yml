@@ -48,6 +48,13 @@ jobs:
         env:
           JHU_SIS_API_KEY: ${{ secrets.JHU_SIS_API_KEY }}
           SIS_CACHE_DAYS: 14
+      # Keep the fetched data downloadable even if the tests below fail.
+      - uses: actions/upload-artifact@v4
+        if: env.HAS_KEY == 'true'
+        with:
+          name: sisCourses
+          path: src/planner/sisCourses.json
+          retention-days: 7
       - if: env.HAS_KEY == 'true'
         run: npm test
       - name: Commit changes
