@@ -1,6 +1,7 @@
 import { useId, useState } from 'react';
 import { AlertTriangle, Plus, X } from 'lucide-react';
-import { CATALOG, COURSE, isPublished } from '../catalog';
+import { CATALOG, COURSE, deptOf, isPublished } from '../catalog';
+import { reducedMotion, useMounted } from '../../components/viz';
 import { newItemId, type Flag, type ScenarioAnalysis } from '../engine';
 import { MAJOR_BY_ID, majorColor } from '../majors';
 import { TERMS, YEAR_LABEL } from '../terms';
@@ -11,6 +12,16 @@ interface Props {
   scenario: Scenario;
   analysis: ScenarioAnalysis;
   update: (f: (s: Scenario) => Scenario) => void;
+}
+
+const DEPT_COLORS = ['var(--c1)', 'var(--c2)', 'var(--c3)', 'var(--c4)', 'var(--c5)', 'var(--c6)', 'var(--c7)', 'var(--ontrack)'];
+
+/** A stable color per department (e.g. every AS.030 course shares one), so a term's mix reads at a glance. */
+export function deptColor(code: string) {
+  const d = deptOf(code);
+  let h = 0;
+  for (const ch of d) h = (h * 31 + ch.charCodeAt(0)) >>> 0;
+  return DEPT_COLORS[h % DEPT_COLORS.length];
 }
 
 const SOURCE_LABEL = { catalogue: 'JHU catalogue', SIS: 'SIS', estimated: 'estimated' } as const;
@@ -35,6 +46,12 @@ export function Dots({ ids, majorIds }: { ids: string[]; majorIds: string[] }) {
 
 export default function PlanGrid({ scenario, analysis, update }: Props) {
   const [open, setOpen] = useState<string>();
+  const [flash, setFlash] = useState<string>();
+  const jump = (termId: string) => {
+    document.getElementById(`term-${termId}`)?.scrollIntoView({ behavior: reducedMotion() ? 'auto' : 'smooth', block: 'center' });
+    setFlash(termId);
+    window.setTimeout(() => setFlash((f) => (f === termId ? undefined : f)), 1600);
+  };
   const listId = useId();
   const byTerm = (id: string) => analysis.resolved.filter((r) => r.item.termId === id);
   const flagsFor = (itemId: string) => analysis.flags.filter((f) => f.itemId === itemId);
@@ -57,7 +74,7 @@ export default function PlanGrid({ scenario, analysis, update }: Props) {
     const cr = analysis.termCredits[t.id] ?? 0;
     const termFlags = analysis.flags.filter((f) => f.termId === t.id && !f.itemId);
     return (
-      <section key={t.id} className={`plan-term ${t.season === 'U' || t.season === 'W' ? 'summer' : ''}`} aria-label={t.label}>
+      <section key={t.id} id={`term-${t.id}`} className={`plan-term ${t.season === 'U' || t.season === 'W' ? 'summer' : ''}${flash === t.id ? ' flash' : ''}`} aria-label={t.label}>
         <header className="plan-term-head">
           <h3>
             {t.label}
@@ -69,7 +86,9 @@ export default function PlanGrid({ scenario, analysis, update }: Props) {
         </header>
         {t.id !== 'PRE' && cr > 0 && (
           <span className={`term-load${cr >= 18 ? ' heavy' : ''}`} aria-hidden title={`${cr} of about 18 credits`}>
-            <span style={{ width: `${Math.min(100, (cr / 18) * 100)}%` }} />
+            {items.map((r) => (
+              <span key={r.item.id} style={{ width: `${(r.credits / Math.max(18, cr)) * 100}%`, background: deptColor(r.code) }} />
+            ))}
           </span>
         )}
         {t.id === 'F26' && scenario.sample && <p className="muted small plan-note">Placeholder: replace with your actual Fall 2026 courses.</p>}
@@ -102,6 +121,7 @@ export default function PlanGrid({ scenario, analysis, update }: Props) {
 
   return (
     <div className="plan-grid">
+      {analysis.resolved.length > 0 && <PlanOverview analysis={analysis} terms={TERMS.filter(showTerm)} onPick={jump} />}
       <datalist id={listId}>
         {CATALOG.map((c) => (
           <option key={c.code} value={`${c.code} — ${c.title}`} />
@@ -124,6 +144,49 @@ export default function PlanGrid({ scenario, analysis, update }: Props) {
         <input type="checkbox" checked={!!scenario.showSummers} onChange={(e) => update((s) => ({ ...s, showSummers: e.target.checked }))} /> Show winter intersessions and summers
       </label>
     </div>
+  );
+}
+
+/** Every shown term as a column of its courses (colored by department). Clicking a column jumps to that term. */
+function PlanOverview({ analysis, terms, onPick }: { analysis: ScenarioAnalysis; terms: Term[]; onPick: (termId: string) => void }) {
+  const grown = useMounted();
+  const max = Math.max(18, ...terms.map((t) => analysis.termCredits[t.id] ?? 0));
+  const short = (t: Term) => (t.id === 'PRE' ? 'Exam' : `${t.season === 'F' ? 'Fa' : t.season === 'S' ? 'Sp' : t.season === 'W' ? 'Int' : 'Su'} ’${t.id.slice(1)}`);
+  return (
+    <section className="card plan-overview" aria-labelledby="overview-title">
+      <div className="card-head">
+        <h2 id="overview-title">Four years at a glance</h2>
+        <span className="muted small">Credits per term, colored by department · click a term</span>
+      </div>
+      <div className="overview-cols" role="group" aria-label="Credits per term. Pick a term to jump to it">
+        {terms.map((t, i) => {
+          const items = analysis.resolved.filter((r) => r.item.termId === t.id);
+          const cr = analysis.termCredits[t.id] ?? 0;
+          return (
+            <button
+              key={t.id}
+              type="button"
+              className={`overview-col${t.season === 'U' || t.season === 'W' ? ' minor' : ''}${cr >= 18 && t.id !== 'PRE' ? ' heavy' : ''}`}
+              onClick={() => onPick(t.id)}
+              aria-label={`${t.label}: ${cr} credits, ${items.length} ${items.length === 1 ? 'course' : 'courses'}`}
+            >
+              <span className="overview-cr num">{cr || ''}</span>
+              <span className="overview-stack">
+                {items.map((r, j) => (
+                  <span
+                    key={r.item.id}
+                    className="overview-seg"
+                    title={`${r.code} · ${r.title} · ${r.credits} cr`}
+                    style={{ height: grown ? `${(r.credits / max) * 100}%` : 0, background: deptColor(r.code), transitionDelay: `${i * 40 + j * 25}ms` }}
+                  />
+                ))}
+              </span>
+              <span className="overview-name">{short(t)}</span>
+            </button>
+          );
+        })}
+      </div>
+    </section>
   );
 }
 
@@ -160,7 +223,7 @@ function PlanRow({
   const c = r.course;
   const warn = flags.some((f) => f.level !== 'info');
   return (
-    <li className={`plan-item ${warn ? 'flagged' : ''} ${r.item.addedByAutofill ? 'autofilled' : ''} ${forfeited ? 'forfeited' : ''}`}>
+    <li className={`plan-item ${warn ? 'flagged' : ''} ${r.item.addedByAutofill ? 'autofilled' : ''} ${forfeited ? 'forfeited' : ''}`} style={{ ['--dept' as string]: deptColor(r.code) }}>
       <button type="button" className="plan-item-main" aria-expanded={open} onClick={toggle}>
         <span className="plan-code num">{r.code}</span>
         <span className="plan-title">
@@ -176,7 +239,7 @@ function PlanRow({
         <span className="plan-meta">
           <Dots ids={counts} majorIds={majorIds} />
           {warn && <AlertTriangle size={14} aria-label="Has a warning" className="plan-warn" />}
-          <span className="num muted">{r.credits}</span>
+          <span className="plan-cr num">{r.credits}</span>
         </span>
       </button>
       {open && (

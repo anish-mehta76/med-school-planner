@@ -3593,3 +3593,310 @@ button.pipe-step:hover {
     flex-basis: 100%;
   }
 }
+
+/* ══ Round 3: course selection & requirements ═══════════ */
+
+/* Four years at a glance */
+.overview-cols {
+  display: flex;
+  align-items: stretch;
+  gap: var(--sp-1);
+  height: 170px;
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+.overview-col {
+  font: inherit;
+  flex: 1 0 44px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-1);
+  padding: var(--sp-1) 2px;
+  border: 1px solid transparent;
+  border-radius: var(--r-sm);
+  background: none;
+  color: var(--muted);
+  cursor: pointer;
+}
+.overview-col.minor {
+  flex: 0.6 0 34px;
+}
+.overview-col:hover {
+  background: var(--surface-2);
+  border-color: var(--line);
+}
+.overview-cr {
+  height: 16px;
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  color: var(--ink);
+}
+.overview-col.heavy .overview-cr {
+  color: var(--below);
+}
+.overview-stack {
+  flex: 1;
+  width: 70%;
+  max-width: 34px;
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 2px;
+  padding: 2px;
+  border-radius: 6px;
+  background: var(--surface-2);
+}
+.overview-seg {
+  display: block;
+  width: 100%;
+  min-height: 0;
+  border-radius: 3px;
+}
+.overview-name {
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* Course rows: department stripe and credit pill */
+.plan-items {
+  gap: var(--sp-1);
+}
+.plan-item {
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--dept, var(--accent-2));
+  overflow: hidden;
+}
+.plan-term.summer .plan-item {
+  background: var(--surface);
+}
+.plan-item.flagged {
+  background: var(--below-soft);
+}
+.plan-item:hover {
+  border-color: color-mix(in srgb, var(--dept, var(--accent-2)) 55%, var(--line));
+  border-left-color: var(--dept, var(--accent-2));
+  box-shadow: var(--shadow);
+}
+.plan-item-main {
+  border-radius: 0;
+}
+.plan-item-main:hover {
+  background: color-mix(in srgb, var(--dept, var(--accent-2)) 7%, transparent);
+}
+.plan-code {
+  color: color-mix(in srgb, var(--dept, var(--ink)) 55%, var(--ink));
+}
+.plan-cr {
+  min-width: 22px;
+  padding: 0 6px;
+  border-radius: var(--r-pill);
+  background: var(--surface-2);
+  color: var(--ink);
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  line-height: 20px;
+  text-align: center;
+}
+.plan-term {
+  transition:
+    border-color var(--ease),
+    box-shadow 300ms ease;
+}
+.plan-term.flash {
+  border-color: var(--accent-2);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent-2) 45%, transparent);
+}
+.plan-term {
+  scroll-margin: 96px;
+}
+.plan-year-label {
+  font-family: var(--mono);
+  font-size: var(--fs-xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ontrack);
+}
+.term-load {
+  display: flex;
+  gap: 1px;
+  height: 5px;
+}
+.term-load > span {
+  border-radius: 0;
+}
+.term-load.heavy {
+  box-shadow: 0 0 0 1px var(--below);
+}
+
+/* Requirements: overview */
+.req-overview {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+  padding: var(--sp-4);
+  margin-bottom: var(--sp-4);
+  border-radius: var(--r-sm);
+  background: var(--surface-2);
+}
+.req-overview .stackbar {
+  background: var(--surface);
+}
+.req-section-bars .hbar {
+  grid-template-columns: minmax(0, 16em) 1fr 4em;
+}
+.req-section-bars .hbar-track {
+  background: var(--surface);
+}
+.req-section {
+  scroll-margin: var(--sp-5);
+}
+.req-section-title {
+  font-family: var(--mono);
+  font-size: var(--fs-xs);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ontrack);
+}
+
+/* Requirements: rows */
+.req {
+  grid-template-columns: 28px minmax(0, 1fr);
+  align-items: start;
+  padding: var(--sp-3) 0;
+}
+.req-icon {
+  width: 22px;
+  height: 22px;
+  margin-top: -1px;
+  padding: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+}
+.req-done .req-icon {
+  background: var(--strong);
+  color: var(--surface);
+}
+.req-partial .req-icon {
+  background: var(--below-soft);
+  color: var(--below);
+  box-shadow: inset 0 0 0 2px var(--below);
+}
+.req-missing .req-icon {
+  color: var(--behind);
+  box-shadow: inset 0 0 0 2px var(--behind);
+}
+.req-note .req-icon,
+.req-waived .req-icon {
+  background: var(--surface-2);
+  color: var(--muted);
+}
+.req-label {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+}
+.req-progress {
+  display: inline-block;
+  width: 56px;
+  height: 5px;
+  border-radius: var(--r-pill);
+  background: var(--surface-2);
+  overflow: hidden;
+}
+.req-progress > span {
+  display: block;
+  height: 100%;
+  width: calc(var(--p, 0) * 100%);
+  border-radius: var(--r-pill);
+  background: var(--below);
+}
+.req-done .req-progress > span {
+  background: var(--strong);
+}
+.req-items {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--sp-1);
+  margin-top: 2px;
+}
+.req-chip-lead {
+  margin-right: 2px;
+}
+.req-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0 var(--sp-2);
+  border-radius: var(--r-pill);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  line-height: 22px;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+.req-chip.filled {
+  background: color-mix(in srgb, var(--dept, var(--accent)) 14%, var(--surface));
+  color: var(--ink);
+  box-shadow: inset 3px 0 0 var(--dept, var(--accent));
+}
+.req-chip-term {
+  font-weight: 400;
+  color: var(--muted);
+}
+.req-chip.needed {
+  border: 1.5px dashed var(--border-control);
+  background: transparent;
+  color: var(--muted);
+  line-height: 19px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .overview-seg {
+    transition: height 800ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .overview-col {
+    transition:
+      background-color var(--ease),
+      border-color var(--ease);
+  }
+  .plan-item {
+    animation: pop-in 320ms cubic-bezier(0.2, 0.7, 0.2, 1) backwards;
+    transition:
+      border-color var(--ease),
+      box-shadow var(--ease);
+  }
+  .term-load > span {
+    transition: width 500ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .req-icon {
+    animation: pop 450ms cubic-bezier(0.2, 0.7, 0.2, 1) backwards;
+  }
+  .req {
+    animation: page-in 380ms cubic-bezier(0.2, 0.7, 0.2, 1) backwards;
+  }
+  .req:nth-child(2) { animation-delay: 40ms; }
+  .req:nth-child(3) { animation-delay: 80ms; }
+  .req:nth-child(4) { animation-delay: 120ms; }
+  .req:nth-child(5) { animation-delay: 160ms; }
+  .req:nth-child(n + 6) { animation-delay: 200ms; }
+  .req-progress > span {
+    transform-origin: left;
+    animation: grow-x 900ms cubic-bezier(0.2, 0.7, 0.2, 1) 150ms backwards;
+    transition: width 500ms ease;
+  }
+  .req-chip {
+    animation: pop 380ms cubic-bezier(0.2, 0.7, 0.2, 1) 120ms backwards;
+  }
+}
+@keyframes pop-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px) scale(0.97);
+  }
+}
