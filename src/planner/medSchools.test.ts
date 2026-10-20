@@ -98,3 +98,21 @@ describe('upper-level requirements', () => {
     expect(row('unc', at('F27', 'AS.020.303', 'AS.020.306'), 'bio').status).toBe('met');
   });
 });
+
+describe('every school', () => {
+  it('evaluates a typical pre-med plan with AP credit without errors', () => {
+    const plan = [
+      ...ap('AP Chemistry', 5),
+      ...ap('AP Calculus BC', 5),
+      ...at('F26', 'AS.020.151', 'AS.020.153', 'AS.030.205', 'AS.030.225'),
+      ...at('S27', 'AS.020.152', 'AS.020.154', 'AS.030.206'),
+      ...at('F27', 'AS.171.101', 'AS.173.111', 'AS.020.305'),
+      ...at('S28', 'AS.171.102', 'AS.173.112', 'AS.280.345'),
+    ];
+    for (const s of MED_SCHOOLS) {
+      const res = evaluateSchool(s, resolve(plan));
+      expect(res.reqs).toHaveLength(s.reqs.length);
+      expect(res.requiredMet).toBeLessThanOrEqual(res.required);
+    }
+  });
+});
