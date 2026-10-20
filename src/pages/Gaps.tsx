@@ -1,4 +1,7 @@
+import { useState } from 'react';
 import { ArrowRight } from 'lucide-react';
+import { CountUp, Ring, SEVERITY_COLOR, radarAreas, reducedMotion } from '../components/viz';
+import { SEVERITY_LABEL } from '../components/ui';
 import { useAnalysis } from '../engine/useAnalysis';
 import { AREA_CATEGORIES } from '../data/benchmarks';
 import { AreaBar, Empty, GapCard } from '../components/ui';
@@ -7,6 +10,12 @@ import { MentorSuggestions } from '../components/ResearchOutreach';
 
 export default function Gaps({ go }: { go: (page: string) => void }) {
   const { areas, gaps, ranked, months, mentorSuggestions } = useAnalysis();
+  const [flash, setFlash] = useState<string | null>(null);
+  const jump = (area: string) => {
+    document.getElementById(`area-${area}`)?.scrollIntoView({ behavior: reducedMotion() ? 'auto' : 'smooth', block: 'center' });
+    setFlash(area);
+    window.setTimeout(() => setFlash((f) => (f === area ? null : f)), 1600);
+  };
   const groups = [
     { key: 'behind', title: 'Behind', note: 'The most urgent items. Start here.', items: gaps.filter((g) => g.severity === 'critical') },
     { key: 'below', title: 'Below target', note: 'Worth improving before you apply.', items: gaps.filter((g) => g.severity !== 'critical') },
@@ -23,6 +32,32 @@ export default function Gaps({ go }: { go: (page: string) => void }) {
           </p>
         </div>
       </header>
+
+      <section className="card" aria-labelledby="stand-title">
+        <div className="card-head">
+          <h2 id="stand-title">Where you stand</h2>
+          <span className="muted small">Share of the competitive target · tick = minimum</span>
+        </div>
+        <div className="ring-grid">
+          {radarAreas(areas).map((a) => {
+            const b = a.benchmark;
+            const pct = Math.round(((a.current ?? 0) / b.competitive) * 100);
+            return (
+              <button key={a.area} type="button" className="ring-tile" onClick={() => jump(a.area)} aria-label={`${b.label}: ${pct}% of competitive, ${SEVERITY_LABEL[a.severity]}. Show details`}>
+                <Ring value={pct / 100} size={76} stroke={7} color={SEVERITY_COLOR[a.severity]} marks={[b.minimum / b.competitive]}>
+                  <strong className="num">
+                    <CountUp value={pct} format={(n) => `${Math.round(n)}%`} />
+                  </strong>
+                </Ring>
+                <span className="ring-name">{b.label}</span>
+                <span className="muted small num">
+                  {Math.round(a.current ?? 0).toLocaleString('en-US')} / {b.competitive.toLocaleString('en-US')}
+                </span>
+              </button>
+            );
+          })}
+        </div>
+      </section>
 
       {gaps.length ? (
         <div className="gap-columns">
@@ -54,7 +89,7 @@ export default function Gaps({ go }: { go: (page: string) => void }) {
         <h2>Area by area</h2>
         <div className="area-detail">
           {areas.map((a) => (
-            <div key={a.area} className="area-detail-row">
+            <div key={a.area} id={`area-${a.area}`} className={`area-detail-row${flash === a.area ? ' flash' : ''}`}>
               <AreaBar s={a} />
               <p className="muted small">{a.benchmark.why}</p>
               {AREA_CATEGORIES[a.area] && a.pacePerMonth && (

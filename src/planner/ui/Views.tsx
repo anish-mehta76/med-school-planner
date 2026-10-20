@@ -5,6 +5,10 @@ import { ALL_MAJORS, MAJOR_BY_ID, majorColor } from '../majors';
 import { TERM_BY_ID } from '../terms';
 import { SIS_SYNCED_AT } from '../catalog';
 import type { Major, Resolved, Scenario } from '../types';
+import { reducedMotion, Ring, StackBar, useMounted } from '../../components/viz';
+import { deptColor } from './PlanGrid';
+
+const STATUS_COLOR = { done: 'var(--strong)', partial: 'var(--below)', missing: 'var(--behind)', waived: 'var(--muted)', note: 'var(--border-control)' } as const;
 
 const STATUS = {
   done: { icon: Check, label: 'Done' },
@@ -48,14 +52,21 @@ function MajorCard({ res, scenario, update }: { res: MajorResult; scenario: Scen
     if (last && last.title === r.req.section) last.reqs.push(r);
     else sections.push({ title: r.req.section, reqs: [r] });
   }
+  const count = (st: ReqResult['status']) => res.reqs.filter((r) => r.status === st).length;
+  const sectionId = (i: number) => `req-${m.id}-${i}`;
   return (
     <section className="card">
       <div className="card-head">
         <h2>
           <MajorDot scenario={scenario} id={m.id} lg /> {m.name}
         </h2>
-        <span className="muted small num">
-          {done} of {counted.length} done · {pct(res.pct)} · {res.credits} credits count
+        <span className="major-progress">
+          <Ring value={res.pct} size={44} stroke={5} color={res.pct >= 1 ? 'var(--strong)' : 'var(--accent)'}>
+            <small className="num">{Math.round(res.pct * 100)}</small>
+          </Ring>
+          <span className="muted small num">
+            {done} of {counted.length} done · {pct(res.pct)} · {res.credits} credits count
+          </span>
         </span>
       </div>
       {m.id === 'premed' && <p className="callout small">Verify against each school you apply to. These mappings onto JHU courses are unconfirmed; check them with a pre-health advisor.</p>}
@@ -65,8 +76,15 @@ function MajorCard({ res, scenario, update }: { res: MajorResult; scenario: Scen
           shown below to check by hand. Confirm everything with the department.
         </p>
       )}
+      <div className="req-overview">
+        <StackBar
+          label={`${m.name} requirements by status`}
+          segments={(['done', 'partial', 'missing', 'waived', 'note'] as const).map((st) => ({ key: st, label: STATUS[st].label, value: count(st), color: STATUS_COLOR[st] }))}
+        />
+        {sections.filter((sec) => sec.title).length > 1 && <SectionBars sections={sections} sectionId={sectionId} />}
+      </div>
       {sections.map((sec, i) => (
-        <div key={i} className="req-section">
+        <div key={i} id={sectionId(i)} className="req-section">
           {sec.title && <h3 className="req-section-title">{sec.title}</h3>}
           <ul className="req-list">
             {sec.reqs.map((r) => (
@@ -88,25 +106,76 @@ function MajorCard({ res, scenario, update }: { res: MajorResult; scenario: Scen
   );
 }
 
+/** One bar per catalogue section showing how far along it is; clicking one jumps to it. */
+function SectionBars({ sections, sectionId }: { sections: { title?: string; reqs: ReqResult[] }[]; sectionId: (i: number) => string }) {
+  const grown = useMounted();
+  return (
+    <div className="hbars req-section-bars" role="group" aria-label="Progress by section. Pick one to jump to it">
+      {sections.map((sec, i) => {
+        if (!sec.title) return null;
+        const counted = sec.reqs.filter((r) => r.status !== 'note');
+        const p = counted.length ? counted.reduce((n, r) => n + r.progress, 0) / counted.length : 0;
+        const done = counted.filter((r) => r.status === 'done' || r.status === 'waived').length;
+        return (
+          <button
+            key={i}
+            type="button"
+            className="hbar"
+            onClick={() => document.getElementById(sectionId(i))?.scrollIntoView({ behavior: reducedMotion() ? 'auto' : 'smooth', block: 'start' })}
+          >
+            <span className="hbar-label">{sec.title}</span>
+            <span className="hbar-track">
+              <span className="hbar-fill" style={{ width: grown ? `${p * 100}%` : 0, background: p >= 1 ? 'var(--strong)' : 'linear-gradient(90deg, var(--heritage), var(--spirit))', transitionDelay: `${i * 50}ms` }} />
+            </span>
+            <span className="hbar-val num">{counted.length ? `${done}/${counted.length}` : <span className="muted small">by hand</span>}</span>
+          </button>
+        );
+      })}
+    </div>
+  );
+}
+
 function ReqRow({ r, major, scenario, update }: { r: ReqResult; major: Major; scenario: Scenario; update: Update }) {
   const S = STATUS[r.status];
   const key = waiverKey(major.id, r.req.key);
   const choices = r.req.type === 'pick' ? r.req.from.filter((x): x is string => typeof x === 'string') : [];
   return (
-    <li className={`req req-${r.status}`}>
-      <span className="req-icon" title={S.label}>
-        <S.icon size={16} aria-hidden />
+    <li className={`req req-${r.status}`} style={{ ['--p' as string]: r.status === 'note' ? 0 : r.progress }}>
+      <span className="req-icon" title={S.label} key={r.status}>
+        <S.icon size={14} strokeWidth={2.5} aria-hidden />
         <span className="visually-hidden">{S.label}:</span>
       </span>
       <div className="req-body">
-        <span className="req-label">{r.req.label}</span>
+        <span className="req-label">
+          {r.req.label}
+          {r.status !== 'note' && r.status !== 'waived' && (
+            <span className="req-progress" aria-hidden>
+              <span />
+            </span>
+          )}
+        </span>
         {r.items.length > 0 && (
           <span className="small req-items">
-            {r.status === 'note' ? 'In plan: ' : 'Filled by '}
-            {r.items.map((x) => `${x.code} (${TERM_BY_ID[x.item.termId]?.label ?? x.item.termId})`).join(', ')}
+            <span className="req-chip-lead">{r.status === 'note' ? 'In plan: ' : 'Filled by '}</span>
+            {r.items.map((x, i) => (
+              <span key={x.item.id} className="req-chip filled" style={{ ['--dept' as string]: deptColor(x.code) }}>
+                {x.code} <span className="req-chip-term">({TERM_BY_ID[x.item.termId]?.label ?? x.item.termId})</span>
+                {i < r.items.length - 1 && <span className="visually-hidden">, </span>}
+              </span>
+            ))}
           </span>
         )}
-        {r.status !== 'done' && r.missing.length > 0 && <span className="small muted">Still needed: {r.missing.join(' + ')}</span>}
+        {r.status !== 'done' && r.missing.length > 0 && (
+          <span className="small muted req-items">
+            <span className="req-chip-lead">Still needed: </span>
+            {r.missing.map((code, i) => (
+              <span key={code} className="req-chip needed">
+                {code}
+                {i < r.missing.length - 1 && <span className="visually-hidden"> + </span>}
+              </span>
+            ))}
+          </span>
+        )}
         {r.status !== 'done' && r.req.type === 'pick' && (
           <span className="small muted">
             {r.items.length} of {r.req.n}

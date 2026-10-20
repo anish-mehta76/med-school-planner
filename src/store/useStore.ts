@@ -128,6 +128,27 @@ function write(next: AppState) {
   listeners.forEach((l) => l());
 }
 
+/**
+ * Takes in a save made by another tab or window of the planner (e.g. the
+ * home-screen app and a browser tab open together), so this one shows it and
+ * doesn't later overwrite it with its older copy. Not a local edit: the tab
+ * that made the change handles GitHub sync.
+ */
+export function applyStorageChange(raw: string | null) {
+  try {
+    state = raw ? normalize(JSON.parse(raw)) : defaultState();
+  } catch {
+    return; // Half-written or corrupt value: keep what this tab has.
+  }
+  listeners.forEach((l) => l());
+}
+
+if (typeof window !== 'undefined') {
+  window.addEventListener('storage', (e) => {
+    if (e.key === STORAGE_KEY && e.storageArea === localStorage) applyStorageChange(e.newValue);
+  });
+}
+
 function subscribe(l: () => void) {
   listeners.add(l);
   return () => listeners.delete(l);

@@ -111,7 +111,18 @@ export default function MedSchools({ scenario, analysis, update }: { scenario: S
                   <tr key={r.school.id}>
                     <td>{r.school.name}</td>
                     <td className="small">{MODEL_LABEL[r.school.model]}</td>
-                    <td className="num">{r.required ? `${r.requiredMet} of ${r.required}` : '—'}</td>
+                    <td className="num">
+                      {r.required ? (
+                        <span className="cell-meter">
+                          <span className="meter" aria-hidden>
+                            <span style={{ width: `${(r.requiredMet / r.required) * 100}%` }} className={r.requiredMet >= r.required ? 'full' : ''} />
+                          </span>
+                          {`${r.requiredMet} of ${r.required}`}
+                        </span>
+                      ) : (
+                        '—'
+                      )}
+                    </td>
                     <td className="num">{r.checks || ''}</td>
                     <td className="small">{r.school.ap.note}</td>
                   </tr>

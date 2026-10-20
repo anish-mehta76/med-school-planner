@@ -6,6 +6,33 @@ import { AMCAS_DESC_LIMIT, AMCAS_MAX_ENTRIES, CATEGORY_LABELS } from '../data/be
 import { experienceHours } from '../engine/gaps';
 import { Empty, Modal } from '../components/ui';
 import { formatDate, formatHours, formatMonth } from '../lib/format';
+import { MiniBars, StackBar } from '../components/viz';
+
+/** The last 12 months, oldest first, as YYYY-MM keys and short labels. */
+function last12() {
+  const now = new Date();
+  return Array.from({ length: 12 }, (_, i) => {
+    const d = new Date(now.getFullYear(), now.getMonth() - 11 + i, 1);
+    return { key: `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`, label: d.toLocaleDateString(undefined, { month: 'short', year: '2-digit' }) };
+  });
+}
+
+/** Hours from logged sessions in each of the last 12 months. */
+function monthlyHours(e: Experience) {
+  return last12().map((m) => e.logs.filter((l) => l.date.startsWith(m.key)).reduce((sum, l) => sum + l.hours, 0));
+}
+
+const CATEGORY_COLORS: Record<Category, string> = {
+  'clinical-paid': 'var(--c1)',
+  'clinical-volunteer': 'var(--c2)',
+  shadowing: 'var(--c4)',
+  research: 'var(--c3)',
+  'nonclinical-volunteer': 'var(--c5)',
+  leadership: 'var(--c6)',
+  teaching: 'var(--c7)',
+  employment: 'var(--muted)',
+  other: 'var(--border-control)',
+};
 
 const today = () => localDate();
 
@@ -231,6 +258,27 @@ export default function Experiences() {
       </header>
 
       {experiences.length > 0 && (
+        <section className="card hours-mix" aria-labelledby="mix-title">
+          <div className="card-head">
+            <h2 id="mix-title">Where your hours go</h2>
+            <span className="muted small">Click a bar or name to filter</span>
+          </div>
+          <StackBar
+            label="Hours by category. Pick one to filter the list"
+            picked={filter === 'all' ? undefined : filter}
+            onPick={(k) => setFilter(filter === k ? 'all' : (k as Category))}
+            format={(n) => `${Math.round(n).toLocaleString('en-US')} hrs`}
+            segments={(Object.keys(CATEGORY_LABELS) as Category[]).map((c) => ({
+              key: c,
+              label: CATEGORY_LABELS[c],
+              value: experiences.filter((e) => e.category === c).reduce((sum, e) => sum + experienceHours(e), 0),
+              color: CATEGORY_COLORS[c],
+            }))}
+          />
+        </section>
+      )}
+
+      {experiences.length > 0 && (
         <div className="chips chips-scroll" role="group" aria-label="Filter by category">
           {(['all', ...Object.keys(CATEGORY_LABELS)] as (Category | 'all')[]).map((c) => {
             const n = c === 'all' ? experiences.length : experiences.filter((e) => e.category === c).length;
@@ -278,6 +326,12 @@ export default function Experiences() {
                 {e.description && <p className="exp-desc">{e.description}</p>}
               </div>
               <div className="exp-side">
+                {e.logs.length > 0 && (
+                  <span className="exp-spark" title="Hours logged per month, last 12 months">
+                    <MiniBars values={monthlyHours(e)} labels={last12().map((m) => m.label)} label={`Hours logged per month over the last 12 months for ${e.title}`} />
+                    <span className="muted">12 mo</span>
+                  </span>
+                )}
                 <div className="exp-hours">
                   <strong>{Math.round(experienceHours(e)).toLocaleString('en-US')}</strong>
                   <span className="muted small">hrs</span>

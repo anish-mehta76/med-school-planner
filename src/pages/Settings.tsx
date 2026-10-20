@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import type { Academics, Profile } from '../types';
 import { defaultState, exportJson, importJson, setState, useStore } from '../store/useStore';
 import { DEFAULT_BENCHMARKS } from '../data/benchmarks';
@@ -7,6 +7,9 @@ import { DEFAULT_WEIGHTS, WEIGHT_LABELS } from '../engine/mentorScore';
 import { JSON_ACCEPT } from '../lib/saveFile';
 import SyncCard from '../components/SyncCard';
 import type { ScoreWeights } from '../types';
+import { Donut } from '../components/viz';
+
+const WEIGHT_COLORS = ['var(--c1)', 'var(--c2)', 'var(--c3)', 'var(--c4)', 'var(--c5)', 'var(--c6)', 'var(--c7)', 'var(--muted)', 'var(--border-control)'];
 
 /** Unit shown after benchmark inputs. */
 const UNIT: Record<string, string> = { hours: 'hrs', 'posters / pubs': 'posters or papers', roles: 'roles' };
@@ -15,6 +18,9 @@ export default function Settings() {
   const state = useStore();
   const { profile, academics, benchmarks } = state;
   const fileRef = useRef<HTMLInputElement>(null);
+  const [hoverWeight, setHoverWeight] = useState<string>();
+  const weightKeys = Object.keys(WEIGHT_LABELS) as (keyof ScoreWeights)[];
+  const weightTotal = Object.values(state.scoreWeights).reduce((a, b) => a + b, 0) || 1;
 
   const setProfile = <K extends keyof Profile>(k: K, v: Profile[K]) => setState((s) => ({ ...s, profile: { ...s.profile, [k]: v } }));
   const setAcad = <K extends keyof Academics>(k: K, v: Academics[K]) => setState((s) => ({ ...s, academics: { ...s.academics, [k]: v } }));
@@ -158,12 +164,32 @@ export default function Settings() {
         <p className="muted small">
           How much each factor counts in the Research targeting score. Shares always add up to 100%; set a slider to zero to ignore that factor.
         </p>
+        <div className="weights-wrap">
+        <Donut
+          active={hoverWeight}
+          onHover={setHoverWeight}
+          segments={weightKeys.map((k, i) => ({ key: k, label: WEIGHT_LABELS[k], value: state.scoreWeights[k], color: WEIGHT_COLORS[i % WEIGHT_COLORS.length] }))}
+        >
+          {hoverWeight ? (
+            <>
+              <strong className="num">{Math.round((state.scoreWeights[hoverWeight as keyof ScoreWeights] / weightTotal) * 100)}%</strong>
+              <small>{WEIGHT_LABELS[hoverWeight as keyof ScoreWeights]}</small>
+            </>
+          ) : (
+            <>
+              <strong>100%</strong>
+              <small>of the score</small>
+            </>
+          )}
+        </Donut>
         <div className="weights">
-          {(Object.keys(WEIGHT_LABELS) as (keyof ScoreWeights)[]).map((k) => {
-            const total = Object.values(state.scoreWeights).reduce((a, b) => a + b, 0) || 1;
+          {weightKeys.map((k, i) => {
+            const total = weightTotal;
             return (
-              <label key={k} className="weight">
-                <span>{WEIGHT_LABELS[k]}</span>
+              <label key={k} className={`weight${hoverWeight === k ? ' hot' : ''}`} onMouseEnter={() => setHoverWeight(k)} onMouseLeave={() => setHoverWeight(undefined)}>
+                <span>
+                  <span className="legend-dot" style={{ background: WEIGHT_COLORS[i % WEIGHT_COLORS.length] }} /> {WEIGHT_LABELS[k]}
+                </span>
                 <input
                   type="range"
                   min={0}
@@ -175,6 +201,7 @@ export default function Settings() {
               </label>
             );
           })}
+        </div>
         </div>
       </section>
 
