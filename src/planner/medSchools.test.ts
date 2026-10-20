@@ -50,6 +50,11 @@ describe('medical-school comparison', () => {
     }
   });
 
+  it('every school id is unique', () => {
+    const ids = MED_SCHOOLS.map((s) => s.id);
+    expect(ids.filter((id, i) => ids.indexOf(id) !== i)).toEqual([]);
+  });
+
   it('AP Biology: Harvard never counts it; Hopkins counts it once there is an advanced biology course', () => {
     const base = [...ap('AP Biology', 5)];
     expect(row('harvard', base, 'bio').status).toBe('missing');
