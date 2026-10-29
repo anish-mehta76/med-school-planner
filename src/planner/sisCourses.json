@@ -1,5 +1,5 @@
 {
-  "syncedAt": "2026-10-26",
+  "syncedAt": "2026-10-29",
   "terms": [
     "Fall 2025",
     "Fall 2026",
@@ -7,32 +7,34 @@
     "Intersession 2026",
     "Spring 2025",
     "Spring 2026",
+    "Spring 2027",
     "Summer 2025",
     "Summer 2026"
   ],
   "courses": [
     {
       "code": "AS.004.101",
-      "title": "Reintroduction to Writing: Writing for Social Justice",
+      "title": "Reintroduction to Writing: When Doctors Write",
       "credits": 3,
       "fa": [],
       "faVaries": [
+        "FA2",
         "FA3",
         "FA4",
         "FA4.1",
-        "FA5",
-        "FA6"
+        "FA5"
       ],
       "writingIntensive": true,
       "posTags": [],
       "term": null,
       "prereqText": "Students who have already taken AS.060.113 and/or AS.060.114 are not eligible to take AS.004.101.",
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Fall 2025",
         "Spring 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -64,11 +66,12 @@
       "writingIntensive": false,
       "posTags": [],
       "term": "S",
-      "lastOffered": "Summer 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Spring 2026",
-        "Summer 2026"
+        "Summer 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -126,13 +129,14 @@
       "writingIntensive": false,
       "posTags": [],
       "term": "S",
-      "prereqText": "AS.020.151",
-      "lastOffered": "Summer 2026",
+      "prereqText": "Prereq: AS.020.151",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Summer 2025",
         "Spring 2026",
-        "Summer 2026"
+        "Summer 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -165,10 +169,11 @@
       "posTags": [],
       "term": "S",
       "prereqText": "Students must have completed Lab Safety training prior to registering for this class. To access the tutorial, login to myLearning and enter ASEN in the Search Box to access the proper course.\n\n<a href=\"https://johnshopkins.csod.com/ui/lms-learning-details/app/curriculum/66847e20-c695-4e54-a6be-8c94465b8a70\" target=\"_blank\" rel=\"noopener noreferrer\">\n  Click here to access the Laboratory Safety Introductory Course\n</a>",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -180,14 +185,18 @@
         "FA5"
       ],
       "writingIntensive": false,
-      "posTags": [],
+      "posTags": [
+        "NEURCM",
+        "BEHBBIOBEH"
+      ],
       "term": "S",
-      "lastOffered": "Summer 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Summer 2025",
         "Spring 2026",
-        "Summer 2026"
+        "Summer 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -218,14 +227,15 @@
       "posTags": [],
       "term": null,
       "prereqText": "AS.030.205 OR AS.030.212 OR EN.540.202, may be taken concurrently.",
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Summer 2025",
         "Fall 2025",
         "Spring 2026",
         "Summer 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -238,11 +248,12 @@
       "writingIntensive": false,
       "posTags": [],
       "term": "S",
-      "prereqText": "Cell Biology restriction: students who have completed EN.540.307 may not enroll.",
-      "lastOffered": "Spring 2026",
+      "prereqText": "Antirequisite: Students who have already taken, or are currently enrolled in, EN.540.307 are not eligible to enroll in AS.020.306",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -258,12 +269,13 @@
       "posTags": [],
       "term": null,
       "prereqText": "Students must have completed Lab Safety training prior to registering for this class. To access the tutorial, login to myLearning and enter Laboratory Safety Introductory Course in the Search Box to access the proper course.\n\n<a href=\"https://johnshopkins.csod.com/ui/lms-learning-details/app/curriculum/66847e20-c695-4e54-a6be-8c94465b8a70\" target=\"_blank\" rel=\"noopener noreferrer\">\n  Click here to access the Laboratory Safety Introductory Course\n</a> AS.020.305 OR AS.250.307 OR AS.250.315. These may be taken concurrently.",
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Fall 2025",
         "Spring 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -277,12 +289,13 @@
       "posTags": [],
       "term": null,
       "prereqText": "Students must have completed Lab Safety training prior to registering for this class. To access the tutorial, login to myLearning and enter Laboratory Safety Introductory Course in the Search Box to access the proper course.\n\n<a href=\"https://johnshopkins.csod.com/ui/lms-learning-details/app/curriculum/66847e20-c695-4e54-a6be-8c94465b8a70\" target=\"_blank\" rel=\"noopener noreferrer\">\n  Click here to access the Laboratory Safety Introductory Course\n</a> Students may have previously taken AS.020.306 prior to enrolling in AS.020.316 OR students may concurrently enroll in AS.020.306 AND\nAS.020.316 OR students must have previously completed both EN.540.202 and AS EN.540.307 prior to enrolling in as.020.316.",
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Fall 2025",
         "Spring 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -297,14 +310,15 @@
       "posTags": [],
       "term": null,
       "prereqText": "Students must have completed Lab Safety training prior to registering for this class. To access the tutorial, login to myLearning and enter Laboratory Safety Introductory Course in the Search Box to access the proper course.\n\n<a href=\"https://johnshopkins.csod.com/ui/lms-learning-details/app/curriculum/66847e20-c695-4e54-a6be-8c94465b8a70\" target=\"_blank\" rel=\"noopener noreferrer\">\n  Click here to access the Laboratory Safety Introductory Course\n</a> AS.020.303 can be taken prior to or during enrollment in AS.020.340.",
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Summer 2025",
         "Fall 2025",
         "Spring 2026",
         "Summer 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -321,12 +335,13 @@
       ],
       "term": null,
       "prereqText": "AS.020.305",
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Fall 2025",
         "Spring 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -341,10 +356,11 @@
       "posTags": [],
       "term": "S",
       "prereqText": "Students must have completed Lab Safety training prior to registering for this class. To access the tutorial, login to myLearning and enter ASEN in the Search Box to access the proper course.\n\n<a href=\"https://johnshopkins.csod.com/ui/lms-learning-details/app/curriculum/66847e20-c695-4e54-a6be-8c94465b8a70\" target=\"_blank\" rel=\"noopener noreferrer\">\n  Click here to access the Laboratory Safety Introductory Course\n</a> AS.020.374, students may enroll concurrently.",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -376,12 +392,13 @@
       "posTags": [],
       "term": "S",
       "prereqText": "Antirequisite: Students who have already taken, or are currently enrolled in AS.030.103 ,are not eligible to enroll in AS.030.102 AS.030.101. C- or better is required for all pre-requisite courses.",
-      "lastOffered": "Summer 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Summer 2025",
         "Spring 2026",
-        "Summer 2026"
+        "Summer 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -431,12 +448,13 @@
       "posTags": [],
       "term": "S",
       "prereqText": "Antirequisite: Students who have already taken, or are currently enrolled in AS.030.103 ,are not eligible to enroll in AS.030.106 Students must have completed Lab Safety training prior to registering for this class. To access the tutorial, login to myLearning and enter ASEN in the Search Box to access the proper course.\n\n<a href=\"https://johnshopkins.csod.com/ui/lms-learning-details/app/curriculum/66847e20-c695-4e54-a6be-8c94465b8a70\" target=\"_blank\" rel=\"noopener noreferrer\">\n  Click here to access the Laboratory Safety Introductory Course\n</a> AS.030.105 AND AS.030.101",
-      "lastOffered": "Summer 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Summer 2025",
         "Spring 2026",
-        "Summer 2026"
+        "Summer 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -469,12 +487,13 @@
       "posTags": [],
       "term": "S",
       "prereqText": "AS.030.205",
-      "lastOffered": "Summer 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Summer 2025",
         "Spring 2026",
-        "Summer 2026"
+        "Summer 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -488,10 +507,11 @@
       "posTags": [],
       "term": "S",
       "prereqText": "Must receive a B+ or better in the first semester (AS.030.205)",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -505,14 +525,15 @@
       "posTags": [],
       "term": null,
       "prereqText": "Students must have completed Lab Safety training prior to registering for this class. To access the tutorial, login to myLearning and enter ASEN in the Search Box to access the proper course.\n\n<a href=\"https://johnshopkins.csod.com/ui/lms-learning-details/app/curriculum/66847e20-c695-4e54-a6be-8c94465b8a70\" target=\"_blank\" rel=\"noopener noreferrer\">\n  Click here to access the Laboratory Safety Introductory Course\n</a> AS.030.205 AND ((AS.030.102 AND AS.030.106) OR AS.030.103)  can be taken prior to enrolling or at the same time as AS.030.225.",
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Summer 2025",
         "Fall 2025",
         "Spring 2026",
         "Summer 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -544,10 +565,11 @@
       "posTags": [],
       "term": "S",
       "prereqText": "Students must have completed Lab Safety training prior to registering for this class. To access the tutorial, login to myLearning and enter ASEN in the Search Box to access the proper course.\n\n<a href=\"https://johnshopkins.csod.com/ui/lms-learning-details/app/curriculum/66847e20-c695-4e54-a6be-8c94465b8a70\" target=\"_blank\" rel=\"noopener noreferrer\">\n  Click here to access the Laboratory Safety Introductory Course\n</a> AS.030.205 AND (AS.030.225 OR AS.030.227) AS.030.206 OR AS.030.212 can be taken prior to enrolling in AS.030.228 OR at the same time as AS.030.228.",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -600,10 +622,11 @@
         "BIOLUL"
       ],
       "term": "S",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -647,11 +670,12 @@
       ],
       "writingIntensive": false,
       "posTags": [],
-      "term": null,
-      "prereqText": "Students who have already taken AS.030.306 are not eligible to take AS.030.307. Students must have completed Lab Safety training prior to registering for this class. To access the tutorial, login to myLearning and enter ASEN in the Search Box to access the proper course.\n\n<a href=\"https://johnshopkins.csod.com/ui/lms-learning-details/app/curriculum/66847e20-c695-4e54-a6be-8c94465b8a70\" target=\"_blank\" rel=\"noopener noreferrer\">\n  Click here to access the Laboratory Safety Introductory Course\n</a> AS.030.301 AS.030.302 may be taken prior to or at the same time as AS.030.307.",
-      "lastOffered": "Spring 2026",
+      "term": "S",
+      "prereqText": "Antirequisite: Students who have already taken, or are currently enrolled in AS.030.306 ,are not eligible to enroll in AS.030.307 Students must have completed Lab Safety training prior to registering for this class. To access the tutorial, login to myLearning and enter ASEN in the Search Box to access the proper course.\n\n<a href=\"https://johnshopkins.csod.com/ui/lms-learning-details/app/curriculum/66847e20-c695-4e54-a6be-8c94465b8a70\" target=\"_blank\" rel=\"noopener noreferrer\">\n  Click here to access the Laboratory Safety Introductory Course\n</a> AS.030.301 AS.030.302 may be taken prior to or at the same time as AS.030.307.",
+      "lastOffered": "Spring 2027",
       "offered": [
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -663,14 +687,15 @@
         "FA2",
         "FA6"
       ],
-      "writingIntensive": false,
+      "writingIntensive": true,
       "posTags": [],
       "term": "S",
       "prereqText": "AS.030.228",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -700,9 +725,10 @@
       "posTags": [],
       "term": null,
       "prereqText": "AS.030.302",
-      "lastOffered": "Fall 2025",
+      "lastOffered": "Spring 2027",
       "offered": [
-        "Fall 2025"
+        "Fall 2025",
+        "Spring 2027"
       ]
     },
     {
@@ -740,10 +766,11 @@
         "COGSNEURO"
       ],
       "term": "S",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -795,12 +822,13 @@
       "writingIntensive": true,
       "posTags": [],
       "term": null,
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Fall 2025",
         "Spring 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -833,10 +861,11 @@
       "writingIntensive": true,
       "posTags": [],
       "term": "S",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -870,11 +899,12 @@
         "FILMPROD"
       ],
       "term": null,
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Fall 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -890,12 +920,13 @@
         "FILMPROD"
       ],
       "term": null,
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Fall 2025",
         "Spring 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -912,12 +943,13 @@
         "FILMSCRWRT"
       ],
       "term": null,
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Fall 2025",
         "Spring 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -930,12 +962,12 @@
         "FA4"
       ],
       "writingIntensive": true,
-      "posTags": [
-        "FILMCRITST"
-      ],
-      "term": "F",
-      "lastOffered": "Fall 2024",
-      "offered": []
+      "posTags": [],
+      "term": null,
+      "lastOffered": "Spring 2027",
+      "offered": [
+        "Spring 2027"
+      ]
     },
     {
       "code": "AS.061.440",
@@ -947,16 +979,15 @@
         "FA6"
       ],
       "writingIntensive": false,
-      "posTags": [
-        "FILMPROD"
-      ],
+      "posTags": [],
       "term": null,
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Fall 2025",
         "Spring 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -992,12 +1023,13 @@
       "posTags": [],
       "term": null,
       "prereqText": "You must request Customized Academic Learning using the Customized Academic Learning form found in Student Self-Service: Registration > Online Forms.",
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Fall 2025",
         "Spring 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -1053,11 +1085,12 @@
         "ARCHRELATE"
       ],
       "term": "S",
-      "prereqText": "AS.070.132 OR AS.070.273",
-      "lastOffered": "Spring 2026",
+      "prereqText": "Antirequisite: Students who have already taken, or are currently enrolled in, AS.070.617 are not eligible to enroll in AS.070.317 AS.070.132 OR AS.070.273",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -1074,11 +1107,12 @@
         "ARCHRELATE"
       ],
       "term": "S",
-      "prereqText": "Prereqs: AS.070.273 OR AS.070.317",
-      "lastOffered": "Spring 2026",
+      "prereqText": "Antirequisite: Students who have already taken, or are currently enrolled in, AS.070.619 are not eligible to enroll in AS.070.419",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -1095,12 +1129,13 @@
       ],
       "term": null,
       "prereqText": "AS.080.306 OR AS.200.141",
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Fall 2025",
         "Spring 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -1140,10 +1175,11 @@
       ],
       "term": "S",
       "prereqText": "AS.080.305",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -1157,12 +1193,13 @@
       "writingIntensive": true,
       "posTags": [],
       "term": null,
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Fall 2025",
         "Spring 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -1177,7 +1214,7 @@
       "posTags": [],
       "term": null,
       "prereqText": "You must request Customized Academic Learning using the Customized Academic Learning form found in Student Self-Service: Registration > Online Forms",
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Intersession 2025",
         "Spring 2025",
@@ -1186,7 +1223,8 @@
         "Intersession 2026",
         "Spring 2026",
         "Summer 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -1309,10 +1347,11 @@
       "posTags": [],
       "term": "S",
       "prereqText": "AS.100.293",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -1347,10 +1386,11 @@
       "posTags": [],
       "term": "S",
       "prereqText": "You must request Customized Academic Learning using the Customized Academic Learning form found in Student Self-Service: Registration > Online Forms. AS.100.507",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -1365,12 +1405,13 @@
         "ROBOCMMA"
       ],
       "term": null,
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Fall 2025",
         "Spring 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -1386,14 +1427,15 @@
         "ROBOCMMA"
       ],
       "term": null,
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Summer 2025",
         "Fall 2025",
         "Spring 2026",
         "Summer 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -1408,14 +1450,15 @@
         "ROBOCMMA"
       ],
       "term": null,
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Summer 2025",
         "Fall 2025",
         "Spring 2026",
         "Summer 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -1430,14 +1473,15 @@
         "ROBOCMMA"
       ],
       "term": null,
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Summer 2025",
         "Fall 2025",
         "Spring 2026",
         "Summer 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -1470,14 +1514,15 @@
       ],
       "term": null,
       "prereqText": "Students who have taken, or are already enrolled in AS.110.212 OR EN.553.291, are not eligible to take AS.110.201. Grade of C- or better in AS.110.107 OR AS.110.109 OR AS.110.113 OR AS.110.202 OR AS.110.302, or a 5 on the AP BC exam.",
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Summer 2025",
         "Fall 2025",
         "Spring 2026",
         "Summer 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -1493,14 +1538,15 @@
       ],
       "term": null,
       "prereqText": "Grade of C- or better in AS.110.107 OR AS.110.109 OR AS.110.113 OR AS.110.201 OR AS.110.212 OR AS.110.302, or a 5 or better on the AP BC exam.",
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Summer 2025",
         "Fall 2025",
         "Spring 2026",
         "Summer 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -1516,10 +1562,11 @@
       ],
       "term": "S",
       "prereqText": "Grade of C- or better in (AS.110.201 or AS.110.212)",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -1536,12 +1583,13 @@
       ],
       "term": null,
       "prereqText": "Students who have taken, or are currently enrolled in EN.553.291 OR AS.110.201, are not eligible to take AS.110.212. Grade of B+ or better in AS.110.107 or AS.110.109 or AS.110.113 or AS.110.202, or AS.110.302, or a 5 on the AP BC exam.",
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Fall 2025",
         "Spring 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -1556,14 +1604,15 @@
       "writingIntensive": false,
       "posTags": [],
       "term": null,
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Summer 2025",
         "Fall 2025",
         "Spring 2026",
         "Summer 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -1577,14 +1626,15 @@
       "posTags": [],
       "term": null,
       "prereqText": "Grade of C- or better in AS.110.107 or AS.110.109 or AS.110.113 or AS.110.201 or AS.110.202 or AS.110.211 or AS.110.212, or a 5 on the AP BC exam.",
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Summer 2025",
         "Fall 2025",
         "Spring 2026",
         "Summer 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -1598,14 +1648,15 @@
       "posTags": [],
       "term": null,
       "prereqText": "AS.110.109 Calculus II OR AS.110.113 Honors Single Variable Calculus, or the equivalent of a full year of single variable calculus.",
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Summer 2025",
         "Fall 2025",
         "Spring 2026",
         "Summer 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -1620,14 +1671,15 @@
       "posTags": [],
       "term": null,
       "prereqText": "Grade of C- or better in 110.202 or 110.211",
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Summer 2025",
         "Fall 2025",
         "Spring 2026",
         "Summer 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -1641,15 +1693,16 @@
       "writingIntensive": false,
       "posTags": [],
       "term": null,
-      "prereqText": "Grade of C- or better in (AS.110.201 or AS.110.212)",
-      "lastOffered": "Fall 2026",
+      "prereqText": "Grade of C- or better in 110.201 or 110.212",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Summer 2025",
         "Fall 2025",
         "Spring 2026",
         "Summer 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -1663,18 +1716,19 @@
       ],
       "writingIntensive": true,
       "posTags": [
-        "BMEDCB"
+        "ROBOCMMA"
       ],
       "term": null,
       "prereqText": "Students who have taken, or are currently enrolled in AS.110.415, are not eligible to take AS.110.405. Grade of C- or better in (AS.110.201 OR AS.110.212) AND (AS.110.202 OR AS.110.211)",
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Summer 2025",
         "Fall 2025",
         "Spring 2026",
         "Summer 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -1688,14 +1742,15 @@
       "writingIntensive": false,
       "posTags": [],
       "term": null,
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Summer 2025",
         "Fall 2025",
         "Spring 2026",
         "Summer 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -1747,19 +1802,20 @@
       "posTags": [],
       "term": null,
       "prereqText": "C- or better in AS.110.411",
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Summer 2025",
         "Fall 2025",
         "Spring 2026",
         "Summer 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
       "code": "AS.110.413",
-      "title": "Introduction To Topology",
+      "title": "Introduction to Topology",
       "credits": 4,
       "fa": [
         "FA1",
@@ -1770,14 +1826,15 @@
       "posTags": [],
       "term": null,
       "prereqText": "Grade of C- or better in (AS.110.202 OR AS.110.211)",
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Summer 2025",
         "Fall 2025",
         "Spring 2026",
         "Summer 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -1810,10 +1867,11 @@
       "posTags": [],
       "term": "S",
       "prereqText": "Grade of C- or better in AS.110.415",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -1826,10 +1884,11 @@
       "writingIntensive": false,
       "posTags": [],
       "term": "S",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -1875,11 +1934,12 @@
       "posTags": [],
       "term": null,
       "prereqText": "AS.110.201 OR AS.110.202",
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2026",
         "Summer 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -1909,9 +1969,10 @@
       "writingIntensive": false,
       "posTags": [],
       "term": "S",
-      "lastOffered": "Spring 2025",
+      "lastOffered": "Spring 2027",
       "offered": [
-        "Spring 2025"
+        "Spring 2025",
+        "Spring 2027"
       ]
     },
     {
@@ -1924,13 +1985,12 @@
         "FA4.1"
       ],
       "writingIntensive": false,
-      "posTags": [
-        "ARCHARCH"
-      ],
+      "posTags": [],
       "term": null,
-      "lastOffered": "Spring 2025",
+      "lastOffered": "Spring 2027",
       "offered": [
-        "Spring 2025"
+        "Spring 2025",
+        "Spring 2027"
       ]
     },
     {
@@ -1990,13 +2050,12 @@
         "FA4"
       ],
       "writingIntensive": false,
-      "posTags": [
-        "ARCHARCH",
-        "ARCHRELATE"
-      ],
+      "posTags": [],
       "term": null,
-      "lastOffered": "Fall 2024",
-      "offered": []
+      "lastOffered": "Spring 2027",
+      "offered": [
+        "Spring 2027"
+      ]
     },
     {
       "code": "AS.130.156",
@@ -2006,15 +2065,12 @@
         "FA3"
       ],
       "writingIntensive": false,
-      "posTags": [
-        "NEASARTARC",
-        "ARCHARCH",
-        "ARCHRELATE"
-      ],
+      "posTags": [],
       "term": null,
-      "lastOffered": "Fall 2025",
+      "lastOffered": "Spring 2027",
       "offered": [
-        "Fall 2025"
+        "Fall 2025",
+        "Spring 2027"
       ]
     },
     {
@@ -2214,10 +2270,11 @@
         "MSCHHUM"
       ],
       "term": "S",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -2247,10 +2304,11 @@
         "ENGYSCIPOL"
       ],
       "term": "S",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -2282,16 +2340,16 @@
       "writingIntensive": true,
       "posTags": [
         "MSCHHUM",
-        "CESTI",
-        "ARCHRELATE"
+        "CESTI"
       ],
       "term": null,
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Fall 2025",
         "Spring 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -2308,10 +2366,11 @@
         "COGSPHLMND"
       ],
       "term": "S",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -2348,10 +2407,11 @@
         "MSCHHUM"
       ],
       "term": "S",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -2383,17 +2443,13 @@
         "FA5"
       ],
       "writingIntensive": false,
-      "posTags": [
-        "PHILETHICS",
-        "CESELECT",
-        "AGRIELECT",
-        "COGSPHLMND"
-      ],
+      "posTags": [],
       "term": null,
-      "lastOffered": "Fall 2025",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Fall 2025"
+        "Fall 2025",
+        "Spring 2027"
       ]
     },
     {
@@ -2407,17 +2463,14 @@
       ],
       "writingIntensive": false,
       "posTags": [
-        "PHILETHICS",
-        "CESGI",
-        "CESRI",
-        "CESLSO",
         "INSTPT"
       ],
       "term": null,
-      "lastOffered": "Fall 2025",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Fall 2025"
+        "Fall 2025",
+        "Spring 2027"
       ]
     },
     {
@@ -2437,22 +2490,23 @@
     },
     {
       "code": "AS.150.301",
-      "title": "Majors Seminar: Greek Ethics",
+      "title": "Majors Seminar: Theory of Knowledge",
       "credits": 3,
       "fa": [
         "FA1",
         "FA5"
       ],
-      "writingIntensive": true,
+      "writingIntensive": false,
       "posTags": [
         "PHILANCIEN",
         "PHILSEM"
       ],
       "term": null,
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -2478,14 +2532,17 @@
       "code": "AS.150.402",
       "title": "Aristotle",
       "credits": 3,
-      "fa": [],
-      "writingIntensive": true,
-      "posTags": [
-        "PHILANCIEN"
+      "fa": [
+        "FA1",
+        "FA5"
       ],
-      "term": null,
-      "lastOffered": "Spring 2024",
-      "offered": []
+      "writingIntensive": true,
+      "posTags": [],
+      "term": "S",
+      "lastOffered": "Spring 2027",
+      "offered": [
+        "Spring 2027"
+      ]
     },
     {
       "code": "AS.150.403",
@@ -2544,15 +2601,18 @@
       "code": "AS.150.421",
       "title": "Mathematical Logic II",
       "credits": 3,
-      "fa": [],
-      "writingIntensive": false,
-      "posTags": [
-        "PHILLOGSCI"
+      "fa": [
+        "FA2",
+        "FA5"
       ],
+      "writingIntensive": false,
+      "posTags": [],
       "term": "S",
       "prereqText": "AS.150.420",
-      "lastOffered": "Spring 2024",
-      "offered": []
+      "lastOffered": "Spring 2027",
+      "offered": [
+        "Spring 2027"
+      ]
     },
     {
       "code": "AS.150.422",
@@ -2602,9 +2662,10 @@
       ],
       "term": null,
       "prereqText": "If you have taken AS.150.223 Formal Methods of Philosophy you cannot take AS.150.434.",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -2678,10 +2739,11 @@
       "posTags": [],
       "term": "S",
       "prereqText": "You must request Customized Academic Learning using the Customized Academic Learning form found in Student Self-Service: Registration > Online Forms.",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -2714,12 +2776,13 @@
       ],
       "term": null,
       "prereqText": "Antirequisite: Students who have already taken, or are currently enrolled in AS.171.104 (General Physics/Biology Majors II) OR AS.171.108 (General Physics for Physical Sciences Majors (AL)), are not eligible to take AS.171.102 (General Physics: Physical Science Major II) Prerequisites: A grade of C- or better in either Physics I or the first semester of Engineering Mechanics   \nAS.171.101 OR AS.171.103 OR AS.171.105 OR AS.171.107 OR EN.530.123",
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Fall 2025",
         "Spring 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -2747,12 +2810,16 @@
         "FA2"
       ],
       "writingIntensive": false,
-      "posTags": [],
+      "posTags": [
+        "ENVSMINOR"
+      ],
       "term": "S",
-      "lastOffered": "Spring 2026",
+      "prereqText": "Antirequisite: Students who have already taken, or are currently enrolled in AS.171.102 (General Physics: Physical Science Major II) OR AS.171.108 (General Physics for Physical Sciences Majors (AL)), are not  eligible to take AS.171.104 (General Physics/Biology Majors II)",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -2779,12 +2846,15 @@
         "FA2"
       ],
       "writingIntensive": false,
-      "posTags": [],
+      "posTags": [
+        "ENVSMINOR"
+      ],
       "term": "S",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -2798,14 +2868,15 @@
       "posTags": [],
       "term": null,
       "prereqText": "Antirequisite: Students who have already taken, or are currently enrolled in AS.171.101 (General Physics: Physical Science Major I) OR AS.171.103 (General Physics I for Biological Science Majors), are not eligible to take AS.171.107 (General Physics for Physical Sciences Majors (AL)).",
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Summer 2025",
         "Fall 2025",
         "Spring 2026",
         "Summer 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -2816,15 +2887,18 @@
         "FA2"
       ],
       "writingIntensive": false,
-      "posTags": [],
+      "posTags": [
+        "ENVSMINOR"
+      ],
       "term": "S",
       "prereqText": "Antirequisite: Students who have already taken, or are currently enrolled in AS.171.102 (General Physics: Physical Science Major II) OR AS.171.104 (General Physics/Biology Majors II), are not eligible to take AS.171.108 (General Physics for Physical Science Majors (AL)). Can be taken concurrently or as a prerequisite: (AS.110.107 OR AS.110.109 OR AS.110.211 OR AS.110.113)",
-      "lastOffered": "Summer 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Summer 2025",
         "Spring 2026",
-        "Summer 2026"
+        "Summer 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -2855,10 +2929,11 @@
       "posTags": [],
       "term": "S",
       "prereqText": "Pre-req: AS.110.302 or equivalent.",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -2907,10 +2982,11 @@
       "writingIntensive": false,
       "posTags": [],
       "term": "S",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -2940,13 +3016,16 @@
         "FA5"
       ],
       "writingIntensive": false,
-      "posTags": [],
+      "posTags": [
+        "ENVSMINOR"
+      ],
       "term": "S",
       "prereqText": "Calculus II ( AS.110.107 or AS.110.109 or AS.110.113 ). Linear Algebra (AS.110.201 or AS.110.212) and Calculus III (AS.110.202 or AS.110.211)",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -3025,14 +3104,15 @@
       "posTags": [],
       "term": null,
       "prereqText": "<a href=\"https://johnshopkins.csod.com/ui/lms-learning-details/app/curriculum/66847e20-c695-4e54-a6be-8c94465b8a70\" target=\"_blank\" rel=\"noopener noreferrer\">\n  Click here to access the Laboratory Safety Introductory Course\n</a>",
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Summer 2025",
         "Fall 2025",
         "Spring 2026",
         "Summer 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -3048,14 +3128,15 @@
       ],
       "term": null,
       "prereqText": "<a href=\"https://johnshopkins.csod.com/ui/lms-learning-details/app/curriculum/66847e20-c695-4e54-a6be-8c94465b8a70\" target=\"_blank\" rel=\"noopener noreferrer\">\n  Click here to access the Laboratory Safety Introductory Course\n</a> The following courses can be taken concurrently or as a prerequisite: AS171.102 OR AS.171.104 OR AS.171.106 OR AS.171.108 OR EN.530.123",
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Summer 2025",
         "Fall 2025",
         "Spring 2026",
         "Summer 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -3088,10 +3169,11 @@
       "posTags": [],
       "term": "S",
       "prereqText": "Students must have completed Lab Safety training prior to registering for this class. To access the tutorial, login to myLearning and enter ASEN in the Search Box to access the proper course.\n\n<a href=\"https://johnshopkins.csod.com/ui/lms-learning-details/app/curriculum/66847e20-c695-4e54-a6be-8c94465b8a70\" target=\"_blank\" rel=\"noopener noreferrer\">\n  Click here to access the Laboratory Safety Introductory Course\n</a>",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -3107,10 +3189,11 @@
       "posTags": [],
       "term": "S",
       "prereqText": "Students must have completed Lab Safety training prior to registering for this class. To access the tutorial, login to myLearning and enter ASEN in the Search Box to access the proper course.\n\n<a href=\"https://johnshopkins.csod.com/ui/lms-learning-details/app/curriculum/66847e20-c695-4e54-a6be-8c94465b8a70\" target=\"_blank\" rel=\"noopener noreferrer\">\n  Click here to access the Laboratory Safety Introductory Course\n</a>",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -3124,14 +3207,15 @@
       "writingIntensive": false,
       "posTags": [],
       "term": null,
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Summer 2025",
         "Fall 2025",
         "Spring 2026",
         "Summer 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -3145,14 +3229,15 @@
       "writingIntensive": false,
       "posTags": [],
       "term": null,
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Summer 2025",
         "Fall 2025",
         "Spring 2026",
         "Summer 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -3191,13 +3276,14 @@
         "CESLC"
       ],
       "term": null,
-      "prereqText": "AS.180.102 AND (AS.110.106 OR AS.110.107 OR AS.110.108 OR AS.110.109) OR equivalent. AS.180.101 can be taken concurrently or as a pre-requisite.",
-      "lastOffered": "Fall 2026",
+      "prereqText": "AS.180.102 AND (AS.110.106 OR AS.110.107 OR AS.110.108 OR AS.110.109) OR equivalent. AS.180.101 may be taken concurrently.",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Fall 2025",
         "Spring 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -3213,13 +3299,14 @@
         "CESPD"
       ],
       "term": null,
-      "prereqText": "AS.180.101 AND (AS.110.106 OR AS.110.107 OR AS.110.108 OR AS.110.109) AS.180.102 can be taken concurrently or as a pre-requisite.",
-      "lastOffered": "Fall 2026",
+      "prereqText": "AS.180.101 AND (AS.110.106 OR AS.110.107 OR AS.110.108 OR AS.110.109) AS.180.102 can be taken at the same time as AS.180.302.",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Fall 2025",
         "Spring 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -3234,12 +3321,13 @@
       "posTags": [],
       "term": null,
       "prereqText": "AS.180.301 may be taken concurrently. (AS.110.106 OR AS.110.108 OR AS.110.113) AND (AS.280.345 OR AS.230.205 OR EN.553.211 OR EN.553.111 OR EN.553.310 OR EN.553.311 OR EN.553.420 OR EN.553.112 OR EN.540.382)",
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Fall 2025",
         "Spring 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -3253,16 +3341,14 @@
       ],
       "writingIntensive": false,
       "posTags": [
-        "INSTAP",
-        "CESELECT",
-        "AGRIELECT",
-        "POLIAP"
+        "INSTAP"
       ],
       "term": null,
-      "lastOffered": "Fall 2025",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Fall 2025"
+        "Fall 2025",
+        "Spring 2027"
       ]
     },
     {
@@ -3282,9 +3368,10 @@
         "CESELECT"
       ],
       "term": "S",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -3473,9 +3560,10 @@
         "COGSCOGPSY"
       ],
       "term": "S",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -3509,12 +3597,13 @@
         "CESELECT"
       ],
       "term": null,
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Fall 2025",
         "Spring 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -3527,17 +3616,17 @@
       ],
       "writingIntensive": false,
       "posTags": [
-        "COGSCOGPSY",
         "COGSNEURO",
-        "BEHBBIOBEH"
+        "COGSCOGPSY"
       ],
       "term": null,
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Fall 2025",
         "Spring 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -3574,10 +3663,11 @@
       ],
       "term": null,
       "prereqText": "AS.200.141 OR Permission of Instructor.",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -3589,12 +3679,15 @@
         "FA4"
       ],
       "writingIntensive": false,
-      "posTags": [],
+      "posTags": [
+        "BEHBSOCSCI"
+      ],
       "term": "S",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -3606,12 +3699,15 @@
         "FA5"
       ],
       "writingIntensive": false,
-      "posTags": [],
+      "posTags": [
+        "BEHBSOCSCI"
+      ],
       "term": "S",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -3648,10 +3744,11 @@
       "posTags": [],
       "term": "S",
       "prereqText": "AS.200.200 (was AS.200.207)",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -3664,11 +3761,12 @@
       ],
       "writingIntensive": false,
       "posTags": [],
-      "term": "F",
-      "lastOffered": "Fall 2026",
+      "term": null,
+      "lastOffered": "Spring 2027",
       "offered": [
         "Fall 2025",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -3682,12 +3780,13 @@
       "writingIntensive": false,
       "posTags": [],
       "term": null,
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Fall 2025",
         "Spring 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -3701,14 +3800,15 @@
       "writingIntensive": false,
       "posTags": [],
       "term": null,
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Summer 2025",
         "Fall 2025",
         "Spring 2026",
         "Summer 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -3723,14 +3823,15 @@
       "posTags": [],
       "term": null,
       "prereqText": "AS.210.111 or Spanish placement exam score.",
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Summer 2025",
         "Fall 2025",
         "Spring 2026",
         "Summer 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -3744,12 +3845,13 @@
       "writingIntensive": false,
       "posTags": [],
       "term": null,
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Fall 2025",
         "Spring 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -3764,12 +3866,13 @@
       "posTags": [],
       "term": null,
       "prereqText": "AS.210.151 OR AS.210.106 or Placement Exam Part I.",
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Fall 2025",
         "Spring 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -3783,12 +3886,13 @@
       "writingIntensive": false,
       "posTags": [],
       "term": null,
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Fall 2025",
         "Spring 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -3803,12 +3907,13 @@
       "posTags": [],
       "term": null,
       "prereqText": "AS.210.161 or appropriate score on placement exam.",
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Fall 2025",
         "Spring 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -3822,10 +3927,11 @@
       "writingIntensive": false,
       "posTags": [],
       "term": null,
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Fall 2025",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -3840,10 +3946,11 @@
       "posTags": [],
       "term": "S",
       "prereqText": "AS.210.175 with a B or higher",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -3857,12 +3964,13 @@
       "writingIntensive": false,
       "posTags": [],
       "term": null,
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Fall 2025",
         "Spring 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -3876,12 +3984,13 @@
       "writingIntensive": false,
       "posTags": [],
       "term": null,
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Fall 2025",
         "Spring 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -3896,14 +4005,15 @@
       "posTags": [],
       "term": null,
       "prereqText": "AS.210.112 or appropriate Spanish placement exam score.",
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Summer 2025",
         "Fall 2025",
         "Spring 2026",
         "Summer 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -3918,14 +4028,15 @@
       "posTags": [],
       "term": null,
       "prereqText": "AS.210.211 or appropriate Spanish placement exam score.",
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Summer 2025",
         "Fall 2025",
         "Spring 2026",
         "Summer 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -3958,10 +4069,11 @@
       "posTags": [],
       "term": "S",
       "prereqText": "AS.210.251 OR appropriate placement exam scores (Parts I & II).",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -3975,13 +4087,14 @@
       "writingIntensive": false,
       "posTags": [],
       "term": null,
-      "prereqText": "Prerequisite: AS.210.162 or placement by exam.",
-      "lastOffered": "Fall 2026",
+      "prereqText": "AS.210.162 or placement by exam.",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Fall 2025",
         "Spring 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -3996,11 +4109,12 @@
       "posTags": [],
       "term": null,
       "prereqText": "Prerequisite: AS.210.261 or placement exam.",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Fall 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -4012,15 +4126,18 @@
         "FA4"
       ],
       "writingIntensive": false,
-      "posTags": [],
+      "posTags": [
+        "MLLPOR"
+      ],
       "term": null,
-      "prereqText": "AS.210.178 or AS.210.275 or equivalent score on placement test or instructor approval.",
-      "lastOffered": "Fall 2026",
+      "prereqText": "AS.210.172 OR AS.210.173, or placement exam.",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Fall 2025",
         "Spring 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -4032,15 +4149,18 @@
         "FA4"
       ],
       "writingIntensive": false,
-      "posTags": [],
+      "posTags": [
+        "MLLPOR"
+      ],
       "term": null,
       "prereqText": "AS.210.277  or equivalent score on placement test or instructor approval.",
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Fall 2025",
         "Spring 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -4054,12 +4174,13 @@
       "writingIntensive": true,
       "posTags": [],
       "term": null,
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Fall 2025",
         "Spring 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -4073,12 +4194,13 @@
       "writingIntensive": false,
       "posTags": [],
       "term": null,
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Fall 2025",
         "Spring 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -4093,14 +4215,15 @@
       "posTags": [],
       "term": null,
       "prereqText": "AS.210.212 OR  appropriate Spanish placement exam score.",
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Summer 2025",
         "Fall 2025",
         "Spring 2026",
         "Summer 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -4112,18 +4235,19 @@
         "FA3",
         "FA4"
       ],
-      "writingIntensive": false,
+      "writingIntensive": true,
       "posTags": [],
       "term": null,
-      "prereqText": "AS.210.311 or appropriate Spanish placement exam score.",
-      "lastOffered": "Fall 2026",
+      "prereqText": "Prerequisites: AS.210.311 or appropriate webcape score",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Summer 2025",
         "Fall 2025",
         "Spring 2026",
         "Summer 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -4141,12 +4265,13 @@
       ],
       "term": null,
       "prereqText": "AS.210.311 OR AS.210.312 or appropriate Spanish placement exam score.",
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Fall 2025",
         "Spring 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -4180,10 +4305,11 @@
       "posTags": [],
       "term": null,
       "prereqText": "AS.210.312 or appropriate Spanish placement exam score.",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -4201,10 +4327,11 @@
       ],
       "term": "S",
       "prereqText": "AS.210.311",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -4241,10 +4368,11 @@
       "posTags": [],
       "term": "S",
       "prereqText": "AS.210.351 OR  appropriate placement exam scores (Parts I, II and III).",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -4279,10 +4407,11 @@
       "posTags": [],
       "term": "S",
       "prereqText": "AS.210.361 or equivalent score on placement test.",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -4316,15 +4445,18 @@
         "FA6"
       ],
       "writingIntensive": true,
-      "posTags": [],
+      "posTags": [
+        "MSCHHUM"
+      ],
       "term": null,
       "prereqText": "AS.210.313 OR AS.210.314 OR AS.210.315 OR AS.210.318 OR AS.210.319",
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Fall 2025",
         "Spring 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -4340,12 +4472,13 @@
       "posTags": [],
       "term": null,
       "prereqText": "AS.210.411",
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Fall 2025",
         "Spring 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -4396,10 +4529,11 @@
       "posTags": [],
       "term": "S",
       "prereqText": "AS.210.301 and AS.210.302 or Equivalent Placement",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -4416,10 +4550,11 @@
       ],
       "term": null,
       "prereqText": "Students may not have taken AS.211.401.",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -4481,14 +4616,15 @@
       "writingIntensive": true,
       "posTags": [],
       "term": null,
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Summer 2025",
         "Fall 2025",
         "Spring 2026",
         "Summer 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -4504,14 +4640,15 @@
       "posTags": [],
       "term": null,
       "prereqText": "AS.220.105 or AS.220.108",
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Summer 2025",
         "Fall 2025",
         "Spring 2026",
         "Summer 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -4546,13 +4683,14 @@
         "WRITFICT"
       ],
       "term": null,
-      "prereqText": "AS.220.106 can be taken prior to enrolling in or at the same time as AS.220.200.",
-      "lastOffered": "Fall 2026",
+      "prereqText": "AS.220.106 can be taken prior to enrolling in or at the same time as AS.220.200. AS.220.105 OR AS.220.108",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Fall 2025",
         "Spring 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -4569,18 +4707,19 @@
         "WRITPOET"
       ],
       "term": null,
-      "prereqText": "AS.220.106 can be taken prior to or at the same time as AS.220.201.",
-      "lastOffered": "Fall 2026",
+      "prereqText": "AS.220.106 can be taken prior to or at the same time as AS.220.201. AS.220.105 OR AS.220.108",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Fall 2025",
         "Spring 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
       "code": "AS.220.400",
-      "title": "Advanced Poetry Workshop: Poetic Voice and Vision",
+      "title": "Advanced Poetry Workshop: Reading and Writing Elegiac Poetry",
       "credits": 3,
       "fa": [
         "FA1",
@@ -4593,17 +4732,18 @@
       ],
       "term": null,
       "prereqText": "AS.220.106 and AS.220.201",
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Fall 2025",
         "Spring 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
       "code": "AS.220.401",
-      "title": "Advanced Fiction Workshop: Making Choices",
+      "title": "Advanced Fiction Workshop: Write Here, Write Now",
       "credits": 3,
       "fa": [
         "FA1",
@@ -4616,12 +4756,13 @@
       ],
       "term": null,
       "prereqText": "AS.220.106 AND AS.220.200",
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Fall 2025",
         "Spring 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -4632,17 +4773,16 @@
         "FA4"
       ],
       "writingIntensive": false,
-      "posTags": [
-        "AGRIELECT"
-      ],
+      "posTags": [],
       "term": null,
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Summer 2025",
         "Fall 2025",
         "Spring 2026",
         "Summer 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -4650,21 +4790,20 @@
       "title": "Issues in International Development",
       "credits": 3,
       "fa": [
-        "FA4",
-        "FA5"
+        "FA4"
       ],
       "writingIntensive": false,
       "posTags": [
         "INSTCP",
         "INSTIR",
-        "INSTECON",
-        "AGRIELECT"
+        "INSTECON"
       ],
       "term": null,
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -4697,10 +4836,11 @@
       "writingIntensive": false,
       "posTags": [],
       "term": null,
-      "prereqText": "Students who are currently registered for or have completed any of the following courses may not register for AS.230.205: EN.553.111 OR EN.553.211 OR EN.553.230 OR EN.553.310 OR EN.553.311 OR EN.553.413 OR EN.553.420 OR EN.553.430 OR EN.560.435 OR EN.560.348 OR AS.280.345 OR AS.200.314 OR AS.230.394.",
-      "lastOffered": "Spring 2026",
+      "prereqText": "Students who are currently registered for or have completed AS.230.394 may not register this course",
+      "lastOffered": "Spring 2027",
       "offered": [
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -4746,7 +4886,7 @@
     },
     {
       "code": "AS.230.325",
-      "title": "Sociology Research Lab: Exploring the Archives",
+      "title": "Sociology Research Lab: Learning To Conduct Interviews across the Political Divide",
       "credits": 3,
       "fa": [
         "FA1",
@@ -4757,9 +4897,10 @@
       "writingIntensive": true,
       "posTags": [],
       "term": null,
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -4822,12 +4963,14 @@
         "CESLE"
       ],
       "term": null,
-      "lastOffered": "Fall 2026",
+      "prereqText": "Students may not have previously taken AS.230.223.",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Fall 2025",
         "Spring 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -4844,14 +4987,14 @@
         "COGSCOMPCG"
       ],
       "term": null,
-      "prereqText": "You cannot take AS.250.205 if you have already taken AS.250.206.",
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Summer 2025",
         "Fall 2025",
         "Spring 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -4886,12 +5029,13 @@
       ],
       "term": null,
       "prereqText": "You cannot take AS.250.253 if you have already taken AS.250.254. Students must have completed Lab Safety training prior to registering for this class. To access the tutorial, login to myLearning and enter Laboratory Safety Introductory Course in the Search Box to access the proper course.\n\n<a href=\"https://johnshopkins.csod.com/ui/lms-learning-details/app/curriculum/66847e20-c695-4e54-a6be-8c94465b8a70\" target=\"_blank\" rel=\"noopener noreferrer\">\n  Click here to access the Laboratory Safety Introductory Course\n</a>",
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Fall 2025",
         "Spring 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -4944,10 +5088,11 @@
       "posTags": [],
       "term": "S",
       "prereqText": "Students who have taken AS.030.316 are not eligible to take AS.250.316. ( AS.250.315 OR AS.030.315 OR AS.020.305 ) AND ( AS.030.206 OR AS.030.212 ) or permission of the instructor.",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -4960,13 +5105,15 @@
       ],
       "writingIntensive": false,
       "posTags": [
-        "BIOLUL"
+        "BIOLUL",
+        "ENVSMINOR"
       ],
       "term": "S",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -4981,10 +5128,11 @@
       "posTags": [],
       "term": "S",
       "prereqText": "AS.250.372",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -4999,13 +5147,14 @@
       "writingIntensive": true,
       "posTags": [],
       "term": null,
-      "prereqText": "Students must have completed Lab Safety training prior to registering for this class. To access the tutorial, login to myLearning and enter ASEN in the Search Box to access the proper course.\n\n<a href=\"https://johnshopkins.csod.com/ui/lms-learning-details/app/curriculum/66847e20-c695-4e54-a6be-8c94465b8a70\" target=\"_blank\" rel=\"noopener noreferrer\">\n  Click here to access the Laboratory Safety Introductory Course\n</a> (AS.250.372 OR AS.030.370) AND AS.250.205",
-      "lastOffered": "Fall 2026",
+      "prereqText": "Students must have completed Lab Safety training prior to registering for this class. To access the tutorial, login to myLearning and enter ASEN in the Search Box to access the proper course.\n\n<a href=\"https://johnshopkins.csod.com/ui/lms-learning-details/app/curriculum/66847e20-c695-4e54-a6be-8c94465b8a70\" target=\"_blank\" rel=\"noopener noreferrer\">\n  Click here to access the Laboratory Safety Introductory Course\n</a> AS.250.372 AND AS.250.205",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Fall 2025",
         "Spring 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -5019,10 +5168,11 @@
       "posTags": [],
       "term": null,
       "prereqText": "AS.250.372 AND AS.250.302",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -5055,9 +5205,10 @@
       "writingIntensive": true,
       "posTags": [],
       "term": "S",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -5066,17 +5217,18 @@
       "credits": 3,
       "fa": [
         "FA1",
-        "FA2"
+        "FA2",
+        "FA6"
       ],
       "writingIntensive": true,
       "posTags": [
         "BIOLUL"
       ],
-      "term": null,
-      "prereqText": "AS.250.315 OR AS.020.305",
-      "lastOffered": "Spring 2026",
+      "term": "S",
+      "lastOffered": "Spring 2027",
       "offered": [
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -5121,7 +5273,7 @@
       "posTags": [],
       "term": null,
       "prereqText": "You must request Customized Academic Learning using the Customized Academic Learning form found in Student Self-Service: Registration > Online Forms.",
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Intersession 2025",
         "Spring 2025",
@@ -5130,7 +5282,8 @@
         "Intersession 2026",
         "Spring 2026",
         "Summer 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -5185,16 +5338,16 @@
       "writingIntensive": false,
       "posTags": [
         "ENVSMINOR",
-        "ARCHRELATE",
-        "ENVSMAJOR"
+        "ARCHRELATE"
       ],
       "term": null,
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Fall 2025",
         "Spring 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -5251,10 +5404,11 @@
         "ENGYSCIPOL"
       ],
       "term": "S",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -5332,15 +5486,13 @@
         "FA2"
       ],
       "writingIntensive": true,
-      "posTags": [
-        "ENVSMAJOR",
-        "ENVSMINOR"
-      ],
+      "posTags": [],
       "term": "S",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -5417,14 +5569,18 @@
         "FA6"
       ],
       "writingIntensive": false,
-      "posTags": [],
+      "posTags": [
+        "ROBORMLB",
+        "ROBORMSU"
+      ],
       "term": null,
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Fall 2025",
         "Spring 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -5483,10 +5639,11 @@
         "ENGYSCIPOL"
       ],
       "term": "S",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -5521,11 +5678,14 @@
         "FA4"
       ],
       "writingIntensive": false,
-      "posTags": [],
+      "posTags": [
+        "ENGYSCIPOL"
+      ],
       "term": null,
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -5533,19 +5693,19 @@
       "title": "Senior Capstone",
       "credits": 2,
       "fa": [
+        "FA1",
         "FA2",
         "FA6"
       ],
       "writingIntensive": false,
-      "posTags": [
-        "ENVSMAJOR"
-      ],
+      "posTags": [],
       "term": null,
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Fall 2025",
         "Spring 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -5553,17 +5713,19 @@
       "title": "Senior Capstone Project",
       "credits": 1,
       "fa": [
+        "FA1",
         "FA2",
         "FA6"
       ],
       "writingIntensive": false,
       "posTags": [],
       "term": null,
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Fall 2025",
         "Spring 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -5596,14 +5758,15 @@
       "posTags": [],
       "term": null,
       "prereqText": "You must request Customized Academic Learning using the Customized Academic Learning form found in Student Self-Service: Registration > Online Forms.",
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Summer 2025",
         "Fall 2025",
         "Spring 2026",
         "Summer 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -5616,16 +5779,15 @@
         "FA5"
       ],
       "writingIntensive": true,
-      "posTags": [
-        "AGRIELECT"
-      ],
+      "posTags": [],
       "term": null,
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Fall 2025",
         "Spring 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -5641,10 +5803,11 @@
       "posTags": [],
       "term": "S",
       "prereqText": "AS.020.151",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -5679,13 +5842,14 @@
       "writingIntensive": true,
       "posTags": [],
       "term": null,
-      "prereqText": "AS.280.101 AND (AS.280.345 OR AS.200.314 OR EN.553.230 OR EN.553.310 OR EN.553.311 OR EN.553.420 OR EN.553.421 OR EN.553.430 OR EN.560.348 OR EN.553.211) OR (EN.553.111 AND EN.553.112)",
-      "lastOffered": "Fall 2026",
+      "prereqText": "AS.280.101 AND (AS.280.345 OR AS.200.314 OR EN.553.230 OR EN.553.310 OR EN.553.311 OR EN.553.420 OR EN.553.421 OR EN.553.430 OR EN.560.348 OR EN.553.211 OR AS.200.201) OR (EN.553.111 AND EN.553.112)",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Fall 2025",
         "Spring 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -5758,19 +5922,20 @@
       ],
       "writingIntensive": false,
       "posTags": [
+        "BIOLUL",
         "ENVSMAJOR",
         "ENVSMINOR",
-        "BIOLUL",
         "CESLE"
       ],
       "term": null,
       "prereqText": "AS.280.101 OR AS.270.103",
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Fall 2025",
         "Spring 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -5787,10 +5952,11 @@
       ],
       "term": "S",
       "prereqText": "AS.280.101",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -5805,11 +5971,12 @@
         "BIOLUL"
       ],
       "term": null,
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Fall 2025",
         "Spring 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -5840,10 +6007,11 @@
       "writingIntensive": false,
       "posTags": [],
       "term": "S",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -5857,12 +6025,13 @@
       "posTags": [],
       "term": null,
       "prereqText": "AS.280.101",
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Fall 2025",
         "Spring 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -5879,12 +6048,13 @@
       ],
       "term": null,
       "prereqText": "AS.280.101",
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Fall 2025",
         "Spring 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -5900,11 +6070,12 @@
         "CESELECT"
       ],
       "term": "S",
-      "prereqText": "AS.280.101",
-      "lastOffered": "Spring 2026",
+      "prereqText": "Antirequisite: Students who have already completed, or are currently enrolled in as.280.366, are not eligible to enroll in AS.280.365. AS.280.101",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -5956,10 +6127,11 @@
         "ENVSMINOR"
       ],
       "term": "S",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -5977,10 +6149,11 @@
       ],
       "term": "S",
       "prereqText": "Students who took or are taking AS.280.379 are not permitted to take AS.280.389. AS.280.101 must be completed prior to registering for AS.280.389.",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -6092,15 +6265,16 @@
       "posTags": [],
       "term": "S",
       "prereqText": "AS.280.495",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
       "code": "AS.280.500",
-      "title": "Applied Experience-Public Health",
+      "title": "Applied Experience-PH",
       "credits": 1,
       "fa": [
         "FA4",
@@ -6110,14 +6284,15 @@
       "posTags": [],
       "term": null,
       "prereqText": "You must request Customized Academic Learning using the Customized Academic Learning form found in Student Self-Service: Registration > Online Forms.",
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Summer 2025",
         "Fall 2025",
         "Spring 2026",
         "Summer 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -6177,13 +6352,16 @@
       ],
       "writingIntensive": true,
       "posTags": [
+        "BEHBBIOBEH",
         "BIOLUL"
       ],
       "term": "S",
-      "lastOffered": "Summer 2026",
+      "prereqText": "AS.200.208 or AS.290.101",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2026",
-        "Summer 2026"
+        "Summer 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -6195,17 +6373,16 @@
         "FA5"
       ],
       "writingIntensive": false,
-      "posTags": [
-        "BEHBBIOBEH"
-      ],
+      "posTags": [],
       "term": null,
       "prereqText": "AS.200.141 AND AS.200.208 AND AS.290.101 or instructor permission.",
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Fall 2025",
         "Spring 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -6216,16 +6393,15 @@
         "FA2"
       ],
       "writingIntensive": false,
-      "posTags": [
-        "BEHBBIOBEH"
-      ],
+      "posTags": [],
       "term": null,
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Fall 2025",
         "Spring 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -6264,10 +6440,11 @@
       ],
       "term": "S",
       "prereqText": "Students who have taken AS.361.130 are not eligible to take AS.361.100.",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -6285,12 +6462,13 @@
         "CESRI"
       ],
       "term": null,
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Fall 2025",
         "Spring 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -6323,14 +6501,15 @@
       ],
       "term": null,
       "prereqText": "Students may only receive credit for one of the following courses: EN.500.112 OR EN.500.113 OR EN.500.114 OR EN.500.132 OR EN.500.133 OR EN.500.134",
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Summer 2025",
         "Fall 2025",
         "Spring 2026",
         "Summer 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -6346,14 +6525,15 @@
       ],
       "term": null,
       "prereqText": "Students may only receive credit for one of the following courses: EN.500.112 OR EN.500.113 OR EN.500.114 OR EN.500.132 OR EN.500.133 OR EN.500.134",
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Summer 2025",
         "Fall 2025",
         "Spring 2026",
         "Summer 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -6369,7 +6549,7 @@
       ],
       "term": null,
       "prereqText": "Students can only take EN.500.112 OR EN.500.132, but not both. EN.500.113 OR EN.500.114 OR EN.520.123 OR EN.601.220",
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Intersession 2025",
         "Spring 2025",
@@ -6377,7 +6557,8 @@
         "Fall 2025",
         "Spring 2026",
         "Summer 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -6393,7 +6574,7 @@
       ],
       "term": null,
       "prereqText": "Students can take EN.500.113 OR EN.500.133, but not both. EN.500.112 OR EN.500.114 OR EN.520.123 OR EN.601.220",
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Intersession 2025",
         "Spring 2025",
@@ -6401,7 +6582,8 @@
         "Fall 2025",
         "Spring 2026",
         "Summer 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -6415,11 +6597,12 @@
       "posTags": [],
       "term": null,
       "prereqText": "Students who have taken EN.500.115 are not eligible to take EN.500.215.",
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Fall 2025",
         "Spring 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -6430,12 +6613,13 @@
       "writingIntensive": false,
       "posTags": [],
       "term": null,
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Fall 2025",
         "Spring 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -6503,14 +6687,16 @@
       "writingIntensive": false,
       "posTags": [
         "BMEDIMMU",
-        "BMEDTCTE"
+        "BMEDTCTE",
+        "ENVSMINOR"
       ],
       "term": "S",
       "prereqText": "EN.510.311 AND EN.500.113",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -6552,10 +6738,11 @@
       ],
       "term": "S",
       "prereqText": "EN.510.311",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -6581,7 +6768,7 @@
     },
     {
       "code": "EN.510.316",
-      "title": "Biomaterials I",
+      "title": "Foundations of Biomaterials",
       "credits": 3,
       "fa": [
         "FA2"
@@ -6598,10 +6785,11 @@
       ],
       "term": "S",
       "prereqText": "((AS.110.106 AND AS.110.107) OR (AS.110.108 AND AS.110.109) OR (AS.110.107 AND AS.110.108) OR (AS.110.106 AND AS.110.109)) AND (AS.030.103 OR(AS.030.101 AND AS.030.102)) AND ((AS.171.101 OR AS.171.103 OR AS.171.107) AND (AS.171.102 OR AS.171.104 OR AS.171.108)) AND AS.030.205",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -6653,10 +6841,11 @@
       "posTags": [],
       "term": "S",
       "prereqText": "Students must have completed Lab Safety training prior to registering for this class. To access the tutorial, login to myLearning and enter ASEN in the Search Box to access the proper course.\n<a href=\"https://johnshopkins.csod.com/ui/lms-learning-details/app/curriculum/66847e20-c695-4e54-a6be-8c94465b8a70\" target=\"_blank\" rel=\"noopener noreferrer\">\n  Click here to access the Laboratory Safety Introductory Course\n</a> EN.510.311 EN.510.313 OR EN.510.314 can be taken prior to enrolling, or at the same time as, EN.510.429.",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -6671,14 +6860,16 @@
         "CHBEBIOE",
         "BMEDIMD",
         "BMEDIMMU",
-        "BMEDTCTE"
+        "BMEDTCTE",
+        "BMETCTE"
       ],
       "term": "S",
       "prereqText": "Students must have completed Lab Safety training prior to registering for this class. To access the tutorial, login to myLearning and enter ASEN in the Search Box to access the proper course.\n<a href=\"https://johnshopkins.csod.com/ui/lms-learning-details/app/curriculum/66847e20-c695-4e54-a6be-8c94465b8a70\" target=\"_blank\" rel=\"noopener noreferrer\">\n  Click here to access the Laboratory Safety Introductory Course\n</a>",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -6709,10 +6900,11 @@
       "posTags": [],
       "term": "S",
       "prereqText": "EN.510.433",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -6747,10 +6939,11 @@
       ],
       "term": "S",
       "prereqText": "EN.510.311 AND EN.510.312 AND EN.510.313 AND EN.510.314 AND EN.510.315 AND EN.510.316 AND EN.510.428 AND EN.510.429",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -6784,10 +6977,11 @@
         "MATSNANO"
       ],
       "term": "S",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -6835,10 +7029,11 @@
       "posTags": [],
       "term": "S",
       "prereqText": "EN.510.445 EN.510.311 AND EN.510.312 AND EN.510.313 AND EN.510.314 AND EN.510.315 AND EN.510.316 AND EN.510.428 AND EN.510.429",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -6864,10 +7059,11 @@
       "posTags": [],
       "term": "S",
       "prereqText": "EN.510.447",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -6881,10 +7077,11 @@
       "posTags": [],
       "term": null,
       "prereqText": "AS.110.106 OR AS.110.108",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -6897,15 +7094,16 @@
       "writingIntensive": false,
       "posTags": [],
       "term": "S",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
       "code": "EN.520.214",
-      "title": "Signals and Systems",
+      "title": "Signals & Systems",
       "credits": 4,
       "fa": [
         "FA2"
@@ -6914,12 +7112,13 @@
       "posTags": [],
       "term": null,
       "prereqText": "(AS.110.107 OR AS.110.109) AS.110.202 or AS.110.211, prereq can be taken while taking EN.520.214",
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Fall 2025",
         "Spring 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -6933,11 +7132,12 @@
       "posTags": [],
       "term": null,
       "prereqText": "Students must have completed Lab Safety training prior to registering for this class. To access the tutorial, login to myLearning and enter Laboratory Safety Introductory Course in the Search Box to access the proper course.\n\n<a href=\"https://johnshopkins.csod.com/ui/lms-learning-details/app/curriculum/66847e20-c695-4e54-a6be-8c94465b8a70\" target=\"_blank\" rel=\"noopener noreferrer\">\n  Click here to access the Laboratory Safety Introductory Course\n</a> AS.110.109 AND (AS.171.102 OR AS.171.104 OR AS.171.108) AND AS.173.112 AS.110.202 may be taken prior to or while enrolled in EN.520.219.",
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Fall 2025",
         "Spring 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -6965,16 +7165,14 @@
         "FA2"
       ],
       "writingIntensive": false,
-      "posTags": [
-        "BMEDSB",
-        "BMEDSIMN"
-      ],
-      "term": "F",
+      "posTags": [],
+      "term": null,
       "prereqText": "Students must have completed Lab Safety training prior to registering for this class. To access the tutorial, login to myLearning and enter Laboratory Safety Introductory Course in the Search Box to access the proper course.\n\n<a href=\"https://johnshopkins.csod.com/ui/lms-learning-details/app/curriculum/66847e20-c695-4e54-a6be-8c94465b8a70\" target=\"_blank\" rel=\"noopener noreferrer\">\n  Click here to access the Laboratory Safety Introductory Course\n</a> (AS.110.107 OR AS.110.109) AND (AS.171.102 OR AS.171.108 OR AS.171.106) AND (AS.173.112 OR AS.173.116)",
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Fall 2025",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -6985,16 +7183,14 @@
         "FA2"
       ],
       "writingIntensive": false,
-      "posTags": [
-        "BMEDSIMN",
-        "BMEDSB"
-      ],
-      "term": "F",
+      "posTags": [],
+      "term": null,
       "prereqText": "Students must have completed Lab Safety training prior to registering for this class. To access the tutorial, login to myLearning and enter Laboratory Safety Introductory Course in the Search Box to access the proper course.\n\n<a href=\"https://johnshopkins.csod.com/ui/lms-learning-details/app/curriculum/66847e20-c695-4e54-a6be-8c94465b8a70\" target=\"_blank\" rel=\"noopener noreferrer\">\n  Click here to access the Laboratory Safety Introductory Course\n</a> (AS.110.107 OR AS.110.109) AND (AS.171.102 OR AS.171.108 OR AS.171.106) AND (AS.173.112 OR AS.173.116)",
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Fall 2025",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -7130,10 +7326,11 @@
       ],
       "term": "S",
       "prereqText": "EN.553.310 OR EN.553.311 OR EN.560.348 OR EN.553.420 OR EN.553.421",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -7152,10 +7349,11 @@
       ],
       "term": "S",
       "prereqText": "EN.520.412 OR EN.520.612 OR EN.601.475 OR EN.601.675 OR EN.601.676 OR EN.601.482 OR EN.601.682 OR EN.601.486 OR EN.601.686 OR EN.520.439 OR EN.520.659 OR EN.520.650",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -7176,10 +7374,11 @@
       ],
       "term": "S",
       "prereqText": "Students must have completed Lab Safety training prior to registering for this class. To access the tutorial, login to myLearning and enter ASEN in the Search Box to access the proper course.\n<a href=\"https://johnshopkins.csod.com/ui/lms-learning-details/app/curriculum/66847e20-c695-4e54-a6be-8c94465b8a70\" target=\"_blank\" rel=\"noopener noreferrer\">\n  Click here to access the Laboratory Safety Introductory Course\n</a> EN.520.349",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -7277,10 +7476,11 @@
       ],
       "term": "S",
       "prereqText": "Students must have completed Lab Safety training prior to registering for this class. To access the tutorial, login to myLearning and enter ASEN in the Search Box to access the proper course.\n<a href=\"https://johnshopkins.csod.com/ui/lms-learning-details/app/curriculum/66847e20-c695-4e54-a6be-8c94465b8a70\" target=\"_blank\" rel=\"noopener noreferrer\">\n  Click here to access the Laboratory Safety Introductory Course\n</a> (AS.171.102 OR AS.171.108) AND AS.173.112 AND AS.110.202",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -7296,10 +7496,11 @@
         "BMEDIMD"
       ],
       "term": "S",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -7333,10 +7534,11 @@
       "writingIntensive": false,
       "posTags": [],
       "term": "S",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -7394,10 +7596,11 @@
       "writingIntensive": false,
       "posTags": [],
       "term": "S",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -7426,10 +7629,11 @@
       "writingIntensive": false,
       "posTags": [],
       "term": "S",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -7476,10 +7680,11 @@
       "posTags": [],
       "term": "S",
       "prereqText": "Students must have completed Lab Safety training prior to registering for this class. To access the tutorial, login to myLearning and enter ASEN in the Search Box to access the proper course.\n<a href=\"https://johnshopkins.csod.com/ui/lms-learning-details/app/curriculum/66847e20-c695-4e54-a6be-8c94465b8a70\" target=\"_blank\" rel=\"noopener noreferrer\">\n  Click here to access the Laboratory Safety Introductory Course\n</a>",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -7508,10 +7713,11 @@
       "writingIntensive": false,
       "posTags": [],
       "term": "S",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -7525,10 +7731,11 @@
       "posTags": [],
       "term": "S",
       "prereqText": "Students must have completed Lab Safety training prior to registering for this class. To access the tutorial, login to myLearning and enter ASEN in the Search Box to access the proper course.\n<a href=\"https://johnshopkins.csod.com/ui/lms-learning-details/app/curriculum/66847e20-c695-4e54-a6be-8c94465b8a70\" target=\"_blank\" rel=\"noopener noreferrer\">\n  Click here to access the Laboratory Safety Introductory Course\n</a> ( EN.530.201 OR EN.560.201 ) AND ( AS.171.101 OR AS.171.107 OR AS.171.105 OR ( (EN.530.103 OR EN.530.123) AND EN.530.104 ) ) AND (AS.110.109 OR AS.110.107); grade of C- or higher required for EN.530.201 OR EN.560.201",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -7542,10 +7749,11 @@
       "posTags": [],
       "term": null,
       "prereqText": "Students must have completed Lab Safety training prior to registering for this class. To access the tutorial, login to myLearning and enter ASEN in the Search Box to access the proper course.\n<a href=\"https://johnshopkins.csod.com/ui/lms-learning-details/app/curriculum/66847e20-c695-4e54-a6be-8c94465b8a70\" target=\"_blank\" rel=\"noopener noreferrer\">\n  Click here to access the Laboratory Safety Introductory Course\n</a> Students can take EN.530.202 prior to or concurrently with EN.530.212.",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -7559,10 +7767,11 @@
       "posTags": [],
       "term": "S",
       "prereqText": "EN.530.201 OR EN.560.201",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -7576,10 +7785,11 @@
       "posTags": [],
       "term": "S",
       "prereqText": "Students must have completed Lab Safety training prior to registering for this class. To access the tutorial, login to myLearning and enter ASEN in the Search Box to access the proper course.\n<a href=\"https://johnshopkins.csod.com/ui/lms-learning-details/app/curriculum/66847e20-c695-4e54-a6be-8c94465b8a70\" target=\"_blank\" rel=\"noopener noreferrer\">\n  Click here to access the Laboratory Safety Introductory Course\n</a>",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -7629,10 +7839,11 @@
       "posTags": [],
       "term": "S",
       "prereqText": "AS.171.102 OR AS.171.108 OR AS.171.106 EN.553.291 OR (AS.110.201 AND AS.110.302) OR (AS.110.212 AND AS.110.302)  can be taken prior to or at the same time as EN.530.241.",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -7646,10 +7857,11 @@
       "posTags": [],
       "term": "S",
       "prereqText": "Students must have completed Lab Safety training prior to registering for this class. To access the tutorial, login to myLearning and enter ASEN in the Search Box to access the proper course.\n<a href=\"https://johnshopkins.csod.com/ui/lms-learning-details/app/curriculum/66847e20-c695-4e54-a6be-8c94465b8a70\" target=\"_blank\" rel=\"noopener noreferrer\">\n  Click here to access the Laboratory Safety Introductory Course\n</a>",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -7663,12 +7875,13 @@
       "posTags": [],
       "term": null,
       "prereqText": "Students must have completed Lab Safety training prior to registering for this class. To access the tutorial, login to myLearning and enter ASEN in the Search Box to access the proper course.\n<a href=\"https://johnshopkins.csod.com/ui/lms-learning-details/app/curriculum/66847e20-c695-4e54-a6be-8c94465b8a70\" target=\"_blank\" rel=\"noopener noreferrer\">\n  Click here to access the Laboratory Safety Introductory Course\n</a> EN.530.111 OR EN.530.414 or permission of instructor.",
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Fall 2025",
         "Spring 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -7721,10 +7934,11 @@
       ],
       "term": "S",
       "prereqText": "EN.530.231AND EN.530.327",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -7738,10 +7952,11 @@
       "posTags": [],
       "term": "S",
       "prereqText": "Students must have completed Lab Safety training prior to registering for this class. To access the tutorial, login to myLearning and enter ASEN in the Search Box to access the proper course.\n<a href=\"https://johnshopkins.csod.com/ui/lms-learning-details/app/curriculum/66847e20-c695-4e54-a6be-8c94465b8a70\" target=\"_blank\" rel=\"noopener noreferrer\">\n  Click here to access the Laboratory Safety Introductory Course\n</a>",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -7762,10 +7977,11 @@
       ],
       "term": "S",
       "prereqText": "Students must have completed Lab Safety training prior to registering for this class. To access the tutorial, login to myLearning and enter ASEN in the Search Box to access the proper course.\n<a href=\"https://johnshopkins.csod.com/ui/lms-learning-details/app/curriculum/66847e20-c695-4e54-a6be-8c94465b8a70\" target=\"_blank\" rel=\"noopener noreferrer\">\n  Click here to access the Laboratory Safety Introductory Course\n</a> AS.110.108 AND AS.110.109 AND (AS.110.202 OR AS.110.211) AND (EN.553.291 OR (AS.110.302 AND AS.110.201) OR (AS.110.306 AND AS.110.201)) and C- or better EN.530.202 or EN.560.202.  MechE Majors must also have taken EN.530.241",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -7781,10 +7997,11 @@
       ],
       "term": "S",
       "prereqText": "Students must have completed Lab Safety training prior to registering for this class. To access the tutorial, login to myLearning and enter ASEN in the Search Box to access the proper course.\n<a href=\"https://johnshopkins.csod.com/ui/lms-learning-details/app/curriculum/66847e20-c695-4e54-a6be-8c94465b8a70\" target=\"_blank\" rel=\"noopener noreferrer\">\n  Click here to access the Laboratory Safety Introductory Course\n</a>",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -7832,10 +8049,11 @@
       "posTags": [],
       "term": null,
       "prereqText": "EN.530.403",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -7874,18 +8092,15 @@
       "fa": [],
       "writingIntensive": false,
       "posTags": [
-        "BMEDGSB",
-        "BMEDTCTE",
-        "BMEDIMMU",
-        "BMEDCM",
-        "CHBEBIOE",
+        "BMEIMMU",
         "BMEGSB",
         "BMETCTE"
       ],
       "term": "S",
-      "lastOffered": "Spring 2025",
+      "lastOffered": "Spring 2027",
       "offered": [
-        "Spring 2025"
+        "Spring 2025",
+        "Spring 2027"
       ]
     },
     {
@@ -7959,13 +8174,16 @@
       "credits": 3,
       "fa": [],
       "writingIntensive": false,
-      "posTags": [],
+      "posTags": [
+        "BMEIMD"
+      ],
       "term": "S",
       "prereqText": "Students must have completed Lab Safety training prior to registering for this class. To access the tutorial, login to myLearning and enter ASEN in the Search Box to access the proper course.\n<a href=\"https://johnshopkins.csod.com/ui/lms-learning-details/app/curriculum/66847e20-c695-4e54-a6be-8c94465b8a70\" target=\"_blank\" rel=\"noopener noreferrer\">\n  Click here to access the Laboratory Safety Introductory Course\n</a> EN.530.420 OR EN.520.240 OR EN.520.340 or permission of the instructor.",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -8010,10 +8228,11 @@
       "writingIntensive": false,
       "posTags": [],
       "term": null,
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -8024,14 +8243,12 @@
         "FA2"
       ],
       "writingIntensive": false,
-      "posTags": [
-        "BMETCTE",
-        "BMEDTCTE"
-      ],
-      "term": "F",
-      "lastOffered": "Fall 2025",
+      "posTags": [],
+      "term": null,
+      "lastOffered": "Spring 2027",
       "offered": [
-        "Fall 2025"
+        "Fall 2025",
+        "Spring 2027"
       ]
     },
     {
@@ -8059,13 +8276,16 @@
       "fa": [],
       "writingIntensive": false,
       "posTags": [
-        "CHBEBIOE"
+        "CHBEBIOE",
+        "BMETCTE",
+        "BMEIMMU"
       ],
       "term": "S",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -8180,7 +8400,11 @@
         "FA2"
       ],
       "writingIntensive": false,
-      "posTags": [],
+      "posTags": [
+        "BMEDIMD",
+        "BMEDNE",
+        "BMETCTE"
+      ],
       "term": null,
       "lastOffered": "Fall 2026",
       "offered": [
@@ -8199,9 +8423,10 @@
         "BMEDIMD"
       ],
       "term": null,
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -8241,10 +8466,11 @@
       "writingIntensive": false,
       "posTags": [],
       "term": "S",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -8299,10 +8525,11 @@
       "writingIntensive": false,
       "posTags": [],
       "term": "S",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -8353,10 +8580,11 @@
       "writingIntensive": false,
       "posTags": [],
       "term": null,
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -8434,9 +8662,10 @@
       "writingIntensive": false,
       "posTags": [],
       "term": null,
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -8507,12 +8736,13 @@
       ],
       "term": null,
       "prereqText": "Students who have already taken, or are currently enrolled in EN.530.231, are not permitted to enroll in EN.540.203. EN.540.202 AS.110.202 - Calculus III - can be taken prior to, or at the same time as, EN.540.203.",
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Fall 2025",
         "Spring 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -8556,14 +8786,17 @@
         "FA2"
       ],
       "writingIntensive": false,
-      "posTags": [],
+      "posTags": [
+        "ENGYTECH"
+      ],
       "term": null,
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Fall 2025",
         "Spring 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -8627,12 +8860,13 @@
       "posTags": [],
       "term": null,
       "prereqText": "Students may only earn credit for one of the following: EN.553.171, EN.553.172, OR EN.601.230.\nEN.553.171 may not be taken after EN.553.471 OR EN.553.472 OR EN.553.671 OR EN.553.672.",
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Fall 2025",
         "Spring 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -8648,14 +8882,15 @@
       ],
       "term": null,
       "prereqText": "AS.110.106[C] OR AS.110.107[C] OR AS.110.108[C] OR AS.110.109[C] OR AS.110.113[C] Statistics Sequence restriction - Students who have completed any of these courses may not register: EN.553.311 OR EN.553.420 OR EN.553.430 OR EN.553.421 OR EN.553.431 OR EN.553.312",
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Summer 2025",
         "Fall 2025",
         "Spring 2026",
         "Summer 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -8671,12 +8906,13 @@
       ],
       "term": null,
       "prereqText": "Students who have taken, or are currently enrolled in AS.110.201 OR AS.110.212, are not eligible to take EN.553.291. Students who have taken, or are currently enrolled in AS.110.302, are not eligible to take EN.553.291. AS.110.107 OR AS.110.109 OR AS.110.113",
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Fall 2025",
         "Spring 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -8690,14 +8926,15 @@
       "posTags": [],
       "term": null,
       "prereqText": "AS.110.107 OR AS.110.109 OR AS.110.113",
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Summer 2025",
         "Fall 2025",
         "Spring 2026",
         "Summer 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -8727,43 +8964,44 @@
       ],
       "term": null,
       "prereqText": "AS.110.109 OR AS.110.113 Statistics Sequence restriction - Students who have completed any of these courses may not register: EN.553.420 EN.553.421 OR EN.553.430 OR EN.553.431",
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Summer 2025",
         "Fall 2025",
         "Spring 2026",
         "Summer 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
       "code": "EN.553.361",
-      "title": "Intro to Optimization",
+      "title": "Introduction to Optimization I",
       "credits": 4,
       "fa": [
         "FA2"
       ],
       "writingIntensive": false,
       "posTags": [
+        "CSCIOTHER",
+        "BMEDBDS",
+        "BMEDIMD",
+        "BMEDGSB",
         "ROBORMSS",
         "BMECM",
         "BMEGSB",
-        "BMEDBDS",
-        "BMEDCM",
-        "BMEDGSB",
-        "CSCIOTHER",
-        "BMEDIMD",
         "BMEBDS"
       ],
       "term": null,
       "prereqText": "(AS.110.107 OR AS.110.109 OR AS.110.113) AND (EN.553.291 OR EN.553.295 OR AS.110.201 OR AS.110.212)",
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Fall 2025",
         "Spring 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -8774,17 +9012,13 @@
         "FA2"
       ],
       "writingIntensive": false,
-      "posTags": [
-        "BMEDBDS",
-        "BMEDGSB",
-        "CSCIOTHER",
-        "BMEDIMD"
-      ],
+      "posTags": [],
       "term": "S",
       "prereqText": "EN.553.361 AND ( AS.110.202 OR AS.110.211 )",
-      "lastOffered": "Spring 2025",
+      "lastOffered": "Spring 2027",
       "offered": [
-        "Spring 2025"
+        "Spring 2025",
+        "Spring 2027"
       ]
     },
     {
@@ -8800,12 +9034,13 @@
       ],
       "term": null,
       "prereqText": "( EN.553.291 OR EN.553.295 OR AS.110.201 OR AS.110.212 ) AND ( AS.110.202 OR AS.110.211 )",
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Fall 2025",
         "Spring 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -8817,23 +9052,19 @@
       ],
       "writingIntensive": false,
       "posTags": [
-        "BMEDCB",
-        "BIOLUL",
-        "BMEDIMG",
-        "BMEDBDS",
-        "BMEDIMMU",
-        "BMEDIMD"
+        "BMEIMMU"
       ],
       "term": null,
       "prereqText": "Students may receive credit for EN.550.413/EN.553.413 or EN.553.613, but not both. EN.553.112 OR EN.553.310 OR EN.553.311 OR EN.553.420 OR EN.553.421",
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Summer 2025",
         "Fall 2025",
         "Spring 2026",
         "Summer 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -8862,26 +9093,24 @@
       ],
       "writingIntensive": false,
       "posTags": [
-        "BMEDCB",
-        "BIOLUL",
-        "BMEDSB",
-        "BMEDIMG",
         "BMEDBDS",
+        "BIOLUL",
+        "BMEDIMD",
         "BMEDCM",
         "BMEDGSB",
-        "BMEDIMD",
         "BMEDIMMU"
       ],
       "term": null,
       "prereqText": "Students may receive credit for one of the following: EN.553.420 OR EN.553.421 OR EN.553.620. AS.110.109 OR AS.110.113 AS.110.201 OR AS.110.202 OR AS.110.211 OR AS.110.212 OR EN.553.291 OR EN.553.295, can be taken concurrently.",
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Summer 2025",
         "Fall 2025",
         "Spring 2026",
         "Summer 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -8923,16 +9152,44 @@
         "BMEGSB"
       ],
       "term": "S",
-      "prereqText": "Students may receive credit for EN.550.426/EN.553.426 or EN.553.626, but not both. (EN.553.420 OR EN.553.421 OR EN.553.620 ) AND (EN.553.291 OR EN.553.295 OR AS.110.201 OR AS.110.212 )",
-      "lastOffered": "Spring 2026",
+      "prereqText": "Students may receive credit for only one of the following: EN.553.426, EN.553.626, EN.553.427 or EN.553.627 (EN.553.420 OR EN.553.421 OR EN.553.620 ) AND (EN.553.291 OR EN.553.295 OR AS.110.201 OR AS.110.212 )",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
       "code": "EN.553.430",
       "title": "Mathematical Statistics",
+      "credits": 4,
+      "fa": [
+        "FA2"
+      ],
+      "writingIntensive": false,
+      "posTags": [
+        "BIOLUL",
+        "BMEDBDS",
+        "BMEDCM",
+        "BMEDGSB",
+        "BMEDIMD",
+        "BMEDIMMU"
+      ],
+      "term": null,
+      "prereqText": "Students may receive credit for EN.553.430 or EN.553.630 or EN.553.431, but not all. (EN.553.420 OR EN.553.421 OR EN.553.620) AND (AS.110.201 OR AS.110.212 OR EN.553.291 OR EN.553.295)",
+      "lastOffered": "Spring 2027",
+      "offered": [
+        "Spring 2025",
+        "Fall 2025",
+        "Spring 2026",
+        "Fall 2026",
+        "Spring 2027"
+      ]
+    },
+    {
+      "code": "EN.553.431",
+      "title": "Honors Mathematical Statistics",
       "credits": 4,
       "fa": [
         "FA2"
@@ -8947,38 +9204,14 @@
         "BIOLUL"
       ],
       "term": null,
-      "prereqText": "Students may receive credit for EN.553.430 or EN.553.630 or EN.553.431, but not all. (EN.553.420 OR EN.553.421 OR EN.553.620) AND (AS.110.201 OR AS.110.212 OR EN.553.291 OR EN.553.295)",
-      "lastOffered": "Fall 2026",
-      "offered": [
-        "Spring 2025",
-        "Fall 2025",
-        "Spring 2026",
-        "Fall 2026"
-      ]
-    },
-    {
-      "code": "EN.553.431",
-      "title": "Honors Mathematical Statistics",
-      "credits": 4,
-      "fa": [
-        "FA2"
-      ],
-      "writingIntensive": false,
-      "posTags": [
-        "BMEDCM",
-        "BMEDBDS",
-        "BMEDGSB",
-        "BMEDIMD",
-        "BMEDIMMU"
-      ],
-      "term": null,
       "prereqText": "Students may receive credit for only one of EN.553.430, EN.553.431 or EN.553.630. (EN.553.420 OR EN.553.421 OR EN.553.620) AND (AS.110.201 OR AS.110.212 OR EN.553.291 OR EN.553.295) AND (AS.110.202 OR AS.110.211)",
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Fall 2025",
         "Spring 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -8992,14 +9225,15 @@
       "posTags": [],
       "term": null,
       "prereqText": "Students may take only one of EN.553.432, EN.553.632 or EN.553.732. (EN.553.420 OR EN.553.421 OR EN.553.620) AND (EN.553.430 OR EN.553.431 OR EN.553.630)",
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Summer 2025",
         "Fall 2025",
         "Spring 2026",
         "Summer 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -9011,20 +9245,22 @@
       ],
       "writingIntensive": false,
       "posTags": [
+        "BMECM",
         "BMEDBDS",
         "BMEDIMD",
         "BMEDIMMU",
-        "CSCIOTHER",
-        "BMECM"
+        "BMEIMMU",
+        "CSCIOTHER"
       ],
       "term": null,
       "prereqText": "Students may receive credit for EN.553.433 or EN.553.633, but not both. EN.553.430 OR EN.553.431 OR EN.553.630",
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Fall 2025",
         "Spring 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -9036,24 +9272,26 @@
       ],
       "writingIntensive": false,
       "posTags": [
-        "BMEGSB",
-        "BMEIMD",
         "BMEDGSB",
         "BMEDCM",
         "BMEDBDS",
         "CSCIOTHER",
-        "BMEDIMD",
+        "BMEIMMU",
         "BMEDIMMU",
-        "COGSCOMPCG"
+        "COGSCOMPCG",
+        "BMEBDS",
+        "BMECM",
+        "BMEGSB"
       ],
       "term": null,
       "prereqText": "Students may receive credit for EN.553.436 or EN.553.636, but not both. (AS.110.202 OR AS.110.211) AND (AS.110.201 OR AS.110.212 OR EN.553.291 OR EN.553.295)",
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Fall 2025",
         "Spring 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -9067,12 +9305,13 @@
       "posTags": [],
       "term": null,
       "prereqText": "Students may receive credit for EN.553.439 or EN.553.639, but not both. (EN.553.310 OR EN.553.311 OR EN.553.420 OR EN.553.421 OR EN.553.620) AND (AS.110.201 OR AS.110.212 OR EN.553.291 OR EN.553.295)",
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Fall 2025",
         "Spring 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -9107,10 +9346,11 @@
       ],
       "term": "S",
       "prereqText": "Students may receive credit for EN.550.463/EN.553.463 or EN.553.663, but not both. EN.553.361 OR EN.553.661 OR EN.553.761 OR EN.553.461",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -9146,11 +9386,12 @@
         "CSCIOTHER"
       ],
       "term": "S",
-      "prereqText": "Students may receive credit for EN.550.472/EN.553.472 or EN.553.672, but not both. EN.553.291 OR EN.553.295 OR AS.110.201 OR AS.110.212",
-      "lastOffered": "Spring 2026",
+      "prereqText": "Students may receive credit for EN.553.472 or EN.553.672, but not both. EN.553.291 OR EN.553.295 OR AS.110.201 OR AS.110.212",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -9163,11 +9404,12 @@
       "writingIntensive": false,
       "posTags": [],
       "term": "S",
-      "prereqText": "Students may take only one of EN.550.681, EN.553.481, EN.553.681 or EN.553.781. (AS.110.202 OR AS.110.211) AND (EN.553.291 OR EN.553.295 OR AS.110.201 OR AS.110.212) AND (EN.553.291 OR AS.110.302 OR AS.110.417 OR EN.553.386 OR EN.553.388 OR EN.553.391)",
-      "lastOffered": "Spring 2026",
+      "prereqText": "Students may take only one of EN.553.481, EN.553.681 or EN.553.781. (AS.110.202 OR AS.110.211) AND (EN.553.291 OR EN.553.295 OR AS.110.201 OR AS.110.212) AND (EN.553.291 OR AS.110.302 OR AS.110.417 OR EN.553.386 OR EN.553.388 OR EN.553.391)",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -9182,14 +9424,17 @@
         "BMEDNE",
         "BMEDIMMU",
         "BMEDBDS",
-        "NEURCP"
+        "NEURCP",
+        "BMEDCM",
+        "BMEIMMU"
       ],
       "term": "S",
       "prereqText": "Students may receive credit for EN.553.492 or EN.553.692, but not both. (EN.553.420 OR EN.553.421 OR EN.553.620) AND (AS.110.201 OR AS.110.212 OR EN.553.291 OR EN.553.295) AND (AS.110.302 OR AS.110.306 OR EN.553.291)",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -9237,10 +9482,11 @@
       "posTags": [],
       "term": "S",
       "prereqText": "EN.500.113 or EN.500.133",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -9251,10 +9497,11 @@
       "writingIntensive": false,
       "posTags": [],
       "term": "S",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -9319,10 +9566,11 @@
       "posTags": [],
       "term": "S",
       "prereqText": "EN.553.291 AND EN.500.113",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -9336,10 +9584,11 @@
       "posTags": [],
       "term": "S",
       "prereqText": "EN.560.201",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -9370,10 +9619,11 @@
       "posTags": [],
       "term": "S",
       "prereqText": "Students must have completed Lab Safety training prior to registering for this class. To access the tutorial, login to myLearning and enter ASEN in the Search Box to access the proper course.\n<a href=\"https://johnshopkins.csod.com/ui/lms-learning-details/app/curriculum/66847e20-c695-4e54-a6be-8c94465b8a70\" target=\"_blank\" rel=\"noopener noreferrer\">\n  Click here to access the Laboratory Safety Introductory Course\n</a> EN.560.201 AND EN.560.211",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -9385,10 +9635,11 @@
       "posTags": [],
       "term": "S",
       "prereqText": "Students must have completed Lab Safety training prior to registering for this class. To access the tutorial, login to myLearning and enter 458083 in the Search box to locate the appropriate module. EN.560.250 AND EN.500.113",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -9435,10 +9686,11 @@
         "ENGYTECH"
       ],
       "term": "S",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -9466,9 +9718,10 @@
       "posTags": [],
       "term": null,
       "prereqText": "EN.553.291 AND (AS.171.101 OR AS.171.105 OR AS.171.107)",
-      "lastOffered": "Fall 2025",
+      "lastOffered": "Spring 2027",
       "offered": [
-        "Fall 2025"
+        "Fall 2025",
+        "Spring 2027"
       ]
     },
     {
@@ -9482,10 +9735,11 @@
       "posTags": [],
       "term": "S",
       "prereqText": "EN.553.291 AND EN.560.201",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -9510,10 +9764,11 @@
       "writingIntensive": false,
       "posTags": [],
       "term": "S",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -9543,10 +9798,11 @@
       "posTags": [],
       "term": "S",
       "prereqText": "EN.560.401",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -9572,10 +9828,11 @@
       "fa": [],
       "writingIntensive": false,
       "posTags": [],
-      "term": null,
-      "lastOffered": "Spring 2026",
+      "term": "S",
+      "lastOffered": "Spring 2027",
       "offered": [
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -9648,10 +9905,11 @@
       ],
       "term": null,
       "prereqText": "Students who are currently enrolled in, or have already completed EN.560.651, are not eligible to enroll in EN.560.451.",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -9682,10 +9940,11 @@
       "posTags": [],
       "term": "S",
       "prereqText": "Students who have already taken, or are already enrolled in EN.560.657, are not eligible to take EN.560.457. AS.110.109",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -9702,10 +9961,11 @@
       ],
       "term": "S",
       "prereqText": "EN.560.240",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -9805,10 +10065,11 @@
         "ENVSMINOR"
       ],
       "term": "S",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -9859,10 +10120,11 @@
       "posTags": [],
       "term": "S",
       "prereqText": "Students must have completed Lab Safety training prior to registering for this class. To access the tutorial, login to myLearning and enter ASEN in the Search Box to access the proper course.\n<a href=\"https://johnshopkins.csod.com/ui/lms-learning-details/app/curriculum/66847e20-c695-4e54-a6be-8c94465b8a70\" target=\"_blank\" rel=\"noopener noreferrer\">\n  Click here to access the Laboratory Safety Introductory Course\n</a> EN.570.303",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -9895,10 +10157,11 @@
         "ENGYSCIPOL"
       ],
       "term": null,
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -9911,10 +10174,11 @@
       "writingIntensive": false,
       "posTags": [],
       "term": "S",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -9925,15 +10189,13 @@
         "FA2"
       ],
       "writingIntensive": false,
-      "posTags": [
-        "ENVSMAJOR",
-        "ENVSMINOR"
-      ],
-      "term": null,
+      "posTags": [],
+      "term": "S",
       "prereqText": "EN.570.303",
-      "lastOffered": "Spring 2025",
+      "lastOffered": "Spring 2027",
       "offered": [
-        "Spring 2025"
+        "Spring 2025",
+        "Spring 2027"
       ]
     },
     {
@@ -9983,15 +10245,12 @@
         "FA2"
       ],
       "writingIntensive": false,
-      "posTags": [
-        "ENVSMAJOR",
-        "ENVSMINOR",
-        "ARCHRELATE"
-      ],
+      "posTags": [],
       "term": "S",
-      "lastOffered": "Spring 2025",
+      "lastOffered": "Spring 2027",
       "offered": [
-        "Spring 2025"
+        "Spring 2025",
+        "Spring 2027"
       ]
     },
     {
@@ -10113,10 +10372,11 @@
       "posTags": [],
       "term": "S",
       "prereqText": "EN.570.419",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -10130,10 +10390,11 @@
         "ENVSMINOR"
       ],
       "term": "S",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -10162,10 +10423,11 @@
       "writingIntensive": false,
       "posTags": [],
       "term": "S",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -10213,10 +10475,11 @@
       "posTags": [],
       "term": "S",
       "prereqText": "Students who are currently enrolled in or have taken EN.570.646 are not eligible to take EN.570.446.",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -10264,10 +10527,11 @@
       ],
       "term": "S",
       "prereqText": "Students who have taken, or are currently enrolled in, EN.570.663 are not eligible to take EN.570.463.",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -10282,10 +10546,11 @@
         "ENGYTECH"
       ],
       "term": "S",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -10317,10 +10582,11 @@
         "ENVSMINOR"
       ],
       "term": "S",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -10353,10 +10619,11 @@
         "ENGYSCIPOL"
       ],
       "term": "S",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -10387,10 +10654,11 @@
       "writingIntensive": false,
       "posTags": [],
       "term": "S",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -10448,11 +10716,14 @@
         "FA2"
       ],
       "writingIntensive": false,
-      "posTags": [],
+      "posTags": [
+        "ENVSMINOR"
+      ],
       "term": null,
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -10467,10 +10738,11 @@
         "CHBEBIOE"
       ],
       "term": "S",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -10500,10 +10772,11 @@
       "posTags": [],
       "term": "S",
       "prereqText": "EN.580.243",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -10516,10 +10789,11 @@
       "writingIntensive": false,
       "posTags": [],
       "term": "S",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -10553,10 +10827,11 @@
         "CHBEBIOE"
       ],
       "term": "S",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -10568,11 +10843,12 @@
       ],
       "writingIntensive": false,
       "posTags": [],
-      "term": null,
+      "term": "S",
       "prereqText": "Students must have completed Lab Safety training prior to registering for this class. To access the tutorial, login to myLearning and enter ASEN in the Search Box to access the proper course.\n\n<a href=\"https://johnshopkins.csod.com/ui/lms-learning-details/app/curriculum/66847e20-c695-4e54-a6be-8c94465b8a70\" target=\"_blank\" rel=\"noopener noreferrer\">\n  Click here to access the Laboratory Safety Introductory Course\n</a>",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -10586,11 +10862,12 @@
       "posTags": [],
       "term": null,
       "prereqText": "Students who have taken EN.580.453 prior to Fall 24 may not enroll. Students must have completed Lab Safety training prior to registering for this class. To access the tutorial, login to myLearning and enter Laboratory Safety Introductory Course in the Search Box to access the proper course.\n\n<a href=\"https://johnshopkins.csod.com/ui/lms-learning-details/app/curriculum/66847e20-c695-4e54-a6be-8c94465b8a70\" target=\"_blank\" rel=\"noopener noreferrer\">\n  Click here to access the Laboratory Safety Introductory Course\n</a> EN.580.221",
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Fall 2025",
         "Spring 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -10604,11 +10881,12 @@
       "posTags": [],
       "term": null,
       "prereqText": "Students must have completed Lab Safety training prior to registering for this class. To access the tutorial, login to myLearning and enter Laboratory Safety Introductory Course in the Search Box to access the proper course.\n\n<a href=\"https://johnshopkins.csod.com/ui/lms-learning-details/app/curriculum/66847e20-c695-4e54-a6be-8c94465b8a70\" target=\"_blank\" rel=\"noopener noreferrer\">\n  Click here to access the Laboratory Safety Introductory Course\n</a> EN.580.221",
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Fall 2025",
         "Spring 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -10620,11 +10898,12 @@
       ],
       "writingIntensive": false,
       "posTags": [],
-      "term": null,
+      "term": "S",
       "prereqText": "Students must have completed Lab Safety training prior to registering for this class. To access the tutorial, login to myLearning and enter ASEN in the Search Box to access the proper course.\n\n<a href=\"https://johnshopkins.csod.com/ui/lms-learning-details/app/curriculum/66847e20-c695-4e54-a6be-8c94465b8a70\" target=\"_blank\" rel=\"noopener noreferrer\">\n  Click here to access the Laboratory Safety Introductory Course\n</a>",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -10661,13 +10940,16 @@
       "code": "EN.580.394",
       "title": "Build an Imager",
       "credits": 3,
-      "fa": [],
+      "fa": [
+        "FA2"
+      ],
       "writingIntensive": false,
       "posTags": [],
-      "term": null,
-      "lastOffered": "Spring 2026",
+      "term": "S",
+      "lastOffered": "Spring 2027",
       "offered": [
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -10701,10 +10983,11 @@
         "CHBEBIOE"
       ],
       "term": "S",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -10742,10 +11025,11 @@
       ],
       "term": "S",
       "prereqText": "Students must have completed Lab Safety training prior to registering for this class. To access the tutorial, login to myLearning and enter ASEN in the Search Box to access the proper course.\n\n<a href=\"https://johnshopkins.csod.com/ui/lms-learning-details/app/curriculum/66847e20-c695-4e54-a6be-8c94465b8a70\" target=\"_blank\" rel=\"noopener noreferrer\">\n  Click here to access the Laboratory Safety Introductory Course\n</a>",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -10763,13 +11047,15 @@
         "BMEDCM",
         "BMEIMMU",
         "BMEGSB",
-        "BMECM"
+        "BMECM",
+        "BMETCTE"
       ],
       "term": "S",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -10862,10 +11148,11 @@
         "CSCITEAM"
       ],
       "term": "S",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -10887,10 +11174,11 @@
         "BMENE"
       ],
       "term": "S",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -10967,10 +11255,11 @@
       ],
       "term": "S",
       "prereqText": "Students may take EN.580.447 or EN.580.647, but not both.",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -10991,9 +11280,10 @@
       ],
       "term": "S",
       "prereqText": "EN.580.475",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -11046,7 +11336,10 @@
         "FA2"
       ],
       "writingIntensive": false,
-      "posTags": [],
+      "posTags": [
+        "BMEDIMD",
+        "BMEDNE"
+      ],
       "term": "F",
       "prereqText": "EN.580.243, EN.580.246, and EN.580.424",
       "lastOffered": "Fall 2026",
@@ -11072,10 +11365,11 @@
         "BMEDCM"
       ],
       "term": "S",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -11110,17 +11404,18 @@
         "BMEDGSB",
         "BMEDIMD",
         "BMEDCM",
-        "BMEDIMMU",
+        "BMEBDS",
         "BMEGSB",
         "BMEIMMU",
         "BMECM",
         "BMEIMD"
       ],
       "term": "S",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -11138,10 +11433,11 @@
         "BMENE"
       ],
       "term": "S",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -11179,10 +11475,11 @@
       "posTags": [],
       "term": "S",
       "prereqText": "EN.580.471",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -11225,10 +11522,11 @@
       ],
       "term": "S",
       "prereqText": "(EN.580.480 OR EN.580.680)",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -11243,9 +11541,10 @@
         "BMEGSB"
       ],
       "term": null,
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -11264,10 +11563,11 @@
       ],
       "term": "S",
       "prereqText": "Students must have completed Lab Safety training prior to registering for this class. To access the tutorial, login to myLearning and enter ASEN in the Search Box to access the proper course.\n\n<a href=\"https://johnshopkins.csod.com/ui/lms-learning-details/app/curriculum/66847e20-c695-4e54-a6be-8c94465b8a70\" target=\"_blank\" rel=\"noopener noreferrer\">\n  Click here to access the Laboratory Safety Introductory Course\n</a>",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -11306,10 +11606,11 @@
         "BMENE"
       ],
       "term": "S",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -11325,14 +11626,15 @@
       ],
       "term": null,
       "prereqText": "(A grade of C+ is required in EN.500.112 OR EN.500.113 OR EN.500.114) OR (AP Computer Science OR EN.500.132 OR EN.500.133 OR EN.500.134)  Students will not be able to register until their grades are posted for the prerequisite courses.",
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Summer 2025",
         "Fall 2025",
         "Spring 2026",
         "Summer 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -11344,18 +11646,19 @@
       ],
       "writingIntensive": false,
       "posTags": [
-        "COGSCOMPCG",
-        "ROBOCMCS"
+        "ROBOCMCS",
+        "COGSCOMPCG"
       ],
       "term": null,
       "prereqText": "A grade of C+ or better in EN.500.112 OR EN.601.220 OR AP Computer Science OR EN.500.132. Students can't register until grades for prerequisites are posted.",
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Fall 2025",
         "Spring 2026",
         "Summer 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -11371,14 +11674,15 @@
       ],
       "term": null,
       "prereqText": "EN.601.220",
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Summer 2025",
         "Fall 2025",
         "Spring 2026",
         "Summer 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -11393,15 +11697,16 @@
         "COGSCOMPCG"
       ],
       "term": null,
-      "prereqText": "Student may not enroll if taken EN.601.231. EN.500.112 OR EN.500.113 OR EN.500.114 OR EN.500.132 OR EN.500.133 OR EN.500.134 OR EN.601.220",
-      "lastOffered": "Fall 2026",
+      "prereqText": "Student may not enroll if taken EN.601.231 OR EN.601.431 EN.500.112 OR EN.500.113 OR EN.500.114 OR EN.500.132 OR EN.500.133 OR EN.500.134 OR EN.601.220",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Summer 2025",
         "Fall 2025",
         "Spring 2026",
         "Summer 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -11427,19 +11732,17 @@
       ],
       "writingIntensive": false,
       "posTags": [
-        "BMEDBDS",
-        "BMEDIMD",
         "CSCISOFT",
-        "BMEBDS",
         "BMECM"
       ],
       "term": null,
       "prereqText": "Students can only take one of the following:  EN.601.315, EN.601.415, OR EN.601.615. EN.601.226",
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Fall 2025",
         "Spring 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -11456,10 +11759,11 @@
       ],
       "term": "S",
       "prereqText": "EN.660.410",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -11471,17 +11775,16 @@
       ],
       "writingIntensive": false,
       "posTags": [
-        "CSCISOFT",
-        "BMEDBDS",
-        "BMEDIMD"
+        "CSCISOFT"
       ],
       "term": null,
       "prereqText": "Students may receive credit for only one of the following: EN.601.315, EN.601.415, OR EN.601.615. EN.601.226",
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Fall 2025",
         "Spring 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -11498,12 +11801,13 @@
       ],
       "term": null,
       "prereqText": "Students may receive credit for only one of EN.601.421, EN.601.621. EN.601.220 AND EN.601.226 AND (EN.601.280 OR EN.601.290)",
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Fall 2025",
         "Spring 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -11521,12 +11825,13 @@
       ],
       "term": null,
       "prereqText": "Students may receive credit for only one of EN.601.433, EN.601.633. EN.601.226 AND (EN.553.171 OR EN.553.172 OR EN.601.230 OR EN.601.231)",
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Fall 2025",
         "Spring 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -11542,9 +11847,10 @@
       ],
       "term": null,
       "prereqText": "Students may receive credit for only one of EN.601.442, EN.601.642. (EN.601.230 OR EN.601.231) AND (EN.553.310 OR EN.553.311 OR EN.553.420 OR EN.553.421)",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -11624,14 +11930,16 @@
         "ROBORMRR",
         "ROBORMCC",
         "ROBORMSU",
-        "ROBORMLB"
+        "ROBORMLB",
+        "BMEBDS"
       ],
       "term": "S",
       "prereqText": "Students may receive credit for only one of EN.601.456, EN.601.496, EN.601.656. EN.601.455 or EN.601.655 or permisssion",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -11663,25 +11971,26 @@
       ],
       "writingIntensive": false,
       "posTags": [
-        "BMEDBDS",
-        "BMEIMD",
-        "BMEDCM",
-        "COGSCOMPCG",
         "CSCIAPPL",
+        "BMEDBDS",
+        "BMEDCM",
+        "BMEDIMD",
         "ROBORMCC",
-        "ROBORMSU",
         "ROBORMLB",
-        "ROBOCMCIS",
-        "ROBOCMUL"
+        "ROBORMSU",
+        "ROBOCMUL",
+        "COGSCOMPCG",
+        "BMEIMD"
       ],
       "term": null,
       "prereqText": "Students may receive credit for only one of EN.601.461, EN.601.661. (EN.553.310 OR EN.553.311 OR ((EN.553.420 OR EN.553.421) AND (EN.553.430 OR EN.553.431)) AND (AS.110.201 OR AS.110.212 OR EN.553.291 OR EN.553.295)) AND (EN.500.112 OR EN.500.113 OR EN.500.114 OR EN.601.220 AS.250.205)",
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Fall 2025",
         "Spring 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -11693,24 +12002,26 @@
       ],
       "writingIntensive": false,
       "posTags": [
-        "BMEDBDS",
         "COGSCOMPCG",
+        "ROBORMSU",
+        "BMEDBDS",
         "CSCIRSNG",
         "ROBORMCC",
-        "ROBORMSU",
         "BMEDNE",
-        "BMEDIMD",
+        "BMECM",
+        "BMEDCM",
         "BMEIMD",
         "BMEBDS"
       ],
       "term": null,
       "prereqText": "Students may receive credit for only one of EN.601.464, EN.601.664. EN.601.226",
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Fall 2025",
         "Spring 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -11727,10 +12038,11 @@
       ],
       "term": "S",
       "prereqText": "Students can receive credit for EN.601.466 or EN.601.666, but not both EN.601.226",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -11783,25 +12095,26 @@
       ],
       "writingIntensive": false,
       "posTags": [
-        "BMEDBDS",
-        "BMEIMD",
-        "BMEDCM",
-        "BMEDGSB",
-        "BMEDNE",
-        "COGSCOMPCG",
-        "CSCIRSNG",
-        "ROBORMSU",
         "ROBORMCC",
-        "BMENE"
+        "COGSCOMPCG",
+        "ROBORMSU",
+        "BMEDBDS",
+        "BMEDCM",
+        "BMECM",
+        "BMENE",
+        "BMEGSB",
+        "CSCIRSNG",
+        "BMEBDS"
       ],
       "term": null,
       "prereqText": "Students may receive credit for only one of EN.601.475, EN.601.675. Linear Algebra, Probability, Statistics, Calc III, and Intro Computing/Programming - (AS.110.202 OR AS.110.211) AND (EN.553.211 OR EN.553.310 OR EN.553.311 OR ((EN.553.420 or EN.553.421) AND (EN.553.430 OR EN.553.431)) AND (AS.110.201 OR AS.110.212 OR EN.553.291 OR EN.553.295) AND (EN.500.112 OR EN.500.113 OR EN.500.114 OR EN.601.220 OR AS.250.205 OR EN.580.200 OR EN.601.107))",
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Fall 2025",
         "Spring 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -11834,23 +12147,24 @@
       "posTags": [
         "COGSCOMPCG",
         "BMEDBDS",
-        "BMEDCM",
-        "BMEDGSB",
-        "BMEDIMD",
         "BMEDNE",
-        "CSCIRSNG",
+        "BMEGSB",
         "BMEIMD",
-        "ROBORMSS",
-        "ROBORMCC"
+        "BMEDCM",
+        "CSCIRSNG",
+        "BMENE",
+        "ROBORMCC",
+        "ROBORMSS"
       ],
       "term": null,
       "prereqText": "Students can receive credit for EN.601.482 or EN.601.682, but not both EN.601.226 AND (AS.110.201 OR AS.110.212 OR EN.553.291 OR EN.553.295) AND (EN.553.211 OR EN.553.310 OR EN.553.311 OR EN.553.420 OR EN.553.421) AND (AS.110.107 OR AS.110.109 OR AS.110.113); Strongly recommended courses: Python, Machine Learning, Statistics, Calc III",
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Fall 2025",
         "Spring 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -11914,10 +12228,11 @@
       ],
       "term": "S",
       "prereqText": "Students may receive credit for only one of EN.601.456, EN.601.496, OR EN.601.656 EN.601.455 or permission",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -11925,18 +12240,16 @@
       "title": "Multidisciplinary Engineering Design 1",
       "credits": 4,
       "fa": [
-        "FA5",
         "FA6"
       ],
       "writingIntensive": true,
-      "posTags": [
-        "CSCIOTHER"
-      ],
-      "term": "F",
-      "lastOffered": "Fall 2026",
+      "posTags": [],
+      "term": null,
+      "lastOffered": "Spring 2027",
       "offered": [
         "Fall 2025",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -11951,10 +12264,11 @@
         "CSCIOTHER"
       ],
       "term": "S",
-      "lastOffered": "Spring 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -11964,10 +12278,11 @@
       "fa": [],
       "writingIntensive": true,
       "posTags": [],
-      "term": null,
-      "lastOffered": "Spring 2026",
+      "term": "S",
+      "lastOffered": "Spring 2027",
       "offered": [
-        "Spring 2026"
+        "Spring 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -11981,17 +12296,16 @@
       ],
       "writingIntensive": false,
       "posTags": [
-        "ENVSMAJOR",
-        "ENVSMINOR",
         "ENGYSCIPOL"
       ],
       "term": null,
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Fall 2025",
         "Spring 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -12012,22 +12326,25 @@
     },
     {
       "code": "EN.661.110",
-      "title": "Professional Writing and Ethics",
+      "title": "Professional Writing and Ethics: Writing about Human Optimization",
       "credits": 3,
       "fa": [
         "FA5"
       ],
       "writingIntensive": true,
-      "posTags": [],
+      "posTags": [
+        "ENVSMAJOR"
+      ],
       "term": null,
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Summer 2025",
         "Fall 2025",
         "Spring 2026",
         "Summer 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -12040,13 +12357,15 @@
         "AGRIELECT"
       ],
       "term": null,
-      "lastOffered": "Fall 2026",
+      "prereqText": "Students may take EN.661.250 or EN.661.150, but not both.",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Fall 2025",
         "Spring 2026",
         "Summer 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     },
     {
@@ -12063,14 +12382,15 @@
         "CLEMCOMM"
       ],
       "term": null,
-      "lastOffered": "Fall 2026",
+      "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
         "Summer 2025",
         "Fall 2025",
         "Spring 2026",
         "Summer 2026",
-        "Fall 2026"
+        "Fall 2026",
+        "Spring 2027"
       ]
     }
   ]
