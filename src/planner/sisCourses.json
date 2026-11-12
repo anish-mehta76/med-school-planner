@@ -1,5 +1,5 @@
 {
-  "syncedAt": "2026-11-09",
+  "syncedAt": "2026-11-12",
   "terms": [
     "Fall 2025",
     "Fall 2026",
@@ -1985,7 +1985,10 @@
         "FA4.1"
       ],
       "writingIntensive": false,
-      "posTags": [],
+      "posTags": [
+        "ARCHARCH",
+        "ARCHRELATE"
+      ],
       "term": null,
       "lastOffered": "Spring 2027",
       "offered": [
@@ -2050,7 +2053,10 @@
         "FA4"
       ],
       "writingIntensive": false,
-      "posTags": [],
+      "posTags": [
+        "NEASARTARC",
+        "ARCHARCH"
+      ],
       "term": null,
       "lastOffered": "Spring 2027",
       "offered": [
@@ -2065,7 +2071,10 @@
         "FA3"
       ],
       "writingIntensive": false,
-      "posTags": [],
+      "posTags": [
+        "NEASHISCUL",
+        "ARCHARCH"
+      ],
       "term": null,
       "lastOffered": "Spring 2027",
       "offered": [
@@ -2082,7 +2091,7 @@
         "FA3",
         "FA4"
       ],
-      "writingIntensive": true,
+      "writingIntensive": false,
       "posTags": [
         "ARCHARCH",
         "CESFT",
@@ -2443,7 +2452,12 @@
         "FA5"
       ],
       "writingIntensive": false,
-      "posTags": [],
+      "posTags": [
+        "PHILETHICS",
+        "PHILBIOETH",
+        "CESELECT",
+        "AGRIELECT"
+      ],
       "term": null,
       "lastOffered": "Spring 2027",
       "offered": [
@@ -2463,7 +2477,10 @@
       ],
       "writingIntensive": false,
       "posTags": [
-        "INSTPT"
+        "INSTPT",
+        "PHILETHICS",
+        "CESLSO",
+        "CESRI"
       ],
       "term": null,
       "lastOffered": "Spring 2027",
@@ -2498,7 +2515,7 @@
       ],
       "writingIntensive": false,
       "posTags": [
-        "PHILANCIEN",
+        "PHILMIND",
         "PHILSEM"
       ],
       "term": null,
@@ -2537,7 +2554,9 @@
         "FA5"
       ],
       "writingIntensive": true,
-      "posTags": [],
+      "posTags": [
+        "PHILANCIEN"
+      ],
       "term": "S",
       "lastOffered": "Spring 2027",
       "offered": [
@@ -2606,7 +2625,9 @@
         "FA5"
       ],
       "writingIntensive": false,
-      "posTags": [],
+      "posTags": [
+        "PHILLOGSCI"
+      ],
       "term": "S",
       "prereqText": "AS.150.420",
       "lastOffered": "Spring 2027",
@@ -3273,7 +3294,8 @@
       ],
       "writingIntensive": false,
       "posTags": [
-        "CESLC"
+        "CESLC",
+        "CESFT"
       ],
       "term": null,
       "prereqText": "AS.180.102 AND (AS.110.106 OR AS.110.107 OR AS.110.108 OR AS.110.109) OR equivalent. AS.180.101 may be taken concurrently.",
@@ -3341,7 +3363,10 @@
       ],
       "writingIntensive": false,
       "posTags": [
-        "INSTAP"
+        "INSTAP",
+        "POLIAP",
+        "CESELECT",
+        "AGRIELECT"
       ],
       "term": null,
       "lastOffered": "Spring 2027",
@@ -4796,7 +4821,9 @@
       "posTags": [
         "INSTCP",
         "INSTIR",
-        "INSTECON"
+        "INSTECON",
+        "CESELECT",
+        "AGRIELECT"
       ],
       "term": null,
       "lastOffered": "Spring 2027",
@@ -5685,7 +5712,8 @@
       ],
       "writingIntensive": false,
       "posTags": [
-        "ENGYSCIPOL"
+        "ENGYSCIPOL",
+        "CESLE"
       ],
       "term": null,
       "lastOffered": "Spring 2027",
@@ -9832,7 +9860,8 @@
       "writingIntensive": false,
       "posTags": [
         "ENVSMAJOR",
-        "ENVSMINOR"
+        "ENVSMINOR",
+        "ENGYTECH"
       ],
       "term": "S",
       "lastOffered": "Spring 2027",
@@ -10396,7 +10425,8 @@
       "writingIntensive": false,
       "posTags": [
         "ENVSMAJOR",
-        "ENVSMINOR"
+        "ENVSMINOR",
+        "ENGYSCIPOL"
       ],
       "term": "S",
       "lastOffered": "Spring 2027",
@@ -10729,6 +10759,7 @@
         "ENVSMINOR"
       ],
       "term": null,
+      "prereqText": "AS.110.108 AND AS.110.109 AND AS.030.101 AND AS.030.102 AND AS.171.101 AND AS.171.102",
       "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2026",
@@ -10747,6 +10778,7 @@
         "CHBEBIOE"
       ],
       "term": "S",
+      "prereqText": "AS.110.201 AND (AS.110.302 OR EN.553.291)",
       "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
@@ -11894,7 +11926,11 @@
       "writingIntensive": false,
       "posTags": [
         "CSCIAPPL",
-        "CSCITEAM"
+        "CSCITEAM",
+        "BMEDBDS",
+        "BMEBDS",
+        "BMECM",
+        "BMEGSB"
       ],
       "term": "F",
       "prereqText": "Students may receive credit for only one of the following: EN.601.447 OR EN.601.647 but not both. EN.601.220 AND EN.601.226",
