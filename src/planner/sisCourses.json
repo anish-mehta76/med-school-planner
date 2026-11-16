@@ -1,5 +1,5 @@
 {
-  "syncedAt": "2026-11-12",
+  "syncedAt": "2026-11-16",
   "terms": [
     "Fall 2025",
     "Fall 2026",
@@ -2626,7 +2626,8 @@
       ],
       "writingIntensive": false,
       "posTags": [
-        "PHILLOGSCI"
+        "PHILLOGSCI",
+        "COGSPHLMND"
       ],
       "term": "S",
       "prereqText": "AS.150.420",
@@ -2679,7 +2680,8 @@
       ],
       "writingIntensive": false,
       "posTags": [
-        "PHILLOGSCI"
+        "PHILLOGSCI",
+        "COGSPHLMND"
       ],
       "term": null,
       "prereqText": "If you have taken AS.150.223 Formal Methods of Philosophy you cannot take AS.150.434.",
@@ -3540,9 +3542,9 @@
         "BEHBSOCSCI",
         "ENVSMAJOR",
         "AGRIELECT",
+        "ENVSMINOR",
         "CESLSO",
-        "CESTI",
-        "ENVSMINOR"
+        "CESTI"
       ],
       "term": null,
       "lastOffered": "Fall 2026",
@@ -6772,7 +6774,7 @@
         "ENGYTECH"
       ],
       "term": "S",
-      "prereqText": "EN.510.311",
+      "prereqText": "EN.510.311 Students make take EN.510.312 prior to enrolling in EN.510.314, or at the same time.",
       "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
