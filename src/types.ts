@@ -33,6 +33,8 @@ export interface Experience {
   id: string;
   title: string;
   organization: string;
+  /** Umbrella club or program this belongs to (e.g. a campus club that runs several service sites). Entries with the same group are shown together and count as one AMCAS slot. */
+  group?: string;
   category: Category;
   startDate: string;
   endDate?: string;
@@ -44,6 +46,8 @@ export interface Experience {
   contactName?: string;
   contactEmail?: string;
   description: string;
+  /** Earlier versions of the description, oldest first, saved whenever it is edited. */
+  descriptionHistory?: { date: string; text: string }[];
   meaningful: boolean;
   /** Serves an underserved / low-income population. */
   underserved: boolean;
