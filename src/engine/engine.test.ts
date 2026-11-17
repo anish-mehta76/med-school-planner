@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { defaultState } from '../store/useStore';
 import type { AppState, Experience, Opportunity } from '../types';
-import { experienceHours, findGaps, projectedHours, scoreAreas } from './gaps';
+import { amcasSlots, experienceHours, findGaps, projectedHours, scoreAreas } from './gaps';
 import { monthsToNextDeadline, rankOpportunities } from './recommend';
 
 const NOW = new Date(2026, 9, 14); // Oct 14 2026
@@ -97,5 +97,12 @@ describe('rankOpportunities', () => {
   it('computes months to next deadline with wraparound', () => {
     expect(monthsToNextDeadline([1], NOW)).toBe(3);
     expect(monthsToNextDeadline([10, 2], NOW)).toBe(0);
+  });
+});
+
+describe('amcasSlots', () => {
+  it('counts entries in the same group as one slot, ignoring case and spaces', () => {
+    const list = [exp({ group: 'ABC Health' }), exp({ group: ' abc health ' }), exp({}), exp({ group: 'Other' })];
+    expect(amcasSlots(list)).toBe(3);
   });
 });

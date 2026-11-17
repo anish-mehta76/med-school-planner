@@ -8,6 +8,18 @@ export function experienceHours(e: Experience): number {
   return (e.baseHours || 0) + e.logs.reduce((sum, l) => sum + (l.hours || 0), 0);
 }
 
+/** AMCAS activity slots used: experiences in the same group share one slot. */
+export function amcasSlots(experiences: Experience[]): number {
+  const groups = new Set<string>();
+  let solo = 0;
+  for (const e of experiences) {
+    const g = e.group?.trim().toLowerCase();
+    if (g) groups.add(g);
+    else solo++;
+  }
+  return solo + groups.size;
+}
+
 /** Target date to have experiences in place: AMCAS submission typically opens late May / early June. */
 export function applicationDeadline(state: AppState): Date {
   return new Date(state.profile.applicationYear, 5, 1);
@@ -248,12 +260,13 @@ export function findGaps(state: AppState, now = new Date()): Gap[] {
     }
   }
 
-  if (months < 12 && state.experiences.length < 10) {
+  const slots = amcasSlots(state.experiences);
+  if (months < 12 && slots < 10) {
     gaps.push({
       id: 'entries',
       area: 'leadership',
       severity: 'gap',
-      title: `${state.experiences.length} of ${AMCAS_MAX_ENTRIES} AMCAS activity slots used`,
+      title: `${slots} of ${AMCAS_MAX_ENTRIES} AMCAS activity slots used`,
       detail: 'Most successful applicants list 10–15 activities, including hobbies, teaching and awards.',
       action: 'Log everything meaningful you have done, including employment, tutoring, awards and hobbies.',
     });
