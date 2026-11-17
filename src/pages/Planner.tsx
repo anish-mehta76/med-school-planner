@@ -6,6 +6,7 @@ import { SEMESTERS, TERM_BY_ID } from '../planner/terms';
 import PlanGrid from '../planner/ui/PlanGrid';
 import CourseData from '../planner/ui/CourseData';
 import MedSchools from '../planner/ui/MedSchools';
+import Mcat from '../planner/ui/Mcat';
 import { FaTracker, MajorDot, MajorSelect, Overlap, Requirements, WhatIf } from '../planner/ui/Views';
 import { CountUp } from '../components/viz';
 
@@ -21,10 +22,11 @@ function Meter({ pct }: { pct: number }) {
   );
 }
 
-type Tab = 'plan' | 'reqs' | 'schools' | 'overlap' | 'fa' | 'whatif' | 'data';
+type Tab = 'plan' | 'reqs' | 'mcat' | 'schools' | 'overlap' | 'fa' | 'whatif' | 'data';
 const TABS: { id: Tab; label: string }[] = [
   { id: 'plan', label: 'Plan' },
   { id: 'reqs', label: 'Requirements' },
+  { id: 'mcat', label: 'MCAT readiness' },
   { id: 'schools', label: 'Med schools' },
   { id: 'overlap', label: 'Majors & overlap' },
   { id: 'fa', label: 'Foundational Abilities' },
@@ -169,6 +171,7 @@ export default function Planner() {
         </>
       )}
       {tab === 'reqs' && <Requirements scenario={active} analysis={a} update={updateScenario} />}
+      {tab === 'mcat' && <Mcat scenario={active} analysis={a} />}
       {tab === 'schools' && <MedSchools scenario={active} analysis={a} update={updateScenario} />}
       {tab === 'overlap' && <Overlap scenario={active} analysis={a} />}
       {tab === 'fa' && <FaTracker analysis={a} />}
