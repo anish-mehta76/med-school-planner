@@ -1,5 +1,5 @@
 {
-  "syncedAt": "2026-11-16",
+  "syncedAt": "2026-11-19",
   "terms": [
     "Fall 2025",
     "Fall 2026",
@@ -763,7 +763,8 @@
       "writingIntensive": false,
       "posTags": [
         "COGSCOGPSY",
-        "COGSNEURO"
+        "COGSNEURO",
+        "BEHBBIOBEH"
       ],
       "term": "S",
       "lastOffered": "Spring 2027",
@@ -2837,7 +2838,6 @@
         "ENVSMINOR"
       ],
       "term": "S",
-      "prereqText": "Antirequisite: Students who have already taken, or are currently enrolled in AS.171.102 (General Physics: Physical Science Major II) OR AS.171.108 (General Physics for Physical Sciences Majors (AL)), are not  eligible to take AS.171.104 (General Physics/Biology Majors II)",
       "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
@@ -3297,7 +3297,7 @@
       "writingIntensive": false,
       "posTags": [
         "CESLC",
-        "CESFT"
+        "CESELECT"
       ],
       "term": null,
       "prereqText": "AS.180.102 AND (AS.110.106 OR AS.110.107 OR AS.110.108 OR AS.110.109) OR equivalent. AS.180.101 may be taken concurrently.",
@@ -3542,9 +3542,9 @@
         "BEHBSOCSCI",
         "ENVSMAJOR",
         "AGRIELECT",
-        "ENVSMINOR",
         "CESLSO",
-        "CESTI"
+        "CESTI",
+        "ENVSMINOR"
       ],
       "term": null,
       "lastOffered": "Fall 2026",
@@ -4825,7 +4825,8 @@
         "INSTIR",
         "INSTECON",
         "CESELECT",
-        "AGRIELECT"
+        "AGRIELECT",
+        "CESPD"
       ],
       "term": null,
       "lastOffered": "Spring 2027",
@@ -6873,7 +6874,7 @@
       "writingIntensive": true,
       "posTags": [],
       "term": "S",
-      "prereqText": "Students must have completed Lab Safety training prior to registering for this class. To access the tutorial, login to myLearning and enter ASEN in the Search Box to access the proper course.\n<a href=\"https://johnshopkins.csod.com/ui/lms-learning-details/app/curriculum/66847e20-c695-4e54-a6be-8c94465b8a70\" target=\"_blank\" rel=\"noopener noreferrer\">\n  Click here to access the Laboratory Safety Introductory Course\n</a> EN.510.311 EN.510.313 OR EN.510.314 can be taken prior to enrolling, or at the same time as, EN.510.429.",
+      "prereqText": "Students must have completed Lab Safety training prior to registering for this class. To access the tutorial, login to myLearning and enter ASEN in the Search Box to access the proper course.\n<a href=\"https://johnshopkins.csod.com/ui/lms-learning-details/app/curriculum/66847e20-c695-4e54-a6be-8c94465b8a70\" target=\"_blank\" rel=\"noopener noreferrer\">\n  Click here to access the Laboratory Safety Introductory Course\n</a> EN.510.311 AND EN.510.313 EN.510.314 can be taken prior to enrolling, or at the same time as, EN.510.429.",
       "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
@@ -10780,7 +10781,7 @@
         "CHBEBIOE"
       ],
       "term": "S",
-      "prereqText": "AS.110.201 AND (AS.110.302 OR EN.553.291)",
+      "prereqText": "(AS.110.201 AND AS.110.302) OR EN.553.291",
       "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
