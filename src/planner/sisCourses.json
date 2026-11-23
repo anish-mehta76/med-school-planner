@@ -1,5 +1,5 @@
 {
-  "syncedAt": "2026-11-19",
+  "syncedAt": "2026-11-23",
   "terms": [
     "Fall 2025",
     "Fall 2026",
@@ -2799,7 +2799,7 @@
         "ENVSMINOR"
       ],
       "term": null,
-      "prereqText": "Antirequisite: Students who have already taken, or are currently enrolled in AS.171.104 (General Physics/Biology Majors II) OR AS.171.108 (General Physics for Physical Sciences Majors (AL)), are not eligible to take AS.171.102 (General Physics: Physical Science Major II) Prerequisites: A grade of C- or better in either Physics I or the first semester of Engineering Mechanics   \nAS.171.101 OR AS.171.103 OR AS.171.105 OR AS.171.107 OR EN.530.123",
+      "prereqText": "Prerequisites: A grade of C- or better in either Physics I or the first semester of Engineering Mechanics   \nAS.171.101 OR AS.171.103 OR AS.171.105 OR AS.171.107 OR EN.530.123",
       "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
@@ -2890,7 +2890,6 @@
       "writingIntensive": false,
       "posTags": [],
       "term": null,
-      "prereqText": "Antirequisite: Students who have already taken, or are currently enrolled in AS.171.101 (General Physics: Physical Science Major I) OR AS.171.103 (General Physics I for Biological Science Majors), are not eligible to take AS.171.107 (General Physics for Physical Sciences Majors (AL)).",
       "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
@@ -2914,7 +2913,7 @@
         "ENVSMINOR"
       ],
       "term": "S",
-      "prereqText": "Antirequisite: Students who have already taken, or are currently enrolled in AS.171.102 (General Physics: Physical Science Major II) OR AS.171.104 (General Physics/Biology Majors II), are not eligible to take AS.171.108 (General Physics for Physical Science Majors (AL)). Can be taken concurrently or as a prerequisite: (AS.110.107 OR AS.110.109 OR AS.110.211 OR AS.110.113)",
+      "prereqText": "Can be taken concurrently or as a prerequisite: (AS.110.107 OR AS.110.109 OR AS.110.211 OR AS.110.113)",
       "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
@@ -7165,7 +7164,7 @@
       "writingIntensive": false,
       "posTags": [],
       "term": null,
-      "prereqText": "Students must have completed Lab Safety training prior to registering for this class. To access the tutorial, login to myLearning and enter Laboratory Safety Introductory Course in the Search Box to access the proper course.\n\n<a href=\"https://johnshopkins.csod.com/ui/lms-learning-details/app/curriculum/66847e20-c695-4e54-a6be-8c94465b8a70\" target=\"_blank\" rel=\"noopener noreferrer\">\n  Click here to access the Laboratory Safety Introductory Course\n</a> AS.110.109 AND (AS.171.102 OR AS.171.104 OR AS.171.108) AND AS.173.112 AS.110.202 may be taken prior to or while enrolled in EN.520.219.",
+      "prereqText": "Students must have completed Lab Safety training prior to registering for this class. To access the tutorial, login to myLearning and enter Laboratory Safety Introductory Course in the Search Box to access the proper course.\n\n<a href=\"https://johnshopkins.csod.com/ui/lms-learning-details/app/curriculum/66847e20-c695-4e54-a6be-8c94465b8a70\" target=\"_blank\" rel=\"noopener noreferrer\">\n  Click here to access the Laboratory Safety Introductory Course\n</a> AS.110.109 AND (AS.171.102 OR AS.171.104 OR AS.171.108) AS.110.202 may be taken prior to or while enrolled in EN.520.219.",
       "lastOffered": "Spring 2027",
       "offered": [
         "Fall 2025",
@@ -7201,7 +7200,7 @@
       "writingIntensive": false,
       "posTags": [],
       "term": null,
-      "prereqText": "Students must have completed Lab Safety training prior to registering for this class. To access the tutorial, login to myLearning and enter Laboratory Safety Introductory Course in the Search Box to access the proper course.\n\n<a href=\"https://johnshopkins.csod.com/ui/lms-learning-details/app/curriculum/66847e20-c695-4e54-a6be-8c94465b8a70\" target=\"_blank\" rel=\"noopener noreferrer\">\n  Click here to access the Laboratory Safety Introductory Course\n</a> (AS.110.107 OR AS.110.109) AND (AS.171.102 OR AS.171.108 OR AS.171.106) AND (AS.173.112 OR AS.173.116)",
+      "prereqText": "Students must have completed Lab Safety training prior to registering for this class. To access the tutorial, login to myLearning and enter Laboratory Safety Introductory Course in the Search Box to access the proper course.\n\n<a href=\"https://johnshopkins.csod.com/ui/lms-learning-details/app/curriculum/66847e20-c695-4e54-a6be-8c94465b8a70\" target=\"_blank\" rel=\"noopener noreferrer\">\n  Click here to access the Laboratory Safety Introductory Course\n</a> (AS.110.107 OR AS.110.109) AND (AS.171.102 OR AS.171.108 OR AS.171.106)",
       "lastOffered": "Spring 2027",
       "offered": [
         "Fall 2025",
@@ -7219,7 +7218,7 @@
       "writingIntensive": false,
       "posTags": [],
       "term": null,
-      "prereqText": "Students must have completed Lab Safety training prior to registering for this class. To access the tutorial, login to myLearning and enter Laboratory Safety Introductory Course in the Search Box to access the proper course.\n\n<a href=\"https://johnshopkins.csod.com/ui/lms-learning-details/app/curriculum/66847e20-c695-4e54-a6be-8c94465b8a70\" target=\"_blank\" rel=\"noopener noreferrer\">\n  Click here to access the Laboratory Safety Introductory Course\n</a> (AS.110.107 OR AS.110.109) AND (AS.171.102 OR AS.171.108 OR AS.171.106) AND (AS.173.112 OR AS.173.116)",
+      "prereqText": "Students must have completed Lab Safety training prior to registering for this class. To access the tutorial, login to myLearning and enter Laboratory Safety Introductory Course in the Search Box to access the proper course.\n\n<a href=\"https://johnshopkins.csod.com/ui/lms-learning-details/app/curriculum/66847e20-c695-4e54-a6be-8c94465b8a70\" target=\"_blank\" rel=\"noopener noreferrer\">\n  Click here to access the Laboratory Safety Introductory Course\n</a> (AS.110.107 OR AS.110.109) AND (AS.171.102 OR AS.171.108 OR AS.171.106)",
       "lastOffered": "Spring 2027",
       "offered": [
         "Fall 2025",
@@ -7591,7 +7590,8 @@
         "BMEIMD",
         "BMENE",
         "BMETCTE",
-        "BMEIMMU"
+        "BMEIMMU",
+        "ROBOASCE"
       ],
       "term": "F",
       "prereqText": "AS.171.102 OR AS.171.108",
@@ -8150,7 +8150,9 @@
         "BMENE",
         "BMEDGSB",
         "BMEDNE",
-        "BMEDIMD"
+        "BMEDIMD",
+        "ROBOASCE",
+        "ROBOGENR"
       ],
       "term": "F",
       "lastOffered": "Fall 2026",
@@ -8192,7 +8194,9 @@
         "BMEDIMD",
         "ROBOCMCIS",
         "ROBOCMUL",
-        "BMEIMD"
+        "BMEIMD",
+        "ROBOASCE",
+        "ROBOGENR"
       ],
       "term": "F",
       "prereqText": "Students must have completed Lab Safety training prior to registering for this class. To access the tutorial, login to myLearning and enter Laboratory Safety Introductory Course in the Search Box to access the proper course.\n\n<a href=\"https://johnshopkins.csod.com/ui/lms-learning-details/app/curriculum/66847e20-c695-4e54-a6be-8c94465b8a70\" target=\"_blank\" rel=\"noopener noreferrer\">\n  Click here to access the Laboratory Safety Introductory Course\n</a> ((AS.171.101 AND AS.171.102) OR (AS.171.107 AND AS.171.108) OR (AS.171.101 AND AS.171.108) OR (AS.171.107 AND AS.171.102) OR (EN.530.123 AND EN.530.124)) AND ((AS.110.106 OR AS.110.108) AND (AS.110.107 OR AS.110.109) AND (AS.110.202 OR AS.110.211) AND (EN.553.291 OR AS.110.302) AND ((EN.530.241 AND EN.530.243) OR (EN.520.230 AND EN.520.231)))",
@@ -8209,7 +8213,9 @@
       "fa": [],
       "writingIntensive": false,
       "posTags": [
-        "BMEIMD"
+        "BMEIMD",
+        "ROBOASCE",
+        "ROBOGENR"
       ],
       "term": "S",
       "prereqText": "Students must have completed Lab Safety training prior to registering for this class. To access the tutorial, login to myLearning and enter ASEN in the Search Box to access the proper course.\n<a href=\"https://johnshopkins.csod.com/ui/lms-learning-details/app/curriculum/66847e20-c695-4e54-a6be-8c94465b8a70\" target=\"_blank\" rel=\"noopener noreferrer\">\n  Click here to access the Laboratory Safety Introductory Course\n</a> EN.530.420 OR EN.520.240 OR EN.520.340 or permission of the instructor.",
@@ -8598,7 +8604,10 @@
       "credits": 3,
       "fa": [],
       "writingIntensive": false,
-      "posTags": [],
+      "posTags": [
+        "ROBOCDYS",
+        "ROBOGENR"
+      ],
       "term": "F",
       "lastOffered": "Fall 2026",
       "offered": [
@@ -8654,7 +8663,9 @@
       "credits": 3,
       "fa": [],
       "writingIntensive": false,
-      "posTags": [],
+      "posTags": [
+        "ROBOGENR"
+      ],
       "term": null,
       "lastOffered": "Fall 2026",
       "offered": [
@@ -8679,7 +8690,11 @@
       "credits": 3,
       "fa": [],
       "writingIntensive": false,
-      "posTags": [],
+      "posTags": [
+        "ROBOBIRO",
+        "ROBOCDYS",
+        "ROBOGENR"
+      ],
       "term": null,
       "lastOffered": "Fall 2026",
       "offered": [
@@ -8694,7 +8709,10 @@
       "credits": 3,
       "fa": [],
       "writingIntensive": false,
-      "posTags": [],
+      "posTags": [
+        "ROBOBIRO",
+        "ROBOGENR"
+      ],
       "term": null,
       "lastOffered": "Spring 2027",
       "offered": [
@@ -11951,7 +11969,8 @@
       ],
       "writingIntensive": false,
       "posTags": [
-        "CSCIAPPL"
+        "CSCIAPPL",
+        "ROBOGENR"
       ],
       "term": null,
       "prereqText": "Students may receive credit for only one of the following: EN.601.454 OR EN.601.654, but not both. EN.601.220 AND EN.601.226 AND (AS.110.201 OR AS.110.212 OR EN.553.291 OR EN.553.295)",
@@ -12029,7 +12048,8 @@
         "ROBORMSU",
         "ROBOCMUL",
         "COGSCOMPCG",
-        "BMEIMD"
+        "BMEIMD",
+        "BMECM"
       ],
       "term": null,
       "prereqText": "Students may receive credit for only one of EN.601.461, EN.601.661. (EN.553.310 OR EN.553.311 OR ((EN.553.420 OR EN.553.421) AND (EN.553.430 OR EN.553.431)) AND (AS.110.201 OR AS.110.212 OR EN.553.291 OR EN.553.295)) AND (EN.500.112 OR EN.500.113 OR EN.500.114 OR EN.601.220 AS.250.205)",
@@ -12060,7 +12080,8 @@
         "BMECM",
         "BMEDCM",
         "BMEIMD",
-        "BMEBDS"
+        "BMEBDS",
+        "ROBOGENR"
       ],
       "term": null,
       "prereqText": "Students may receive credit for only one of EN.601.464, EN.601.664. EN.601.226",
