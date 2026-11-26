@@ -1,5 +1,5 @@
 {
-  "syncedAt": "2026-11-23",
+  "syncedAt": "2026-11-26",
   "terms": [
     "Fall 2025",
     "Fall 2026",
@@ -5198,7 +5198,6 @@
       "writingIntensive": false,
       "posTags": [],
       "term": null,
-      "prereqText": "AS.250.372 AND AS.250.302",
       "lastOffered": "Spring 2027",
       "offered": [
         "Spring 2025",
@@ -6818,7 +6817,8 @@
         "BIOLUL",
         "BMEDGSB",
         "CHBEBIOE",
-        "BMETCTE"
+        "BMETCTE",
+        "BMEIMMU"
       ],
       "term": "S",
       "prereqText": "((AS.110.106 AND AS.110.107) OR (AS.110.108 AND AS.110.109) OR (AS.110.107 AND AS.110.108) OR (AS.110.106 AND AS.110.109)) AND (AS.030.103 OR(AS.030.101 AND AS.030.102)) AND ((AS.171.101 OR AS.171.103 OR AS.171.107) AND (AS.171.102 OR AS.171.104 OR AS.171.108)) AND AS.030.205",
@@ -8196,7 +8196,9 @@
         "ROBOCMUL",
         "BMEIMD",
         "ROBOASCE",
-        "ROBOGENR"
+        "ROBOGENR",
+        "ROBOMERO",
+        "ROBOPECS"
       ],
       "term": "F",
       "prereqText": "Students must have completed Lab Safety training prior to registering for this class. To access the tutorial, login to myLearning and enter Laboratory Safety Introductory Course in the Search Box to access the proper course.\n\n<a href=\"https://johnshopkins.csod.com/ui/lms-learning-details/app/curriculum/66847e20-c695-4e54-a6be-8c94465b8a70\" target=\"_blank\" rel=\"noopener noreferrer\">\n  Click here to access the Laboratory Safety Introductory Course\n</a> ((AS.171.101 AND AS.171.102) OR (AS.171.107 AND AS.171.108) OR (AS.171.101 AND AS.171.108) OR (AS.171.107 AND AS.171.102) OR (EN.530.123 AND EN.530.124)) AND ((AS.110.106 OR AS.110.108) AND (AS.110.107 OR AS.110.109) AND (AS.110.202 OR AS.110.211) AND (EN.553.291 OR AS.110.302) AND ((EN.530.241 AND EN.530.243) OR (EN.520.230 AND EN.520.231)))",
@@ -8215,7 +8217,8 @@
       "posTags": [
         "BMEIMD",
         "ROBOASCE",
-        "ROBOGENR"
+        "ROBOGENR",
+        "ROBOPECS"
       ],
       "term": "S",
       "prereqText": "Students must have completed Lab Safety training prior to registering for this class. To access the tutorial, login to myLearning and enter ASEN in the Search Box to access the proper course.\n<a href=\"https://johnshopkins.csod.com/ui/lms-learning-details/app/curriculum/66847e20-c695-4e54-a6be-8c94465b8a70\" target=\"_blank\" rel=\"noopener noreferrer\">\n  Click here to access the Laboratory Safety Introductory Course\n</a> EN.530.420 OR EN.520.240 OR EN.520.340 or permission of the instructor.",
@@ -11970,7 +11973,9 @@
       "writingIntensive": false,
       "posTags": [
         "CSCIAPPL",
-        "ROBOGENR"
+        "ROBOGENR",
+        "ROBOMERO",
+        "ROBOPECS"
       ],
       "term": null,
       "prereqText": "Students may receive credit for only one of the following: EN.601.454 OR EN.601.654, but not both. EN.601.220 AND EN.601.226 AND (AS.110.201 OR AS.110.212 OR EN.553.291 OR EN.553.295)",
@@ -12081,7 +12086,8 @@
         "BMEDCM",
         "BMEIMD",
         "BMEBDS",
-        "ROBOGENR"
+        "ROBOGENR",
+        "ROBOPECS"
       ],
       "term": null,
       "prereqText": "Students may receive credit for only one of EN.601.464, EN.601.664. EN.601.226",
@@ -12174,7 +12180,8 @@
         "BMENE",
         "BMEGSB",
         "CSCIRSNG",
-        "BMEBDS"
+        "BMEBDS",
+        "ROBOMERO"
       ],
       "term": null,
       "prereqText": "Students may receive credit for only one of EN.601.475, EN.601.675. Linear Algebra, Probability, Statistics, Calc III, and Intro Computing/Programming - (AS.110.202 OR AS.110.211) AND (EN.553.211 OR EN.553.310 OR EN.553.311 OR ((EN.553.420 or EN.553.421) AND (EN.553.430 OR EN.553.431)) AND (AS.110.201 OR AS.110.212 OR EN.553.291 OR EN.553.295) AND (EN.500.112 OR EN.500.113 OR EN.500.114 OR EN.601.220 OR AS.250.205 OR EN.580.200 OR EN.601.107))",
