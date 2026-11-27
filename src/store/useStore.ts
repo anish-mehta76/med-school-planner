@@ -23,6 +23,7 @@ export function defaultState(): AppState {
     outreach: {},
     programStatus: {},
     scoreWeights: DEFAULT_WEIGHTS,
+    internships: [],
   };
 }
 
@@ -47,6 +48,7 @@ export function normalize(raw: unknown): AppState {
     mentors: validList(s.mentors, (m) => !!m.institution && !!m.diseaseFit && !!m.strength),
     programs: validList(s.programs, () => true),
     planner: validPlanner(s.planner),
+    internships: normalizeInternships(s.internships),
   };
 }
 
@@ -66,6 +68,23 @@ function validPlanner(p: AppState['planner']): AppState['planner'] {
   const own = p.scenarios.filter(ok);
   const keep = own.find((x) => x.id === p.activeId) ?? own[0];
   return keep ? { scenarios: [keep], activeId: keep.id } : undefined;
+}
+
+/** Keeps internships that have an id and title, filling in lists older saves may lack. */
+function normalizeInternships(raw: AppState['internships'] | undefined): AppState['internships'] {
+  if (!Array.isArray(raw)) return [];
+  return raw
+    .filter((x) => x && typeof x.id === 'string' && typeof x.title === 'string')
+    .map((x) => ({
+      ...x,
+      organization: x.organization ?? '',
+      description: x.description ?? '',
+      status: x.status ?? 'interested',
+      requirements: Array.isArray(x.requirements) ? x.requirements : [],
+      recommenders: Array.isArray(x.recommenders) ? x.recommenders : [],
+      log: Array.isArray(x.log) ? x.log : [],
+      createdAt: x.createdAt ?? '',
+    }));
 }
 
 function validTracker(t: AppState['tracker']): AppState['tracker'] {
