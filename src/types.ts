@@ -119,6 +119,8 @@ export interface AppState {
   programs?: Program[];
   /** Four-year course plans; the sample scenarios are used until you change something. */
   planner?: PlannerState;
+  /** Internships and summer programs you are applying to. */
+  internships: Internship[];
 }
 
 export type Severity = 'critical' | 'gap' | 'on-track' | 'strong';
@@ -302,4 +304,112 @@ export interface ScoreWeights {
   underrepresented: number;
   mentorship: number;
   reachability: number;
+}
+
+// ── Internship applications ────────────────────────────────────────────────
+
+export type InternshipStatus =
+  | 'interested'
+  | 'preparing'
+  | 'awaiting-recs'
+  | 'applied'
+  | 'interview'
+  | 'waitlisted'
+  | 'accepted'
+  | 'committed'
+  | 'rejected'
+  | 'declined'
+  | 'withdrawn';
+
+export type RequirementKind =
+  | 'resume'
+  | 'cover'
+  | 'personal'
+  | 'supplemental'
+  | 'research'
+  | 'short'
+  | 'transcript'
+  | 'recs'
+  | 'writing'
+  | 'scores'
+  | 'interview'
+  | 'enrollment'
+  | 'fee'
+  | 'other';
+
+export type RequirementStatus = 'todo' | 'drafting' | 'ready' | 'submitted';
+
+/** One thing the application asks for. Several of the same kind are allowed (e.g. two supplemental essays). */
+export interface Requirement {
+  id: string;
+  kind: RequirementKind;
+  /** Your name for it, e.g. "Why this program?". */
+  label?: string;
+  prompt?: string;
+  /** e.g. "500 words" or "1 page". */
+  limit?: string;
+  /** Letters only: how many the program wants. */
+  count?: number;
+  status: RequirementStatus;
+  notes?: string;
+}
+
+export type RecommenderStatus = 'to-ask' | 'asked' | 'agreed' | 'submitted' | 'declined';
+
+export interface Recommender {
+  id: string;
+  name: string;
+  /** e.g. "PI, Dunaif Lab" or "CHEM 101 professor". */
+  role?: string;
+  email?: string;
+  status: RecommenderStatus;
+  askedOn?: string;
+  dueDate?: string;
+  submittedOn?: string;
+  thanked?: boolean;
+  notes?: string;
+}
+
+export interface Internship {
+  id: string;
+  title: string;
+  organization: string;
+  location?: string;
+  format?: 'in-person' | 'remote' | 'hybrid';
+  /** e.g. "Summer 2027". */
+  term?: string;
+  startDate?: string;
+  endDate?: string;
+  /** Stipend, hourly pay, housing, or "Unpaid". */
+  compensation?: string;
+  portalUrl?: string;
+  programUrl?: string;
+  /** Username or email you used for the portal. Never a password. */
+  portalLogin?: string;
+  description: string;
+  eligibility?: string;
+  deadline?: string;
+  rolling?: boolean;
+  /** When they say decisions come out. */
+  decisionExpected?: string;
+  status: InternshipStatus;
+  priority?: 'high' | 'medium' | 'low';
+  appliedOn?: string;
+  interviewOn?: string;
+  interviewNotes?: string;
+  decisionOn?: string;
+  /** Respond-by date for an offer. */
+  offerDeadline?: string;
+  contactName?: string;
+  contactEmail?: string;
+  requirements: Requirement[];
+  recommenders: Recommender[];
+  /** Why it fits you; useful for essays and interviews. */
+  fitNotes?: string;
+  notes?: string;
+  /** Status changes and other events, oldest first. */
+  log: { date: string; text: string }[];
+  createdAt: string;
+  /** Experience created when you accepted the offer. */
+  experienceId?: string;
 }

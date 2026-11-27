@@ -1,11 +1,12 @@
 import { useEffect, useRef, useState } from 'react';
 import type { CSSProperties } from 'react';
-import { BookOpen, BriefcaseMedical, CalendarRange, Compass, Ellipsis, FileText, Gauge, LayoutDashboard, Microscope, UserRoundCog, type LucideIcon } from 'lucide-react';
+import { BookOpen, BriefcaseMedical, CalendarRange, ClipboardCheck, Compass, Ellipsis, FileText, Gauge, LayoutDashboard, Microscope, UserRoundCog, type LucideIcon } from 'lucide-react';
 import shield from './assets/jhu-shield.jpg';
 import Dashboard from './pages/Dashboard';
 import Experiences from './pages/Experiences';
 import Outputs from './pages/Outputs';
 import Research from './pages/Research';
+import Internships from './pages/Internships';
 import Gaps from './pages/Gaps';
 import Opportunities from './pages/Opportunities';
 import Guides from './pages/Guides';
@@ -21,6 +22,7 @@ const PAGES: readonly { id: string; label: string; icon: LucideIcon }[] = [
   { id: 'planner', label: 'Four-year plan', icon: CalendarRange },
   { id: 'research', label: 'Research targeting', icon: Microscope },
   { id: 'outputs', label: 'Research output', icon: FileText },
+  { id: 'internships', label: 'Internships', icon: ClipboardCheck },
   { id: 'gaps', label: 'Gap analysis', icon: Gauge },
   { id: 'opportunities', label: 'Opportunities', icon: Compass },
   { id: 'guides', label: 'Guides', icon: BookOpen },
@@ -35,7 +37,7 @@ const TABS = [
 ];
 const MORE = PAGES.filter((p) => !TABS.some((t) => t.id === p.id));
 
-type PageId = 'dashboard' | 'experiences' | 'planner' | 'research' | 'outputs' | 'gaps' | 'opportunities' | 'guides' | 'settings';
+type PageId = 'dashboard' | 'experiences' | 'planner' | 'research' | 'outputs' | 'internships' | 'gaps' | 'opportunities' | 'guides' | 'settings';
 
 function currentPage(): PageId {
   const h = window.location.hash.slice(1);
@@ -139,6 +141,7 @@ export default function App() {
         {page === 'planner' && <Planner />}
         {page === 'research' && <Research />}
         {page === 'outputs' && <Outputs go={go} />}
+        {page === 'internships' && <Internships />}
         {page === 'gaps' && <Gaps go={go} />}
         {page === 'opportunities' && <Opportunities />}
         {page === 'guides' && <Guides />}
